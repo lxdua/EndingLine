@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvorf6qptqxej"]
+
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_osfmn"]
+
+[node name="BaseScene" type="Node2D"]
+
+[node name="BaseSceneUI" type="CanvasLayer" parent="."]
+
+[node name="ButtonContainer" type="HBoxContainer" parent="BaseSceneUI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -156.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="RouteSelectionButton" type="TextureButton" parent="BaseSceneUI/ButtonContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_osfmn")
+
+[node name="RouteSelection" type="Node2D" parent="."]
