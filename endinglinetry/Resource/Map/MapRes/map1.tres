@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MapRes" load_steps=2 format=3 uid="uid://r7jiclu5duer"]
+
+[ext_resource type="Script" path="res://Resource/Map/map_res.gd" id="1_nrlxa"]
+
+[resource]
+script = ExtResource("1_nrlxa")
+station_pos_list = Array[Vector2]([Vector2(50, 0), Vector2(-50, 0), Vector2(0, 200)])
+track_list = Array[Vector3]([Vector3(0, 1, 10), Vector3(1, 2, 20), Vector3(2, 1, 20)])

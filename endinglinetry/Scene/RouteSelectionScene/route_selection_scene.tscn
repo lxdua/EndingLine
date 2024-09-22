@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5vtntw4vu6n"]
+
+[ext_resource type="Script" path="res://Scene/RouteSelectionScene/route_selection_scene.gd" id="1_uwgh6"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_wsivo"]
+[ext_resource type="Resource" uid="uid://r7jiclu5duer" path="res://Resource/Map/MapRes/map1.tres" id="2_obe6l"]
+
+[node name="RouteSelectionScene" type="Node2D"]
+script = ExtResource("1_uwgh6")
+map_res = ExtResource("2_obe6l")
+
+[node name="TrackRoot" type="Node2D" parent="."]
+
+[node name="StationRoot" type="Node2D" parent="."]
+
+[node name="Train" type="Node2D" parent="."]
+
+[node name="Camera" type="Camera2D" parent="Train"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="TrainSprite" type="Sprite2D" parent="Train"]
+visible = false
+texture = ExtResource("1_wsivo")
