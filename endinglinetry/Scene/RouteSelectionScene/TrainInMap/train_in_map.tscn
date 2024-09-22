@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjn0jxrrcrn7u"]
+
+[ext_resource type="Script" path="res://Scene/RouteSelectionScene/TrainInMap/train_in_map.gd" id="1_7geg7"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_hcgb0"]
+
+[node name="TrainInMap" type="Node2D"]
+script = ExtResource("1_7geg7")
+
+[node name="TrainInMapSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_hcgb0")
+
+[node name="Camera" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
