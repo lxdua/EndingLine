@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://dovfytcll6bqb"]
+[gd_scene load_steps=5 format=3 uid="uid://dovfytcll6bqb"]
 
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_5n6at"]
+[ext_resource type="Script" path="res://Trade/Script/trade_ui.gd" id="1_kgsjj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m242h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64eyq"]
 
 [node name="TradeUI" type="CanvasLayer"]
+script = ExtResource("1_kgsjj")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -51,12 +57,14 @@ size_flags_horizontal = 3
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ItemList" type="ItemList" parent="VBoxContainer/HBox/MarginContainer"]
+[node name="PlayerGoodsList" type="ItemList" parent="VBoxContainer/HBox/MarginContainer"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m242h")
 item_count = 6
-max_columns = 0
+max_columns = 5
 same_column_width = true
 icon_mode = 0
+fixed_icon_size = Vector2i(5, 5)
 item_0/text = "25"
 item_0/icon = ExtResource("1_5n6at")
 item_1/text = "123"
@@ -72,11 +80,13 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="ItemList2" type="ItemList" parent="VBoxContainer/HBox/MarginContainer2"]
+[node name="GoodsList" type="ItemList" parent="VBoxContainer/HBox/MarginContainer2"]
 layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_64eyq")
 item_count = 1
 max_columns = 0
 same_column_width = true
 icon_mode = 0
 item_0/text = "123"
 item_0/icon = ExtResource("1_5n6at")
+item_0/selectable = false
