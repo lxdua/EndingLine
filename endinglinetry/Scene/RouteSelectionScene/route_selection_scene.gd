@@ -3,7 +3,8 @@ extends Node2D
 const STATION: = preload("res://Scene/RouteSelectionScene/Station/station.tscn")
 const TRACK: = preload("res://Scene/RouteSelectionScene/Track/track.tscn")
 
-const MAX_STATION_NUM: = 100
+const MAX_STATION_NUM: = 5
+const MAX_TRACK_LENGTH: = 100000
 
 @export var map_res: MapRes
 
@@ -17,6 +18,7 @@ var idx: int = 0
 @onready var train: Node2D = $Train
 
 func _ready() -> void:
+	init_floyd()
 	create_map()
 
 func create_map():
@@ -49,42 +51,45 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 
 func remove_track(track: Track):
 	track.queue_free()
-	update_track(track.start_station, track.end_station, INF)
+	update_track(track.start_station, track.end_station, MAX_TRACK_LENGTH)
 
 func update_track(start_station: Station, end_station: Station, track_length: int):
-	matrix[start_station.station_id][end_station.station_id] = track_length
-	update_floyd(start_station.station_id, idx)
-	update_floyd(end_station.station_id, idx)
+	matrix[start_station.station_id][end_station.station_id] = min(matrix[start_station.station_id][end_station.station_id], track_length)
+	update_floyd(start_station.station_id)
+	update_floyd(end_station.station_id)
 
-## 邻接矩阵
 var matrix: Array[Array]
-var ShortestPath: Array[int]
-var pre: Array[Array]
+var mid_station: Array[Array]
+var shortest_path: Array[int]
 
 func init_floyd(n: int = MAX_STATION_NUM):
 	matrix.clear()
-	var tmp_matrix: = []
-	var tmp_pre: = []
 	for i in range(n):
-		tmp_matrix.append(INF)
-		tmp_pre.append(-1)
-	for i in range(n):
-		matrix.append(tmp_matrix)
-		pre.append(tmp_pre)
+		matrix.append([])
+		mid_station.append([])
+		for j in range(n):
+			matrix[i].append(MAX_TRACK_LENGTH)
+			mid_station[i].append(-1)
 	for i in range(n):
 		matrix[i][i] = 0
-
-func calc_floyd(n: int = MAX_STATION_NUM):
-	for k in range(n):
-		for x in range(n):
-			for y in range(n):
-				if matrix[x][y] > matrix[x][k] + matrix[k][y]:
-					matrix[x][y] = matrix[x][k] + matrix[k][y]
-					pre[x][y] = k
 
 func update_floyd(k: int, n: int = MAX_STATION_NUM):
 	for x in range(n):
 		for y in range(n):
 			if matrix[x][y] > matrix[x][k] + matrix[k][y]:
 				matrix[x][y] = matrix[x][k] + matrix[k][y]
-				pre[x][y] = k
+				mid_station[x][y] = k
+
+func get_shortest_path(start_station: Station, end_station: Station):
+	shortest_path.clear()
+	calc_mid(start_station.station_id, end_station.station_id)
+
+func calc_mid(x: int, y: int):
+	if x == y:
+		return
+	var k = mid_station[x][y]
+	if k == -1:
+		shortest_path.append(y)
+	else:
+		calc_mid(x, k)
+		calc_mid(k, y)

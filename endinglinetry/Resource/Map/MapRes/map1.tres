@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_nrlxa")
 station_pos_list = Array[Vector2]([Vector2(50, 0), Vector2(-50, 0), Vector2(0, 200)])
-track_list = Array[Vector3]([Vector3(0, 1, 10), Vector3(1, 2, 20), Vector3(2, 1, 20)])
+track_list = Array[Vector3i]([Vector3i(0, 1, 50), Vector3i(1, 2, 30), Vector3i(0, 2, 300)])
