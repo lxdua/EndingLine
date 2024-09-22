@@ -13,13 +13,18 @@ texture = ExtResource("1_3bwyt")
 
 [node name="TradeGoods" type="Node" parent="Sprite2D"]
 script = ExtResource("2_1c4b1")
+add_id = 2
+add_number = 2
+add_g = true
 
 [node name="TradeManage" type="Node2D" parent="."]
 script = ExtResource("2_61n01")
 
 [node name="PlayerTradeGoods" type="Node" parent="TradeManage"]
 script = ExtResource("2_1c4b1")
-add_number = 10
+add_id = 2
+add_number = 1
+add_g = true
 cash = 500
 
-[node name="CanvasLayer" parent="TradeManage" instance=ExtResource("4_fvdnw")]
+[node name="TradeUI" parent="TradeManage" instance=ExtResource("4_fvdnw")]
