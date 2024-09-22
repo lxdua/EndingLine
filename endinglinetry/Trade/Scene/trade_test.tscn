@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ds22m5lc08ove"]
+
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_3bwyt"]
+[ext_resource type="Script" path="res://Trade/Script/trade_goods.gd" id="2_1c4b1"]
+[ext_resource type="Script" path="res://Trade/Script/trade_manage.gd" id="2_61n01"]
+
+[node name="TradeTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(557, 268)
+texture = ExtResource("1_3bwyt")
+
+[node name="TradeGoods" type="Node" parent="Sprite2D"]
+script = ExtResource("2_1c4b1")
+
+[node name="TradeManage" type="Node2D" parent="."]
+script = ExtResource("2_61n01")
