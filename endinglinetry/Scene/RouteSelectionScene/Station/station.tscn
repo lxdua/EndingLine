@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c76xtrc3nb60s"]
+
+[ext_resource type="Script" path="res://Scene/RouteSelectionScene/Station/station.gd" id="1_due88"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_o0w6j"]
+
+[node name="Station" type="Node2D"]
+script = ExtResource("1_due88")
+
+[node name="StationSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_o0w6j")

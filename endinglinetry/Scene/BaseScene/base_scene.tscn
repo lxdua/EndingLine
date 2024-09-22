@@ -19,5 +19,3 @@ alignment = 1
 [node name="RouteSelectionButton" type="TextureButton" parent="BaseSceneUI/ButtonContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
-
-[node name="RouteSelection" type="Node2D" parent="."]

@@ -14,3 +14,14 @@ config/name="EndingLineTry"
 run/main_scene="res://Scene/BaseScene/base_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
+[rendering]
+
+textures/canvas_textures/default_texture_repeat=1
