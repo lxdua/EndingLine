@@ -110,7 +110,10 @@ func calc_mid(x: int, y: int):
 var destination_id: int:
 	set(v):
 		destination_id = v
+		destination_id_update.emit(v)
 		print("新终点为", v)
+
+signal destination_id_update(id: int)
 
 var current_station_id: int
 

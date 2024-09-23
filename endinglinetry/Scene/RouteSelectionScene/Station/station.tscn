@@ -18,4 +18,56 @@ texture = ExtResource("2_o0w6j")
 [node name="StationCollisionShape" type="CollisionShape2D" parent="StationArea"]
 shape = SubResource("CircleShape2D_v20il")
 
+[node name="ContentContainer" type="PanelContainer" parent="."]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -400.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="ContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "地点名"
+horizontal_alignment = 1
+
+[node name="TipLabel" type="Label" parent="ContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "文本介绍"
+horizontal_alignment = 1
+
+[node name="SupplyContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ContentContainer/VBoxContainer/SupplyContainer"]
+layout_mode = 2
+text = "供应"
+
+[node name="DemandContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ContentContainer/VBoxContainer/DemandContainer"]
+layout_mode = 2
+text = "需求"
+
+[node name="Label" type="Label" parent="ContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "距离400m消耗4h"
+horizontal_alignment = 1
+
+[node name="AskLabel" type="Label" parent="ContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "是否前往"
+horizontal_alignment = 1
+
 [connection signal="input_event" from="StationArea" to="." method="_on_station_area_input_event"]
