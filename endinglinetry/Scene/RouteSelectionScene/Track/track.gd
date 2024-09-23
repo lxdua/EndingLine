@@ -20,3 +20,8 @@ func _ready() -> void:
 	track_collision_shape.shape = new_shape
 	track_collision_shape.position.x += dist.length() / 2
 	track_area.rotation = dist.angle()
+
+
+func _on_track_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event.is_action_pressed("mouse_left"):
+		print(start_station.station_id, " ", end_station.station_id, " ", track_length)

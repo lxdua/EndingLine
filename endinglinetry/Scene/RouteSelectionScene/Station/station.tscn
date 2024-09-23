@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://c76xtrc3nb60s"]
+[gd_scene load_steps=4 format=3 uid="uid://c76xtrc3nb60s"]
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/Station/station.gd" id="1_due88"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_o0w6j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v20il"]
+radius = 31.0161
 
 [node name="Station" type="Node2D"]
 script = ExtResource("1_due88")
 
 [node name="StationSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_o0w6j")
+
+[node name="StationArea" type="Area2D" parent="."]
+
+[node name="StationCollisionShape" type="CollisionShape2D" parent="StationArea"]
+shape = SubResource("CircleShape2D_v20il")
+
+[connection signal="input_event" from="StationArea" to="." method="_on_station_area_input_event"]

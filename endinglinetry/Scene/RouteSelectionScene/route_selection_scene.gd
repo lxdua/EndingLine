@@ -1,4 +1,5 @@
 extends Node2D
+class_name RouteSelectionScene
 
 const STATION: = preload("res://Scene/RouteSelectionScene/Station/station.tscn")
 const TRACK: = preload("res://Scene/RouteSelectionScene/Track/track.tscn")
@@ -8,18 +9,21 @@ const MAX_TRACK_LENGTH: = 100000
 
 @export var map_res: MapRes
 
-## 存站台
-var station_dict: Dictionary
-## 站台下标统计
-var idx: int = 0
-
 @onready var track_root: Node2D = $TrackRoot
 @onready var station_root: Node2D = $StationRoot
-@onready var train: Node2D = $Train
+@onready var train_in_map: Node2D = $TrainInMap
 
 func _ready() -> void:
 	init_floyd()
 	create_map()
+	init_train()
+
+#region 地图相关
+
+## 存站台
+var station_dict: Dictionary
+## 站台下标统计
+var idx: int = 0
 
 func create_map():
 	var station_pos_list = map_res.station_pos_list
@@ -58,9 +62,12 @@ func update_track(start_station: Station, end_station: Station, track_length: in
 	update_floyd(start_station.station_id)
 	update_floyd(end_station.station_id)
 
+## 邻接矩阵
 var matrix: Array[Array]
+## 最短路途径点
 var mid_station: Array[Array]
-var shortest_path: Array[int]
+## 最短路
+var shortest_path: Array[int] = []
 
 func init_floyd(n: int = MAX_STATION_NUM):
 	matrix.clear()
@@ -81,8 +88,8 @@ func update_floyd(k: int, n: int = MAX_STATION_NUM):
 				mid_station[x][y] = k
 
 func get_shortest_path(start_station: Station, end_station: Station):
-	shortest_path.clear()
 	calc_mid(start_station.station_id, end_station.station_id)
+	return shortest_path
 
 func calc_mid(x: int, y: int):
 	if x == y:
@@ -93,3 +100,48 @@ func calc_mid(x: int, y: int):
 	else:
 		calc_mid(x, k)
 		calc_mid(k, y)
+
+#endregion
+
+#region 列车相关
+
+## 目标点
+var destination_id: int:
+	set(v):
+		destination_id = v
+		print("新终点为", v)
+
+var current_station_id: int
+
+## 下一站清单
+var route_list: Array[int]
+
+func init_train():
+	train_in_map.init_train(station_dict[0])
+
+func drive():
+	route_list = get_shortest_path(station_dict[current_station_id], station_dict[destination_id])
+	print(route_list)
+	while not route_list.is_empty():
+		var next_station_id: int = route_list.pop_front()
+		print("正在前往", next_station_id)
+		var drive_tween = train_in_map.create_tween()
+		drive_tween.tween_property(
+			train_in_map,
+			"global_position",
+			station_dict[next_station_id].station_position,
+			matrix[current_station_id][next_station_id] / 5.0,
+			)
+		await drive_tween.finished
+		current_station_id = next_station_id
+
+#endregion
+
+#region UI交互
+
+## 确认出发
+func _on_set_sail_button_pressed() -> void:
+	drive()
+	print("出发！")
+
+#endregion

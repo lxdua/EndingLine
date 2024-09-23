@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5vtntw4vu6n"]
+[gd_scene load_steps=5 format=3 uid="uid://c5vtntw4vu6n"]
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/route_selection_scene.gd" id="1_uwgh6"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_wsivo"]
 [ext_resource type="Resource" uid="uid://r7jiclu5duer" path="res://Resource/Map/MapRes/map1.tres" id="2_obe6l"]
 [ext_resource type="PackedScene" uid="uid://bjn0jxrrcrn7u" path="res://Scene/RouteSelectionScene/TrainInMap/train_in_map.tscn" id="3_d0dn0"]
 
@@ -13,3 +14,19 @@ map_res = ExtResource("2_obe6l")
 [node name="StationRoot" type="Node2D" parent="."]
 
 [node name="TrainInMap" parent="." instance=ExtResource("3_d0dn0")]
+
+[node name="RouteSelectionUI" type="CanvasLayer" parent="."]
+
+[node name="SetSailButton" type="TextureButton" parent="RouteSelectionUI"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+texture_normal = ExtResource("1_wsivo")
+
+[connection signal="pressed" from="RouteSelectionUI/SetSailButton" to="." method="_on_set_sail_button_pressed"]
