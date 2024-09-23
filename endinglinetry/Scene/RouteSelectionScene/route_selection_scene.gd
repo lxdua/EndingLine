@@ -9,9 +9,9 @@ const MAX_TRACK_LENGTH: = 100000
 
 @export var map_res: MapRes
 
-@onready var track_root: Node2D = $TrackRoot
-@onready var station_root: Node2D = $StationRoot
-@onready var train_in_map: Node2D = $TrainInMap
+@export var track_root: Node2D
+@export var station_root: Node2D
+@export var train_in_map: Node2D
 
 func _ready() -> void:
 	init_floyd()
@@ -88,6 +88,7 @@ func update_floyd(k: int, n: int = MAX_STATION_NUM):
 				mid_station[x][y] = k
 
 func get_shortest_path(start_station: Station, end_station: Station):
+	shortest_path.clear()
 	calc_mid(start_station.station_id, end_station.station_id)
 	return shortest_path
 
@@ -117,7 +118,8 @@ var current_station_id: int
 var route_list: Array[int]
 
 func init_train():
-	train_in_map.init_train(station_dict[0])
+	train_in_map.global_position = station_dict[0].station_position
+	current_station_id = 0
 
 func drive():
 	route_list = get_shortest_path(station_dict[current_station_id], station_dict[destination_id])
@@ -139,9 +141,24 @@ func drive():
 
 #region UI交互
 
+@onready var map: CanvasLayer = $Map
+@onready var ui: CanvasLayer = $UI
+
+func show_all():
+	map.show()
+	ui.show()
+
+func hide_all():
+	map.hide()
+	ui.hide()
+
 ## 确认出发
 func _on_set_sail_button_pressed() -> void:
 	drive()
 	print("出发！")
+
+func _on_close_button_pressed() -> void:
+	hide_all()
+	print("关闭")
 
 #endregion

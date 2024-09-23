@@ -4,7 +4,7 @@ class_name Station
 var station_id: int
 var station_position: Vector2
 
-@onready var route_selection: = get_parent().get_parent()
+@onready var route_selection: RouteSelectionScene = $"../../.."
 
 func _ready() -> void:
 	global_position = station_position
