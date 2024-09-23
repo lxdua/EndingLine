@@ -2,22 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_5n6at"]
 [ext_resource type="Script" path="res://Trade/Script/TradeUI/trade_ui.gd" id="1_kgsjj"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m242h"]
+[ext_resource type="PackedScene" uid="uid://c0en6jwj481vt" path="res://Trade/Scene/TradeUI/goods_list.tscn" id="2_4lnob"]
+[ext_resource type="PackedScene" uid="uid://ccvum77ne47ov" path="res://Trade/Scene/TradeUI/goods_trade_details.tscn" id="4_njo8r"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64eyq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kst5"]
-bg_color = Color(0.129412, 0.129412, 0.129412, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0.384314, 0.384314, 0.384314, 0.929412)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
 
 [node name="TradeUI" type="CanvasLayer"]
 script = ExtResource("1_kgsjj")
@@ -69,22 +57,8 @@ size_flags_horizontal = 3
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="PlayerGoodsList" type="ItemList" parent="VBoxContainer/HBox/MarginContainer"]
+[node name="PlayerGoodsList" parent="VBoxContainer/HBox/MarginContainer" instance=ExtResource("2_4lnob")]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_m242h")
-item_count = 6
-max_columns = 5
-same_column_width = true
-icon_mode = 0
-fixed_icon_size = Vector2i(5, 5)
-item_0/text = "25"
-item_0/icon = ExtResource("1_5n6at")
-item_1/text = "123"
-item_1/icon = ExtResource("1_5n6at")
-item_2/icon = ExtResource("1_5n6at")
-item_3/icon = ExtResource("1_5n6at")
-item_4/icon = ExtResource("1_5n6at")
-item_5/icon = ExtResource("1_5n6at")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
@@ -103,117 +77,5 @@ item_0/text = "123"
 item_0/icon = ExtResource("1_5n6at")
 item_0/selectable = false
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-clip_contents = true
-custom_minimum_size = Vector2(600, 300)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3kst5")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
-layout_mode = 2
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "物品名称"
-
-[node name="VBox" type="VBoxContainer" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBox/CenterContainer"]
-layout_mode = 2
-text = "物品数量"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/VBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/VBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "—"
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/VBox/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-
-[node name="HScrollBar" type="HScrollBar" parent="PanelContainer/VBoxContainer/VBox/HBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(350, 10)
-layout_mode = 2
-custom_step = 1.0
-
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/VBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "+"
-
-[node name="Control2" type="Control" parent="PanelContainer/VBoxContainer/VBox/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/VBoxContainer/VBox"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/VBox/CenterContainer2"]
-layout_mode = 2
-text = "物品总价"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "取消"
-
-[node name="Control2" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CenterContainer2" type="CenterContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/CenterContainer2"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-text = "交易"
-
-[node name="Control3" type="Control" parent="PanelContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[connection signal="item_clicked" from="VBoxContainer/HBox/MarginContainer/PlayerGoodsList" to="." method="_on_player_goods_list_item_clicked"]
+[node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
+visible = false

@@ -14,7 +14,7 @@ func _ready() -> void:
 
 
 func open_trace_ui(t_goods:TradeGoods):
-	trade_ui.reset_list_goods(player_trade_goods,t_goods)
+	trade_ui.update_list_goods(player_trade_goods,t_goods)
 
 
 

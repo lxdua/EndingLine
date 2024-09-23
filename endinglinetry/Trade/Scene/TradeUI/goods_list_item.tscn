@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_u24qo"]
 
 [node name="GoodsListItem" type="PanelContainer"]
-size_flags_vertical = 3
+custom_minimum_size = Vector2(0, 100)
+offset_right = 15.0
+offset_bottom = 10.0
+size_flags_horizontal = 3
 script = ExtResource("1_04p4h")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
@@ -20,7 +23,7 @@ theme_override_constants/margin_bottom = 5
 [node name="IconRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
 texture = ExtResource("1_u24qo")
-expand_mode = 2
+expand_mode = 3
 
 [node name="ItemDataText" type="RichTextLabel" parent="HBoxContainer"]
 layout_mode = 2
@@ -31,3 +34,9 @@ text = "物品名称
 数量:0
 "
 scroll_active = false
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 2
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="ReferenceRect" to="." method="_on_reference_rect_gui_input"]

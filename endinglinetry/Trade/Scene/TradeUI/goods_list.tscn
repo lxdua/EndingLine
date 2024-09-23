@@ -1,16 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0en6jwj481vt"]
+[gd_scene load_steps=2 format=3 uid="uid://c0en6jwj481vt"]
 
 [ext_resource type="Script" path="res://Trade/Script/TradeUI/goods_list.gd" id="1_4x8wb"]
-[ext_resource type="Script" path="res://Trade/Script/TradeUI/goods_list_item.gd" id="2_gmcxx"]
 
 [node name="GoodsList" type="ScrollContainer"]
+custom_minimum_size = Vector2(600, 300)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0
 script = ExtResource("1_4x8wb")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GoodsListItem" type="PanelContainer" parent="VBoxContainer"]
-layout_mode = 2
-script = ExtResource("2_gmcxx")
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
