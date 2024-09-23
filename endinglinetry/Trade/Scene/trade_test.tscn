@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_3bwyt"]
 [ext_resource type="Script" path="res://Trade/Script/trade_goods.gd" id="2_1c4b1"]
 [ext_resource type="Script" path="res://Trade/Script/trade_manage.gd" id="2_61n01"]
-[ext_resource type="PackedScene" uid="uid://dovfytcll6bqb" path="res://Trade/Scene/trade_ui.tscn" id="4_fvdnw"]
+[ext_resource type="PackedScene" uid="uid://dovfytcll6bqb" path="res://Trade/Scene/TradeUI/trade_ui.tscn" id="4_fvdnw"]
 
 [node name="TradeTest" type="Node2D"]
 
@@ -22,8 +22,7 @@ script = ExtResource("2_61n01")
 
 [node name="PlayerTradeGoods" type="Node" parent="TradeManage"]
 script = ExtResource("2_1c4b1")
-add_id = 2
-add_number = 1
+add_number = 30
 add_g = true
 cash = 500
 

@@ -13,13 +13,16 @@ func _ready() -> void:
 
 
 
-func Trace(t_goods:TradeGoods):
-	pass
+func open_trace_ui(t_goods:TradeGoods):
+	trade_ui.reset_list_goods(player_trade_goods,t_goods)
+
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_A:
-			trade_ui.reset_list_goods(player_trade_goods,$"../Sprite2D/TradeGoods")
+			open_trace_ui($"../Sprite2D/TradeGoods")
+
 
 
 

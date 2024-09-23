@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://colrqteefvben"]
+
+[ext_resource type="Script" path="res://Trade/Script/TradeUI/goods_list_item.gd" id="1_04p4h"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_u24qo"]
+
+[node name="GoodsListItem" type="PanelContainer"]
+size_flags_vertical = 3
+script = ExtResource("1_04p4h")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="IconRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_u24qo")
+expand_mode = 2
+
+[node name="ItemDataText" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "物品名称
+当前单价:1
+指导单价:1
+数量:0
+"
+scroll_active = false

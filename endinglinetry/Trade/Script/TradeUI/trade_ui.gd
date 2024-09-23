@@ -27,10 +27,14 @@ func reset_list_goods(player_goods:TradeGoods,goods:TradeGoods):
 	player_list_goods_map.clear()
 	for g in player_goods.goods:
 		if g.number>0:
-			player_list_goods_map[player_goods_list.add_item(str(g.number),icon,(g.number>0))]=g
+			player_list_goods_map[player_goods_list.add_item(str(g.number),icon,false)]=g
 
 	goods_list.clear()
 	list_goods_map.clear()
 	for g in goods.goods:
 		if g.number>0:
-			list_goods_map[goods_list.add_item(str(g.number),icon)]=g
+			list_goods_map[goods_list.add_item(str(g.number),icon,false)]=g
+
+
+func _on_player_goods_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+	pass

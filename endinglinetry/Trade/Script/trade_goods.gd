@@ -49,3 +49,6 @@ func set_goods_price_multiplier(id:int,multiplier:float):
 		print("设置成功")
 	else:
 		print("设置失败")
+
+func print_all_goods():
+	goods.all(func(g):g.print_goods())
