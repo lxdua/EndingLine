@@ -10,10 +10,8 @@ const GOODS_LIST_ITEM = preload("res://Trade/Scene/TradeUI/goods_list_item.tscn"
 var trade_goods:TradeGoods:
 	set(new_g):
 		trade_goods=new_g
-		clear_list()
-		for g in trade_goods.goods:
-			if g.number>0:
-				add_list_item().goods_struct=g
+		updata_list()
+
 
 @export var add_item:bool:
 	set(new_b):
@@ -49,3 +47,10 @@ func add_list_item()->GoodsListItem:
 func clear_list():
 	for item in list.get_children():
 		item.queue_free()
+
+func updata_list():
+	clear_list()
+	for g in trade_goods.goods:
+		if g.number>0:
+			add_list_item().goods_struct=g
+	cash=trade_goods.cash

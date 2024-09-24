@@ -16,6 +16,7 @@ var trade_partner:TradeGoods
 func open_trade_ui(t_goods:TradeGoods):
 	trade_partner=t_goods
 	update_list_goods()
+	trade_ui.visible=true
 
 func update_list_goods():
 	trade_ui.update_list_goods(player_trade_goods,trade_partner)
@@ -29,11 +30,11 @@ func _input(event: InputEvent) -> void:
 
 
 func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
-	var buyer:TradeGoods = trade_goods_struct.trade_goods
-	if !buyer:
+	var seller:TradeGoods = trade_goods_struct.trade_goods
+	if !seller:
 		return false
-	var seller:TradeGoods
-	if buyer==player_trade_goods:
+	var buyer:TradeGoods
+	if seller==player_trade_goods:
 		buyer=trade_partner
 	else:
 		buyer=player_trade_goods

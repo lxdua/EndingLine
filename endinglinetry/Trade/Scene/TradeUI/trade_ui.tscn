@@ -36,7 +36,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
 text = "交易"
 
-[node name="Button" type="Button" parent="VBoxContainer/VBox"]
+[node name="ExitButton" type="Button" parent="VBoxContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 50
@@ -69,3 +69,5 @@ cash = 0
 
 [node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
 visible = false
+
+[connection signal="pressed" from="VBoxContainer/VBox/ExitButton" to="." method="_on_exit_button_pressed"]

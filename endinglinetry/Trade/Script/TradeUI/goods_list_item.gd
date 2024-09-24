@@ -39,12 +39,14 @@ func update_item_data_text():
 var goods_struct:TradeGoodsStruct:
 	set(new_g):
 		goods_struct=new_g
+		update()
+
+func update():
+	if goods_struct:
 		goods_name=trade_manage.get_goods_name(goods_struct.id)
 		goods_price=trade_manage.get_goods_price(goods_struct.id)
 		price_multiplier=goods_struct.price_multiplier
 		goods_number=goods_struct.number
-
-
 
 
 

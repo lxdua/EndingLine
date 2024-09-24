@@ -19,13 +19,18 @@ func update_list_layout():
 
 
 func update_list_goods(player_goods:TradeGoods,goods:TradeGoods):
+	print("update")
 	var icon:=preload("res://icon.svg")
 	player_goods_list.trade_goods=player_goods
-	player_goods_list.cash=player_goods.cash
+	player_goods_list.updata_list()
 	goods_list.trade_goods=goods
-	goods_list.cash=goods.cash
+	goods_list.updata_list()
 
 func show_goods_details(goods_item:TradeGoodsStruct):
 	goods_trade_details.goods_struct=goods_item
 	goods_trade_details.update_details()
 	goods_trade_details.visible=true
+
+
+func _on_exit_button_pressed() -> void:
+	visible=false
