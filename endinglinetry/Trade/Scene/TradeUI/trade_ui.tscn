@@ -55,7 +55,6 @@ theme_override_constants/margin_right = 5
 
 [node name="PlayerGoodsList" parent="VBoxContainer/HBox/MarginContainer" instance=ExtResource("2_4lnob")]
 layout_mode = 2
-cash = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
@@ -65,7 +64,6 @@ theme_override_constants/margin_bottom = 5
 
 [node name="GoodsList" parent="VBoxContainer/HBox/MarginContainer2" instance=ExtResource("2_4lnob")]
 layout_mode = 2
-cash = 0
 
 [node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
 visible = false

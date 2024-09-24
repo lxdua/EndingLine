@@ -3,7 +3,7 @@ extends PanelContainer
 class_name GoodsListItem
 
 @onready var icon_rect: TextureRect = $HBoxContainer/MarginContainer/IconRect
-@onready var item_data_text: RichTextLabel = $HBoxContainer/ItemDataText
+@onready var item_data_text: Label = $HBoxContainer/ItemDataText
 @onready var trade_manage: TradeManage = $"../../../../../../../../.."
 @onready var trade_ui: TradeUI = $"../../../../../../../.."
 
@@ -41,6 +41,7 @@ var goods_struct:TradeGoodsStruct:
 		goods_struct=new_g
 		update()
 
+
 func update():
 	if goods_struct:
 		goods_name=trade_manage.get_goods_name(goods_struct.id)
@@ -48,7 +49,8 @@ func update():
 		price_multiplier=goods_struct.price_multiplier
 		goods_number=goods_struct.number
 
-
+func _ready() -> void:
+	item_data_text.add_theme_font_size_override("font_size",custom_minimum_size.y/4)
 
 func _on_reference_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

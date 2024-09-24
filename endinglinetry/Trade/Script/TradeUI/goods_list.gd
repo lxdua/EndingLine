@@ -27,6 +27,7 @@ var trade_goods:TradeGoods:
 		if list:
 			for item in list.get_children():
 				item.custom_minimum_size.y=item_h
+				item.item_data_text.add_theme_font_size_override("font_size",item_h/4)
 @export_range(0,999999) var cash:int:
 	set(new_c):
 		cash=new_c

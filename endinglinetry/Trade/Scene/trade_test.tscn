@@ -28,3 +28,5 @@ add_g = true
 cash = 500
 
 [node name="TradeUI" parent="TradeManage" instance=ExtResource("4_fvdnw")]
+
+[editable path="TradeManage/TradeUI"]
