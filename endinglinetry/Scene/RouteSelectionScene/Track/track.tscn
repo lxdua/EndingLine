@@ -10,3 +10,5 @@ script = ExtResource("1_2htug")
 [node name="TrackArea" type="Area2D" parent="."]
 
 [node name="TrackCollisionShape" type="CollisionShape2D" parent="TrackArea"]
+
+[connection signal="input_event" from="TrackArea" to="." method="_on_track_area_input_event"]
