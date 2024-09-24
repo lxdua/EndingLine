@@ -19,6 +19,7 @@ train_in_map = NodePath("Map/TrainInMap")
 
 [node name="Map" type="CanvasLayer" parent="."]
 layer = 3
+visible = false
 follow_viewport_enabled = true
 
 [node name="BackGround" type="Sprite2D" parent="Map"]
@@ -40,15 +41,19 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
 layer = 4
 
 [node name="CloseButton" type="TextureButton" parent="UI"]
-anchors_preset = 1
+anchors_preset = 3
 anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = -128.0
-offset_bottom = 128.0
+offset_top = -128.0
 grow_horizontal = 0
+grow_vertical = 0
 texture_normal = ExtResource("1_wsivo")
 
 [node name="SetSailButton" type="TextureButton" parent="UI"]
@@ -65,5 +70,32 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("1_wsivo")
 
+[node name="TimeContainer" type="PanelContainer" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -392.0
+offset_bottom = 128.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TimeContainer"]
+layout_mode = 2
+
+[node name="PauseButton" type="TextureButton" parent="UI/TimeContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_wsivo")
+
+[node name="ContinueButton" type="TextureButton" parent="UI/TimeContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_wsivo")
+
+[node name="SpeedUpButton" type="TextureButton" parent="UI/TimeContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_wsivo")
+
 [connection signal="pressed" from="UI/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/SetSailButton" to="." method="_on_set_sail_button_pressed"]
+[connection signal="pressed" from="UI/TimeContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/TimeContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="button_down" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
+[connection signal="button_up" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_up"]

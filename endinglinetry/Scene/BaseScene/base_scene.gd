@@ -18,3 +18,20 @@ func _on_route_selection_button_pressed() -> void:
 	route_selection_scene.show_all()
 
 #endregion
+
+
+#region 倍速相关
+
+func _on_pause_button_pressed() -> void:
+	get_tree().set_pause(true)
+
+func _on_continue_button_pressed() -> void:
+	get_tree().set_pause(false)
+
+func _on_speed_up_button_button_down() -> void:
+	Engine.set_time_scale(2.0)
+
+func _on_speed_up_button_button_up() -> void:
+	Engine.set_time_scale(1.0)
+
+#endregion
