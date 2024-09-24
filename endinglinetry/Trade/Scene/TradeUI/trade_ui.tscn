@@ -1,11 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dovfytcll6bqb"]
+[gd_scene load_steps=4 format=3 uid="uid://dovfytcll6bqb"]
 
-[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_5n6at"]
 [ext_resource type="Script" path="res://Trade/Script/TradeUI/trade_ui.gd" id="1_kgsjj"]
 [ext_resource type="PackedScene" uid="uid://c0en6jwj481vt" path="res://Trade/Scene/TradeUI/goods_list.tscn" id="2_4lnob"]
 [ext_resource type="PackedScene" uid="uid://ccvum77ne47ov" path="res://Trade/Scene/TradeUI/goods_trade_details.tscn" id="4_njo8r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_64eyq"]
 
 [node name="TradeUI" type="CanvasLayer"]
 script = ExtResource("1_kgsjj")
@@ -55,10 +52,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
 
 [node name="PlayerGoodsList" parent="VBoxContainer/HBox/MarginContainer" instance=ExtResource("2_4lnob")]
 layout_mode = 2
+cash = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
@@ -66,16 +63,9 @@ size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="GoodsList" type="ItemList" parent="VBoxContainer/HBox/MarginContainer2"]
+[node name="GoodsList" parent="VBoxContainer/HBox/MarginContainer2" instance=ExtResource("2_4lnob")]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_64eyq")
-item_count = 1
-max_columns = 0
-same_column_width = true
-icon_mode = 0
-item_0/text = "123"
-item_0/icon = ExtResource("1_5n6at")
-item_0/selectable = false
+cash = 0
 
 [node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
 visible = false

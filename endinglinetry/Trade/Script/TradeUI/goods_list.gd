@@ -3,10 +3,17 @@ extends ScrollContainer
 class_name GoodsList
 
 const GOODS_LIST_ITEM = preload("res://Trade/Scene/TradeUI/goods_list_item.tscn")
-@onready var v_box_container: VBoxContainer = $Panel/VBoxContainer
+@onready var list: VBoxContainer = $Panel/VBoxContainer/List
 @onready var panel: Panel = $Panel
+@onready var cash_label: Label = $Panel/VBoxContainer/PanelContainer/CashLabel
 
-
+var trade_goods:TradeGoods:
+	set(new_g):
+		trade_goods=new_g
+		clear_list()
+		for g in trade_goods.goods:
+			if g.number>0:
+				add_list_item().goods_struct=g
 
 @export var add_item:bool:
 	set(new_b):
@@ -19,21 +26,26 @@ const GOODS_LIST_ITEM = preload("res://Trade/Scene/TradeUI/goods_list_item.tscn"
 @export_range(1,9999) var item_h:int=100:
 	set(new_num):
 		item_h=new_num
-		if v_box_container:
-			for item in v_box_container.get_children():
+		if list:
+			for item in list.get_children():
 				item.custom_minimum_size.y=item_h
-
+@export_range(0,999999) var cash:int:
+	set(new_c):
+		cash=new_c
+		if !cash_label:
+			await ready
+		cash_label.text="现金:"+str(cash)
 
 func add_list_item()->GoodsListItem:
 	if GOODS_LIST_ITEM.can_instantiate():
 		var item:GoodsListItem=GOODS_LIST_ITEM.instantiate()
-		v_box_container.add_child(item)
-		panel.custom_minimum_size.y=v_box_container.get_child_count()*item_h
+		list.add_child(item)
+		panel.custom_minimum_size.y=list.get_child_count()*item_h
 		return item
 	else:
 		print("未找到 GOODSLISTITEM 场景文件")
 		return
 
 func clear_list():
-	for item in v_box_container.get_children():
+	for item in list.get_children():
 		item.queue_free()

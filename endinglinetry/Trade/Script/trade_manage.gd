@@ -12,19 +12,47 @@ func _ready() -> void:
 	print(goods_data)
 
 
+var trade_partner:TradeGoods
+func open_trade_ui(t_goods:TradeGoods):
+	trade_partner=t_goods
+	update_list_goods()
 
-func open_trace_ui(t_goods:TradeGoods):
-	trade_ui.update_list_goods(player_trade_goods,t_goods)
+func update_list_goods():
+	trade_ui.update_list_goods(player_trade_goods,trade_partner)
 
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_A:
-			open_trace_ui($"../Sprite2D/TradeGoods")
+			open_trade_ui($"../Sprite2D/TradeGoods")
 
 
-
+func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
+	var buyer:TradeGoods = trade_goods_struct.trade_goods
+	if !buyer:
+		return false
+	var seller:TradeGoods
+	if buyer==player_trade_goods:
+		buyer=trade_partner
+	else:
+		buyer=player_trade_goods
+	var amount:int = get_goods_price(trade_goods_struct.id)*trade_goods_struct.price_multiplier*number
+	if trade_goods_struct.number>=number and buyer.cash>=amount:
+		buyer.cash-=amount
+		trade_goods_struct.number-=number
+		if !buyer.goods.any(func(g):
+			if g.id == trade_goods_struct.id:
+				g.number+=number
+				return true
+			else:
+				false
+			):
+				buyer.add_goods(trade_goods_struct.id,number)
+		seller.cash+=amount
+		return true
+	else :
+		return false
 
 func load_csv(csv_path:String):
 	var csv_file

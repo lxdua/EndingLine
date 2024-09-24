@@ -34,7 +34,10 @@ func add_goods(id:int,number:int):
 		gg[0].number+=g.number
 	else:
 		goods.append(g)
-	goods.any(func(g0):g0.print_goods())
+	goods.any(func(g0):
+		g0.trade_goods=self
+		g0.print_goods()
+		)
 
 
 func set_goods_price_multiplier(id:int,multiplier:float):

@@ -7,7 +7,10 @@ class_name GoodsTradeDetails
 @onready var number_scroll_bar: HScrollBar = $PanelContainer/VBoxContainer/VBox/HBoxContainer/CenterContainer/NumberScrollBar
 @onready var number_price: Label = $PanelContainer/VBoxContainer/VBox/CenterContainer2/NumberPrice
 
+@onready var popup: PanelContainer = $Popup
+@onready var timer: Timer = $Popup/Timer
 
+var trade_goods:TradeGoods
 var goods_struct:TradeGoodsStruct
 
 func update_details():
@@ -39,5 +42,24 @@ func _on_details_cancel_pressed() -> void:
 	visible=false
 
 
+
 func _on_details_trade_pressed() -> void:
-	pass # Replace with function body.
+	if trade_manage.Trade(goods_struct,number_scroll_bar.value):
+		trade_manage.update_list_goods()
+		visible=false
+	else:
+		timer.stop()
+		timer.start(1)
+		popup.visible=true
+
+
+
+
+func _on_popup_draw() -> void:
+	timer.stop()
+	timer.start(1)
+
+
+
+func _on_timer_timeout() -> void:
+	popup.visible=false

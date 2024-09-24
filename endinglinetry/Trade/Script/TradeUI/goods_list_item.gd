@@ -4,8 +4,8 @@ class_name GoodsListItem
 
 @onready var icon_rect: TextureRect = $HBoxContainer/MarginContainer/IconRect
 @onready var item_data_text: RichTextLabel = $HBoxContainer/ItemDataText
-@onready var trade_manage: TradeManage = $"../../../../../../../.."
-@onready var trade_ui: TradeUI = $"../../../../../../.."
+@onready var trade_manage: TradeManage = $"../../../../../../../../.."
+@onready var trade_ui: TradeUI = $"../../../../../../../.."
 
 
 

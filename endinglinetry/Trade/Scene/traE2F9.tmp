@@ -15,10 +15,8 @@ texture = ExtResource("1_3bwyt")
 script = ExtResource("2_1c4b1")
 add_number = 1
 add_g = true
-cash = 200
 
 [node name="TradeManage" type="Node2D" parent="."]
-visible = false
 script = ExtResource("2_61n01")
 
 [node name="PlayerTradeGoods" type="Node" parent="TradeManage"]

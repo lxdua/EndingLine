@@ -1,3 +1,4 @@
+
 class_name TradeGoodsStruct
 var id:int=0
 var number:int=0
@@ -12,3 +13,5 @@ func print_goods():
 	print("id:",id)
 	print("数量:",number)
 	print("价格倍率:",price_multiplier)
+
+var trade_goods:TradeGoods
