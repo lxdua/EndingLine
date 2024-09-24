@@ -4,8 +4,8 @@ class_name RouteSelectionScene
 const STATION: = preload("res://Scene/RouteSelectionScene/Station/station.tscn")
 const TRACK: = preload("res://Scene/RouteSelectionScene/Track/track.tscn")
 
-const MAX_STATION_NUM: = 5
-const MAX_TRACK_LENGTH: = 100000
+const MAX_STATION_NUM: = 500
+const MAX_TRACK_LENGTH: = INF
 
 @export var map_res: MapRes
 
@@ -125,6 +125,10 @@ func init_train():
 	current_station_id = 0
 
 func drive():
+	if matrix[current_station_id][destination_id] == INF:
+		print("无法到达！")
+		return
+	print("出发！")
 	route_list = get_shortest_path(station_dict[current_station_id], station_dict[destination_id])
 	print(route_list)
 	while not route_list.is_empty():
@@ -147,6 +151,8 @@ func drive():
 @onready var map: CanvasLayer = $Map
 @onready var ui: CanvasLayer = $UI
 
+signal ui_is_pressed
+
 func show_all():
 	map.show()
 	ui.show()
@@ -157,11 +163,30 @@ func hide_all():
 
 ## 确认出发
 func _on_set_sail_button_pressed() -> void:
+	ui_is_pressed.emit()
 	drive()
-	print("出发！")
+
 
 func _on_close_button_pressed() -> void:
+	ui_is_pressed.emit()
 	hide_all()
 	print("关闭")
+
+#endregion
+
+
+#region 倍速相关
+
+func _on_pause_button_pressed() -> void:
+	get_tree().set_pause(true)
+
+func _on_continue_button_pressed() -> void:
+	get_tree().set_pause(false)
+
+func _on_speed_up_button_button_down() -> void:
+	Engine.set_time_scale(2.0)
+
+func _on_speed_up_button_button_up() -> void:
+	Engine.set_time_scale(1.0)
 
 #endregion
