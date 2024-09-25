@@ -1,11 +1,10 @@
 @tool
-extends ScrollContainer
+extends PanelContainer
 class_name GoodsList
 
 const GOODS_LIST_ITEM = preload("res://Trade/Scene/TradeUI/goods_list_item.tscn")
-@onready var list: VBoxContainer = $Panel/VBoxContainer/List
-@onready var panel: Panel = $Panel
-@onready var cash_label: Label = $Panel/VBoxContainer/PanelContainer/CashLabel
+@onready var list: VBoxContainer = $VBoxContainer/GoodsList/List
+@onready var cash_label: Label = $VBoxContainer/PanelContainer/CashLabel
 
 var trade_goods:TradeGoods:
 	set(new_g):
@@ -39,7 +38,6 @@ func add_list_item()->GoodsListItem:
 	if GOODS_LIST_ITEM.can_instantiate():
 		var item:GoodsListItem=GOODS_LIST_ITEM.instantiate()
 		list.add_child(item)
-		panel.custom_minimum_size.y=list.get_child_count()*item_h
 		return item
 	else:
 		print("未找到 GOODSLISTITEM 场景文件")

@@ -25,7 +25,19 @@ func update_details():
 func _on_number_scroll_bar_value_changed(value: float) -> void:
 	goods_number.text=str(int(value))+"/"+str(number_scroll_bar.max_value)
 	if goods_struct:
-		number_price.text="总价:"+str(int(value*goods_struct.price_multiplier*trade_manage.get_goods_price(goods_struct.id)))
+		if goods_struct.trade_goods and goods_struct.trade_goods==trade_manage.player_trade_goods:
+			if !trade_manage.trade_partner.goods:
+				number_price.text="总价:"+str(int(value*max(goods_struct.price_multiplier*trade_manage.get_goods_price(goods_struct.id)*trade_manage.sell_multiplier,1)))
+				return
+			trade_manage.trade_partner.goods.filter(func(g):
+				if g.id==goods_struct.id:
+					number_price.text="总价:"+str(int(value*max(g.price_multiplier*trade_manage.get_goods_price(goods_struct.id)*trade_manage.sell_multiplier,1)))
+					return true
+				else:
+					number_price.text="总价:"+str(int(value*max(goods_struct.price_multiplier*trade_manage.get_goods_price(goods_struct.id)*trade_manage.sell_multiplier,1)))
+			)
+		else:
+			number_price.text="总价:"+str(int(value*max(goods_struct.price_multiplier*trade_manage.get_goods_price(goods_struct.id),1)))
 
 
 

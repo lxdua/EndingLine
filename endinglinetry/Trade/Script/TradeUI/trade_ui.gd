@@ -19,7 +19,6 @@ func update_list_layout():
 
 
 func update_list_goods(player_goods:TradeGoods,goods:TradeGoods):
-	print("update")
 	var icon:=preload("res://icon.svg")
 	player_goods_list.trade_goods=player_goods
 	player_goods_list.updata_list()

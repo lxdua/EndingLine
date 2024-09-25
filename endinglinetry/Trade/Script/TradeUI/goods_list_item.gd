@@ -4,10 +4,11 @@ class_name GoodsListItem
 
 @onready var icon_rect: TextureRect = $HBoxContainer/MarginContainer/IconRect
 @onready var item_data_text: Label = $HBoxContainer/ItemDataText
-@onready var trade_manage: TradeManage = $"../../../../../../../../.."
-@onready var trade_ui: TradeUI = $"../../../../../../../.."
+@onready var trade_manage: TradeManage = get_tree().get_nodes_in_group("TradeManage")[0]
+@onready var trade_ui: TradeUI = get_tree().get_nodes_in_group("TradeUI")[0]
 
-
+func _ready() -> void:
+	item_data_text.add_theme_font_size_override("font_size",custom_minimum_size.y/4)
 
 
 @export var icon:Texture2D=preload("res://icon.svg"):
@@ -33,7 +34,20 @@ class_name GoodsListItem
 
 
 func update_item_data_text():
-	item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
+	if goods_struct.trade_goods and goods_struct.trade_goods==trade_manage.player_trade_goods:
+		if !trade_manage.trade_partner.goods:
+			item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier*trade_manage.sell_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
+		else:
+			trade_manage.trade_partner.goods.filter(func(g):
+				if g.id==goods_struct.id:
+					item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*g.price_multiplier*trade_manage.sell_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
+					return true
+				else	:
+					item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier*trade_manage.sell_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
+					return false
+			)
+	else:
+		item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
 
 
 var goods_struct:TradeGoodsStruct:
@@ -49,8 +63,6 @@ func update():
 		price_multiplier=goods_struct.price_multiplier
 		goods_number=goods_struct.number
 
-func _ready() -> void:
-	item_data_text.add_theme_font_size_override("font_size",custom_minimum_size.y/4)
 
 func _on_reference_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

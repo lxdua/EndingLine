@@ -12,8 +12,9 @@ texture = ExtResource("1_3bwyt")
 
 [node name="TradeGoods" type="Node" parent="Sprite2D"]
 script = ExtResource("2_1c4b1")
+add_id = 7
 add_number = 1
-set_multiplier = 1.5
+set_multiplier = 2.0
 cash = 200
 
 [node name="TradeManage" parent="." instance=ExtResource("3_tihkj")]

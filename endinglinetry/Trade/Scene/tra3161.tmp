@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://ds22m5lc08ove"]
+
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_3bwyt"]
+[ext_resource type="Script" path="res://Trade/Script/trade_goods.gd" id="2_1c4b1"]
+[ext_resource type="Script" path="res://Trade/Script/trade_manage.gd" id="2_61n01"]
+[ext_resource type="PackedScene" uid="uid://dovfytcll6bqb" path="res://Trade/Scene/TradeUI/trade_ui.tscn" id="4_fvdnw"]
+[ext_resource type="PackedScene" uid="uid://b21dow7f1jk64" path="res://Trade/Scene/BackPackUI/back_pack_ui.tscn" id="5_1brok"]
+
+[node name="TradeTest" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(557, 268)
+texture = ExtResource("1_3bwyt")
+
+[node name="TradeGoods" type="Node" parent="Sprite2D"]
+script = ExtResource("2_1c4b1")
+add_number = 1
+add_g = true
+set_multiplier = 1.5
+set_g = true
+cash = 200
+
+[node name="TradeManage" type="Node2D" parent="."]
+visible = false
+script = ExtResource("2_61n01")
+
+[node name="PlayerTradeGoods" type="Node" parent="TradeManage"]
+script = ExtResource("2_1c4b1")
+add_id = 3
+add_number = 180
+cash = 500
+
+[node name="TradeUI" parent="TradeManage" instance=ExtResource("4_fvdnw")]
+visible = false
+
+[node name="PlayerGoodsList" parent="TradeManage/TradeUI/VBoxContainer/HBox/MarginContainer" index="0"]
+add_item = false
+clear = false
+item_h = 100
+cash = 0
+
+[node name="GoodsList" parent="TradeManage/TradeUI/VBoxContainer/HBox/MarginContainer2" index="0"]
+add_item = false
+clear = false
+item_h = 100
+cash = 0
+
+[node name="BackPackUI" parent="TradeManage" instance=ExtResource("5_1brok")]
+
+[editable path="TradeManage/TradeUI"]
