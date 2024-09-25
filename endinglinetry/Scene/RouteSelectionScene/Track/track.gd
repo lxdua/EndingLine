@@ -8,7 +8,7 @@ var track_length: int
 @onready var track_line: Line2D = $TrackLine
 @onready var track_area: Area2D = $TrackArea
 @onready var track_collision_shape: CollisionShape2D = $TrackArea/TrackCollisionShape
-@onready var track_arrow: Line2D = $TrackArrow
+@onready var track_arrow: Polygon2D = $TrackArrow
 
 func _ready() -> void:
 	init_track()
