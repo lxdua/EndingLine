@@ -1,6 +1,7 @@
 extends Node
 class_name TradeGoods
 
+@onready var trade_manage:TradeManage=get_tree().get_nodes_in_group("TradeManage")[0]
 
 @export_category("添加货物")
 @export var add_id:int
@@ -9,6 +10,8 @@ class_name TradeGoods
 	set(new_add):
 		add_goods(add_id,add_number)
 		add_g=false
+		if trade_manage:
+			trade_manage.update_list_goods()
 @export_category("设置货物价格倍率")
 @export var set_id:int
 @export var set_multiplier:float=1
@@ -16,6 +19,8 @@ class_name TradeGoods
 	set(new_set):
 		set_goods_price_multiplier(set_id,set_multiplier)
 		set_g=false
+		if trade_manage:
+			trade_manage.update_list_goods()
 
 @export_category("设置现金")
 @export_range(0,99999) var cash:int
