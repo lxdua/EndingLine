@@ -17,6 +17,7 @@ func _ready() -> void:
 	init_floyd()
 	create_map()
 	init_train()
+	hide_station_content()
 
 #region 地图相关
 
@@ -150,8 +151,8 @@ func drive():
 
 @onready var map: CanvasLayer = $Map
 @onready var ui: CanvasLayer = $UI
+@onready var station_content_container: PanelContainer = $UI/StationContentContainer
 
-signal ui_is_pressed
 
 func show_all():
 	map.show()
@@ -163,14 +164,23 @@ func hide_all():
 
 ## 确认出发
 func _on_set_sail_button_pressed() -> void:
-	ui_is_pressed.emit()
+	hide_station_content()
 	drive()
 
-
 func _on_close_button_pressed() -> void:
-	ui_is_pressed.emit()
+	hide_station_content()
 	hide_all()
 	print("关闭")
+
+func _on_destination_id_update(id: int) -> void:
+	show_station_content() # TODO 等城市节点
+
+func show_station_content(): # TODO 等城市节点
+	station_content_container.update_content()
+	station_content_container.show()
+
+func hide_station_content():
+	station_content_container.hide()
 
 #endregion
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5vtntw4vu6n"]
+[gd_scene load_steps=8 format=3 uid="uid://c5vtntw4vu6n"]
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/route_selection_scene.gd" id="1_uwgh6"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_wsivo"]
 [ext_resource type="Resource" uid="uid://r7jiclu5duer" path="res://Resource/Map/MapRes/map1.tres" id="2_obe6l"]
 [ext_resource type="PackedScene" uid="uid://bjn0jxrrcrn7u" path="res://Scene/RouteSelectionScene/TrainInMap/train_in_map.tscn" id="3_d0dn0"]
+[ext_resource type="Script" path="res://Scene/RouteSelectionScene/StationContentContainer/station_content_container.gd" id="5_m5r5u"]
 
 [sub_resource type="Gradient" id="Gradient_lrcro"]
 
@@ -56,20 +57,6 @@ grow_horizontal = 0
 grow_vertical = 0
 texture_normal = ExtResource("1_wsivo")
 
-[node name="SetSailButton" type="TextureButton" parent="UI"]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -323.0
-offset_top = -261.0
-offset_right = -195.0
-offset_bottom = -133.0
-grow_horizontal = 0
-grow_vertical = 0
-texture_normal = ExtResource("1_wsivo")
-
 [node name="TimeContainer" type="PanelContainer" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
@@ -93,9 +80,64 @@ texture_normal = ExtResource("1_wsivo")
 layout_mode = 2
 texture_normal = ExtResource("1_wsivo")
 
+[node name="StationContentContainer" type="PanelContainer" parent="UI"]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -338.0
+offset_right = 414.0
+grow_vertical = 0
+script = ExtResource("5_m5r5u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/StationContentContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "地点名"
+horizontal_alignment = 1
+
+[node name="TipLabel" type="Label" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "文本介绍"
+horizontal_alignment = 1
+
+[node name="SupplyContainer" type="HBoxContainer" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/StationContentContainer/VBoxContainer/SupplyContainer"]
+layout_mode = 2
+text = "供应"
+
+[node name="DemandContainer" type="HBoxContainer" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/StationContentContainer/VBoxContainer/DemandContainer"]
+layout_mode = 2
+text = "需求"
+
+[node name="Label" type="Label" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "距离400m消耗4h"
+horizontal_alignment = 1
+
+[node name="AskLabel" type="Label" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "是否前往"
+horizontal_alignment = 1
+
+[node name="SetSailButton" type="TextureButton" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_wsivo")
+stretch_mode = 3
+
+[connection signal="destination_id_update" from="." to="." method="_on_destination_id_update"]
 [connection signal="pressed" from="UI/CloseButton" to="." method="_on_close_button_pressed"]
-[connection signal="pressed" from="UI/SetSailButton" to="." method="_on_set_sail_button_pressed"]
 [connection signal="pressed" from="UI/TimeContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/TimeContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="button_down" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
 [connection signal="button_up" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_up"]
+[connection signal="pressed" from="UI/StationContentContainer/VBoxContainer/SetSailButton" to="." method="_on_set_sail_button_pressed"]
