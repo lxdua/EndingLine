@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://blkt3eq1t4jfj"]
+
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_1o3b5"]
+[ext_resource type="Script" path="res://Scene/RouteSelectionScene/StationContentContainer/station_content_container.gd" id="1_67qba"]
+
+[node name="StationContentContainer" type="PanelContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -338.0
+offset_right = 414.0
+grow_vertical = 0
+script = ExtResource("1_67qba")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "地点名"
+horizontal_alignment = 1
+
+[node name="TipLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "文本介绍"
+horizontal_alignment = 1
+
+[node name="SupplyContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/SupplyContainer"]
+layout_mode = 2
+text = "供应"
+
+[node name="DemandContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/DemandContainer"]
+layout_mode = 2
+text = "需求"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "距离400m消耗4h"
+horizontal_alignment = 1
+
+[node name="AskLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "是否前往"
+horizontal_alignment = 1
+
+[node name="SetSailButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_1o3b5")
+stretch_mode = 3

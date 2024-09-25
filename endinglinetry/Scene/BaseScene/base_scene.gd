@@ -5,6 +5,13 @@ class_name BaseScene
 func _ready() -> void:
 	hide_all_secondary_scene()
 
+#region 列车属性相关
+
+@export var train_stats_manager: Node
+
+#endregion
+
+
 #region 二级界面相关
 
 @export var secondary_scene_root: Node2D
