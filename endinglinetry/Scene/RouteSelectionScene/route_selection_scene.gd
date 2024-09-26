@@ -160,7 +160,7 @@ func drive():
 				"global_position",
 				station_dict[next_station_id].station_position,
 				matrix[current_station_id][next_station_id] / 5.0,
-				)
+				) #TODO 速度相关
 			await drive_tween.finished
 			current_station_id = next_station_id
 		is_driving = false
