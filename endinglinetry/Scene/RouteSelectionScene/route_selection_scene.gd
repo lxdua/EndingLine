@@ -26,6 +26,8 @@ var station_dict: Dictionary
 ## 站台下标统计
 var idx: int = 0
 
+#region 地图相关-生成相关
+
 func create_map():
 	var station_pos_list = map_res.station_pos_list
 	for pos in station_pos_list:
@@ -33,6 +35,8 @@ func create_map():
 	var track_list = map_res.track_list
 	for track in track_list:
 		add_track(station_dict[track.x], station_dict[track.y], track.z)
+	for station_id in station_dict:
+		station_dict[station_id].deploy_station()
 
 func add_station(station_position: Vector2):
 	var new_station: = STATION.instantiate()
@@ -42,7 +46,7 @@ func add_station(station_position: Vector2):
 	station_root.add_child(new_station)
 	idx += 1
 
-func remove_station(station: Station):
+func remove_station(station: Station): # TODO 别忘了还要废掉周围的路
 	station_dict.erase(station.station_id)
 	station.queue_free()
 
@@ -52,6 +56,8 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	new_track.end_station = end_station
 	new_track.track_length = track_length
 	track_root.add_child(new_track)
+	start_station.station_connected_track.append(new_track)
+	end_station.station_connected_track.append(new_track)
 	update_track(start_station, end_station, track_length)
 
 func remove_track(track: Track):
@@ -62,6 +68,10 @@ func update_track(start_station: Station, end_station: Station, track_length: in
 	matrix[start_station.station_id][end_station.station_id] = min(matrix[start_station.station_id][end_station.station_id], track_length)
 	update_floyd(start_station.station_id)
 	update_floyd(end_station.station_id)
+
+#endregion
+
+#region 地图相关-最短路相关
 
 ## 邻接矩阵
 var matrix: Array[Array]
@@ -105,6 +115,9 @@ func calc_mid(x: int, y: int):
 
 #endregion
 
+
+#endregion
+
 #region 列车相关
 
 ## 目标点
@@ -125,25 +138,32 @@ func init_train():
 	train_in_map.global_position = station_dict[0].station_position
 	current_station_id = 0
 
+var is_driving: bool = false
+
 func drive():
 	if matrix[current_station_id][destination_id] == INF:
 		print("无法到达！")
 		return
-	print("出发！")
+
 	route_list = get_shortest_path(station_dict[current_station_id], station_dict[destination_id])
-	print(route_list)
-	while not route_list.is_empty():
-		var next_station_id: int = route_list.pop_front()
-		print("正在前往", next_station_id)
-		var drive_tween = train_in_map.create_tween()
-		drive_tween.tween_property(
-			train_in_map,
-			"global_position",
-			station_dict[next_station_id].station_position,
-			matrix[current_station_id][next_station_id] / 5.0,
-			)
-		await drive_tween.finished
-		current_station_id = next_station_id
+	if is_driving:
+		print("更换目的地！")
+	else:
+		print("出发！")
+		is_driving = true
+		while not route_list.is_empty():
+			var next_station_id: int = route_list.pop_front()
+			print("正在前往", next_station_id)
+			var drive_tween = train_in_map.create_tween()
+			drive_tween.tween_property(
+				train_in_map,
+				"global_position",
+				station_dict[next_station_id].station_position,
+				matrix[current_station_id][next_station_id] / 5.0,
+				)
+			await drive_tween.finished
+			current_station_id = next_station_id
+		is_driving = false
 
 #endregion
 
@@ -176,14 +196,16 @@ func _on_destination_id_update(id: int) -> void:
 	show_station_content() # TODO 等城市节点
 
 func show_station_content(): # TODO 等城市节点
-	station_content_container.update_content()
+	station_content_container.update_content(
+		station_dict[destination_id],
+		matrix[current_station_id][destination_id]
+		)
 	station_content_container.show()
 
 func hide_station_content():
 	station_content_container.hide()
 
 #endregion
-
 
 #region 倍速相关
 
