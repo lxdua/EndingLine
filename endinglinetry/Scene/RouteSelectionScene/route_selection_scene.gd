@@ -26,6 +26,8 @@ var station_dict: Dictionary
 ## 站台下标统计
 var idx: int = 0
 
+#region 地图相关-生成相关
+
 func create_map():
 	var station_pos_list = map_res.station_pos_list
 	for pos in station_pos_list:
@@ -33,6 +35,8 @@ func create_map():
 	var track_list = map_res.track_list
 	for track in track_list:
 		add_track(station_dict[track.x], station_dict[track.y], track.z)
+	for station_id in station_dict:
+		station_dict[station_id].deploy_station()
 
 func add_station(station_position: Vector2):
 	var new_station: = STATION.instantiate()
@@ -42,7 +46,7 @@ func add_station(station_position: Vector2):
 	station_root.add_child(new_station)
 	idx += 1
 
-func remove_station(station: Station):
+func remove_station(station: Station): # TODO 别忘了还要废掉周围的路
 	station_dict.erase(station.station_id)
 	station.queue_free()
 
@@ -52,6 +56,8 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	new_track.end_station = end_station
 	new_track.track_length = track_length
 	track_root.add_child(new_track)
+	start_station.station_connected_track.append(new_track)
+	end_station.station_connected_track.append(new_track)
 	update_track(start_station, end_station, track_length)
 
 func remove_track(track: Track):
@@ -62,6 +68,10 @@ func update_track(start_station: Station, end_station: Station, track_length: in
 	matrix[start_station.station_id][end_station.station_id] = min(matrix[start_station.station_id][end_station.station_id], track_length)
 	update_floyd(start_station.station_id)
 	update_floyd(end_station.station_id)
+
+#endregion
+
+#region 地图相关-最短路相关
 
 ## 邻接矩阵
 var matrix: Array[Array]
@@ -102,6 +112,9 @@ func calc_mid(x: int, y: int):
 	else:
 		calc_mid(x, k)
 		calc_mid(k, y)
+
+#endregion
+
 
 #endregion
 
@@ -176,14 +189,16 @@ func _on_destination_id_update(id: int) -> void:
 	show_station_content() # TODO 等城市节点
 
 func show_station_content(): # TODO 等城市节点
-	station_content_container.update_content()
+	station_content_container.update_content(
+		station_dict[destination_id],
+		matrix[current_station_id][destination_id]
+		)
 	station_content_container.show()
 
 func hide_station_content():
 	station_content_container.hide()
 
 #endregion
-
 
 #region 倍速相关
 
