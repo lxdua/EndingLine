@@ -138,25 +138,32 @@ func init_train():
 	train_in_map.global_position = station_dict[0].station_position
 	current_station_id = 0
 
+var is_driving: bool = false
+
 func drive():
 	if matrix[current_station_id][destination_id] == INF:
 		print("无法到达！")
 		return
-	print("出发！")
+
 	route_list = get_shortest_path(station_dict[current_station_id], station_dict[destination_id])
-	print(route_list)
-	while not route_list.is_empty():
-		var next_station_id: int = route_list.pop_front()
-		print("正在前往", next_station_id)
-		var drive_tween = train_in_map.create_tween()
-		drive_tween.tween_property(
-			train_in_map,
-			"global_position",
-			station_dict[next_station_id].station_position,
-			matrix[current_station_id][next_station_id] / 5.0,
-			)
-		await drive_tween.finished
-		current_station_id = next_station_id
+	if is_driving:
+		print("更换目的地！")
+	else:
+		print("出发！")
+		is_driving = true
+		while not route_list.is_empty():
+			var next_station_id: int = route_list.pop_front()
+			print("正在前往", next_station_id)
+			var drive_tween = train_in_map.create_tween()
+			drive_tween.tween_property(
+				train_in_map,
+				"global_position",
+				station_dict[next_station_id].station_position,
+				matrix[current_station_id][next_station_id] / 5.0,
+				)
+			await drive_tween.finished
+			current_station_id = next_station_id
+		is_driving = false
 
 #endregion
 
