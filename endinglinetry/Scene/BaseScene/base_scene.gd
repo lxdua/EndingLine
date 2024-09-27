@@ -21,8 +21,21 @@ func hide_all_secondary_scene():
 	for secondary_scene in secondary_scene_root.get_children():
 		secondary_scene.hide_all()
 
+
+func _on_goods_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_train_information_button_pressed() -> void:
+	pass # Replace with function body.
+
 func _on_route_selection_button_pressed() -> void:
 	route_selection_scene.show_all()
+
+func _on_price_button_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_build_button_pressed() -> void:
+	pass # Replace with function body.
 
 #endregion
 
@@ -40,5 +53,15 @@ func _on_speed_up_button_button_down() -> void:
 
 func _on_speed_up_button_button_up() -> void:
 	Engine.set_time_scale(1.0)
+
+#endregion
+
+
+#region 状态栏相关
+
+@onready var train_load_label: Label = $UI/StatusBarContainer/HBoxContainer/TrainLoadLabel
+@onready var train_speed_label: Label = $UI/StatusBarContainer/HBoxContainer/TrainSpeedLabel
+@onready var power_progress_bar: TextureProgressBar = $UI/StatusBarContainer/HBoxContainer/PowerProgressBar
+
 
 #endregion

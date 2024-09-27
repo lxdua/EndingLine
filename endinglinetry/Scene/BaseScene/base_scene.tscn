@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bvorf6qptqxej"]
+[gd_scene load_steps=12 format=3 uid="uid://bvorf6qptqxej"]
 
 [ext_resource type="Script" path="res://Scene/BaseScene/base_scene.gd" id="1_gwi6o"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_osfmn"]
@@ -6,6 +6,12 @@
 [ext_resource type="Script" path="res://Scene/BaseScene/TrainStatsManager/train_stats_manager.gd" id="4_d1rko"]
 [ext_resource type="Script" path="res://Scene/Modifier/modifier_handler.gd" id="5_vswfe"]
 [ext_resource type="Script" path="res://Scene/Modifier/modifier.gd" id="6_jd4rj"]
+
+[sub_resource type="Gradient" id="Gradient_rfk4w"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dnkwj"]
+gradient = SubResource("Gradient_rfk4w")
+width = 256
 
 [sub_resource type="Animation" id="Animation_bdmcd"]
 resource_name = "666"
@@ -56,17 +62,62 @@ route_selection_scene = NodePath("SecondarySceneRoot/RouteSelectionScene")
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="ButtonContainer" type="HBoxContainer" parent="UI"]
-anchors_preset = 12
-anchor_top = 1.0
+[node name="StatusBarContainer" type="PanelContainer" parent="UI"]
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -128.0
+offset_bottom = 79.0
 grow_horizontal = 2
-grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/StatusBarContainer"]
+layout_mode = 2
+theme_override_constants/separation = 65
 alignment = 1
 
-[node name="RouteSelectionButton" type="TextureButton" parent="UI/ButtonContainer"]
+[node name="TrainLoadLabel" type="Label" parent="UI/StatusBarContainer/HBoxContainer"]
+layout_mode = 2
+text = "载重：666/666"
+
+[node name="TrainSpeedLabel" type="Label" parent="UI/StatusBarContainer/HBoxContainer"]
+layout_mode = 2
+text = "速度：114"
+
+[node name="PowerProgressBar" type="TextureProgressBar" parent="UI/StatusBarContainer/HBoxContainer"]
+layout_mode = 2
+texture_under = SubResource("GradientTexture2D_dnkwj")
+
+[node name="ButtonContainer" type="PanelContainer" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ButtonContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GoodsButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_osfmn")
+
+[node name="TrainInformationButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_osfmn")
+
+[node name="RouteSelectionButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_osfmn")
+
+[node name="PriceButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_osfmn")
+
+[node name="BuildButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
@@ -140,7 +191,11 @@ modifier_name = "MaxSpeedModifier"
 [node name="SolarPanelEfficiencyModifier" type="Node" parent="TrainStatsManager/TrainStatsModifierHandler"]
 script = ExtResource("6_jd4rj")
 
-[connection signal="pressed" from="UI/ButtonContainer/RouteSelectionButton" to="." method="_on_route_selection_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/GoodsButton" to="." method="_on_goods_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/TrainInformationButton" to="." method="_on_train_information_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/RouteSelectionButton" to="." method="_on_route_selection_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/PriceButton" to="." method="_on_price_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="UI/TimeContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/TimeContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="button_down" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
