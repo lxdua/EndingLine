@@ -4,10 +4,12 @@ class_name BaseScene
 
 func _ready() -> void:
 	hide_all_secondary_scene()
+	update_clock_ui()
+
 
 #region 列车属性相关
 
-@export var train_stats_manager: Node
+@export var train_stats_manager: TrainStatsManager
 
 #endregion
 
@@ -63,5 +65,36 @@ func _on_speed_up_button_button_up() -> void:
 @onready var train_speed_label: Label = $UI/StatusBarContainer/HBoxContainer/TrainSpeedLabel
 @onready var power_progress_bar: TextureProgressBar = $UI/StatusBarContainer/HBoxContainer/PowerProgressBar
 
+
+#endregion
+
+
+#region 时间相关
+
+@onready var date_label: Label = $UI/DateContainer/VBoxContainer/DateLabel
+@onready var clock_label: Label = $UI/DateContainer/VBoxContainer/ClockLabel
+
+## 总分钟
+var current_time: int = 0
+
+func update_clock_ui():
+	var date = str(current_time / 1440)
+	var clock = current_time % 1440
+	var hour = int(clock / 60)
+	var minute = clock % 60
+	date_label.text = "第" + date + "天"
+	if hour < 10:
+		hour = "0" + str(hour)
+	else:
+		hour = str(hour)
+	if minute < 10:
+		minute = "0" + str(minute)
+	else:
+		minute = str(minute)
+	clock_label.text = hour + ":" + minute
+
+func _on_clock_timer_timeout() -> void:
+	current_time += 10
+	update_clock_ui()
 
 #endregion

@@ -57,7 +57,8 @@ route_selection_scene = NodePath("SecondarySceneRoot/RouteSelectionScene")
 
 [node name="SecondarySceneRoot" type="Node2D" parent="."]
 
-[node name="RouteSelectionScene" parent="SecondarySceneRoot" instance=ExtResource("2_7vr7o")]
+[node name="RouteSelectionScene" parent="SecondarySceneRoot" node_paths=PackedStringArray("train_stats_manager") instance=ExtResource("2_7vr7o")]
+train_stats_manager = NodePath("../../TrainStatsManager")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -121,28 +122,54 @@ texture_normal = ExtResource("1_osfmn")
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
-[node name="TimeContainer" type="PanelContainer" parent="UI"]
+[node name="TimeScaleContainer" type="PanelContainer" parent="UI"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -392.0
-offset_bottom = 128.0
+offset_left = -425.0
+offset_top = 145.0
+offset_right = -33.0
+offset_bottom = 273.0
 grow_horizontal = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/TimeContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/TimeScaleContainer"]
 layout_mode = 2
 
-[node name="PauseButton" type="TextureButton" parent="UI/TimeContainer/HBoxContainer"]
+[node name="PauseButton" type="TextureButton" parent="UI/TimeScaleContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
-[node name="ContinueButton" type="TextureButton" parent="UI/TimeContainer/HBoxContainer"]
+[node name="ContinueButton" type="TextureButton" parent="UI/TimeScaleContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
-[node name="SpeedUpButton" type="TextureButton" parent="UI/TimeContainer/HBoxContainer"]
+[node name="SpeedUpButton" type="TextureButton" parent="UI/TimeScaleContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
+
+[node name="DateContainer" type="PanelContainer" parent="UI"]
+offset_left = 139.0
+offset_top = 110.0
+offset_right = 237.0
+offset_bottom = 207.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/DateContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="DateLabel" type="Label" parent="UI/DateContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "第i天"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClockLabel" type="Label" parent="UI/DateContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "10:10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BaseSceneRoot" type="Node2D" parent="."]
 
@@ -158,8 +185,9 @@ libraries = {
 }
 autoplay = "666"
 
-[node name="TrainStatsManager" type="Node" parent="."]
+[node name="TrainStatsManager" type="Node" parent="." node_paths=PackedStringArray("modifier_handler")]
 script = ExtResource("4_d1rko")
+modifier_handler = NodePath("TrainStatsModifierHandler")
 
 [node name="TrainStatsModifierHandler" type="Node" parent="TrainStatsManager"]
 script = ExtResource("5_vswfe")
@@ -191,12 +219,18 @@ modifier_name = "MaxSpeedModifier"
 [node name="SolarPanelEfficiencyModifier" type="Node" parent="TrainStatsManager/TrainStatsModifierHandler"]
 script = ExtResource("6_jd4rj")
 
+[node name="ClockTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 10.0
+autostart = true
+
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/GoodsButton" to="." method="_on_goods_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/TrainInformationButton" to="." method="_on_train_information_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/RouteSelectionButton" to="." method="_on_route_selection_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/PriceButton" to="." method="_on_price_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]
-[connection signal="pressed" from="UI/TimeContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
-[connection signal="pressed" from="UI/TimeContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="button_down" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
-[connection signal="button_up" from="UI/TimeContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_up"]
+[connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="button_down" from="UI/TimeScaleContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
+[connection signal="button_up" from="UI/TimeScaleContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_up"]
+[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]

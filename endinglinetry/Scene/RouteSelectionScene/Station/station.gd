@@ -46,7 +46,6 @@ func deploy_station():
 			station_type = StationType.BEACON
 		elif rand_num <= 50+5+25+20:
 			station_type = StationType.RUINS
-	print("抽取", rand_num, station_type)
 
 #endregion
 

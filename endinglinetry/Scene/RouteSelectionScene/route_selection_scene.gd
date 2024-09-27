@@ -3,9 +3,12 @@ class_name RouteSelectionScene
 
 const STATION: = preload("res://Scene/RouteSelectionScene/Station/station.tscn")
 const TRACK: = preload("res://Scene/RouteSelectionScene/Track/track.tscn")
+const BUILDABLE_TRACK = preload("res://Scene/RouteSelectionScene/Track/buildable_track.tscn")
 
 const MAX_STATION_NUM: = 500
 const MAX_TRACK_LENGTH: = INF
+
+@export var train_stats_manager: TrainStatsManager
 
 @export var map_res: MapRes
 
@@ -29,12 +32,19 @@ var idx: int = 0
 #region 地图相关-生成相关
 
 func create_map():
+	# 放车站
 	var station_pos_list = map_res.station_pos_list
 	for pos in station_pos_list:
 		add_station(pos)
+	# 放路
 	var track_list = map_res.track_list
 	for track in track_list:
 		add_track(station_dict[track.x], station_dict[track.y], track.z)
+	# 放没修建的路
+	var buildable_track_list = map_res.buildable_track_list
+	for track in buildable_track_list:
+		add_buildable_track(station_dict[track.x], station_dict[track.y], track.z)
+	# 部署车站
 	for station_id in station_dict:
 		station_dict[station_id].deploy_station()
 
@@ -59,6 +69,21 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	start_station.station_connected_track.append(new_track)
 	end_station.station_connected_track.append(new_track)
 	update_track(start_station, end_station, track_length)
+
+func add_buildable_track(start_station: Station, end_station: Station, track_length: int):
+	var new_buildable_track: = BUILDABLE_TRACK.instantiate()
+	new_buildable_track.start_station = start_station
+	new_buildable_track.end_station = end_station
+	new_buildable_track.track_length = track_length
+	track_root.add_child(new_buildable_track)
+
+func try_to_build(buildable_track: BuildableTrack):
+	if not train_stats_manager.has_money(buildable_track.cost):
+		return
+		# TODO 一些信息反馈
+	train_stats_manager.money -= buildable_track.cost
+	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
+	buildable_track.queue_free()
 
 func remove_track(track: Track):
 	track.queue_free()

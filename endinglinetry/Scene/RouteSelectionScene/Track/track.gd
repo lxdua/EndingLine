@@ -5,6 +5,8 @@ var start_station: Station
 var end_station: Station
 var track_length: int
 
+@onready var route_selection: RouteSelectionScene = $"../../.."
+
 @onready var track_line: Line2D = $TrackLine
 @onready var track_area: Area2D = $TrackArea
 @onready var track_collision_shape: CollisionShape2D = $TrackArea/TrackCollisionShape
@@ -13,9 +15,11 @@ var track_length: int
 func _ready() -> void:
 	init_track()
 
-
 func _on_track_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("mouse_left"):
+		if route_selection.current_station_id != start_station.station_id:
+			return
+		route_selection.destination_id = end_station.station_id
 		print(start_station.station_id, " ", end_station.station_id, " ", track_length)
 
 func init_track():
