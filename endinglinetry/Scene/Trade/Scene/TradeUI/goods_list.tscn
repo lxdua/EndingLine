@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0en6jwj481vt"]
 
-[ext_resource type="Script" path="res://Trade/Script/TradeUI/goods_list.gd" id="1_4x8wb"]
+[ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/goods_list.gd" id="1_4x8wb"]
 
 [node name="GoodList" type="PanelContainer"]
 offset_right = 600.0

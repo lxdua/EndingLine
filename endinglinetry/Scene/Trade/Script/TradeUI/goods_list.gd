@@ -2,7 +2,7 @@
 extends PanelContainer
 class_name GoodsList
 
-const GOODS_LIST_ITEM = preload("res://Trade/Scene/TradeUI/goods_list_item.tscn")
+const GOODS_LIST_ITEM = preload("uid://colrqteefvben")
 @onready var list: VBoxContainer = $VBoxContainer/GoodsList/List
 @onready var cash_label: Label = $VBoxContainer/PanelContainer/CashLabel
 

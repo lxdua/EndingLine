@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://colrqteefvben"]
 
-[ext_resource type="Script" path="res://Trade/Script/TradeUI/goods_list_item.gd" id="1_04p4h"]
+[ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/goods_list_item.gd" id="1_04p4h"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_u24qo"]
 
 [node name="GoodsListItem" type="PanelContainer"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dovfytcll6bqb"]
 
-[ext_resource type="Script" path="res://Trade/Script/TradeUI/trade_ui.gd" id="1_kgsjj"]
-[ext_resource type="PackedScene" uid="uid://c0en6jwj481vt" path="res://Trade/Scene/TradeUI/goods_list.tscn" id="2_4lnob"]
-[ext_resource type="PackedScene" uid="uid://ccvum77ne47ov" path="res://Trade/Scene/TradeUI/goods_trade_details.tscn" id="4_njo8r"]
+[ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/trade_ui.gd" id="1_kgsjj"]
+[ext_resource type="PackedScene" uid="uid://c0en6jwj481vt" path="res://Scene/Trade/Scene/TradeUI/goods_list.tscn" id="2_4lnob"]
+[ext_resource type="PackedScene" uid="uid://ccvum77ne47ov" path="res://Scene/Trade/Scene/TradeUI/goods_trade_details.tscn" id="4_njo8r"]
 
 [node name="TradeUI" type="CanvasLayer"]
 script = ExtResource("1_kgsjj")

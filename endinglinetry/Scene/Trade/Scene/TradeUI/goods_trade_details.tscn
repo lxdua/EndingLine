@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccvum77ne47ov"]
 
-[ext_resource type="Script" path="res://Trade/Script/TradeUI/goods_trade_details.gd" id="1_2xkig"]
+[ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/goods_trade_details.gd" id="1_2xkig"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3kst5"]
 bg_color = Color(0.129412, 0.129412, 0.129412, 1)
