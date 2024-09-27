@@ -1,9 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqlovuqd4c8np"]
+[gd_scene load_steps=6 format=3 uid="uid://bqlovuqd4c8np"]
 
 [ext_resource type="Script" path="res://Scene/Fog/fog.gd" id="1_ee1vi"]
+[ext_resource type="Shader" path="res://Scene/Fog/Fog_shader.gdshader" id="1_kwh0i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lgq54"]
+shader = ExtResource("1_kwh0i")
+shader_parameter/fog_color = null
 
 [sub_resource type="Gradient" id="Gradient_vkegk"]
-offsets = PackedFloat32Array(0, 0.435065, 0.662338, 0.909091, 1)
+offsets = PackedFloat32Array(0.162338, 0.279221, 0.461039, 0.831169, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0.945039, 0, 0, 0, 0.839827, 0, 0, 0, 0.519481, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_djdeo"]
@@ -13,6 +18,7 @@ fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.5, 0)
 
 [node name="Fog" type="Sprite2D"]
+material = SubResource("ShaderMaterial_lgq54")
 script = ExtResource("1_ee1vi")
 fog_width = 1000
 fog_height = 1000
