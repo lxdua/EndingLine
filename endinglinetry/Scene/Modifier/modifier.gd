@@ -26,7 +26,7 @@ func clear_value():
 	for value: ModifierValue in get_children():
 		value.queue_free()
 
-func get_modifier_value(base: int) -> int:
+func get_modifier_value(base: float) -> float:
 	var result: = base
 	for value: ModifierValue in get_children():
 		var addition: = base

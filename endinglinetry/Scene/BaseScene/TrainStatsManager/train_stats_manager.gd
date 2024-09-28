@@ -2,8 +2,13 @@ extends Node
 class_name TrainStatsManager
 
 @export var modifier_handler: ModifierHandler
+@export var base_scene: BaseScene
 
-func get_final_value(modifier_name: String, base: int) -> int:
+func _physics_process(delta: float) -> void:
+	get_solar_power(delta)
+	cost_power(delta)
+
+func get_final_value(modifier_name: String, base: float) -> float:
 	return modifier_handler.get_modifier_value(modifier_name, base)
 
 #region 资源部分
@@ -52,29 +57,43 @@ var current_speed: int:
 
 #region 能源部分
 
-var max_power: int:
+@onready var power_progress_bar: TextureProgressBar = $"../UI/StatusBarContainer/HBoxContainer/PowerProgressBar"
+
+var max_power: float = 50.0:
 	set(v):
-		max_power = clamp(v, 0, INF)
+		max_power = clampf(v, 0.0, INF)
 	get:
 		return get_final_value("MaxPowerModifier", max_power)
 
-var current_power: int:
+var current_power: float = 25.0:
 	set(v):
-		current_power = clamp(v, 0, max_power)
+		current_power = clampf(v, 0.0, max_power)
+		power_progress_bar.value = current_power / max_power
 	get:
 		return get_final_value("CurrentPowerModifier", current_power)
+
+var cost_efficiency: int = 2:
+	set(v):
+		cost_efficiency = clamp(v, 0.0, INF)
+	get:
+		return get_final_value("CostEfficiencyModifier", cost_efficiency)
+
+func cost_power(delta: float):
+	current_power -= cost_efficiency * delta
 
 #endregion
 
 #region 太阳能部分
 
-var solar_panel_efficiency: int:
+var solar_panel_efficiency: int = 3:
 	set(v):
 		solar_panel_efficiency = v
 	get:
 		return get_final_value("SolarPanelEfficiencyModifier", solar_panel_efficiency)
 
-func get_solar_power():
-	pass
+func get_solar_power(delta: float):
+	if not base_scene.is_daytime():
+		return
+	current_power += solar_panel_efficiency * delta
 
 #endregion

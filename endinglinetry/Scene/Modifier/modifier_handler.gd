@@ -16,7 +16,7 @@ func get_modifier(modifier_name: String) -> Modifier:
 	return null
 
 ## 使用修饰器
-func get_modifier_value(modifier_name: String, base: int) -> int:
+func get_modifier_value(modifier_name: String, base: float) -> float:
 	var modifier := get_modifier(modifier_name)
 	if not modifier:
 		return base
