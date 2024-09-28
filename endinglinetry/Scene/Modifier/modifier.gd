@@ -3,6 +3,8 @@ class_name Modifier
 
 @export var modifier_name: String
 
+signal value_changed
+
 func get_value(source: String) -> ModifierValue:
 	for value: ModifierValue in get_children():
 		if value.source == source:
@@ -27,13 +29,11 @@ func clear_value():
 		value.queue_free()
 
 func get_modifier_value(base: float) -> float:
-	var result: = base
+	var result: float = base
 	for value: ModifierValue in get_children():
-		var addition: = base
-		match ModifierValue.Type:
+		match value.type:
 			ModifierValue.Type.MULTIPLY:
-				addition *= value.value
+				result += base * value.value
 			ModifierValue.Type.ADD:
-				addition += value.value
-		result += addition
+				result += value.value
 	return result

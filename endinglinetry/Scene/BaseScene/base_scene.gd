@@ -59,16 +59,6 @@ func _on_speed_up_button_button_up() -> void:
 #endregion
 
 
-#region 状态栏相关
-
-@onready var train_load_label: Label = $UI/StatusBarContainer/HBoxContainer/TrainLoadLabel
-@onready var train_speed_label: Label = $UI/StatusBarContainer/HBoxContainer/TrainSpeedLabel
-@onready var power_progress_bar: TextureProgressBar = $UI/StatusBarContainer/HBoxContainer/PowerProgressBar
-
-
-#endregion
-
-
 #region 时间相关
 
 @onready var date_label: Label = $UI/DateContainer/VBoxContainer/DateLabel

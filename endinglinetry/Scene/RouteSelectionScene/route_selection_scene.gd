@@ -43,7 +43,7 @@ func create_map():
 	# 放没修建的路
 	var buildable_track_list = map_res.buildable_track_list
 	for track in buildable_track_list:
-		add_buildable_track(station_dict[track.x], station_dict[track.y], track.z)
+		add_buildable_track(station_dict[track.x], station_dict[track.y], track.z, track.w)
 	# 部署车站
 	for station_id in station_dict:
 		station_dict[station_id].deploy_station()
@@ -70,11 +70,12 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	end_station.station_connected_track.append(new_track)
 	update_track(start_station, end_station, track_length)
 
-func add_buildable_track(start_station: Station, end_station: Station, track_length: int):
+func add_buildable_track(start_station: Station, end_station: Station, track_length: int, cost: int):
 	var new_buildable_track: = BUILDABLE_TRACK.instantiate()
 	new_buildable_track.start_station = start_station
 	new_buildable_track.end_station = end_station
 	new_buildable_track.track_length = track_length
+	new_buildable_track.cost = cost
 	track_root.add_child(new_buildable_track)
 
 func remove_track(track: Track):
@@ -173,7 +174,11 @@ func init_train():
 	train_in_map.global_position = station_dict[0].station_position
 	current_station_id = 0
 
-var is_driving: bool = false
+var is_driving: bool:
+	set(v):
+		train_stats_manager.is_driving = v
+	get:
+		return train_stats_manager.is_driving
 
 func drive():
 	if matrix[current_station_id][destination_id] == INF:
@@ -194,8 +199,8 @@ func drive():
 				train_in_map,
 				"global_position",
 				station_dict[next_station_id].station_position,
-				matrix[current_station_id][next_station_id] / 5.0,
-				) #TODO 速度相关
+				matrix[current_station_id][next_station_id] / train_stats_manager.current_speed,
+				)
 			await drive_tween.finished
 			current_station_id = next_station_id
 		is_driving = false

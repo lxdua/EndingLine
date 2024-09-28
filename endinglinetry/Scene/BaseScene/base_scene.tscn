@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvorf6qptqxej"]
+[gd_scene load_steps=15 format=3 uid="uid://bvorf6qptqxej"]
 
 [ext_resource type="Script" path="res://Scene/BaseScene/base_scene.gd" id="1_gwi6o"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_osfmn"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scene/BaseScene/TrainStatsManager/train_stats_manager.gd" id="4_d1rko"]
 [ext_resource type="Script" path="res://Scene/Modifier/modifier_handler.gd" id="5_vswfe"]
 [ext_resource type="Script" path="res://Scene/Modifier/modifier.gd" id="6_jd4rj"]
+[ext_resource type="Script" path="res://Scene/Modifier/modifier_value.gd" id="7_djxcc"]
 
 [sub_resource type="Animation" id="Animation_bdmcd"]
 resource_name = "666"
@@ -98,10 +99,12 @@ alignment = 1
 
 [node name="TrainLoadLabel" type="Label" parent="UI/StatusBarContainer/HBoxContainer"]
 layout_mode = 2
-text = "载重：666/666"
+theme_override_font_sizes/font_size = 36
+text = "载重： 666 / 666"
 
 [node name="TrainSpeedLabel" type="Label" parent="UI/StatusBarContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "速度：114"
 
 [node name="PowerProgressBar" type="TextureProgressBar" parent="UI/StatusBarContainer/HBoxContainer"]
@@ -225,9 +228,9 @@ modifier_name = "MaxLoadModifier"
 script = ExtResource("6_jd4rj")
 modifier_name = "CurrentSpeedModifier"
 
-[node name="MaxSpeedModifier" type="Node" parent="TrainStatsManager/TrainStatsModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "MaxSpeedModifier"
+[node name="OverloadModifierValue" type="Node" parent="TrainStatsManager/TrainStatsModifierHandler/CurrentSpeedModifier"]
+script = ExtResource("7_djxcc")
+source = "OverloadModifierValue"
 
 [node name="SolarPanelEfficiencyModifier" type="Node" parent="TrainStatsManager/TrainStatsModifierHandler"]
 script = ExtResource("6_jd4rj")
@@ -249,4 +252,9 @@ autostart = true
 [connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="button_down" from="UI/TimeScaleContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
 [connection signal="button_up" from="UI/TimeScaleContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_up"]
+[connection signal="value_changed" from="TrainStatsManager/TrainStatsModifierHandler/CurrentPowerModifier" to="TrainStatsManager" method="_on_current_power_modifier_value_changed"]
+[connection signal="value_changed" from="TrainStatsManager/TrainStatsModifierHandler/MaxPowerModifier" to="TrainStatsManager" method="_on_max_power_modifier_value_changed"]
+[connection signal="value_changed" from="TrainStatsManager/TrainStatsModifierHandler/CurrentLoadModifier" to="TrainStatsManager" method="_on_current_load_modifier_value_changed"]
+[connection signal="value_changed" from="TrainStatsManager/TrainStatsModifierHandler/MaxLoadModifier" to="TrainStatsManager" method="_on_max_load_modifier_value_changed"]
+[connection signal="value_changed" from="TrainStatsManager/TrainStatsModifierHandler/CurrentSpeedModifier" to="TrainStatsManager" method="_on_current_speed_modifier_value_changed"]
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
