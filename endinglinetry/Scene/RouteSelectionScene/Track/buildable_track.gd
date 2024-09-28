@@ -20,7 +20,7 @@ func _on_buildable_track_area_input_event(viewport: Node, event: InputEvent, sha
 	if event.is_action_pressed("mouse_left"):
 		if route_selection.current_station_id != start_station.station_id:
 			return
-		route_selection.try_to_build(self)
+		route_selection.try_to_build_track(self)
 
 func init_track():
 	global_position = start_station.station_position

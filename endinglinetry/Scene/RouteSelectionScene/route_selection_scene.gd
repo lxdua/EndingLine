@@ -77,14 +77,6 @@ func add_buildable_track(start_station: Station, end_station: Station, track_len
 	new_buildable_track.track_length = track_length
 	track_root.add_child(new_buildable_track)
 
-func try_to_build(buildable_track: BuildableTrack):
-	if not train_stats_manager.has_money(buildable_track.cost):
-		return
-		# TODO 一些信息反馈
-	train_stats_manager.money -= buildable_track.cost
-	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
-	buildable_track.queue_free()
-
 func remove_track(track: Track):
 	track.queue_free()
 	update_track(track.start_station, track.end_station, MAX_TRACK_LENGTH)
@@ -137,6 +129,24 @@ func calc_mid(x: int, y: int):
 	else:
 		calc_mid(x, k)
 		calc_mid(k, y)
+
+#endregion
+
+#region 地图相关-建造相关
+
+func try_to_build_track(buildable_track: BuildableTrack):
+	var whether_ui = GlobalUiBox.WHETHER_UI.instantiate()
+	whether_ui.content = "建造道路\n" + "需要" + str(buildable_track.cost) + "钱\n" + "确定建造吗"
+	whether_ui.can_press_yes = train_stats_manager.has_money(buildable_track.cost)
+	ui.add_child(whether_ui)
+	await whether_ui.finish
+	if whether_ui.result == true:
+		build_track(buildable_track)
+
+func build_track(buildable_track: BuildableTrack):
+	train_stats_manager.current_money -= buildable_track.cost
+	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
+	buildable_track.queue_free()
 
 #endregion
 
