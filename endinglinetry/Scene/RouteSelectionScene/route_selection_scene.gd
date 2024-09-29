@@ -3,9 +3,12 @@ class_name RouteSelectionScene
 
 const STATION: = preload("res://Scene/RouteSelectionScene/Station/station.tscn")
 const TRACK: = preload("res://Scene/RouteSelectionScene/Track/track.tscn")
+const BUILDABLE_TRACK = preload("res://Scene/RouteSelectionScene/Track/buildable_track.tscn")
 
 const MAX_STATION_NUM: = 500
 const MAX_TRACK_LENGTH: = INF
+
+@export var train_stats_manager: TrainStatsManager
 
 @export var map_res: MapRes
 
@@ -29,12 +32,19 @@ var idx: int = 0
 #region 地图相关-生成相关
 
 func create_map():
+	# 放车站
 	var station_pos_list = map_res.station_pos_list
 	for pos in station_pos_list:
 		add_station(pos)
+	# 放路
 	var track_list = map_res.track_list
 	for track in track_list:
 		add_track(station_dict[track.x], station_dict[track.y], track.z)
+	# 放没修建的路
+	var buildable_track_list = map_res.buildable_track_list
+	for track in buildable_track_list:
+		add_buildable_track(station_dict[track.x], station_dict[track.y], track.z, track.w)
+	# 部署车站
 	for station_id in station_dict:
 		station_dict[station_id].deploy_station()
 
@@ -59,6 +69,14 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	start_station.station_connected_track.append(new_track)
 	end_station.station_connected_track.append(new_track)
 	update_track(start_station, end_station, track_length)
+
+func add_buildable_track(start_station: Station, end_station: Station, track_length: int, cost: int):
+	var new_buildable_track: = BUILDABLE_TRACK.instantiate()
+	new_buildable_track.start_station = start_station
+	new_buildable_track.end_station = end_station
+	new_buildable_track.track_length = track_length
+	new_buildable_track.cost = cost
+	track_root.add_child(new_buildable_track)
 
 func remove_track(track: Track):
 	track.queue_free()
@@ -115,6 +133,24 @@ func calc_mid(x: int, y: int):
 
 #endregion
 
+#region 地图相关-建造相关
+
+func try_to_build_track(buildable_track: BuildableTrack):
+	var whether_ui = GlobalUiBox.WHETHER_UI.instantiate()
+	whether_ui.content = "建造道路\n" + "需要" + str(buildable_track.cost) + "钱\n" + "确定建造吗"
+	whether_ui.can_press_yes = train_stats_manager.has_money(buildable_track.cost)
+	ui.add_child(whether_ui)
+	await whether_ui.finish
+	if whether_ui.result == true:
+		build_track(buildable_track)
+
+func build_track(buildable_track: BuildableTrack):
+	train_stats_manager.current_money -= buildable_track.cost
+	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
+	buildable_track.queue_free()
+
+#endregion
+
 
 #endregion
 
@@ -138,7 +174,11 @@ func init_train():
 	train_in_map.global_position = station_dict[0].station_position
 	current_station_id = 0
 
-var is_driving: bool = false
+var is_driving: bool:
+	set(v):
+		train_stats_manager.is_driving = v
+	get:
+		return train_stats_manager.is_driving
 
 func drive():
 	if matrix[current_station_id][destination_id] == INF:
@@ -159,8 +199,8 @@ func drive():
 				train_in_map,
 				"global_position",
 				station_dict[next_station_id].station_position,
-				matrix[current_station_id][next_station_id] / 5.0,
-				) #TODO 速度相关
+				matrix[current_station_id][next_station_id] / train_stats_manager.current_speed,
+				)
 			await drive_tween.finished
 			current_station_id = next_station_id
 		is_driving = false

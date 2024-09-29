@@ -3,11 +3,16 @@ class_name ModifierValue
 
 enum Type { MULTIPLY, ADD }
 
-@export var type: Type
-@export var value: int
-@export var source: String
+@onready var modifier: Modifier = $".."
 
-static func create_new_modifier_value(source: String, type: Type, value: int) -> ModifierValue:
+@export var source: String
+@export var type: Type
+@export var value: float:
+	set(v):
+		value = v
+		modifier.value_changed.emit()
+
+static func create_new_modifier_value(source: String, type: Type, value: float) -> ModifierValue:
 	var new_modifier_value = ModifierValue.new()
 	new_modifier_value.source = source
 	new_modifier_value.type = type
