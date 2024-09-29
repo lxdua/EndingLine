@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpcfjhve3hm0q"]
+
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_bvwh1"]
+
+[sub_resource type="Environment" id="Environment_ruy7b"]
+background_mode = 2
+
+[node name="PrisonScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ruy7b")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.62222, -0.0148027)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.0277, -20.4106)
+size = Vector3(63.4532, 24.1299, 37.6279)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.3419, 3.86363)
+operation = 2
+size = Vector3(63.4532, 24.1299, 38.3735)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.8182, -6.84484)
+omni_range = 66.3479
+omni_attenuation = 0.5
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.56093, -11.9073)
+texture = ExtResource("1_bvwh1")

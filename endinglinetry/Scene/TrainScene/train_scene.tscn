@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://dhalocxt0f8fk"]
+
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_shiqg"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_xuog7"]
+
+[sub_resource type="Sky" id="Sky_emgbe"]
+sky_material = SubResource("PhysicalSkyMaterial_xuog7")
+
+[sub_resource type="Environment" id="Environment_tit7x"]
+background_mode = 2
+sky = SubResource("Sky_emgbe")
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c65lm"]
+
+[node name="TrainScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tit7x")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.499229, 0.86647, 0, -0.86647, 0.499229, 0, 5, 0)
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.11205, -2.09366)
+material_overlay = SubResource("StandardMaterial3D_c65lm")
+size = Vector3(12, 1, 6)
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489852, 0.940667, 3.78317)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0310974, 0.489929, -1.84672)
+size = Vector3(4.38727, 1.97986, 2.49268)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.173515, 0.549179, -1.45262)
+operation = 2
+size = Vector3(3.67, 1.55167, 2.67175)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 2
+shaded = true
+texture = ExtResource("1_shiqg")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.782, 0, 0)
+billboard = 2
+texture = ExtResource("1_shiqg")
