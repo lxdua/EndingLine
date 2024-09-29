@@ -16,6 +16,7 @@ add_g = true
 cash = 500
 
 [node name="TradeUI" parent="." groups=["TradeUI"] instance=ExtResource("3_phq2h")]
+layer = 2
 visible = false
 
 [node name="BackPackUI" parent="." instance=ExtResource("4_86vm7")]

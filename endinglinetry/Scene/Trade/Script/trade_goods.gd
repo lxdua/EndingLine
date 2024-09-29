@@ -29,8 +29,6 @@ class_name TradeGoods
 var goods:Array[TradeGoodsStruct]
 
 
-
-
 func add_goods(id:int,number:int):
 	var g:=TradeGoodsStruct.new()
 	g.set_goods(id,number)

@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var fog: Fog = $Fog
+@onready var trade_manage: TradeManage = $TradeManage
+@onready var trade_goods: TradeGoods = $TradeGoods
 
 
 func _on_sprite_2d_pressed() -> void:
@@ -12,3 +14,7 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_Q:
 			if event.pressed:
 				fog.add_light_point(get_global_mouse_position())
+
+
+func _on_button_pressed() -> void:
+	trade_manage.open_trade_ui(trade_goods)

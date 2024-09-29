@@ -22,9 +22,23 @@ script = ExtResource("2_1c4b1")
 cash = 200
 
 [node name="Fog" parent="." instance=ExtResource("4_1elm1")]
+visible = false
 position = Vector2(1144, 489)
 
 [node name="TradeManage" parent="." instance=ExtResource("3_tihkj")]
+visible = true
+
+[node name="TradeGoods" type="Node" parent="."]
+script = ExtResource("2_1c4b1")
+cash = 1000
+
+[node name="Button" type="Button" parent="."]
+offset_left = 1763.0
+offset_top = 53.0
+offset_right = 1817.0
+offset_bottom = 103.0
+text = "666"
 
 [connection signal="mouse_entered" from="Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
 [connection signal="pressed" from="Sprite2D" to="." method="_on_sprite_2d_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
