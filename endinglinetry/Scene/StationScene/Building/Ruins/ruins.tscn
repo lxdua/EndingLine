@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://mdl6k3nhkp22"]
+
+[ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_xyc8v"]
+[ext_resource type="Script" path="res://Scene/StationScene/Building/Ruins/ruins.gd" id="2_h57n4"]
+
+[node name="Ruins" instance=ExtResource("1_xyc8v")]
+script = ExtResource("2_h57n4")
+
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-0.614851, 0.641127, 0.599086, 0.641127, 0.614851, -0.635872, -0.620106, -0.614851)

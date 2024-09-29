@@ -94,13 +94,17 @@ script = ExtResource("5_m5r5u")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/StationContentContainer"]
 layout_mode = 2
-theme_override_constants/separation = 40
 alignment = 1
 
 [node name="NameLabel" type="Label" parent="UI/StationContentContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 41
 text = "地点名"
+horizontal_alignment = 1
+
+[node name="TypeLabel" type="Label" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+text = "种类"
 horizontal_alignment = 1
 
 [node name="TipLabel" type="Label" parent="UI/StationContentContainer/VBoxContainer"]

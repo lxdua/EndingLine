@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djel7qenwu8st"]
+
+[ext_resource type="Script" path="res://Scene/StationScene/Building/building.gd" id="1_7inb2"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_ybstd"]
+
+[node name="Building" type="Node3D"]
+script = ExtResource("1_7inb2")
+
+[node name="BuildingSprite" type="Sprite3D" parent="."]
+texture = ExtResource("2_ybstd")
+
+[node name="BuildingArea" type="Area3D" parent="."]
+
+[node name="BuildingCollisionPolygon" type="CollisionPolygon3D" parent="BuildingArea"]
+depth = 0.2
+
+[connection signal="input_event" from="BuildingArea" to="." method="_on_building_area_input_event"]
+[connection signal="mouse_entered" from="BuildingArea" to="." method="_on_building_area_mouse_entered"]
+[connection signal="mouse_exited" from="BuildingArea" to="." method="_on_building_area_mouse_exited"]
