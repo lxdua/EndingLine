@@ -24,12 +24,6 @@ func update_list_goods():
 
 
 
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		if event.keycode == KEY_A:
-			open_trade_ui($"../Sprite2D/TradeGoods")
-
-
 func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
 	var seller:TradeGoods = trade_goods_struct.trade_goods
 	var amount:int

@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://b21dow7f1jk64" path="res://Scene/Trade/Scene/BackPackUI/back_pack_ui.tscn" id="4_86vm7"]
 
 [node name="TradeManage" type="Node2D" groups=["TradeManage"]]
-visible = false
 script = ExtResource("1_f7xi3")
 
 [node name="PlayerTradeGoods" type="Node" parent="."]
@@ -19,5 +18,6 @@ cash = 500
 visible = false
 
 [node name="BackPackUI" parent="." instance=ExtResource("4_86vm7")]
+visible = false
 
 [editable path="TradeUI"]
