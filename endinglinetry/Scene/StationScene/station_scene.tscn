@@ -19,6 +19,10 @@ environment = SubResource("Environment_f8rn0")
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59523, 1.59702)
 
+[node name="Label3D" type="Label3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.26001)
+text = "车站（废墟城市什么的）"
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.77936, 0.626577, 0, -0.626577, 0.77936, 0, 5, 0)
 

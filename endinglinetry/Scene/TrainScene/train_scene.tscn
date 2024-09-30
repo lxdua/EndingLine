@@ -34,6 +34,10 @@ size = Vector3(12, 1, 6)
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.489852, 0.940667, 3.78317)
 
+[node name="Label3D" type="Label3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.41334)
+text = "开车"
+
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
