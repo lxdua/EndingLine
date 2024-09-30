@@ -157,10 +157,13 @@ text = "10:10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TrainStatsManager" type="Node" parent="." node_paths=PackedStringArray("modifier_handler", "base_scene")]
+[node name="TrainStatsManager" type="Node" parent="." node_paths=PackedStringArray("modifier_handler", "base_scene", "train_load_label", "train_speed_label", "power_progress_bar")]
 script = ExtResource("4_d1rko")
 modifier_handler = NodePath("TrainStatsModifierHandler")
 base_scene = NodePath("..")
+train_load_label = NodePath("../UI/StatusBarContainer/HBoxContainer/TrainLoadLabel")
+train_speed_label = NodePath("../UI/StatusBarContainer/HBoxContainer/TrainSpeedLabel")
+power_progress_bar = NodePath("../UI/StatusBarContainer/HBoxContainer/PowerProgressBar")
 
 [node name="TrainStatsModifierHandler" type="Node" parent="TrainStatsManager"]
 script = ExtResource("5_vswfe")

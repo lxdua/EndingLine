@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvr3pj2lbmy6p"]
+
+[ext_resource type="Script" path="res://Scene/PlayerBody/player_body.gd" id="1_um44s"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_xr50g"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3er2"]
+height = 1.25
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ev48w"]
+size = Vector3(1.38232, 1, 0.562988)
+
+[node name="PlayerBody" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_um44s")
+
+[node name="PlayerBodySprite" type="Sprite3D" parent="."]
+texture = ExtResource("1_xr50g")
+
+[node name="PlayerBodyCollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_t3er2")
+
+[node name="PlayerBodyArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="PlayerBodyAreaCollisionShape" type="CollisionShape3D" parent="PlayerBodyArea"]
+shape = SubResource("BoxShape3D_ev48w")
+
+[connection signal="area_entered" from="PlayerBodyArea" to="." method="_on_player_body_area_area_entered"]
+[connection signal="area_exited" from="PlayerBodyArea" to="." method="_on_player_body_area_area_exited"]
