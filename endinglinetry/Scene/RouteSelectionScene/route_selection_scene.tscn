@@ -20,7 +20,6 @@ train_in_map = NodePath("Map/TrainInMap")
 
 [node name="Map" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 follow_viewport_enabled = true
 
 [node name="BackGround" type="Sprite2D" parent="Map"]
@@ -44,7 +43,6 @@ editor_draw_drag_margin = true
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 4
-visible = false
 
 [node name="CloseButton" type="TextureButton" parent="UI"]
 anchors_preset = 3

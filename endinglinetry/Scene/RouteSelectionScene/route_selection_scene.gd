@@ -165,6 +165,9 @@ var destination_id: int:
 
 signal destination_id_update(id: int)
 
+signal set_out(station: Station)
+signal arrive(station: Station)
+
 var current_station_id: int
 
 ## 下一站清单
@@ -191,6 +194,8 @@ func drive():
 	else:
 		print("出发！")
 		is_driving = true
+		set_out.emit(station_dict[current_station_id])
+		await get_tree().create_timer(1.0).timeout # 等黑屏
 		while not route_list.is_empty():
 			var next_station_id: int = route_list.pop_front()
 			print("正在前往", next_station_id)
@@ -204,6 +209,7 @@ func drive():
 			await drive_tween.finished
 			current_station_id = next_station_id
 		is_driving = false
+		arrive.emit(station_dict[current_station_id])
 
 #endregion
 
