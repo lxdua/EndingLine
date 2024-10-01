@@ -1,30 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds22m5lc08ove"]
+[gd_scene load_steps=5 format=3 uid="uid://ds22m5lc08ove"]
 
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_3bwyt"]
 [ext_resource type="Script" path="res://Scene/Trade/Scene/trade_test.gd" id="1_hi412"]
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="2_1c4b1"]
 [ext_resource type="PackedScene" uid="uid://dox7bvx5bfsib" path="res://Scene/Trade/Scene/trade_manage.tscn" id="3_tihkj"]
-[ext_resource type="PackedScene" uid="uid://bqlovuqd4c8np" path="res://Scene/Fog/Fog.tscn" id="4_1elm1"]
 
 [node name="TradeTest" type="Node2D"]
 script = ExtResource("1_hi412")
 metadata/_edit_horizontal_guides_ = [-673.0]
 
-[node name="Sprite2D" type="Button" parent="."]
-offset_left = 564.0
-offset_top = 268.0
-offset_right = 700.0
-offset_bottom = 404.0
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
 icon = ExtResource("1_3bwyt")
 
-[node name="TradeGoods" type="Node" parent="Sprite2D"]
+[node name="TradeGoods" type="Node" parent="Button"]
 script = ExtResource("2_1c4b1")
-cash = 200
-
-[node name="Fog" parent="." instance=ExtResource("4_1elm1")]
-position = Vector2(1144, 489)
 
 [node name="TradeManage" parent="." instance=ExtResource("3_tihkj")]
 
-[connection signal="mouse_entered" from="Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
-[connection signal="pressed" from="Sprite2D" to="." method="_on_sprite_2d_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

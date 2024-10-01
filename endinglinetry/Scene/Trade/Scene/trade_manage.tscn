@@ -10,8 +10,6 @@ script = ExtResource("1_f7xi3")
 
 [node name="PlayerTradeGoods" type="Node" parent="."]
 script = ExtResource("2_sqbnq")
-add_number = 180
-add_g = true
 cash = 500
 
 [node name="TradeUI" parent="." groups=["TradeUI"] instance=ExtResource("3_phq2h")]

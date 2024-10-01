@@ -58,5 +58,20 @@ func set_goods_price_multiplier(id:int,multiplier:float):
 	else:
 		print("设置失败")
 
+func find_goods(id:int)->TradeGoodsStruct:
+	var g:TradeGoodsStruct
+	var ga = goods.filter(func(gg):
+		if gg.id==id:
+			return true
+		else:
+			return false
+	)
+	if ga:
+		g=ga[0]
+	else:
+		add_goods(id,0)
+		g=find_goods(id)
+	return g
+
 func print_all_goods():
 	goods.all(func(g):g.print_goods())
