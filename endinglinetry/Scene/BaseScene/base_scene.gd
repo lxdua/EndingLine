@@ -66,7 +66,7 @@ func _on_route_selection_scene_arrive(station: Station) -> void:
 
 func hide_all_secondary_scene():
 	for secondary_scene in secondary_scene_root.get_children():
-		secondary_scene.hide_all()
+		secondary_scene.all_visible = false
 
 
 func _on_goods_button_pressed() -> void:
@@ -76,7 +76,7 @@ func _on_train_information_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_route_selection_button_pressed() -> void:
-	route_selection_scene.show_all()
+	route_selection_scene.all_visible = true
 
 func _on_price_button_pressed() -> void:
 	pass # Replace with function body.

@@ -33,10 +33,15 @@ texture = SubResource("GradientTexture2D_cyxby")
 
 [node name="TrainInMap" parent="Map" instance=ExtResource("3_d0dn0")]
 
-[node name="Camera" type="Camera2D" parent="Map/TrainInMap"]
+[node name="Camera" type="Camera2D" parent="Map"]
 position_smoothing_enabled = true
+position_smoothing_speed = 50.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.15
+drag_right_margin = 0.1
+drag_bottom_margin = 0.15
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -54,6 +59,13 @@ offset_left = -128.0
 offset_top = -128.0
 grow_horizontal = 0
 grow_vertical = 0
+texture_normal = ExtResource("1_wsivo")
+
+[node name="FollowButton" type="TextureButton" parent="UI"]
+offset_left = 1655.0
+offset_top = 665.0
+offset_right = 1783.0
+offset_bottom = 793.0
 texture_normal = ExtResource("1_wsivo")
 
 [node name="TimeScaleContainer" type="PanelContainer" parent="UI"]
@@ -134,15 +146,28 @@ layout_mode = 2
 text = "是否前往"
 horizontal_alignment = 1
 
-[node name="SetSailButton" type="TextureButton" parent="UI/StationContentContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/StationContentContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="SetSailButton" type="TextureButton" parent="UI/StationContentContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_wsivo")
 stretch_mode = 3
 
+[node name="DonotSetSailButton" type="TextureButton" parent="UI/StationContentContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_wsivo")
+
+[node name="CenterMarker" type="Marker2D" parent="UI"]
+position = Vector2(960, 540)
+
 [connection signal="destination_id_update" from="." to="." method="_on_destination_id_update"]
 [connection signal="pressed" from="UI/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="UI/FollowButton" to="." method="_on_follow_button_pressed"]
 [connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="button_down" from="UI/TimeScaleContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_down"]
 [connection signal="button_up" from="UI/TimeScaleContainer/HBoxContainer/SpeedUpButton" to="." method="_on_speed_up_button_button_up"]
-[connection signal="pressed" from="UI/StationContentContainer/VBoxContainer/SetSailButton" to="." method="_on_set_sail_button_pressed"]
+[connection signal="pressed" from="UI/StationContentContainer/VBoxContainer/HBoxContainer/SetSailButton" to="." method="_on_set_sail_button_pressed"]
+[connection signal="pressed" from="UI/StationContentContainer/VBoxContainer/HBoxContainer/DonotSetSailButton" to="." method="_on_donot_set_sail_button_pressed"]

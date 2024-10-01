@@ -22,6 +22,12 @@ func _ready() -> void:
 	init_train()
 	hide_station_content()
 
+func _physics_process(delta: float) -> void:
+	camera_follow_train(delta)
+
+func _unhandled_input(event: InputEvent) -> void:
+	camera_zoom(event)
+
 #region 地图相关
 
 ## 存站台
@@ -219,23 +225,28 @@ func drive():
 @onready var ui: CanvasLayer = $UI
 @onready var station_content_container: PanelContainer = $UI/StationContentContainer
 
-
-func show_all():
-	map.show()
-	ui.show()
-
-func hide_all():
-	map.hide()
-	ui.hide()
+var all_visible: bool:
+	set(v):
+		all_visible = v
+		if all_visible:
+			map.show()
+			ui.show()
+		else:
+			map.hide()
+			ui.hide()
 
 ## 确认出发
 func _on_set_sail_button_pressed() -> void:
 	hide_station_content()
 	drive()
 
+## 取消出发
+func _on_donot_set_sail_button_pressed() -> void:
+	station_content_container.hide()
+
 func _on_close_button_pressed() -> void:
 	hide_station_content()
-	hide_all()
+	all_visible = false
 	print("关闭")
 
 func _on_destination_id_update(id: int) -> void:
@@ -266,5 +277,46 @@ func _on_speed_up_button_button_down() -> void:
 
 func _on_speed_up_button_button_up() -> void:
 	Engine.set_time_scale(1.0)
+
+#endregion
+
+#region 摄像机相关
+
+@onready var camera: Camera2D = $Map/Camera
+@onready var center_marker: Marker2D = $UI/CenterMarker
+
+var is_following: bool = true:
+	set(v):
+		is_following = v
+		if v:
+			camera.position_smoothing_speed = 50.0
+		else:
+			camera.position_smoothing_speed = 5.0
+
+func camera_follow_train(delta: float):
+	if not all_visible:
+		return
+	var mouse_vec: = center_marker.get_local_mouse_position()
+	if abs(mouse_vec.x) >= 960.0-100.0 or abs(mouse_vec.y) >= 540.0-100.0:
+		is_following = false
+		camera.global_position += mouse_vec * delta / 2.0
+	if is_following:
+		camera.global_position = lerp(camera.global_position, train_in_map.global_position, delta)
+
+func _on_follow_button_pressed() -> void:
+	camera.global_position = train_in_map.global_position
+	is_following = true
+
+func camera_zoom(event: InputEvent):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			if camera.zoom * 1.1 > Vector2(2.0,2.0):
+				return
+			camera.zoom *= 1.1
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			if camera.zoom / 1.1 < Vector2(0.9,0.9):
+				return
+			camera.zoom /= 1.1
+
 
 #endregion
