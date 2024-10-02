@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c5vtntw4vu6n" path="res://Scene/RouteSelectionScene/route_selection_scene.tscn" id="2_7vr7o"]
 [ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="3_khdcl"]
 [ext_resource type="Script" path="res://Scene/BaseScene/TrainStatsManager/train_stats_manager.gd" id="4_d1rko"]
-[ext_resource type="Script" path="res://Scene/Modifier/modifier_handler.gd" id="5_vswfe"]
-[ext_resource type="Script" path="res://Scene/Modifier/modifier.gd" id="6_jd4rj"]
-[ext_resource type="Script" path="res://Scene/Modifier/modifier_value.gd" id="7_djxcc"]
+[ext_resource type="Script" path="res://Class/Modifier/modifier_handler.gd" id="5_vswfe"]
+[ext_resource type="Script" path="res://Class/Modifier/modifier.gd" id="6_jd4rj"]
+[ext_resource type="Script" path="res://Class/Modifier/modifier_value.gd" id="7_djxcc"]
 [ext_resource type="PackedScene" uid="uid://dox7bvx5bfsib" path="res://Scene/Trade/Scene/trade_manage.tscn" id="9_ib51h"]
 
 [sub_resource type="Gradient" id="Gradient_rfk4w"]
