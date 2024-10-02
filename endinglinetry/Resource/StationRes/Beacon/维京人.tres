@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StationRes" load_steps=3 format=3 uid="uid://8yqhyh325j6g"]
+
+[ext_resource type="Script" path="res://Class/StationRes/station_res.gd" id="1_vmg4a"]
+[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="2_4trc5"]
+
+[resource]
+script = ExtResource("1_vmg4a")
+station_name = "维京人"
+station_type = 4
+station_tax_rate = 0.0
+station_supply_and_demand = Array[ExtResource("2_4trc5")]([])
+station_description = ""

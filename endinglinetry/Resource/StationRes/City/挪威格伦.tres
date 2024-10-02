@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StationRes" load_steps=3 format=3 uid="uid://d4j2f6a0v68ik"]
+
+[ext_resource type="Script" path="res://Class/StationRes/station_res.gd" id="1_3tpx7"]
+[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="2_cu383"]
+
+[resource]
+script = ExtResource("1_3tpx7")
+station_name = "挪威格伦"
+station_type = 1
+station_tax_rate = 0.13
+station_supply_and_demand = Array[ExtResource("2_cu383")]([])
+station_description = ""

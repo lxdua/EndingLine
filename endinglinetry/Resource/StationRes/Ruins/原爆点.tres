@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StationRes" load_steps=3 format=3 uid="uid://b03m7pviyre57"]
+
+[ext_resource type="Script" path="res://Class/StationRes/station_res.gd" id="1_8o2c4"]
+[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="2_w1ji8"]
+
+[resource]
+script = ExtResource("1_8o2c4")
+station_name = "原爆点"
+station_type = 0
+station_tax_rate = 0.0
+station_supply_and_demand = Array[ExtResource("2_w1ji8")]([])
+station_description = ""

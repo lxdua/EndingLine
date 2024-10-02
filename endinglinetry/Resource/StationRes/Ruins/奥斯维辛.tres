@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="StationRes" load_steps=3 format=3 uid="uid://d3cujirwwwola"]
+
+[ext_resource type="Script" path="res://Class/StationRes/station_res.gd" id="1_glb0k"]
+[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="2_mdk73"]
+
+[resource]
+script = ExtResource("1_glb0k")
+station_name = "奥斯维辛"
+station_type = 0
+station_tax_rate = 0.0
+station_supply_and_demand = Array[ExtResource("2_mdk73")]([])
+station_description = "他原本就是废墟，现在是废墟中的废墟"

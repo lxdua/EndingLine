@@ -254,7 +254,7 @@ func _on_destination_id_update(id: int) -> void:
 
 func show_station_content(): # TODO 等城市节点
 	station_content_container.update_content(
-		station_dict[destination_id],
+		station_dict[destination_id].station_res,
 		matrix[current_station_id][destination_id]
 		)
 	station_content_container.show()
@@ -297,7 +297,7 @@ func camera_follow_train(delta: float):
 	if not all_visible:
 		return
 	var mouse_vec: = center_marker.get_local_mouse_position()
-	if abs(mouse_vec.x) >= 960.0-100.0 or abs(mouse_vec.y) >= 540.0-100.0:
+	if (960.0 >= abs(mouse_vec.x) and abs(mouse_vec.x) >= 960.0-50.0) or (540.0 >= abs(mouse_vec.y) and abs(mouse_vec.y) >= 540.0-50.0):
 		is_following = false
 		camera.global_position += mouse_vec * delta / 2.0
 	if is_following:
