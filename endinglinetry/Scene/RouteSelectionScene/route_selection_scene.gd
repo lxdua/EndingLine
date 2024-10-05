@@ -172,7 +172,7 @@ var destination_id: int:
 signal destination_id_update(id: int)
 
 signal set_out(station: Station)
-signal arrive(station: Station)
+signal arrive(station_scene: StationScene)
 
 var current_station_id: int
 
@@ -215,7 +215,7 @@ func drive():
 			await drive_tween.finished
 			current_station_id = next_station_id
 		is_driving = false
-		arrive.emit(station_dict[current_station_id])
+		arrive.emit(station_dict[current_station_id].station_scene)
 
 #endregion
 
@@ -254,7 +254,7 @@ func _on_destination_id_update(id: int) -> void:
 
 func show_station_content(): # TODO 等城市节点
 	station_content_container.update_content(
-		station_dict[destination_id].station_res,
+		station_dict[destination_id].station_scene,
 		matrix[current_station_id][destination_id]
 		)
 	station_content_container.show()

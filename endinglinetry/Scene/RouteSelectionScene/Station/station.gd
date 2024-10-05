@@ -5,7 +5,7 @@ var station_id: int
 var station_position: Vector2
 var station_connected_track: Array[Track] = []
 
-var station_scene: PackedScene
+var station_scene: StationScene
 
 @onready var route_selection: RouteSelectionScene = $"../../.."
 

@@ -6,20 +6,20 @@ extends PanelContainer
 
 @onready var cost_label: Label = $VBoxContainer/CostLabel
 
-func update_content(station_res: StationRes, distance: float):
-	name_label.text = station_res.station_name
-	match station_res.station_type:
-		StationRes.StationType.CITY:
+func update_content(station_scene: StationScene, distance: float):
+	name_label.text = station_scene.station_name
+	match station_scene.station_type:
+		StationScene.StationType.CITY:
 			type_label.text = "都市"
-		StationRes.StationType.VILLAGE:
+		StationScene.StationType.VILLAGE:
 			type_label.text = "村庄"
-		StationRes.StationType.GATHER_POINT:
+		StationScene.StationType.GATHER_POINT:
 			type_label.text = "采集点"
-		StationRes.StationType.BEACON:
+		StationScene.StationType.BEACON:
 			type_label.text = "哨站"
-		StationRes.StationType.RUINS:
+		StationScene.StationType.RUINS:
 			type_label.text = "废墟"
-		StationRes.StationType.CAVE:
+		StationScene.StationType.CAVE:
 			type_label.text = "洞穴"
 	if distance == INF:
 		cost_label.text = "无法到达"
