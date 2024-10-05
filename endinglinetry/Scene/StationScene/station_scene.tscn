@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6b3vhnlytild"]
 
-[ext_resource type="PackedScene" uid="uid://qxb6gn3e0g35" path="res://Scene/StationScene/Building/Shop/shop.tscn" id="1_aeldv"]
+[ext_resource type="Script" path="res://Scene/StationScene/station_scene.gd" id="1_10sov"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_od81o"]
 
@@ -12,6 +12,7 @@ background_mode = 2
 sky = SubResource("Sky_5iu2e")
 
 [node name="StationScene" type="Node3D"]
+script = ExtResource("1_10sov")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f8rn0")
@@ -33,6 +34,3 @@ size = Vector3(39, 1, 11)
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.00708, 0.974234, -3.31316)
 size = Vector3(15.0142, 1, 1)
-
-[node name="Shop" parent="." instance=ExtResource("1_aeldv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20452, 1.13073, -3.08044)

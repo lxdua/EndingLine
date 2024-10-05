@@ -5,7 +5,7 @@ var station_id: int
 var station_position: Vector2
 var station_connected_track: Array[Track] = []
 
-var station_res: StationRes
+var station_scene: PackedScene
 
 @onready var route_selection: RouteSelectionScene = $"../../.."
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func deploy_station():
 	var degree: = station_connected_track.size()
-	station_res = Deployer.deploy_station(degree)
+	station_scene = Deployer.deploy_station(degree)
 
 #endregion
 

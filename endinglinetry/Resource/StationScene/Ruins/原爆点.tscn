@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgmd6ekm8t45u"]
+
+[ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="1_4dqqb"]
+
+[node name="原爆点" instance=ExtResource("1_4dqqb")]
+station_name = "原爆点"

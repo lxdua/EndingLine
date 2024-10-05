@@ -33,10 +33,10 @@ func arrive():
 	change_scene_to_station()
 	await get_tree().create_timer(1.0).timeout
 	CurtainLayer.fade_out()
-	# 入站动画
+	# TODO 入站动画
 
 func set_out():
-	# 出发动画
+	# TODO 出发动画
 	await CurtainLayer.fade_in()
 	hide_all_secondary_scene()
 	change_scene_to_train()

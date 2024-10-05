@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://7yocb0cqwjo5"]
+
+[ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="1_wad14"]
+[ext_resource type="PackedScene" uid="uid://qxb6gn3e0g35" path="res://Scene/StationScene/Building/Shop/shop.tscn" id="2_uqyn5"]
+[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="3_nr0iq"]
+[ext_resource type="PackedScene" uid="uid://0stapmh20nfc" path="res://Scene/StationScene/Building/Maintenance/maintenance.tscn" id="4_h64nw"]
+
+[node name="斯德哥尔摩" instance=ExtResource("1_wad14")]
+station_name = "斯德哥尔摩"
+station_type = 1
+
+[node name="Shop" parent="." index="5" instance=ExtResource("2_uqyn5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03096, 1.34975, -4.56803)
+station_tax_rate = 0.0
+station_supply_and_demand = Array[ExtResource("3_nr0iq")]([])
+
+[node name="Maintenance" parent="." index="6" instance=ExtResource("4_h64nw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.81116, 1.15764, -5.76288)
