@@ -6,3 +6,9 @@ class_name Shop
 
 func press_building():
 	trade_manage.open_trade_ui(trade_goods)
+
+## 税率
+@export var station_tax_rate: float
+
+## 供需表
+@export var station_supply_and_demand: Array[SupplyAndDemandRes]

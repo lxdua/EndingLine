@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRes" load_steps=2 format=3 uid="uid://dpnr7t3koe0u8"]
+
+[ext_resource type="Script" path="res://Class/ItemRes/item_res.gd" id="1_iyuld"]
+
+[resource]
+script = ExtResource("1_iyuld")
+item_name = "盐"
+item_price = 80
+item_weight = 5
+item_description = "暂无描述"

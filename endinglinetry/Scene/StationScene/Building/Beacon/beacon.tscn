@@ -5,3 +5,4 @@
 
 [node name="Beacon" instance=ExtResource("1_yxcb4")]
 script = ExtResource("2_7dsw4")
+beacon_light_radius = 0.0

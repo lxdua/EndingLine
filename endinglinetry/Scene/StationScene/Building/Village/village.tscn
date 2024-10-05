@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://bplqlj0mxyw70"]
-
-[ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_cnjvv"]
-[ext_resource type="Script" path="res://Scene/StationScene/Building/Village/village.gd" id="2_u6rqi"]
-
-[node name="Village" instance=ExtResource("1_cnjvv")]
-script = ExtResource("2_u6rqi")

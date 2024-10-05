@@ -318,5 +318,4 @@ func camera_zoom(event: InputEvent):
 				return
 			camera.zoom /= 1.1
 
-
 #endregion
