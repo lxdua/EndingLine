@@ -29,6 +29,17 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://Art/": "pink",
+"res://Class/": "blue",
+"res://Global/": "blue",
+"res://Resource/": "yellow",
+"res://Scene/": "blue",
+"res://Tool/": "gray"
+}
+
 [global_group]
 
 TradeManage=""

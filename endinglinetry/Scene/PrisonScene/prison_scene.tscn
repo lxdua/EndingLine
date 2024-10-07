@@ -19,10 +19,10 @@ environment = SubResource("Environment_ruy7b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.91129, -4.2002)
 
 [node name="Camera" type="Camera3D" parent="PlayerBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38372, 4.1854)
+transform = Transform3D(1, 0, 0, 0, 0.988359, 0.152141, 0, -0.152141, 0.988359, 0, 0.785985, 2.0508)
 
 [node name="Label3D" type="Label3D" parent="PlayerBody/Camera"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.262515, -2)
 text = "地牢"
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
@@ -38,7 +38,7 @@ operation = 2
 size = Vector3(32.2256, 7.61475, 10.6913)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.91278, -6.84484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.91278, -2.05726)
 omni_range = 66.3479
 omni_attenuation = 0.5
 
