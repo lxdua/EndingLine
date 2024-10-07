@@ -273,7 +273,7 @@ func _on_continue_button_pressed() -> void:
 	get_tree().set_pause(false)
 
 func _on_speed_up_button_button_down() -> void:
-	Engine.set_time_scale(2.0)
+	Engine.set_time_scale(10.0)
 
 func _on_speed_up_button_button_up() -> void:
 	Engine.set_time_scale(1.0)
