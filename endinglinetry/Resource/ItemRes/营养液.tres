@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRes" load_steps=2 format=3 uid="uid://j5ml23hc2520"]
+
+[ext_resource type="Script" path="res://Class/ItemRes/item_res.gd" id="1_ohbj5"]
+
+[resource]
+script = ExtResource("1_ohbj5")
+item_name = "营养液"
+item_price = 600
+item_weight = 25
+item_description = "大家都好像只吃这个了，其他的食物都已不见踪迹"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbs5aqxjo86ah"]
+
+[ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="1_2rach"]
+[ext_resource type="PackedScene" uid="uid://dnxr7x1lv04xg" path="res://Scene/StationScene/Building/Beacon/beacon.tscn" id="2_kp7df"]
+
+[node name="维京人" instance=ExtResource("1_2rach")]
+station_name = "维京人"
+station_type = 4
+
+[node name="Beacon" parent="." index="5" instance=ExtResource("2_kp7df")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -5)

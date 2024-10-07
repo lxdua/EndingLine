@@ -6,6 +6,50 @@ func _ready() -> void:
 	hide_all_secondary_scene()
 	current_time = start_time
 
+#region 场景相关
+
+const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
+
+
+@onready var first_scene_root: Node3D = $FirstSceneRoot
+
+var current_station: Station
+
+func change_scene_to_station(station_scene: StationScene):
+	for scene in first_scene_root.get_children():
+		scene.queue_free()
+	first_scene_root.add_child(station_scene)
+
+func change_scene_to_train():
+	for scene in first_scene_root.get_children():
+		scene.queue_free()
+	var train_scene: = TRAIN_SCENE.instantiate()
+	first_scene_root.add_child(train_scene)
+
+func arrive(station_scene: StationScene):
+	await CurtainLayer.fade_in()
+	hide_all_secondary_scene()
+	change_scene_to_station(station_scene)
+	await get_tree().create_timer(1.0).timeout
+	CurtainLayer.fade_out()
+	# TODO 入站动画
+
+func set_out():
+	# TODO 出发动画
+	await CurtainLayer.fade_in()
+	hide_all_secondary_scene()
+	change_scene_to_train()
+	await get_tree().create_timer(1.0).timeout
+	CurtainLayer.fade_out()
+
+func _on_route_selection_scene_set_out(station: Station) -> void:
+	set_out()
+
+func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
+	arrive(station_scene)
+
+#endregion
+
 
 #region 列车属性相关
 
@@ -21,7 +65,7 @@ func _ready() -> void:
 
 func hide_all_secondary_scene():
 	for secondary_scene in secondary_scene_root.get_children():
-		secondary_scene.hide_all()
+		secondary_scene.all_visible = false
 
 
 func _on_goods_button_pressed() -> void:
@@ -31,7 +75,7 @@ func _on_train_information_button_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_route_selection_button_pressed() -> void:
-	route_selection_scene.show_all()
+	route_selection_scene.all_visible = true
 
 func _on_price_button_pressed() -> void:
 	pass # Replace with function body.

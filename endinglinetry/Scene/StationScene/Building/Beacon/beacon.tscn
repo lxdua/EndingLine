@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnxr7x1lv04xg"]
+
+[ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_yxcb4"]
+[ext_resource type="Script" path="res://Scene/StationScene/Building/Beacon/beacon.gd" id="2_7dsw4"]
+
+[node name="Beacon" instance=ExtResource("1_yxcb4")]
+script = ExtResource("2_7dsw4")
+beacon_light_radius = 0.0

@@ -28,7 +28,7 @@ func has_money(need: int):
 
 #region 载重部分
 
-@onready var train_load_label: Label = $"../UI/StatusBarContainer/HBoxContainer/TrainLoadLabel"
+@export var train_load_label: Label
 
 var max_train_load: float = 1000.0:
 	set(v):
@@ -67,7 +67,7 @@ func _on_max_load_modifier_value_changed() -> void:
 
 #region 速度部分
 
-@onready var train_speed_label: Label = $"../UI/StatusBarContainer/HBoxContainer/TrainSpeedLabel"
+@export var train_speed_label: Label
 
 var current_speed: float = 5.0:
 	set(v):
@@ -86,7 +86,7 @@ func _on_current_speed_modifier_value_changed() -> void:
 
 #region 能源部分
 
-@onready var power_progress_bar: TextureProgressBar = $"../UI/StatusBarContainer/HBoxContainer/PowerProgressBar"
+@export var power_progress_bar: TextureProgressBar
 
 var max_power: float = 50.0:
 	set(v):

@@ -12,9 +12,12 @@ enum Type { MULTIPLY, ADD }
 		value = v
 		modifier.value_changed.emit()
 
-static func create_new_modifier_value(source: String, type: Type, value: float) -> ModifierValue:
+func _ready() -> void:
+	modifier.value_changed.emit()
+
+static func create_new_modifier_value(new_source: String, new_type: Type, new_value: float) -> ModifierValue:
 	var new_modifier_value = ModifierValue.new()
-	new_modifier_value.source = source
-	new_modifier_value.type = type
-	new_modifier_value.value = value
+	new_modifier_value.source = new_source
+	new_modifier_value.type = new_type
+	new_modifier_value.value = new_value
 	return new_modifier_value

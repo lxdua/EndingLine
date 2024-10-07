@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRes" load_steps=2 format=3 uid="uid://vgd448ew8ns6"]
+
+[ext_resource type="Script" path="res://Class/ItemRes/item_res.gd" id="1_0u3h1"]
+
+[resource]
+script = ExtResource("1_0u3h1")
+item_name = "双氧化氢"
+item_price = 500
+item_weight = 20
+item_description = "暂无描述"

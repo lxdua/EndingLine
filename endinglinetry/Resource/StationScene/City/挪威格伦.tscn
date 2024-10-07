@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dra5blw281ib3"]
+
+[ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="1_ju0yo"]
+[ext_resource type="PackedScene" uid="uid://qxb6gn3e0g35" path="res://Scene/StationScene/Building/Shop/shop.tscn" id="2_0abqb"]
+[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="3_n00ds"]
+[ext_resource type="PackedScene" uid="uid://0stapmh20nfc" path="res://Scene/StationScene/Building/Maintenance/maintenance.tscn" id="4_58xoj"]
+
+[node name="挪威格伦" instance=ExtResource("1_ju0yo")]
+station_name = "挪威格伦"
+station_type = 1
+
+[node name="Shop" parent="." index="5" instance=ExtResource("2_0abqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)
+station_tax_rate = 0.0
+station_supply_and_demand = Array[ExtResource("3_n00ds")]([])
+
+[node name="Maintenance" parent="." index="6" instance=ExtResource("4_58xoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
