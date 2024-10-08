@@ -8,7 +8,7 @@
 background_mode = 1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0m0cr"]
-size = Vector3(3.47461, 2.39563, 3.75513)
+size = Vector3(13.189, 2.39563, 3.75513)
 
 [node name="PrisonScene" type="Node3D"]
 
@@ -38,7 +38,7 @@ operation = 2
 size = Vector3(32.2256, 7.61475, 10.6913)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.91278, -2.05726)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1373, -2.05726)
 omni_range = 66.3479
 omni_attenuation = 0.5
 
@@ -47,4 +47,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, -6)
 script = ExtResource("3_itwpy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PrisonSetOut"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85718, 0, 0)
 shape = SubResource("BoxShape3D_0m0cr")

@@ -5,20 +5,22 @@ const STATION: = preload("res://Scene/RouteSelectionScene/Station/station.tscn")
 const TRACK: = preload("res://Scene/RouteSelectionScene/Track/track.tscn")
 const BUILDABLE_TRACK = preload("res://Scene/RouteSelectionScene/Track/buildable_track.tscn")
 
-const MAX_STATION_NUM: = 500
 const MAX_TRACK_LENGTH: = INF
 
-@export var train_stats_manager: TrainStatsManager
+@export var seed_str: String
+@export var station_num: int = 20
 
-@export var map_res: MapRes
+@export var train_stats_manager: TrainStatsManager
 
 @export var track_root: Node2D
 @export var station_root: Node2D
 @export var train_in_map: Node2D
 
+@onready var map_res: MapRes = RandomMapMaker.make_random_map(station_num, seed_str)
+
 func _ready() -> void:
-	init_floyd()
 	create_map()
+	floyd()
 	init_train()
 	hide_station_content()
 
@@ -45,11 +47,11 @@ func create_map():
 	# 放路
 	var track_list = map_res.track_list
 	for track in track_list:
-		add_track(station_dict[track.x], station_dict[track.y], track.z)
+		add_track(station_dict[track[0]], station_dict[track[1]], track[2])
 	# 放没修建的路
 	var buildable_track_list = map_res.buildable_track_list
 	for track in buildable_track_list:
-		add_buildable_track(station_dict[track.x], station_dict[track.y], track.z, track.w)
+		add_buildable_track(station_dict[track[0]], station_dict[track[1]], track[2], track[3])
 	# 部署车站
 	for station_id in station_dict:
 		station_dict[station_id].deploy_station()
@@ -62,10 +64,6 @@ func add_station(station_position: Vector2):
 	station_root.add_child(new_station)
 	idx += 1
 
-func remove_station(station: Station): # TODO 别忘了还要废掉周围的路
-	station_dict.erase(station.station_id)
-	station.queue_free()
-
 func add_track(start_station: Station, end_station: Station, track_length: int):
 	var new_track: = TRACK.instantiate()
 	new_track.start_station = start_station
@@ -74,7 +72,7 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	track_root.add_child(new_track)
 	start_station.station_connected_track.append(new_track)
 	end_station.station_connected_track.append(new_track)
-	update_track(start_station, end_station, track_length)
+
 
 func add_buildable_track(start_station: Station, end_station: Station, track_length: int, cost: int):
 	var new_buildable_track: = BUILDABLE_TRACK.instantiate()
@@ -83,15 +81,6 @@ func add_buildable_track(start_station: Station, end_station: Station, track_len
 	new_buildable_track.track_length = track_length
 	new_buildable_track.cost = cost
 	track_root.add_child(new_buildable_track)
-
-func remove_track(track: Track):
-	track.queue_free()
-	update_track(track.start_station, track.end_station, MAX_TRACK_LENGTH)
-
-func update_track(start_station: Station, end_station: Station, track_length: int):
-	matrix[start_station.station_id][end_station.station_id] = min(matrix[start_station.station_id][end_station.station_id], track_length)
-	update_floyd(start_station.station_id)
-	update_floyd(end_station.station_id)
 
 #endregion
 
@@ -104,23 +93,27 @@ var mid_station: Array[Array]
 ## 最短路
 var shortest_path: Array[int] = []
 
-func init_floyd(n: int = MAX_STATION_NUM):
+
+func floyd():
 	matrix.clear()
-	for i in range(n):
+	for i in range(station_num):
 		matrix.append([])
 		mid_station.append([])
-		for j in range(n):
+		for j in range(station_num):
 			matrix[i].append(MAX_TRACK_LENGTH)
 			mid_station[i].append(-1)
-	for i in range(n):
+	for i in range(station_num):
 		matrix[i][i] = 0
+	var track_list = map_res.track_list
+	for track in track_list:
+		matrix[track[0]][track[1]] = track[2]
 
-func update_floyd(k: int, n: int = MAX_STATION_NUM):
-	for x in range(n):
-		for y in range(n):
-			if matrix[x][y] > matrix[x][k] + matrix[k][y]:
-				matrix[x][y] = matrix[x][k] + matrix[k][y]
-				mid_station[x][y] = k
+	for k in range(station_num):
+		for x in range(station_num):
+			for y in range(station_num):
+				if matrix[x][y] > matrix[x][k] + matrix[k][y]:
+					matrix[x][y] = matrix[x][k] + matrix[k][y]
+					mid_station[x][y] = k
 
 func get_shortest_path(start_station: Station, end_station: Station):
 	shortest_path.clear()
@@ -134,6 +127,7 @@ func calc_mid(x: int, y: int):
 	if k == -1:
 		shortest_path.append(y)
 	else:
+		prints(x, k, y)
 		calc_mid(x, k)
 		calc_mid(k, y)
 
@@ -153,6 +147,7 @@ func try_to_build_track(buildable_track: BuildableTrack):
 func build_track(buildable_track: BuildableTrack):
 	train_stats_manager.current_money -= buildable_track.cost
 	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
+	map_res.track_list.append([buildable_track.start_station, buildable_track.end_station, buildable_track.track_length])
 	buildable_track.queue_free()
 
 #endregion
@@ -176,6 +171,8 @@ signal arrive(station_scene: StationScene)
 
 var current_station_id: int
 
+var drive_tween: Tween
+
 ## 下一站清单
 var route_list: Array[int]
 
@@ -198,14 +195,16 @@ func drive():
 	if is_driving:
 		print("更换目的地！")
 	else:
-		print("出发！")
+		print("出发！", route_list)
 		is_driving = true
 		set_out.emit(station_dict[current_station_id])
 		await get_tree().create_timer(1.0).timeout # 等黑屏
+
 		while not route_list.is_empty():
 			var next_station_id: int = route_list.pop_front()
 			print("正在前往", next_station_id)
-			var drive_tween = train_in_map.create_tween()
+			drive_tween = train_in_map.create_tween()
+			drive_tween.set_speed_scale(GlobalVar.time_scale)
 			drive_tween.tween_property(
 				train_in_map,
 				"global_position",
@@ -213,6 +212,7 @@ func drive():
 				matrix[current_station_id][next_station_id] / train_stats_manager.current_speed,
 				)
 			await drive_tween.finished
+
 			current_station_id = next_station_id
 		is_driving = false
 		arrive.emit(station_dict[current_station_id].station_scene)
@@ -273,30 +273,26 @@ func _on_continue_button_pressed() -> void:
 	get_tree().set_pause(false)
 
 func _on_speed_up_button_button_down() -> void:
-	Engine.set_time_scale(10.0)
+	GlobalVar.time_scale = 10.0
+	drive_tween.set_speed_scale(10.0)
 
 func _on_speed_up_button_button_up() -> void:
-	Engine.set_time_scale(1.0)
+	GlobalVar.time_scale = 1.0
+	drive_tween.set_speed_scale(1.0)
 
 #endregion
 
 #region 摄像机相关
 
 @onready var camera: Camera2D = $Map/Camera
-@onready var center_marker: Marker2D = $UI/CenterMarker
+@onready var marker: Marker2D = $UI/Marker
 
-var is_following: bool = true:
-	set(v):
-		is_following = v
-		if v:
-			camera.position_smoothing_speed = 50.0
-		else:
-			camera.position_smoothing_speed = 5.0
+var is_following: bool = true
 
 func camera_follow_train(delta: float):
 	if not all_visible:
 		return
-	var mouse_vec: = center_marker.get_local_mouse_position()
+	var mouse_vec = marker.get_local_mouse_position()
 	if (960.0 >= abs(mouse_vec.x) and abs(mouse_vec.x) >= 960.0-50.0) or (540.0 >= abs(mouse_vec.y) and abs(mouse_vec.y) >= 540.0-50.0):
 		is_following = false
 		camera.global_position += mouse_vec * delta / 2.0
@@ -314,7 +310,7 @@ func camera_zoom(event: InputEvent):
 				return
 			camera.zoom *= 1.1
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if camera.zoom / 1.1 < Vector2(0.9,0.9):
+			if camera.zoom / 1.1 < Vector2(0.8,0.8):
 				return
 			camera.zoom /= 1.1
 

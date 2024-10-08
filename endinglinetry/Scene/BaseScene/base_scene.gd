@@ -95,10 +95,10 @@ func _on_continue_button_pressed() -> void:
 	get_tree().set_pause(false)
 
 func _on_speed_up_button_button_down() -> void:
-	Engine.set_time_scale(10.0)
+	GlobalVar.time_scale = 10.0
 
 func _on_speed_up_button_button_up() -> void:
-	Engine.set_time_scale(1.0)
+	GlobalVar.time_scale = 1.0
 
 #endregion
 
@@ -137,7 +137,7 @@ func update_clock_ui():
 	clock_label.text += str(minute)
 
 func _on_clock_timer_timeout() -> void:
-	current_time += 6
+	current_time += 6 * GlobalVar.time_scale
 
 func is_daytime():
 	return 6 <= hour and hour <= 18

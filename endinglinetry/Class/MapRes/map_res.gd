@@ -5,7 +5,7 @@ class_name MapRes
 @export var station_pos_list: Array[Vector2]
 
 ## 三个参数分别是 起点编号 终点编号 路程
-@export var track_list: Array[Vector3i]
+@export var track_list: Array[Array]
 
-## 三个参数分别是 起点编号 终点编号 路程 建造花费
-@export var buildable_track_list: Array[Vector4i]
+## 四个参数分别是 起点编号 终点编号 路程 建造花费
+@export var buildable_track_list: Array[Array]
