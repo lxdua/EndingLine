@@ -137,7 +137,7 @@ func update_clock_ui():
 	clock_label.text += str(minute)
 
 func _on_clock_timer_timeout() -> void:
-	current_time += 10
+	current_time += 6
 
 func is_daytime():
 	return 6 <= hour and hour <= 18
