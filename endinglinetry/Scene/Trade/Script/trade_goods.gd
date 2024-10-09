@@ -25,6 +25,8 @@ class_name TradeGoods
 @export_category("设置现金")
 @export_range(0,99999) var cash:int
 
+@export_category("设置载重量")
+@export_range(0,999999) var max_load:int=100
 
 var goods:Array[TradeGoodsStruct]
 

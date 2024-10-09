@@ -83,6 +83,7 @@ layout_mode = 2
 text = "999"
 
 [node name="ProgressBar" type="ProgressBar" parent="HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 step = 1.0
 value = 14.0
