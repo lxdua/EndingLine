@@ -11,6 +11,7 @@ func fade_in(tip: String = ""):
 	await curtain_animation_player.animation_finished
 
 func fade_out():
+	Engine.time_scale = 1.0
 	curtain_animation_player.play("curtain fade out")
 
 func curtain_change_scene(file: String, tip: String = ""):

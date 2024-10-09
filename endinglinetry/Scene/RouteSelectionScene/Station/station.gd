@@ -22,8 +22,7 @@ func deploy_station():
 
 #region UI交互相关
 
-func _on_station_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("mouse_left"):
-		route_selection.destination_id = station_id
+func _on_station_texture_button_pressed() -> void:
+	route_selection.destination_id = station_id
 
 #endregion

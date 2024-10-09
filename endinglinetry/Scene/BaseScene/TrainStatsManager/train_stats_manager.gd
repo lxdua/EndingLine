@@ -69,7 +69,7 @@ func _on_max_load_modifier_value_changed() -> void:
 
 @export var train_speed_label: Label
 
-var current_speed: float = 5.0:
+var current_speed: float = 1.0:
 	set(v):
 		current_speed = clamp(v, 0, INF)
 		update_train_speed_label()

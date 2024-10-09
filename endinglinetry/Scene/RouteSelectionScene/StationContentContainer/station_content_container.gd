@@ -24,4 +24,4 @@ func update_content(station_scene: StationScene, distance: float):
 	if distance == INF:
 		cost_label.text = "无法到达"
 	else:
-		cost_label.text = "距离" + str(distance) + "m"
+		cost_label.text = "距离" + str(int(distance)) + "km"

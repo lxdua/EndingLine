@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 GlobalUiBox="*res://Global/GlobalUIBox/global_ui_box.gd"
 CurtainLayer="*res://Global/Curtain/curtain_layer.tscn"
+RandomMapMaker="*res://Tool/RandomMapMaker/random_map_maker.gd"
+GlobalVar="*res://Global/GlobalVar/global_var.gd"
 
 [display]
 
