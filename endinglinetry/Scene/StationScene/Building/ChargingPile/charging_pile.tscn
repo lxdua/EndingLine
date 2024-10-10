@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=3 uid="uid://c07ji33e25yq2"]
+
+[ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_imf0a"]
+[ext_resource type="Script" path="res://Scene/StationScene/Building/ChargingPile/charging_pile.gd" id="2_v7egu"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="3_je5w8"]
+
+[sub_resource type="Gradient" id="Gradient_k5atn"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_danw3"]
+gradient = SubResource("Gradient_k5atn")
+
+[node name="ChargingPile" instance=ExtResource("1_imf0a")]
+script = ExtResource("2_v7egu")
+cost = 10
+
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-0.62522, 0.61909, 0.594572, 0.62522, 0.606831, -0.606831, -0.612961, -0.631349)
+
+[node name="ChargingPileUI" type="CanvasLayer" parent="." index="2"]
+
+[node name="PanelContainer" type="PanelContainer" parent="ChargingPileUI" index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -465.0
+offset_top = -303.0
+offset_right = 465.0
+offset_bottom = 303.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ChargingPileUI/PanelContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChargingPileUI/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="ElectricLabel" type="Label" parent="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "当前电量：33%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "充满花费：100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AskContainer" type="HBoxContainer" parent="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_constants/separation = 180
+alignment = 1
+
+[node name="YesButton" type="TextureButton" parent="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer" index="0"]
+layout_mode = 2
+texture_normal = ExtResource("3_je5w8")
+texture_disabled = SubResource("GradientTexture2D_danw3")
+
+[node name="NoButton" type="TextureButton" parent="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer" index="1"]
+layout_mode = 2
+texture_normal = ExtResource("3_je5w8")
+
+[node name="Label3D" type="Label3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
+text = "充电桩
+"
+
+[connection signal="pressed" from="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer/NoButton" to="." method="_on_no_button_pressed"]

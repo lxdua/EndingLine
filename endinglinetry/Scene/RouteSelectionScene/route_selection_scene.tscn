@@ -110,8 +110,9 @@ texture_normal = ExtResource("1_wsivo")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -338.0
+offset_top = -480.0
 offset_right = 414.0
+offset_bottom = -129.0
 grow_vertical = 0
 script = ExtResource("5_m5r5u")
 

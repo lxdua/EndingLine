@@ -24,6 +24,9 @@ var current_money: int = 0
 func has_money(need: int):
 	return need <= current_money
 
+func cost_money(need: int):
+	current_money -= need
+
 #endregion
 
 #region 载重部分
