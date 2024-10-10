@@ -23,7 +23,6 @@ func update_list_goods():
 	trade_ui.update_list_goods(player_trade_goods,trade_partner)
 
 
-
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_A:

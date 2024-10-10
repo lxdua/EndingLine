@@ -24,8 +24,10 @@ func _ready() -> void:
 	init_train()
 	hide_station_content()
 
+
 func _physics_process(delta: float) -> void:
 	camera_follow_train(delta)
+	update_hight_light_line()
 
 func _unhandled_input(event: InputEvent) -> void:
 	camera_zoom(event)
@@ -56,6 +58,8 @@ func create_map():
 	for station_id in station_dict:
 		station_dict[station_id].deploy_station()
 
+
+
 func add_station(station_position: Vector2):
 	var new_station: = STATION.instantiate()
 	new_station.station_id = idx
@@ -72,7 +76,6 @@ func add_track(start_station: Station, end_station: Station, track_length: int):
 	track_root.add_child(new_track)
 	start_station.station_connected_track.append(new_track)
 	end_station.station_connected_track.append(new_track)
-
 
 func add_buildable_track(start_station: Station, end_station: Station, track_length: int, cost: int):
 	var new_buildable_track: = BUILDABLE_TRACK.instantiate()
@@ -157,6 +160,8 @@ func build_track(buildable_track: BuildableTrack):
 
 #region 列车相关
 
+@onready var hight_light_line: Line2D = $Map/HightLightLine
+
 ## 目标点
 var destination_id: int:
 	set(v):
@@ -170,6 +175,7 @@ signal set_out(station: Station)
 signal arrive(station_scene: StationScene)
 
 var current_station_id: int
+var next_station_id: int
 
 var drive_tween: Tween
 
@@ -177,8 +183,9 @@ var drive_tween: Tween
 var route_list: Array[int]
 
 func init_train():
-	train_in_map.global_position = station_dict[0].station_position
-	current_station_id = 0
+	current_station_id = idx - 1
+	next_station_id = current_station_id
+	train_in_map.global_position = station_dict[current_station_id].station_position
 
 var is_driving: bool:
 	set(v):
@@ -192,6 +199,7 @@ func drive():
 		return
 
 	route_list = get_shortest_path(station_dict[current_station_id], station_dict[destination_id])
+
 	if is_driving:
 		print("更换目的地！")
 	else:
@@ -201,7 +209,7 @@ func drive():
 		await get_tree().create_timer(1.0).timeout # 等黑屏
 
 		while not route_list.is_empty():
-			var next_station_id: int = route_list.pop_front()
+			next_station_id = route_list.pop_front()
 			print("正在前往", next_station_id)
 			drive_tween = train_in_map.create_tween()
 			drive_tween.set_speed_scale(GlobalVar.time_scale)
@@ -216,6 +224,13 @@ func drive():
 			current_station_id = next_station_id
 		is_driving = false
 		arrive.emit(station_dict[current_station_id].station_scene)
+
+func update_hight_light_line():
+	hight_light_line.clear_points()
+	hight_light_line.add_point(train_in_map.global_position)
+	hight_light_line.add_point(station_dict[next_station_id].station_position)
+	for id in route_list:
+		hight_light_line.add_point(station_dict[id].station_position)
 
 #endregion
 
@@ -274,11 +289,13 @@ func _on_continue_button_pressed() -> void:
 
 func _on_speed_up_button_button_down() -> void:
 	GlobalVar.time_scale = 10.0
-	drive_tween.set_speed_scale(10.0)
+	if drive_tween != null:
+		drive_tween.set_speed_scale(10.0)
 
 func _on_speed_up_button_button_up() -> void:
 	GlobalVar.time_scale = 1.0
-	drive_tween.set_speed_scale(1.0)
+	if drive_tween != null:
+		drive_tween.set_speed_scale(1.0)
 
 #endregion
 

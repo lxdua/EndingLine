@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv0qc7wr6e6cb"]
+
+[ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_6nxq7"]
+[ext_resource type="Script" path="res://Scene/StationScene/Building/Portals/portals.gd" id="2_8pv17"]
+
+[node name="Portals" instance=ExtResource("1_6nxq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("2_8pv17")
+
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-0.607714, 0.650611, 0.622013, 0.650611, 0.614863, -0.600564, -0.657761, -0.593414)
+
+[node name="Label3D" type="Label3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
+text = "传送门"

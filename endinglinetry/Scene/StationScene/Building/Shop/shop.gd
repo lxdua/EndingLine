@@ -1,14 +1,22 @@
 extends Building
 class_name Shop
 
+## 税率
+var station_tax_rate: float
+
+## 供表
+var station_supply: Array[TradeGoodsStruct]
+
+## 需表
+var station_demand: Array[TradeGoodsStruct]
+
+
 @onready var trade_manage: TradeManage = get_tree().get_first_node_in_group("TradeManage")
 @onready var trade_goods: TradeGoods = $TradeGoods
 
 func press_building():
 	trade_manage.open_trade_ui(trade_goods)
 
-## 税率
-@export var station_tax_rate: float
-
-## 供需表
-@export var station_supply_and_demand: Array[SupplyAndDemandRes]
+func _ready() -> void:
+	for supply in station_supply:
+		trade_goods.goods.append(supply)

@@ -1,17 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://qxb6gn3e0g35"]
+[gd_scene load_steps=4 format=3 uid="uid://qxb6gn3e0g35"]
 
 [ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_1wph2"]
 [ext_resource type="Script" path="res://Scene/StationScene/Building/Shop/shop.gd" id="2_sat0g"]
-[ext_resource type="Script" path="res://Class/SupplyAndDemandRes/supply_and_demand_res.gd" id="3_act8o"]
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="4_4183p"]
 
 [node name="Shop" instance=ExtResource("1_1wph2")]
 script = ExtResource("2_sat0g")
-station_tax_rate = 0.0
-station_supply_and_demand = Array[ExtResource("3_act8o")]([])
 
 [node name="TradeGoods" type="Node" parent="." index="0"]
 script = ExtResource("4_4183p")
+add_id = 1
+add_number = 10
 cash = 114
 
 [node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]

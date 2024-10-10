@@ -1,23 +1,26 @@
 extends Node3D
 class_name BaseScene
 
-
 func _ready() -> void:
 	hide_all_secondary_scene()
+	print(6666666, get_current_station().station_id)
+	change_scene_to_station(get_current_station().station_scene)
 	current_time = start_time
 
 #region 场景相关
 
 const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
 
-
 @onready var first_scene_root: Node3D = $FirstSceneRoot
 
-var current_station: Station
+func get_current_station() -> Station:
+	return route_selection_scene.station_dict[route_selection_scene.current_station_id]
 
 func change_scene_to_station(station_scene: StationScene):
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
+	if get_current_station().station_id == 0:
+		station_scene.add_child(preload("res://Scene/StationScene/Building/Portals/portals.tscn").instantiate())
 	first_scene_root.add_child(station_scene)
 
 func change_scene_to_train():
@@ -66,7 +69,6 @@ func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 func hide_all_secondary_scene():
 	for secondary_scene in secondary_scene_root.get_children():
 		secondary_scene.all_visible = false
-
 
 func _on_goods_button_pressed() -> void:
 	pass # Replace with function body.

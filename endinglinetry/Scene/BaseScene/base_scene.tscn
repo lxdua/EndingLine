@@ -36,7 +36,7 @@ route_selection_scene = NodePath("SecondarySceneRoot/RouteSelectionScene")
 [node name="SecondarySceneRoot" type="Node2D" parent="."]
 
 [node name="RouteSelectionScene" parent="SecondarySceneRoot" node_paths=PackedStringArray("train_stats_manager") instance=ExtResource("2_7vr7o")]
-station_num = 30
+station_num = 10
 train_stats_manager = NodePath("../../TrainStatsManager")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -91,11 +91,11 @@ alignment = 1
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
-[node name="TrainInformationButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
+[node name="RouteSelectionButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
-[node name="RouteSelectionButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
+[node name="TrainInformationButton" type="TextureButton" parent="UI/ButtonContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("1_osfmn")
 
@@ -206,8 +206,8 @@ autostart = true
 [connection signal="arrive" from="SecondarySceneRoot/RouteSelectionScene" to="." method="_on_route_selection_scene_arrive"]
 [connection signal="set_out" from="SecondarySceneRoot/RouteSelectionScene" to="." method="_on_route_selection_scene_set_out"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/GoodsButton" to="." method="_on_goods_button_pressed"]
-[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/TrainInformationButton" to="." method="_on_train_information_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/RouteSelectionButton" to="." method="_on_route_selection_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/TrainInformationButton" to="." method="_on_train_information_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/PriceButton" to="." method="_on_price_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/HBoxContainer/BuildButton" to="." method="_on_build_button_pressed"]
 [connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]

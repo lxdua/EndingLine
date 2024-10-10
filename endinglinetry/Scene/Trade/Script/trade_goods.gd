@@ -25,7 +25,6 @@ class_name TradeGoods
 @export_category("设置现金")
 @export_range(0,99999) var cash:int
 
-
 var goods:Array[TradeGoodsStruct]
 
 
