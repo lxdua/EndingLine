@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0f6khkqepsmf"]
+[gd_scene load_steps=3 format=3 uid="uid://b0f6khkqepsmf"]
 
+[ext_resource type="Script" path="res://Scene/Trade/Script/BackPackUI/back_pack_item.gd" id="1_jbiuu"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_r271d"]
 
 [node name="BackPackItem" type="PanelContainer"]
+script = ExtResource("1_jbiuu")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -14,7 +16,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+[node name="Icon" type="TextureRect" parent="HBoxContainer/MarginContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -25,20 +27,27 @@ expand_mode = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="NumberLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 20
 text = "数量：999"
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="PriceLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 20
 text = "总价：999"
 
-[node name="Label3" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="HeavyLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 20
 text = "总重：999"
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+layout_mode = 2
+border_color = Color(1, 1, 1, 1)
+border_width = 3.0
+
+[connection signal="gui_input" from="ReferenceRect" to="." method="_on_reference_rect_gui_input"]

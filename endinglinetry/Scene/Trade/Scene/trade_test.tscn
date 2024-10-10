@@ -26,7 +26,11 @@ visible = false
 position = Vector2(1144, 489)
 
 [node name="TradeManage" parent="." instance=ExtResource("3_tihkj")]
-visible = true
+
+[node name="PlayerTradeGoods" parent="TradeManage" index="0"]
+add_id = 18
+add_number = 20
+add_g = false
 
 [node name="TradeGoods" type="Node" parent="."]
 script = ExtResource("2_1c4b1")
@@ -42,3 +46,6 @@ text = "666"
 [connection signal="mouse_entered" from="Sprite2D" to="." method="_on_sprite_2d_mouse_entered"]
 [connection signal="pressed" from="Sprite2D" to="." method="_on_sprite_2d_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="TradeManage"]
+[editable path="TradeManage/TradeUI"]

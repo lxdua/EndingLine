@@ -2,6 +2,8 @@ extends Node2D
 class_name TradeManage
 @onready var player_trade_goods: TradeGoods = $PlayerTradeGoods
 @onready var trade_ui: TradeUI = $TradeUI
+@onready var back_pack_ui: BackPackUI = %BackPackUI
+
 
 @export_range(0,1) var sell_multiplier:float=0.7
 
@@ -11,6 +13,7 @@ var goods_datas:Array[Dictionary]
 func _ready() -> void:
 	load_csv("res://goods_data_table.csv")
 	print(goods_datas)
+	open_back_pack_ui()
 
 
 var trade_partner:TradeGoods
@@ -20,7 +23,8 @@ func open_trade_ui(t_goods:TradeGoods):
 	trade_ui.visible=true
 
 func update_list_goods():
-	trade_ui.update_list_goods(player_trade_goods,trade_partner)
+	if trade_partner:
+		trade_ui.update_list_goods(player_trade_goods,trade_partner)
 
 
 
@@ -63,6 +67,17 @@ func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
 	else :
 		return false
 
+
+
+func open_back_pack_ui():
+	back_pack_ui.trade_goods=player_trade_goods
+	back_pack_ui.selected_item = null
+	back_pack_ui.update()
+	back_pack_ui.visible=true
+
+
+
+
 func load_csv(csv_path:String):
 	var csv_file
 	var items_title:PackedStringArray
@@ -75,7 +90,7 @@ func load_csv(csv_path:String):
 			var csv_item:PackedStringArray = csv_file.get_csv_line(",")
 			var item:Dictionary
 			for title in items_title.size():
-				if title == 0 or title == 2:
+				if title == 0 or title == 2 or title ==4:
 					item[items_title[title]] = csv_item[title].to_int()
 				else:
 					item[items_title[title]] = csv_item[title]
