@@ -30,6 +30,7 @@ offset_bottom = 540.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_amg7b")
+prison_scene = "res://Scene/PrisonScene/prison_scene.tscn"
 fitment_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/FitmentContainer")
 coin_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/CoinLabel")
 time_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/TimeLabel")
@@ -74,7 +75,7 @@ layout_mode = 2
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/normal_font_size = 66
 bbcode_enabled = true
-text = "[center] [wave]Game Clear[/wave] [/center]"
+text = "[center] [wave level=60]Game Clear[/wave] [/center]"
 fit_content = true
 scroll_active = false
 drag_and_drop_selection_enabled = false
@@ -205,3 +206,5 @@ text = "continue"
 libraries = {
 "": SubResource("AnimationLibrary_ip4na")
 }
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

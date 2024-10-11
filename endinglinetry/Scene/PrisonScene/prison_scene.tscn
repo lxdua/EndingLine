@@ -45,6 +45,7 @@ omni_attenuation = 0.5
 [node name="PrisonSetOut" parent="." instance=ExtResource("2_gj2s1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 3, -6)
 script = ExtResource("3_itwpy")
+base_scene = "res://Scene/BaseScene/base_scene.tscn"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PrisonSetOut"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.85718, 0, 0)
