@@ -39,6 +39,7 @@ folder_colors={
 "res://Global/": "blue",
 "res://Resource/": "yellow",
 "res://Scene/": "blue",
+"res://Shader/": "purple",
 "res://Tool/": "gray"
 }
 

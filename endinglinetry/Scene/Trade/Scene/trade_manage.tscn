@@ -13,7 +13,6 @@ script = ExtResource("2_sqbnq")
 add_number = 10
 add_g = true
 cash = 500
-max_load = 1000
 
 [node name="TradeUI" parent="." groups=["TradeUI"] instance=ExtResource("3_phq2h")]
 layer = 2

@@ -1,5 +1,5 @@
 extends Node
-class_name Deployer
+class_name StationDeployer
 
 
 static var station_list: Dictionary = {

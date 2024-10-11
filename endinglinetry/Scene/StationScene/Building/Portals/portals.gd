@@ -3,7 +3,9 @@ class_name Portals
 
 func press_building():
 	print("Portals!")
-	back_to_the_prison()
+	settle()
 
-func back_to_the_prison():
-	CurtainLayer.curtain_change_scene("res://Scene/PrisonScene/prison_scene.tscn", "少女回家中。。。")
+@onready var settlement_layer: CanvasLayer = $SettlementLayer
+
+func settle():
+	settlement_layer.show()
