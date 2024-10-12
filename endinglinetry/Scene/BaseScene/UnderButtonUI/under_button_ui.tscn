@@ -1,0 +1,260 @@
+[gd_scene load_steps=44 format=3 uid="uid://3gug44gim84w"]
+
+[ext_resource type="Texture2D" uid="uid://ymtpi7pqvrw8" path="res://Art/BaseSceneUI/MainUiDown.png" id="1_est0j"]
+[ext_resource type="Script" path="res://Scene/BaseScene/UnderButtonUI/under_button_ui.gd" id="2_uidd4"]
+[ext_resource type="Texture2D" uid="uid://b10gt3j55fll3" path="res://Art/BaseSceneUI/MainUiHealth.png" id="3_xe7i1"]
+[ext_resource type="Texture2D" uid="uid://cdxm2sf8kmeee" path="res://Art/BaseSceneUI/MainUiMap.png" id="4_otpja"]
+[ext_resource type="Texture2D" uid="uid://dp6jmpg77eytu" path="res://Art/BaseSceneUI/MainUiTrain.png" id="5_eysf7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxb8i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_snjs4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smr2v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27jue"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_75rkb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1uao0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bq42t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eaiwu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cdfw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ouoyx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oehho"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myfn8"]
+atlas = ExtResource("3_xe7i1")
+region = Rect2(0, 0, 58, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctdgl"]
+atlas = ExtResource("3_xe7i1")
+region = Rect2(58, 0, 58, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2np2w"]
+atlas = ExtResource("3_xe7i1")
+region = Rect2(116, 0, 58, 51)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_207v0"]
+atlas = ExtResource("3_xe7i1")
+region = Rect2(174, 0, 58, 51)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_51rjh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myfn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctdgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2np2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_207v0")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_klgkc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nagft"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_loigo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_boxi6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_47l46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8r6lw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_55nvc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fini1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_460j1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j7dy7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uiny8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tna3"]
+atlas = ExtResource("4_otpja")
+region = Rect2(0, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8gwx"]
+atlas = ExtResource("4_otpja")
+region = Rect2(58, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rvud"]
+atlas = ExtResource("4_otpja")
+region = Rect2(116, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdpln"]
+atlas = ExtResource("4_otpja")
+region = Rect2(174, 0, 58, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uff6w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tna3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8gwx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rvud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdpln")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v4v0"]
+atlas = ExtResource("5_eysf7")
+region = Rect2(0, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u33de"]
+atlas = ExtResource("5_eysf7")
+region = Rect2(58, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3gbi"]
+atlas = ExtResource("5_eysf7")
+region = Rect2(116, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrlxa"]
+atlas = ExtResource("5_eysf7")
+region = Rect2(174, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sf8w"]
+atlas = ExtResource("5_eysf7")
+region = Rect2(232, 0, 58, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1rq4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7v4v0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u33de")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3gbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mrlxa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sf8w")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 10.0
+}]
+
+[node name="UnderButtonUI" type="TextureRect" node_paths=PackedStringArray("health_animated_sprite", "route_selection_animated_sprite", "train_stats_animated_sprite")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+offset_right = 460.0
+grow_vertical = 0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(0, 48)
+texture = ExtResource("1_est0j")
+script = ExtResource("2_uidd4")
+health_animated_sprite = NodePath("HealthButton/HealthAnimatedSprite")
+route_selection_animated_sprite = NodePath("RouteSelectionButton/RouteSelectionAnimatedSprite")
+train_stats_animated_sprite = NodePath("TrainStatsButton/TrainStatsAnimatedSprite")
+
+[node name="HealthButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = -15.0
+offset_right = 136.0
+offset_bottom = 36.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oxb8i")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_snjs4")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_smr2v")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_27jue")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_75rkb")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1uao0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_bq42t")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_eaiwu")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2cdfw")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_ouoyx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oehho")
+
+[node name="HealthAnimatedSprite" type="AnimatedSprite2D" parent="HealthButton"]
+sprite_frames = SubResource("SpriteFrames_51rjh")
+animation = &"normal"
+centered = false
+
+[node name="RouteSelectionButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 215.0
+offset_top = -16.0
+offset_right = 273.0
+offset_bottom = 36.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_klgkc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nagft")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_loigo")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_boxi6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_47l46")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8r6lw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_55nvc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fini1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_460j1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_j7dy7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uiny8")
+
+[node name="RouteSelectionAnimatedSprite" type="AnimatedSprite2D" parent="RouteSelectionButton"]
+sprite_frames = SubResource("SpriteFrames_uff6w")
+animation = &"normal"
+centered = false
+
+[node name="TrainStatsButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 147.0
+offset_top = -16.0
+offset_right = 205.0
+offset_bottom = 36.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_klgkc")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nagft")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_loigo")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_boxi6")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_47l46")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8r6lw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_55nvc")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_fini1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_460j1")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_j7dy7")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uiny8")
+
+[node name="TrainStatsAnimatedSprite" type="AnimatedSprite2D" parent="TrainStatsButton"]
+sprite_frames = SubResource("SpriteFrames_m1rq4")
+animation = &"normal"
+centered = false
+
+[connection signal="mouse_entered" from="HealthButton" to="." method="_on_health_button_mouse_entered"]
+[connection signal="mouse_exited" from="HealthButton" to="." method="_on_health_button_mouse_exited"]
+[connection signal="pressed" from="HealthButton" to="." method="_on_health_button_pressed"]
+[connection signal="mouse_entered" from="RouteSelectionButton" to="." method="_on_route_selection_button_mouse_entered"]
+[connection signal="mouse_exited" from="RouteSelectionButton" to="." method="_on_route_selection_button_mouse_exited"]
+[connection signal="pressed" from="RouteSelectionButton" to="." method="_on_route_selection_button_pressed"]
+[connection signal="mouse_entered" from="TrainStatsButton" to="." method="_on_train_stats_button_mouse_entered"]
+[connection signal="mouse_exited" from="TrainStatsButton" to="." method="_on_train_stats_button_mouse_exited"]
+[connection signal="pressed" from="TrainStatsButton" to="." method="_on_train_stats_button_pressed"]

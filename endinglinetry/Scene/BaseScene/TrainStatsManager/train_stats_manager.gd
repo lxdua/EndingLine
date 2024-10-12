@@ -141,3 +141,9 @@ func get_solar_power(delta: float):
 	current_power += solar_panel_efficiency * delta
 
 #endregion
+
+#region 采集力部分
+
+var gather_ability: float
+
+#endregion

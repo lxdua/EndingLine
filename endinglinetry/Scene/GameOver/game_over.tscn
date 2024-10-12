@@ -36,7 +36,7 @@ grow_vertical = 2
 mouse_filter = 1
 theme_override_font_sizes/normal_font_size = 70
 bbcode_enabled = true
-text = "[center][color=red][shake level=10]GAME OVER[/shake][/color][/center]"
+text = "[center][color=red][shake level=20]GAME OVER[/shake][/color][/center]"
 
 [node name="TimeLabel" type="Label" parent="."]
 layout_mode = 2

@@ -63,27 +63,25 @@ func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 
 #region 二级界面相关
 
-@export var secondary_scene_root: Node2D
+@export var secondary_scene_root: CanvasLayer
 @export var route_selection_scene: RouteSelectionScene
+@export var train_stats_scene: TrainStatsScene
+
 
 func hide_all_secondary_scene():
-	for secondary_scene in secondary_scene_root.get_children():
-		secondary_scene.all_visible = false
+	route_selection_scene.all_visible = false
+	train_stats_scene.visible = false
 
-func _on_goods_button_pressed() -> void:
+func _on_under_button_ui_health_button_pressed() -> void:
 	pass # Replace with function body.
 
-func _on_train_information_button_pressed() -> void:
-	pass # Replace with function body.
-
-func _on_route_selection_button_pressed() -> void:
+func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
 
-func _on_price_button_pressed() -> void:
-	pass # Replace with function body.
+func _on_under_button_ui_train_stats_button_pressed() -> void:
+	train_stats_scene.update_train_stats_scene()
+	train_stats_scene.visible = true
 
-func _on_build_button_pressed() -> void:
-	pass # Replace with function body.
 
 #endregion
 

@@ -288,9 +288,9 @@ func _on_continue_button_pressed() -> void:
 	get_tree().set_pause(false)
 
 func _on_speed_up_button_button_down() -> void:
-	GlobalVar.time_scale = 10.0
+	GlobalVar.time_scale = 100.0
 	if drive_tween != null:
-		drive_tween.set_speed_scale(10.0)
+		drive_tween.set_speed_scale(100.0)
 
 func _on_speed_up_button_button_up() -> void:
 	GlobalVar.time_scale = 1.0

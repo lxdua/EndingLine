@@ -75,7 +75,7 @@ layout_mode = 2
 theme_override_constants/shadow_outline_size = 0
 theme_override_font_sizes/normal_font_size = 66
 bbcode_enabled = true
-text = "[center] [wave level=60]Game Clear[/wave] [/center]"
+text = "[center] [wave amp=50]Game Clear[/wave] [/center]"
 fit_content = true
 scroll_active = false
 drag_and_drop_selection_enabled = false
