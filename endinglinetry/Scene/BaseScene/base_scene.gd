@@ -1,9 +1,10 @@
 extends Node3D
 class_name BaseScene
 
+@export var train_stats_manager: TrainStatsManager
+
 func _ready() -> void:
 	hide_all_secondary_scene()
-	print(6666666, get_current_station().station_id)
 	change_scene_to_station(get_current_station().station_scene)
 	current_time = start_time
 
@@ -50,13 +51,6 @@ func _on_route_selection_scene_set_out(station: Station) -> void:
 
 func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 	arrive(station_scene)
-
-#endregion
-
-
-#region 列车属性相关
-
-@export var train_stats_manager: TrainStatsManager
 
 #endregion
 

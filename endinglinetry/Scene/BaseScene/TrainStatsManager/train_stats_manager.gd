@@ -79,11 +79,14 @@ var current_speed: float = 1.0:
 	get:
 		return get_final_value("CurrentSpeedModifier", current_speed)
 
+var total_journey: float = 0.0
+
 func update_train_speed_label():
 	train_speed_label.text = "速度：" + str(current_speed)
 
 func _on_current_speed_modifier_value_changed() -> void:
 	update_train_speed_label()
+
 
 #endregion
 

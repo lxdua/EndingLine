@@ -3,9 +3,6 @@ class_name Portals
 
 func press_building():
 	print("Portals!")
-	settle()
+	settlement.show_settlement()
 
-@onready var settlement_layer: CanvasLayer = $SettlementLayer
-
-func settle():
-	settlement_layer.show()
+@onready var settlement: CanvasLayer = $Settlement

@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	camera_follow_train(delta)
+	calc_journey(delta)
 	update_hight_light_line()
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -170,7 +171,6 @@ var destination_id: int:
 		print("新终点为", v)
 
 signal destination_id_update(id: int)
-
 signal set_out(station: Station)
 signal arrive(station_scene: StationScene)
 
@@ -231,6 +231,9 @@ func update_hight_light_line():
 	hight_light_line.add_point(station_dict[next_station_id].station_position)
 	for id in route_list:
 		hight_light_line.add_point(station_dict[id].station_position)
+
+func calc_journey(delta: float):
+	train_stats_manager.total_journey += delta * train_stats_manager.current_speed
 
 #endregion
 

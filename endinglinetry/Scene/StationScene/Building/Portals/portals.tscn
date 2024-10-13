@@ -8,14 +8,12 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("2_8pv17")
 
+[node name="Settlement" parent="." index="0" instance=ExtResource("3_uxp2c")]
+visible = false
+
 [node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
 polygon = PackedVector2Array(-0.607714, 0.650611, 0.622013, 0.650611, 0.614863, -0.600564, -0.657761, -0.593414)
 
-[node name="Label3D" type="Label3D" parent="." index="2"]
+[node name="Label3D" type="Label3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
 text = "传送门"
-
-[node name="SettlementLayer" type="CanvasLayer" parent="." index="3"]
-visible = false
-
-[node name="Settlement" parent="SettlementLayer" index="0" instance=ExtResource("3_uxp2c")]
