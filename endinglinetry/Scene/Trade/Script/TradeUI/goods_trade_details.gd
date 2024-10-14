@@ -17,8 +17,8 @@ func update_details():
 	if goods_struct:
 		goods_name.text=trade_manage.get_goods_name(goods_struct.id)
 		number_scroll_bar.max_value=goods_struct.number
-		number_scroll_bar.value=2
 		number_scroll_bar.value=1
+		number_scroll_bar.value=number_scroll_bar.max_value
 
 
 

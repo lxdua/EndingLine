@@ -80,7 +80,7 @@ func load_csv(csv_path:String):
 			var csv_item:PackedStringArray = csv_file.get_csv_line(",")
 			var item:Dictionary
 			for title in items_title.size():
-				if title == 0 or title == 2:
+				if title == 0 or title == 2 or title == 4 or title == 5:
 					item[items_title[title]] = csv_item[title].to_int()
 				else:
 					item[items_title[title]] = csv_item[title]
