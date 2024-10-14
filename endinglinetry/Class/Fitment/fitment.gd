@@ -1,10 +1,10 @@
 extends Node
 class_name Fitment
 
-@export var fitment_id: int
 @export var fitment_name: String
+@export var icon: Texture
+@export var holder: String
 @export_multiline var fitment_content: String
-
 
 ## 获得这个fitment时
 func activate():

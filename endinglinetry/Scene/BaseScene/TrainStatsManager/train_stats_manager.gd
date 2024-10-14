@@ -2,6 +2,8 @@ extends Node
 class_name TrainStatsManager
 
 @export var modifier_handler: ModifierHandler
+@export var fitment_handler: FitmentHandler
+@export var buff_handler: BuffHandler
 @export var base_scene: BaseScene
 
 var is_driving: bool = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5vtntw4vu6n"]
+[gd_scene load_steps=24 format=3 uid="uid://c5vtntw4vu6n"]
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/route_selection_scene.gd" id="1_uwgh6"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_wsivo"]
+[ext_resource type="Texture2D" uid="uid://dp6jmpg77eytu" path="res://Art/BaseSceneUI/MainUiTrain.png" id="3_aa8ap"]
 [ext_resource type="PackedScene" uid="uid://bjn0jxrrcrn7u" path="res://Scene/RouteSelectionScene/TrainInMap/train_in_map.tscn" id="3_d0dn0"]
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/StationContentContainer/station_content_container.gd" id="5_m5r5u"]
 
@@ -12,6 +13,64 @@ gradient = SubResource("Gradient_lrcro")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sj5hq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m16r8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d7tdy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xpltb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82vuu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjlte"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_da2eo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jpgfv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1otin"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oglyx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f6iuf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ufor"]
+atlas = ExtResource("3_aa8ap")
+region = Rect2(0, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q125o"]
+atlas = ExtResource("3_aa8ap")
+region = Rect2(58, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyw0m"]
+atlas = ExtResource("3_aa8ap")
+region = Rect2(116, 0, 58, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nxydu"]
+atlas = ExtResource("3_aa8ap")
+region = Rect2(174, 0, 58, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wv08s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ufor")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q125o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyw0m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nxydu")
+}],
+"loop": false,
+"name": &"normal",
+"speed": 10.0
+}]
+
 [node name="RouteSelectionScene" type="Node2D" node_paths=PackedStringArray("track_root", "station_root", "train_in_map")]
 script = ExtResource("1_uwgh6")
 track_root = NodePath("Map/TrackRoot")
@@ -20,7 +79,6 @@ train_in_map = NodePath("Map/TrainInMap")
 
 [node name="Map" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 follow_viewport_enabled = true
 
 [node name="BackGround" type="TextureRect" parent="Map"]
@@ -46,6 +104,7 @@ texture = SubResource("GradientTexture2D_cyxby")
 [node name="TrainInMap" parent="Map" instance=ExtResource("3_d0dn0")]
 
 [node name="HightLightLine" type="Line2D" parent="Map"]
+default_color = Color(0, 0.975509, 0.984029, 1)
 
 [node name="Camera" type="Camera2D" parent="Map"]
 position = Vector2(285, 347)
@@ -61,19 +120,36 @@ editor_draw_drag_margin = true
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 4
-visible = false
 
-[node name="CloseButton" type="TextureButton" parent="UI"]
-anchors_preset = 3
-anchor_left = 1.0
+[node name="CloseButton" type="Button" parent="UI"]
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
-grow_horizontal = 0
+offset_left = -60.0
+offset_top = -256.0
+offset_right = -2.0
+offset_bottom = -204.0
+grow_horizontal = 2
 grow_vertical = 0
-texture_normal = ExtResource("1_wsivo")
+scale = Vector2(4, 4)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sj5hq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_m16r8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_d7tdy")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_xpltb")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_82vuu")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_sjlte")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_da2eo")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_jpgfv")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1otin")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_oglyx")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f6iuf")
+
+[node name="CloseButtonAnimatedSprite" type="AnimatedSprite2D" parent="UI/CloseButton"]
+sprite_frames = SubResource("SpriteFrames_wv08s")
+animation = &"normal"
+centered = false
 
 [node name="FollowButton" type="TextureButton" parent="UI"]
 offset_left = 1655.0
@@ -179,6 +255,8 @@ texture_normal = ExtResource("1_wsivo")
 position = Vector2(960, 540)
 
 [connection signal="destination_id_update" from="." to="." method="_on_destination_id_update"]
+[connection signal="mouse_entered" from="UI/CloseButton" to="." method="_on_close_button_mouse_entered"]
+[connection signal="mouse_exited" from="UI/CloseButton" to="." method="_on_close_button_mouse_exited"]
 [connection signal="pressed" from="UI/CloseButton" to="." method="_on_close_button_pressed"]
 [connection signal="pressed" from="UI/FollowButton" to="." method="_on_follow_button_pressed"]
 [connection signal="pressed" from="UI/TimeScaleContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]

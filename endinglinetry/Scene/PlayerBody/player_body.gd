@@ -1,8 +1,9 @@
 extends CharacterBody3D
 class_name PlayerBody
 
-const ACCELERATION: = 10.0
-const SPEED: = 2.0
+const ACCELERATION: = 100.0
+
+@export var speed: = 2.0
 
 @onready var player_body_sprite: AnimatedSprite3D = $PlayerBodySprite
 
@@ -28,12 +29,12 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * delta * 5
 	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
-		velocity.x = move_toward(velocity.x, direction.x * SPEED, ACCELERATION * delta)
-		velocity.z = move_toward(velocity.z, direction.z * SPEED, ACCELERATION * delta)
+		velocity.x = move_toward(velocity.x, direction.x * speed, ACCELERATION * delta)
+		velocity.z = move_toward(velocity.z, direction.z * speed, ACCELERATION * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACCELERATION * delta)
 		velocity.z = move_toward(velocity.z, 0, ACCELERATION * delta)

@@ -262,10 +262,22 @@ func _on_set_sail_button_pressed() -> void:
 func _on_donot_set_sail_button_pressed() -> void:
 	station_content_container.hide()
 
+#region UI交互 - 关闭按钮
+
+@onready var close_button_animated_sprite: AnimatedSprite2D = $UI/CloseButton/CloseButtonAnimatedSprite
+
 func _on_close_button_pressed() -> void:
 	hide_station_content()
 	all_visible = false
 	print("关闭")
+
+func _on_close_button_mouse_entered() -> void:
+	close_button_animated_sprite.play("normal")
+func _on_close_button_mouse_exited() -> void:
+	close_button_animated_sprite.play_backwards("normal")
+
+
+#endregion
 
 func _on_destination_id_update(id: int) -> void:
 	show_station_content() # TODO 等城市节点

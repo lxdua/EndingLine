@@ -67,14 +67,14 @@ func hide_all_secondary_scene():
 	train_stats_scene.visible = false
 
 func _on_under_button_ui_health_button_pressed() -> void:
-	pass # Replace with function body.
+	train_stats_scene.update_train_stats()
+	train_stats_scene.visible = true
 
 func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
 
 func _on_under_button_ui_train_stats_button_pressed() -> void:
-	train_stats_scene.update_train_stats_scene()
-	train_stats_scene.visible = true
+	pass
 
 
 #endregion

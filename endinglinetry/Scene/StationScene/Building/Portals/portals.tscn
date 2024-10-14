@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pbkpjj6h5aje" path="res://Scene/Settlement/settlement.tscn" id="3_uxp2c"]
 
 [node name="Portals" instance=ExtResource("1_6nxq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.52505, 0)
 script = ExtResource("2_8pv17")
 
 [node name="Settlement" parent="." index="0" instance=ExtResource("3_uxp2c")]
