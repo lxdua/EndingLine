@@ -1,4 +1,5 @@
 extends Control
+class_name FitmentScene
 
 const FITMENT_UI = preload("res://Scene/FitmentScene/fitment_ui.tscn")
 
@@ -37,3 +38,7 @@ func sort_by_name():
 	fitment_list.sort_custom(func(x: Fitment, y: Fitment):
 		return x.fitment_name.casecmp_to(y.fitment_name) < 0
 		)
+
+
+func _on_close_button_pressed() -> void:
+	hide()

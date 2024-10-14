@@ -17,6 +17,6 @@ func _on_button_pressed() -> void:
 
 func show_settlement():
 	money_label.text = "赚取货币数："
-	time_label.text = "游戏时间：" + str(base_scene.current_time - base_scene.start_time) + "分钟"
-	total_journey_label.text = "总路程：" + str(base_scene.train_stats_manager.total_journey)
+	time_label.text = "游戏时间：" + str(int(base_scene.current_time - base_scene.start_time)) + "分钟"
+	total_journey_label.text = "总路程：" + str(int(base_scene.train_stats_manager.total_journey))
 	show()

@@ -19,11 +19,11 @@ const MAX_TRACK_LENGTH: = INF
 @onready var map_res: MapRes = RandomMapMaker.make_random_map(station_num, seed_str)
 
 func _ready() -> void:
+	GlobalVar.time_scale_update.connect(_on_time_scale_update)
 	create_map()
 	floyd()
 	init_train()
 	hide_station_content()
-
 
 func _physics_process(delta: float) -> void:
 	camera_follow_train(delta)
@@ -302,15 +302,15 @@ func _on_pause_button_pressed() -> void:
 func _on_continue_button_pressed() -> void:
 	get_tree().set_pause(false)
 
+func _on_time_scale_update():
+	if drive_tween != null:
+		drive_tween.set_speed_scale(GlobalVar.time_scale)
+
 func _on_speed_up_button_button_down() -> void:
 	GlobalVar.time_scale = 100.0
-	if drive_tween != null:
-		drive_tween.set_speed_scale(100.0)
 
 func _on_speed_up_button_button_up() -> void:
 	GlobalVar.time_scale = 1.0
-	if drive_tween != null:
-		drive_tween.set_speed_scale(1.0)
 
 #endregion
 

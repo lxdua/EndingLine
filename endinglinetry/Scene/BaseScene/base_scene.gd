@@ -12,7 +12,8 @@ func _ready() -> void:
 
 const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
 
-@onready var first_scene_root: Node3D = $FirstSceneRoot
+@export var first_scene_root: Node3D
+@export var parallax_bg: ParallaxBG
 
 func get_current_station() -> Station:
 	return route_selection_scene.station_dict[route_selection_scene.current_station_id]
@@ -23,12 +24,14 @@ func change_scene_to_station(station_scene: StationScene):
 	if get_current_station().station_id == 0:
 		station_scene.add_child(preload("res://Scene/StationScene/Building/Portals/portals.tscn").instantiate())
 	first_scene_root.add_child(station_scene)
+	parallax_bg.stop_scroll()
 
 func change_scene_to_train():
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
 	var train_scene: = TRAIN_SCENE.instantiate()
 	first_scene_root.add_child(train_scene)
+	parallax_bg.start_scroll()
 
 func arrive(station_scene: StationScene):
 	await CurtainLayer.fade_in()
@@ -60,21 +63,34 @@ func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 @export var secondary_scene_root: CanvasLayer
 @export var route_selection_scene: RouteSelectionScene
 @export var train_stats_scene: TrainStatsScene
+@export var fitment_scene: FitmentScene
 
 
 func hide_all_secondary_scene():
 	route_selection_scene.all_visible = false
-	train_stats_scene.visible = false
+	train_stats_scene.hide()
 
+## 列车属性
 func _on_under_button_ui_health_button_pressed() -> void:
 	train_stats_scene.update_train_stats()
-	train_stats_scene.visible = true
+	train_stats_scene.show()
 
+## 价格走势
+func _on_under_button_ui_price_button_pressed() -> void:
+	pass # Replace with function body.
+
+## 路线选择
 func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
 
-func _on_under_button_ui_train_stats_button_pressed() -> void:
-	pass
+## 货物背包
+func _on_under_button_ui_cargo_button_pressed() -> void:
+	pass # TODO 显示货物背包
+
+## 遗物栏
+func _on_under_button_ui_fitment_button_pressed() -> void:
+	fitment_scene.show()
+
 
 
 #endregion
@@ -89,7 +105,7 @@ func _on_continue_button_pressed() -> void:
 	get_tree().set_pause(false)
 
 func _on_speed_up_button_button_down() -> void:
-	GlobalVar.time_scale = 10.0
+	GlobalVar.time_scale = 100.0
 
 func _on_speed_up_button_button_up() -> void:
 	GlobalVar.time_scale = 1.0
