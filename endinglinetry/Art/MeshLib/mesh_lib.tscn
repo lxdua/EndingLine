@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1pkqbxlq6mwk"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpqxuu1ngyrhp" path="res://Art/3D/Obj/CountrySide-2-GroundTile2.obj" id="1_p3yn7"]
+[ext_resource type="ArrayMesh" uid="uid://cua2wqy8xlwgk" path="res://Art/3D/Obj/CountrySide-3-GroundTile1.obj" id="2_h07qs"]
+
+[node name="MeshLib" type="Node3D"]
+
+[node name="CountrySide-2-groundTile2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_p3yn7")
+
+[node name="CountrySide-3-groundTile1" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_h07qs")
