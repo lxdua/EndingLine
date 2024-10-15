@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://0stapmh20nfc"]
+
+[ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_faqfp"]
+[ext_resource type="Script" path="res://Scene/StationScene/Building/Factory/factory.gd" id="2_aqkp5"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="3_h1hxf"]
+[ext_resource type="PackedScene" uid="uid://c3vjvtkcp7c0x" path="res://Scene/StationScene/Building/Factory/factory_fitment_ui.tscn" id="3_rvg2f"]
+
+[node name="Factory" instance=ExtResource("1_faqfp")]
+script = ExtResource("2_aqkp5")
+cost = 0
+
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-0.619276, 0.64908, 0.652392, 0.62921, 0.635834, -0.606029, -0.625899, -0.619276)
+
+[node name="Label3D" type="Label3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48, 0.01)
+text = "修车厂"
+
+[node name="FactoryUI" type="CanvasLayer" parent="." index="3"]
+layer = 3
+
+[node name="BG" type="ColorRect" parent="FactoryUI" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="PanelContainer" type="PanelContainer" parent="FactoryUI" index="1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -595.5
+offset_top = -339.0
+offset_right = 595.5
+offset_bottom = 339.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="FactoryUI/PanelContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="FactoryUI/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "修车厂"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" index="0"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 50
+
+[node name="FitmentContainer" type="HBoxContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" index="0"]
+layout_mode = 2
+theme_override_constants/separation = 70
+alignment = 1
+
+[node name="FactoryFitmentUI" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FitmentContainer" index="0" instance=ExtResource("3_rvg2f")]
+layout_mode = 2
+
+[node name="FactoryFitmentUI2" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FitmentContainer" index="1" instance=ExtResource("3_rvg2f")]
+layout_mode = 2
+
+[node name="FactoryFitmentUI3" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FitmentContainer" index="2" instance=ExtResource("3_rvg2f")]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "价格：666"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyButton" type="Button" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "刷新"
+
+[node name="CloseButton" type="TextureButton" parent="FactoryUI" index="2"]
+offset_left = 1484.0
+offset_top = 150.0
+offset_right = 1612.0
+offset_bottom = 278.0
+texture_normal = ExtResource("3_h1hxf")
+
+[connection signal="pressed" from="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="FactoryUI/CloseButton" to="." method="_on_close_button_pressed"]

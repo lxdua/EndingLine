@@ -5,8 +5,16 @@ extends PanelContainer
 @onready var holder_label: Label = $MarginContainer/HBoxContainer/HolderLabel
 @onready var content_label: RichTextLabel = $MarginContainer/HBoxContainer/MarginContainer/ContentLabel
 
-func update_ui(fitment: Fitment):
-	icon.texture = fitment.icon
-	name_label.text = fitment.fitment_name
-	holder_label.text = fitment.holder
-	content_label.text = fitment.content
+var fitment: Fitment = null
+
+func _ready() -> void:
+	if fitment != null:
+		icon.texture = fitment.icon
+		name_label.text = fitment.fitment_name
+		content_label.text = fitment.content
+		if fitment.holder == Fitment.Holder.TRAIN:
+			holder_label.text = "Train"
+		elif fitment.holder == Fitment.Holder.AKI:
+			holder_label.text = "Aki"
+		elif fitment.holder == Fitment.Holder.RUU:
+			holder_label.text = "Ruu"

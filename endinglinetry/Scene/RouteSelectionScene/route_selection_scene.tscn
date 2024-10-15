@@ -1,17 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://c5vtntw4vu6n"]
+[gd_scene load_steps=23 format=3 uid="uid://c5vtntw4vu6n"]
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/route_selection_scene.gd" id="1_uwgh6"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_wsivo"]
+[ext_resource type="Texture2D" uid="uid://bgh13l5vk2y8d" path="res://Art/2D/RouteSelectionUI/rssbg.png" id="2_3ga85"]
 [ext_resource type="Texture2D" uid="uid://dp6jmpg77eytu" path="res://Art/2D/BaseSceneUI/UnderButtonUI/MainUiTrain.png" id="3_aa8ap"]
 [ext_resource type="PackedScene" uid="uid://bjn0jxrrcrn7u" path="res://Scene/RouteSelectionScene/TrainInMap/train_in_map.tscn" id="3_d0dn0"]
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/StationContentContainer/station_content_container.gd" id="5_m5r5u"]
-
-[sub_resource type="Gradient" id="Gradient_lrcro"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_cyxby"]
-gradient = SubResource("Gradient_lrcro")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sj5hq"]
 
@@ -79,24 +73,24 @@ train_in_map = NodePath("Map/TrainInMap")
 
 [node name="Map" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 follow_viewport_enabled = true
 
 [node name="BackGround" type="TextureRect" parent="Map"]
+modulate = Color(0.641934, 0.641934, 0.641934, 1)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -992.0
-offset_top = -572.0
-offset_right = -928.0
-offset_bottom = -508.0
+offset_left = -3960.0
+offset_top = -3540.0
+offset_right = 2040.0
+offset_bottom = 2460.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(200, 200)
 pivot_offset = Vector2(32, 32)
-texture = SubResource("GradientTexture2D_cyxby")
+mouse_filter = 0
+texture = ExtResource("2_3ga85")
 
 [node name="TrackRoot" type="Node2D" parent="Map"]
 
@@ -109,19 +103,17 @@ default_color = Color(0, 0.975509, 0.984029, 1)
 
 [node name="Camera" type="Camera2D" parent="Map"]
 position = Vector2(285, 347)
+limit_left = -3000
+limit_top = -3000
+limit_right = 3000
+limit_bottom = 3000
+limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 50.0
-drag_left_margin = 0.1
-drag_top_margin = 0.15
-drag_right_margin = 0.1
-drag_bottom_margin = 0.15
-editor_draw_limits = true
-editor_draw_drag_margin = true
+position_smoothing_speed = 10.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
 layer = 4
-visible = false
 
 [node name="CloseButton" type="Button" parent="UI"]
 anchors_preset = 7
@@ -257,6 +249,7 @@ texture_normal = ExtResource("1_wsivo")
 position = Vector2(960, 540)
 
 [connection signal="destination_id_update" from="." to="." method="_on_destination_id_update"]
+[connection signal="gui_input" from="Map/BackGround" to="." method="_on_back_ground_gui_input"]
 [connection signal="mouse_entered" from="UI/CloseButton" to="." method="_on_close_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CloseButton" to="." method="_on_close_button_mouse_exited"]
 [connection signal="pressed" from="UI/CloseButton" to="." method="_on_close_button_pressed"]

@@ -1,9 +1,9 @@
 extends Node
 class_name FitmentHandler
 
-var FITMENT_DICT: Dictionary = {
+static var FITMENT_DICT: Dictionary = {
 	"能源改进": preload("res://Resource/Fitment/能源改进/能源改进.tscn"),
-
+	"JK": preload("res://Resource/Fitment/JK/jk.tscn"),
 }
 
 signal fitment_update

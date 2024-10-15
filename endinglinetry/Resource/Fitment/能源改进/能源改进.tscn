@@ -7,5 +7,4 @@
 script = ExtResource("1_img6l")
 fitment_name = "能源改进"
 icon = ExtResource("2_sgpc8")
-holder = "Train"
 fitment_content = "太阳能板产能增加10%"

@@ -1,4 +1,5 @@
 extends Node
+class_name RandomMapMaker
 
 const PLOTTING_SCALE: float = 1.0
 
@@ -18,7 +19,6 @@ func make_random_map(sta_sum: int, seed_str: String):
 	make_station()
 	sort_by_dist()
 	make_track()
-	make_track()
 	make_buildable_track()
 	return return_map_res()
 
@@ -32,7 +32,13 @@ func return_map_res():
 			tra.ed,
 			(sta_list[tra.st].pos - sta_list[tra.ed].pos).length() * PLOTTING_SCALE,
 			])
-
+	for bu_tra in bu_tra_list:
+		map_res.buildable_track_list.append([
+			bu_tra.st,
+			bu_tra.ed,
+			(sta_list[bu_tra.st].pos - sta_list[bu_tra.ed].pos).length() * PLOTTING_SCALE,
+			200,
+			])
 	return map_res
 
 class _Station:
@@ -50,8 +56,11 @@ class _Track:
 		self.ed = ed
 
 class _Buildable_Track:
-	var st: _Station
-	var ed: _Station
+	var st: int
+	var ed: int
+	func _init(st: int, ed: int) -> void:
+		self.st = st
+		self.ed = ed
 
 var sta_list: Array[_Station]
 var tra_list: Array[_Track]
@@ -86,7 +95,11 @@ func make_track():
 		sta_con.append([id1, id2])
 
 func make_buildable_track():
-	pass
+	for i in range(station_sum):
+		var id1: int = sta_list[i].id
+		var id2: int = get_nearest_sta(i)
+		add_buildable_track(id1, id2)
+		sta_con.append([id1, id2])
 
 var sta_sort_by_dist: Array[Array]
 var sta_con: Array[Array]
@@ -116,6 +129,11 @@ func add_track(id1: int, id2: int):
 		return
 	tra_list.append(_Track.new(id1, id2))
 	tra_list.append(_Track.new(id2, id1))
+
+func add_buildable_track(id1: int, id2: int):
+	if not check_track(id1, id2):
+		return
+	bu_tra_list.append(_Buildable_Track.new(id1, id2))
 
 func check_track(id1: int, id2: int):
 	var A: Vector2 = sta_list[id1].pos

@@ -1,9 +1,10 @@
-extends PanelContainer
+extends Control
 
 
-@onready var content_label: Label = $VBoxContainer/ContentLabel
-@onready var yes_button: TextureButton = $VBoxContainer/HBoxContainer/YesButton
-@onready var no_button: TextureButton = $VBoxContainer/HBoxContainer/NoButton
+@onready var content_label: Label = $PanelContainer/VBoxContainer/ContentLabel
+@onready var yes_button: TextureButton = $PanelContainer/VBoxContainer/HBoxContainer/YesButton
+@onready var no_button: TextureButton = $PanelContainer/VBoxContainer/HBoxContainer/NoButton
+
 
 ## 文字内容
 var content: String
@@ -25,8 +26,10 @@ func _on_yes_button_pressed() -> void:
 	result = true
 	finish.emit()
 	queue_free()
+	print("yes")
 
 func _on_no_button_pressed() -> void:
 	result = false
 	finish.emit()
 	queue_free()
+	print("no")

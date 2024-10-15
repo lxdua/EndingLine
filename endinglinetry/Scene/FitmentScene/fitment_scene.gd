@@ -20,7 +20,7 @@ func update_fitment_ui():
 		fitment_ui.free()
 	for fitment: Fitment in fitment_list:
 		var fitment_ui: = FITMENT_UI.instantiate()
-		fitment_ui.update_ui(fitment)
+		fitment_ui.fitment = fitment
 		fitment_container.add_child(fitment_ui)
 
 # 获得顺序排序
@@ -30,7 +30,7 @@ func sort_by_acquisition_time():
 # 持有人排序
 func sort_by_holder():
 	fitment_list.sort_custom(func(x: Fitment, y: Fitment):
-		return x.holder.casecmp_to(y.holder) < 0
+		return x.holder < y.holder
 		)
 
 # 名字排序

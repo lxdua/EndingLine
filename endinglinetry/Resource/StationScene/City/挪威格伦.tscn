@@ -2,19 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="1_ju0yo"]
 [ext_resource type="PackedScene" uid="uid://qxb6gn3e0g35" path="res://Scene/StationScene/Building/Shop/shop.tscn" id="2_0abqb"]
-[ext_resource type="PackedScene" uid="uid://0stapmh20nfc" path="res://Scene/StationScene/Building/Maintenance/maintenance.tscn" id="4_58xoj"]
+[ext_resource type="PackedScene" uid="uid://0stapmh20nfc" path="res://Scene/StationScene/Building/Factory/factory.tscn" id="4_58xoj"]
 [ext_resource type="PackedScene" uid="uid://c07ji33e25yq2" path="res://Scene/StationScene/Building/ChargingPile/charging_pile.tscn" id="4_ooi8b"]
 
 [node name="挪威格伦" instance=ExtResource("1_ju0yo")]
 station_name = "挪威格伦"
 station_type = 1
 
-[node name="Shop" parent="." index="5" instance=ExtResource("2_0abqb")]
+[node name="Shop" parent="." index="4" instance=ExtResource("2_0abqb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)
 
-[node name="Maintenance" parent="." index="6" instance=ExtResource("4_58xoj")]
+[node name="Factory" parent="." index="5" instance=ExtResource("4_58xoj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
 
-[node name="ChargingPile" parent="." index="7" instance=ExtResource("4_ooi8b")]
+[node name="ChargingPile" parent="." index="6" instance=ExtResource("4_ooi8b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67644, 1.05713, -5.11189)
 cost = 0

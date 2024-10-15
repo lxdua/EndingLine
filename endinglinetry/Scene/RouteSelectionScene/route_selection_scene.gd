@@ -16,7 +16,7 @@ const MAX_TRACK_LENGTH: = INF
 @export var station_root: Node2D
 @export var train_in_map: Node2D
 
-@onready var map_res: MapRes = RandomMapMaker.make_random_map(station_num, seed_str)
+var map_res: MapRes
 
 func _ready() -> void:
 	GlobalVar.time_scale_update.connect(_on_time_scale_update)
@@ -43,6 +43,8 @@ var idx: int = 0
 #region 地图相关-生成相关
 
 func create_map():
+	var random_map_maker: RandomMapMaker = RandomMapMaker.new()
+	map_res = random_map_maker.make_random_map(station_num, seed_str)
 	# 放车站
 	var station_pos_list = map_res.station_pos_list
 	for pos in station_pos_list:
@@ -58,8 +60,6 @@ func create_map():
 	# 部署车站
 	for station_id in station_dict:
 		station_dict[station_id].deploy_station()
-
-
 
 func add_station(station_position: Vector2):
 	var new_station: = STATION.instantiate()
@@ -152,6 +152,8 @@ func build_track(buildable_track: BuildableTrack):
 	train_stats_manager.current_money -= buildable_track.cost
 	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
 	map_res.track_list.append([buildable_track.start_station, buildable_track.end_station, buildable_track.track_length])
+	add_track(buildable_track.end_station, buildable_track.start_station, buildable_track.track_length)
+	map_res.track_list.append([buildable_track.end_station, buildable_track.start_station, buildable_track.track_length])
 	buildable_track.queue_free()
 
 #endregion
@@ -321,19 +323,27 @@ func _on_speed_up_button_button_up() -> void:
 
 var is_following: bool = true
 
+var mouse_pos: Vector2
+
 func camera_follow_train(delta: float):
 	if not all_visible:
 		return
-	var mouse_vec = marker.get_local_mouse_position()
-	if (960.0 >= abs(mouse_vec.x) and abs(mouse_vec.x) >= 960.0-50.0) or (540.0 >= abs(mouse_vec.y) and abs(mouse_vec.y) >= 540.0-50.0):
-		is_following = false
-		camera.global_position += mouse_vec * delta / 2.0
 	if is_following:
 		camera.global_position = lerp(camera.global_position, train_in_map.global_position, delta)
+
+func _on_back_ground_gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		mouse_pos = get_viewport().get_mouse_position()
+	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		camera.position -= get_viewport().get_mouse_position() - mouse_pos
+		mouse_pos = get_viewport().get_mouse_position()
+		is_following = false
+		camera.position_smoothing_enabled = false
 
 func _on_follow_button_pressed() -> void:
 	camera.global_position = train_in_map.global_position
 	is_following = true
+	camera.position_smoothing_enabled = true
 
 func camera_zoom(event: InputEvent):
 	if event is InputEventMouseButton:
@@ -345,5 +355,7 @@ func camera_zoom(event: InputEvent):
 			if camera.zoom / 1.1 < Vector2(0.8,0.8):
 				return
 			camera.zoom /= 1.1
+
+
 
 #endregion

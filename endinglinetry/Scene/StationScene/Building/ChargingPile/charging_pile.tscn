@@ -16,9 +16,23 @@ cost = 10
 [node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
 polygon = PackedVector2Array(-0.62522, 0.61909, 0.594572, 0.62522, 0.606831, -0.606831, -0.612961, -0.631349)
 
-[node name="ChargingPileUI" type="CanvasLayer" parent="." index="2"]
+[node name="Label3D" type="Label3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
+text = "充电桩
+"
 
-[node name="PanelContainer" type="PanelContainer" parent="ChargingPileUI" index="0"]
+[node name="ChargingPileUI" type="CanvasLayer" parent="." index="3"]
+layer = 3
+
+[node name="BG" type="ColorRect" parent="ChargingPileUI" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="PanelContainer" type="PanelContainer" parent="ChargingPileUI" index="1"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -70,11 +84,6 @@ texture_disabled = SubResource("GradientTexture2D_danw3")
 [node name="NoButton" type="TextureButton" parent="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer" index="1"]
 layout_mode = 2
 texture_normal = ExtResource("3_je5w8")
-
-[node name="Label3D" type="Label3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
-text = "充电桩
-"
 
 [connection signal="pressed" from="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer/YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="ChargingPileUI/PanelContainer/MarginContainer/VBoxContainer/AskContainer/NoButton" to="." method="_on_no_button_pressed"]

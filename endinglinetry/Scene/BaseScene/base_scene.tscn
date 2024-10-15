@@ -61,7 +61,6 @@ visible = false
 visible = false
 
 [node name="RouteSelectionScene" parent="SecondarySceneRoot" node_paths=PackedStringArray("train_stats_manager") instance=ExtResource("2_7vr7o")]
-station_num = 10
 train_stats_manager = NodePath("../../TrainStatsManager")
 
 [node name="UI" type="CanvasLayer" parent="."]

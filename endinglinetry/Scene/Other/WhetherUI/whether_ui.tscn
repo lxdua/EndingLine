@@ -3,7 +3,26 @@
 [ext_resource type="Script" path="res://Scene/Other/WhetherUI/whether_ui.gd" id="1_xvtub"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_oc6uw"]
 
-[node name="WhetherUI" type="PanelContainer"]
+[node name="WhetherUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xvtub")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.196078)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -15,14 +34,13 @@ offset_right = 204.5
 offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_xvtub")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="ContentLabel" type="Label" parent="VBoxContainer"]
+[node name="ContentLabel" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
 text = "建造xx道路
@@ -31,18 +49,18 @@ text = "建造xx道路
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 55
 alignment = 1
 
-[node name="YesButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="YesButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_oc6uw")
 
-[node name="NoButton" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
+[node name="NoButton" type="TextureButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("2_oc6uw")
 
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
