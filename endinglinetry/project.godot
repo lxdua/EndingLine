@@ -50,6 +50,10 @@ TradeUI=""
 TrainStatsManager=""
 BaseScene=""
 
+[gui]
+
+theme/custom_font="res://LanaPixel.ttf"
+
 [input]
 
 mouse_left={

@@ -1,18 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://dovfytcll6bqb"]
+[gd_scene load_steps=12 format=3 uid="uid://dovfytcll6bqb"]
 
 [ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/trade_ui.gd" id="1_kgsjj"]
 [ext_resource type="PackedScene" uid="uid://c0en6jwj481vt" path="res://Scene/Trade/Scene/TradeUI/goods_list.tscn" id="2_4lnob"]
+[ext_resource type="Texture2D" uid="uid://d2lfqje7lk4iq" path="res://Art/2D/BaseSceneUI/TradeUI/UI_trade.png" id="2_fjmh5"]
+[ext_resource type="Texture2D" uid="uid://cg1an8a2b5v87" path="res://Art/2D/BaseSceneUI/BaseUI/UI_ButtonC.png" id="3_338fg"]
 [ext_resource type="PackedScene" uid="uid://ccvum77ne47ov" path="res://Scene/Trade/Scene/TradeUI/goods_trade_details.tscn" id="4_njo8r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf38f"]
+atlas = ExtResource("2_fjmh5")
+region = Rect2(11, 5, 314, 176)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrv12"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jmu2"]
+texture = ExtResource("3_338fg")
+
+[sub_resource type="Theme" id="Theme_c43f2"]
+Button/styles/normal = SubResource("StyleBoxTexture_0jmu2")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wp4g1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tisms"]
 
 [node name="TradeUI" type="CanvasLayer"]
 script = ExtResource("1_kgsjj")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_uf38f")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -25,10 +46,11 @@ size_flags_vertical = 2
 
 [node name="VBox" type="PanelContainer" parent="VBoxContainer"]
 clip_contents = true
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_lrv12")
 
 [node name="Label" type="Label" parent="VBoxContainer/VBox"]
 layout_mode = 2
@@ -39,11 +61,13 @@ text = "交易"
 [node name="ExitButton" type="Button" parent="VBoxContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 0
+theme = SubResource("Theme_c43f2")
 theme_override_font_sizes/font_size = 50
 text = " X "
 
 [node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(0, 800)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -51,21 +75,37 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 5
 
 [node name="PlayerGoodsList" parent="VBoxContainer/HBox/MarginContainer" instance=ExtResource("2_4lnob")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wp4g1")
+
+[node name="Control" type="Control" parent="VBoxContainer/HBox"]
+custom_minimum_size = Vector2(395, 0)
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 30
 
 [node name="GoodsList" parent="VBoxContainer/HBox/MarginContainer2" instance=ExtResource("2_4lnob")]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tisms")
 
 [node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
+unique_name_in_owner = true
 visible = false
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="VBoxContainer/VBox/ExitButton" to="." method="_on_exit_button_pressed"]

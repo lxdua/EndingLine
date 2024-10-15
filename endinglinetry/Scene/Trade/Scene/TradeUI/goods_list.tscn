@@ -1,12 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0en6jwj481vt"]
+[gd_scene load_steps=6 format=3 uid="uid://c0en6jwj481vt"]
 
 [ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/goods_list.gd" id="1_4x8wb"]
+[ext_resource type="Texture2D" uid="uid://8h5euqucs0pq" path="res://Art/2D/BaseSceneUI/TradeUI/UI_scroll.png" id="2_gehpj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hjjm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mucdr"]
+texture = ExtResource("2_gehpj")
+
+[sub_resource type="Theme" id="Theme_3murp"]
+VScrollBar/styles/grabber = SubResource("StyleBoxTexture_mucdr")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxTexture_mucdr")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxTexture_mucdr")
 
 [node name="GoodList" type="PanelContainer"]
 offset_right = 600.0
 offset_bottom = 373.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3hjjm")
 script = ExtResource("1_4x8wb")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -17,19 +29,33 @@ custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = SubResource("Theme_3murp")
 follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="List" type="VBoxContainer" parent="VBoxContainer/GoodsList"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/GoodsList"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 10
+
+[node name="List" type="VBoxContainer" parent="VBoxContainer/GoodsList/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="PanelContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 size_flags_vertical = 8
+theme_override_constants/margin_right = 40
 
 [node name="CashLabel" type="Label" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+clip_contents = true
 layout_mode = 2
+size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 50
-text = "现金:999"
+text = "99999
+"

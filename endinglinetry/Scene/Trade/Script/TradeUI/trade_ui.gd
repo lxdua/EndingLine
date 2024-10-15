@@ -1,9 +1,9 @@
 extends CanvasLayer
 class_name TradeUI
 @onready var trade_manage: TradeManage = $".."
-@onready var player_goods_list: GoodsList = $VBoxContainer/HBox/MarginContainer/PlayerGoodsList
-@onready var goods_list: GoodsList = $VBoxContainer/HBox/MarginContainer2/GoodsList
-@onready var goods_trade_details: GoodsTradeDetails = $GoodsTradeDetails
+@onready var player_goods_list: GoodsList = %PlayerGoodsList
+@onready var goods_list: GoodsList = %GoodsList
+@onready var goods_trade_details: GoodsTradeDetails = %GoodsTradeDetails
 
 
 func _ready() -> void:

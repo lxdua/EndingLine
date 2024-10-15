@@ -3,12 +3,15 @@ extends PanelContainer
 class_name GoodsListItem
 
 @onready var icon_rect: TextureRect = $HBoxContainer/MarginContainer/IconRect
-@onready var item_data_text: Label = $HBoxContainer/ItemDataText
 @onready var trade_manage: TradeManage = get_tree().get_nodes_in_group("TradeManage")[0]
 @onready var trade_ui: TradeUI = get_tree().get_nodes_in_group("TradeUI")[0]
+@onready var heavy_label: Label = %HeavyLabel
+@onready var multiplier_label: Label = %MultiplierLabel
+@onready var price_label: Label = %PriceLabel
+@onready var name_label: Label = %NameLabel
+@onready var number_label: Label = %NumberLabel
 
-func _ready() -> void:
-	item_data_text.add_theme_font_size_override("font_size",custom_minimum_size.y/4)
+
 
 
 @export var icon:Texture2D=preload("res://icon.svg"):
@@ -34,21 +37,32 @@ func _ready() -> void:
 
 
 func update_item_data_text():
+	name_label.text = goods_name
+	number_label.text = str(goods_number)
 	if goods_struct.trade_goods and goods_struct.trade_goods==trade_manage.player_trade_goods:
 		if !trade_manage.trade_partner.goods:
-			item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier*trade_manage.sell_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
+			heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
+			multiplier_label.text = str(trade_manage.sell_multiplier*100 as int)+"%"
+			price_label.text = str(goods_price*trade_manage.sell_multiplier as int)
 		else:
-			trade_manage.trade_partner.goods.filter(func(g):
+			var goods_filter := trade_manage.trade_partner.goods.filter(func(g):
 				if g.id==goods_struct.id:
-					item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*g.price_multiplier*trade_manage.sell_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
 					return true
 				else	:
-					item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier*trade_manage.sell_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
 					return false
 			)
+			if goods_filter:
+				heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
+				multiplier_label.text = str(goods_filter[0].price_multiplier*trade_manage.sell_multiplier*100 as int)+"%"
+				price_label.text = str(goods_price*goods_filter[0].price_multiplier*trade_manage.sell_multiplier as int)
+			else:
+				heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
+				multiplier_label.text = str(trade_manage.sell_multiplier*100 as int)+"%"
+				price_label.text = str(goods_price*trade_manage.sell_multiplier as int)
 	else:
-		item_data_text.text=goods_name+"\n当前单价:"+str(int(goods_price*price_multiplier))+"\n指导单价:"+str(goods_price)+"\n数量:"+str(goods_number)+"\n"
-
+		heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
+		multiplier_label.text = str(price_multiplier*100 as int)+"%"
+		price_label.text = str(goods_price*price_multiplier as int)
 
 var goods_struct:TradeGoodsStruct:
 	set(new_g):
@@ -62,6 +76,10 @@ func update():
 		goods_price=trade_manage.get_goods_price(goods_struct.id)
 		price_multiplier=goods_struct.price_multiplier
 		goods_number=goods_struct.number
+		var i := trade_manage.get_goods_icon(goods_struct.id)
+		if i:
+			icon = i
+
 
 
 func _on_reference_rect_gui_input(event: InputEvent) -> void:

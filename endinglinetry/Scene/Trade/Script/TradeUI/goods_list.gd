@@ -3,8 +3,9 @@ extends PanelContainer
 class_name GoodsList
 
 const GOODS_LIST_ITEM = preload("uid://colrqteefvben")
-@onready var list: VBoxContainer = $VBoxContainer/GoodsList/List
-@onready var cash_label: Label = $VBoxContainer/PanelContainer/CashLabel
+@onready var list: VBoxContainer = %List
+@onready var cash_label: Label = %CashLabel
+
 
 var trade_goods:TradeGoods:
 	set(new_g):
@@ -32,7 +33,7 @@ var trade_goods:TradeGoods:
 		cash=new_c
 		if !cash_label:
 			await ready
-		cash_label.text="现金:"+str(cash)
+		cash_label.text=str(cash)
 
 func add_list_item()->GoodsListItem:
 	if GOODS_LIST_ITEM.can_instantiate():
