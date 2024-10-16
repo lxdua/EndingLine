@@ -9,6 +9,7 @@ class_name BackPackUI
 @onready var progress_bar: ProgressBar = %ProgressBar
 @onready var pack_item_details: PackItemDetails = %PackItemDetails
 @onready var pack_item_discard: PackItemDiscard = $PackItemDiscard
+@onready var cash_label: Label = %CashLabel
 
 const PACK_ITEM = preload("uid://b0f6khkqepsmf")
 
@@ -18,6 +19,7 @@ var selected_item:TradeGoodsStruct
 
 func update():
 	if trade_goods:
+		cash_label.text = str(trade_goods.cash)
 		max_number_label.text=str(trade_goods.max_load)
 		number_label.text = str(trade_goods.get_current_load())
 		progress_bar.max_value = trade_goods.max_load

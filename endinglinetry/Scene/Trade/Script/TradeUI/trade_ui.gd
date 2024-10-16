@@ -33,3 +33,7 @@ func show_goods_details(goods_item:TradeGoodsStruct):
 
 func _on_exit_button_pressed() -> void:
 	visible=false
+
+
+func _on_go_button_pressed() -> void:
+	visible=false

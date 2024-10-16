@@ -13,7 +13,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_Q:
 			if event.pressed:
-				fog.add_light_point(get_global_mouse_position())
+				trade_manage.open_pack_ui()
 
 
 func _on_button_pressed() -> void:

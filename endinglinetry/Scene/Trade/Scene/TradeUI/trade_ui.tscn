@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dovfytcll6bqb"]
+[gd_scene load_steps=13 format=3 uid="uid://dovfytcll6bqb"]
 
 [ext_resource type="Script" path="res://Scene/Trade/Script/TradeUI/trade_ui.gd" id="1_kgsjj"]
 [ext_resource type="PackedScene" uid="uid://c0en6jwj481vt" path="res://Scene/Trade/Scene/TradeUI/goods_list.tscn" id="2_4lnob"]
 [ext_resource type="Texture2D" uid="uid://d2lfqje7lk4iq" path="res://Art/2D/BaseSceneUI/TradeUI/UI_trade.png" id="2_fjmh5"]
-[ext_resource type="Texture2D" uid="uid://cg1an8a2b5v87" path="res://Art/2D/BaseSceneUI/BaseUI/UI_ButtonC.png" id="3_338fg"]
+[ext_resource type="Texture2D" uid="uid://cufxii3itpxkt" path="res://Art/2D/BaseSceneUI/TradeUI/UI_Go.png" id="4_gpv2q"]
 [ext_resource type="PackedScene" uid="uid://ccvum77ne47ov" path="res://Scene/Trade/Scene/TradeUI/goods_trade_details.tscn" id="4_njo8r"]
+[ext_resource type="Texture2D" uid="uid://lc5ni1um5hux" path="res://Art/2D/BaseSceneUI/BaseUI/UI_Close.png" id="4_xyc6d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf38f"]
 atlas = ExtResource("2_fjmh5")
@@ -12,15 +13,15 @@ region = Rect2(11, 5, 314, 176)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lrv12"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0jmu2"]
-texture = ExtResource("3_338fg")
-
-[sub_resource type="Theme" id="Theme_c43f2"]
-Button/styles/normal = SubResource("StyleBoxTexture_0jmu2")
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wp4g1"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pv7eh"]
+texture = ExtResource("4_gpv2q")
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tisms"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pglei"]
+texture = ExtResource("4_xyc6d")
 
 [node name="TradeUI" type="CanvasLayer"]
 script = ExtResource("1_kgsjj")
@@ -29,11 +30,13 @@ script = ExtResource("1_kgsjj")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 6.81812
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_uf38f")
+expand_mode = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 15
@@ -42,7 +45,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 2
+size_flags_vertical = 3
 
 [node name="VBox" type="PanelContainer" parent="VBoxContainer"]
 clip_contents = true
@@ -57,14 +60,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
 text = "交易"
-
-[node name="ExitButton" type="Button" parent="VBoxContainer/VBox"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme = SubResource("Theme_c43f2")
-theme_override_font_sizes/font_size = 50
-text = " X "
 
 [node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 800)
@@ -85,27 +80,56 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wp4g1")
 
 [node name="Control" type="Control" parent="VBoxContainer/HBox"]
+clip_contents = true
 custom_minimum_size = Vector2(395, 0)
 layout_mode = 2
+
+[node name="GoButton" type="Button" parent="VBoxContainer/HBox/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = 147.0
+offset_right = 127.5
+offset_bottom = 232.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/hover = SubResource("StyleBoxTexture_pv7eh")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pv7eh")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pv7eh")
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_right = 25
 
 [node name="GoodsList" parent="VBoxContainer/HBox/MarginContainer2" instance=ExtResource("2_4lnob")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_tisms")
 
+[node name="ExitButton" type="Button" parent="."]
+offset_left = 1759.0
+offset_top = 41.0
+offset_right = 1870.0
+offset_bottom = 111.0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_pglei")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_pglei")
+theme_override_styles/normal = SubResource("StyleBoxTexture_pglei")
+icon_alignment = 1
+expand_icon = true
+
 [node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
 unique_name_in_owner = true
 visible = false
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[connection signal="pressed" from="VBoxContainer/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBox/Control/GoButton" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

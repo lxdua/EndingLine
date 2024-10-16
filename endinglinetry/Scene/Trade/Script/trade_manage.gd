@@ -2,6 +2,7 @@ extends Node2D
 class_name TradeManage
 @onready var player_trade_goods: TradeGoods = $PlayerTradeGoods
 @onready var trade_ui: TradeUI = $TradeUI
+@onready var back_pack_ui: BackPackUI = %BackPackUI
 
 @export_range(0,1) var sell_multiplier:float=0.7
 
@@ -22,6 +23,10 @@ func open_trade_ui(t_goods:TradeGoods):
 func update_list_goods():
 	trade_ui.update_list_goods(player_trade_goods,trade_partner)
 
+func open_pack_ui():
+	back_pack_ui.trade_goods=player_trade_goods
+	back_pack_ui.update()
+	back_pack_ui.visible=true
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

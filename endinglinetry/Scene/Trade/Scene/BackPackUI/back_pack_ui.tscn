@@ -1,12 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://b21dow7f1jk64"]
+[gd_scene load_steps=13 format=3 uid="uid://b21dow7f1jk64"]
 
 [ext_resource type="Script" path="res://Scene/Trade/Script/BackPackUI/back_pack_ui.gd" id="1_1xk6r"]
 [ext_resource type="Script" path="res://Scene/Trade/Scene/BackPackUI/sort_menu_button.gd" id="2_avq5b"]
 [ext_resource type="PackedScene" uid="uid://b0f6khkqepsmf" path="res://Scene/Trade/Scene/BackPackUI/back_pack_item.tscn" id="2_fl7gm"]
+[ext_resource type="Texture2D" uid="uid://cnc0w70xttn8d" path="res://Art/2D/BaseSceneUI/BagUI/BagUI_A.png" id="2_kaci3"]
 [ext_resource type="PackedScene" uid="uid://vgchj1jxs33m" path="res://Scene/Trade/Scene/BackPackUI/pack_item_details.tscn" id="4_0qaot"]
 [ext_resource type="PackedScene" uid="uid://dj30nbe7n8uur" path="res://Scene/Trade/Scene/BackPackUI/pack_item_discard.tscn" id="5_q3nxq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lo3ek"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27jw1"]
+texture = ExtResource("2_kaci3")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a51yi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t122y"]
+bg_color = Color(0.12549, 0.117647, 0.133333, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0wgh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4o2c3"]
 
@@ -34,69 +45,33 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_lo3ek")
 layout_mode = 2
 theme_override_constants/separation = -99
 
-[node name="VBoxContainer" type="VBoxContainer" parent="BackPackUI/HSplitContainer"]
+[node name="PanelContainer2" type="PanelContainer" parent="BackPackUI/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_27jw1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackPackUI/HSplitContainer/PanelContainer2"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="BackPackUI/HSplitContainer/VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 135)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="BackPackUI/HSplitContainer/VBoxContainer/CenterContainer"]
+[node name="Label" type="Label" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/CenterContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "货物"
 
-[node name="PanelContainer" type="PanelContainer" parent="BackPackUI/HSplitContainer/VBoxContainer"]
+[node name="Container2" type="MarginContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_right = 38
 
-[node name="MarginContainer" type="MarginContainer" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = " 载重：
-"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="NumberLabel" type="Label" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="SortMenuButton" type="MenuButton" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/Container2"]
 unique_name_in_owner = true
-layout_mode = 2
-text = "999"
-
-[node name="Label" type="Label" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "/"
-
-[node name="MaxNumberLabel" type="Label" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "999"
-
-[node name="ProgressBar" type="ProgressBar" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-step = 1.0
-value = 14.0
-
-[node name="PanelContainer3" type="PanelContainer" parent="BackPackUI/HSplitContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SortMenuButton" type="MenuButton" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer3"]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "默认排列"
@@ -108,22 +83,99 @@ popup/item_2/text = "价值排序"
 popup/item_2/id = 2
 script = ExtResource("2_avq5b")
 
-[node name="PanelContainer2" type="PanelContainer" parent="BackPackUI/HSplitContainer/VBoxContainer"]
+[node name="Container" type="MarginContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 20
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/Container"]
 layout_mode = 2
 horizontal_scroll_mode = 0
 
-[node name="PackItemList" type="VBoxContainer" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer2/ScrollContainer"]
+[node name="PackItemList" type="VBoxContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/Container/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BackPackItem" parent="BackPackUI/HSplitContainer/VBoxContainer/PanelContainer2/ScrollContainer/PackItemList" instance=ExtResource("2_fl7gm")]
+[node name="BackPackItem" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/Container/ScrollContainer/PackItemList" instance=ExtResource("2_fl7gm")]
 layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_a51yi")
+
+[node name="MarginContainer" type="MarginContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 27
+
+[node name="Label" type="Label" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = " 载重：
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="NumberLabel" type="Label" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "999"
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "/"
+
+[node name="MaxNumberLabel" type="Label" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "999"
+
+[node name="ProgressBar" type="ProgressBar" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = -1
+custom_minimum_size = Vector2(0, 37)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_t122y")
+theme_override_styles/fill = SubResource("StyleBoxFlat_f0wgh")
+step = 1.0
+value = 4.0
+
+[node name="MarginContainer" type="MarginContainer" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 61)
+layout_mode = 2
+theme_override_constants/margin_left = 340
+theme_override_constants/margin_right = 45
+
+[node name="CashLabel" type="Label" parent="BackPackUI/HSplitContainer/PanelContainer2/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "99999999"
+horizontal_alignment = 2
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="BackPackUI/HSplitContainer"]
 clip_contents = true
