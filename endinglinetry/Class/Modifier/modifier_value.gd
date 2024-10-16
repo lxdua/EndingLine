@@ -10,10 +10,13 @@ enum Type { MULTIPLY, ADD }
 @export var value: float:
 	set(v):
 		value = v
-		modifier.value_changed.emit()
+		value_changed.emit()
+
+signal value_changed
 
 func _ready() -> void:
-	modifier.value_changed.emit()
+	value_changed.connect(modifier._on_value_changed)
+	value_changed.emit()
 
 static func create_new_modifier_value(new_source: String, new_type: Type, new_value: float) -> ModifierValue:
 	var new_modifier_value = ModifierValue.new()

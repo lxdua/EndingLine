@@ -26,6 +26,7 @@ func update_list_goods():
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_A:
+			return
 			open_trade_ui($"../Sprite2D/TradeGoods")
 
 

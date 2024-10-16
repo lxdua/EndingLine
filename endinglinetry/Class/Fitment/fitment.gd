@@ -8,6 +8,7 @@ enum Holder { TRAIN, AKI, RUU }
 @export var holder: Holder
 @export_multiline var fitment_content: String
 
+
 ## 获得这个fitment时
 func activate():
 	pass

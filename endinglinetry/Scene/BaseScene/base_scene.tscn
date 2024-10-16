@@ -191,9 +191,11 @@ source = "OverloadModifierValue"
 
 [node name="SolarPanelEfficiencyModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
 script = ExtResource("6_jd4rj")
+modifier_name = "SolarPanelEfficiencyModifier"
 
 [node name="CostEfficiencyModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
 script = ExtResource("6_jd4rj")
+modifier_name = "CostEfficiencyModifier"
 
 [node name="ClockTimer" type="Timer" parent="."]
 process_callback = 0

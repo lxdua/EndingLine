@@ -9,12 +9,12 @@
 station_name = "挪威格伦"
 station_type = 1
 
-[node name="Shop" parent="." index="4" instance=ExtResource("2_0abqb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -5)
+[node name="Shop" parent="." index="3" instance=ExtResource("2_0abqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.50267, -5)
 
-[node name="Factory" parent="." index="5" instance=ExtResource("4_58xoj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, -4)
+[node name="Factory" parent="." index="4" instance=ExtResource("4_58xoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2.50267, -4)
 
-[node name="ChargingPile" parent="." index="6" instance=ExtResource("4_ooi8b")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67644, 1.05713, -5.11189)
+[node name="ChargingPile" parent="." index="5" instance=ExtResource("4_ooi8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.67644, 2.5598, -5.11189)
 cost = 0

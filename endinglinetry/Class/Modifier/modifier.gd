@@ -5,6 +5,9 @@ class_name Modifier
 
 signal value_changed
 
+func _on_value_changed():
+	value_changed.emit()
+
 func get_value(source: String) -> ModifierValue:
 	for value: ModifierValue in get_children():
 		if value.source == source:
