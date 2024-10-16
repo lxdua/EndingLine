@@ -25,6 +25,9 @@ class_name TradeGoods
 @export_category("设置现金")
 @export_range(0,99999) var cash:int
 
+@export_category("设置最大载重")
+@export_range(0,99999) var max_load:int
+
 var goods:Array[TradeGoodsStruct]
 
 
@@ -57,3 +60,11 @@ func set_goods_price_multiplier(id:int,multiplier:float):
 
 func print_all_goods():
 	goods.all(func(g):g.print_goods())
+
+
+func get_current_load()->int:
+	var heavy:int
+	for g in goods:
+		heavy+=trade_manage.get_goods_heavy(g.id)*g.number
+
+	return heavy
