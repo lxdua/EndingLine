@@ -13,7 +13,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_Q:
 			if event.pressed:
-				trade_manage.open_pack_ui()
+				trade_manage.open_back_pack_ui()
 
 
 func _on_button_pressed() -> void:
