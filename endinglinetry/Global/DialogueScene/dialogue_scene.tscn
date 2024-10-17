@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8swe1qhv6rhp"]
+
+[ext_resource type="Script" path="res://Global/DialogueScene/dialogue_scene.gd" id="1_xxqqb"]
+[ext_resource type="Shader" path="res://Shader/GaussianBlur.gdshader" id="3_t47rl"]
+[ext_resource type="Texture2D" uid="uid://c1hjfkx0u4fsw" path="res://Art/2D/Player/Dialogue/AkiPic.png" id="4_4pgvs"]
+[ext_resource type="Shader" path="res://Shader/Gradient.gdshader" id="4_wixod"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_no1lg"]
+shader = ExtResource("3_t47rl")
+shader_parameter/blur = 3.0
+
+[sub_resource type="Gradient" id="Gradient_fgoer"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.396761, 0.82996)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4pr3s"]
+gradient = SubResource("Gradient_fgoer")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k71dv"]
+shader = ExtResource("4_wixod")
+shader_parameter/value = 0.1
+
+[node name="DialogueScene" type="CanvasLayer" node_paths=PackedStringArray("dialogue_ui_root", "role_name_label", "content_label", "selection_container") groups=["DialogueScene"]]
+layer = 10
+script = ExtResource("1_xxqqb")
+dialogue_ui_root = NodePath("DialogueUIRoot")
+role_name_label = NodePath("DialogueUIRoot/DialogueContainer/VBoxContainer/RoleNameLabel")
+content_label = NodePath("DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer/ContentLabel")
+selection_container = NodePath("DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer/SelectionContainer")
+
+[node name="DialogueUIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="DialogueUIRoot"]
+material = SubResource("ShaderMaterial_no1lg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Black" type="TextureRect" parent="DialogueUIRoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_4pr3s")
+
+[node name="RoleContainer" type="HBoxContainer" parent="DialogueUIRoot"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 103.0
+offset_bottom = 707.0
+grow_horizontal = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="RoleL" type="TextureRect" parent="DialogueUIRoot/RoleContainer"]
+material = SubResource("ShaderMaterial_k71dv")
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+texture = ExtResource("4_4pgvs")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RoleM" type="TextureRect" parent="DialogueUIRoot/RoleContainer"]
+material = SubResource("ShaderMaterial_k71dv")
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+texture = ExtResource("4_4pgvs")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="RoleR" type="TextureRect" parent="DialogueUIRoot/RoleContainer"]
+material = SubResource("ShaderMaterial_k71dv")
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+texture = ExtResource("4_4pgvs")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DialogueContainer" type="MarginContainer" parent="DialogueUIRoot"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -414.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUIRoot/DialogueContainer"]
+layout_mode = 2
+
+[node name="RoleNameLabel" type="Label" parent="DialogueUIRoot/DialogueContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.905882, 0.356863, 0.0392157, 1)
+theme_override_font_sizes/font_size = 80
+text = "Aki"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUIRoot/DialogueContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="ContentLabel" type="Label" parent="DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 50
+text = "你好
+你好你好你好"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 0
+
+[node name="SelectionContainer" type="VBoxContainer" parent="DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+theme_override_constants/separation = 10

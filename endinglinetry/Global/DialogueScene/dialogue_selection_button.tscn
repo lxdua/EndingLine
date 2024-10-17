@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1tdll7kcwsty"]
+
+[ext_resource type="Script" path="res://Global/DialogueScene/dialogue_selection_button.gd" id="1_cy0k0"]
+
+[node name="DialogueSelectionButton" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 50
+text = "6666"
+script = ExtResource("1_cy0k0")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
