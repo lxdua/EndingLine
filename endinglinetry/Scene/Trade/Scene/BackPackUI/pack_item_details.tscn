@@ -137,3 +137,5 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_7akch")
 theme_override_styles/normal = SubResource("StyleBoxTexture_7akch")
 text = "丢弃"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="DiscardButton" to="." method="_on_discard_button_pressed"]

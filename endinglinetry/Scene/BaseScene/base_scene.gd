@@ -85,7 +85,7 @@ func _on_under_button_ui_route_selection_button_pressed() -> void:
 
 ## 货物背包
 func _on_under_button_ui_cargo_button_pressed() -> void:
-	pass # TODO 显示货物背包
+	get_tree().get_first_node_in_group("TradeManage").open_back_pack_ui()
 
 ## 遗物栏
 func _on_under_button_ui_fitment_button_pressed() -> void:

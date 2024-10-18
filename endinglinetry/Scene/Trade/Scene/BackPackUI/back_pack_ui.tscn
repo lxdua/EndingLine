@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b21dow7f1jk64"]
+[gd_scene load_steps=15 format=3 uid="uid://b21dow7f1jk64"]
 
 [ext_resource type="Script" path="res://Scene/Trade/Script/BackPackUI/back_pack_ui.gd" id="1_1xk6r"]
 [ext_resource type="Script" path="res://Scene/Trade/Scene/BackPackUI/sort_menu_button.gd" id="2_avq5b"]
@@ -11,7 +11,16 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_27jw1"]
 texture = ExtResource("2_kaci3")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ngtru"]
+bg_color = Color(0.203922, 0.2, 0.215686, 1)
+border_width_left = 1
+border_width_top = 1
+
 [sub_resource type="Theme" id="Theme_1ipuk"]
+default_font_size = 20
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/constants/item_start_padding = 185
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_ngtru")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a51yi"]
 

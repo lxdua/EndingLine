@@ -35,6 +35,7 @@ position = Vector2(1144, 489)
 [node name="PlayerTradeGoods" parent="TradeManage" index="0"]
 add_id = 2
 add_number = 40
+add_g = false
 max_load = 4000
 
 [node name="TradeUI" parent="TradeManage" index="1"]

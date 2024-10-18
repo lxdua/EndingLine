@@ -87,30 +87,37 @@ func get_current_load()->int:
 	return current_load
 
 
-var sort_type:int
+var sort_type:int=0
+var last_sort_type:int=0
+var is_forwar_sort:bool = true
 func sort_goods(a:TradeGoodsStruct,b:TradeGoodsStruct)->bool:
+	if sort_type!=last_sort_type:
+		is_forwar_sort = true
+	else:
+		is_forwar_sort = !is_forwar_sort
 	if sort_type==0:
-		if a.id>b.id:
-			return true
+		if a.id<b.id:
+			return is_forwar_sort
 		else :
-			return false
+			return !is_forwar_sort
 	elif sort_type==1:
 		var a_l = trade_manage.get_goods_heavy(a.id)*a.number
 		var b_l = trade_manage.get_goods_heavy(b.id)*b.number
 		if a_l<b_l:
-			return true
+			return is_forwar_sort
 		else :
-			return false
+			return !is_forwar_sort
 	elif sort_type==2:
 		var a_p = trade_manage.get_goods_price(a.id)*a.number
 		var b_p = trade_manage.get_goods_price(b.id)*b.number
 		if a_p<b_p:
-			return true
+			return is_forwar_sort
 		else :
-			return false
+			return !is_forwar_sort
 	else :
-		return false
+		return !is_forwar_sort
 
 func goods_sort(type:int):
+	last_sort_type=sort_type
 	sort_type=type
 	goods.sort_custom(sort_goods)

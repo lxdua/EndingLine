@@ -34,9 +34,9 @@ func update():
 				pack_item_list.add_child(item)
 				item.trade_goods_struct=g
 				item.update()
-		if !selected_item:
+		if !selected_item or selected_item.number<=0:
+			await get_tree().create_timer(0.01).timeout
 			selected_item=pack_item_list.get_child(0).trade_goods_struct
-			print(selected_item)
 		update_select()
 
 func update_select():
