@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://02qpkmcxafti"]
+[gd_scene load_steps=3 format=3 uid="uid://02qpkmcxafti"]
 
 [ext_resource type="Script" path="res://Scene/FitmentScene/fitment_scene.gd" id="1_n18fp"]
-[ext_resource type="PackedScene" uid="uid://fw1egsaxonf6" path="res://Scene/FitmentScene/fitment_ui.tscn" id="2_mufgj"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="3_6m4ag"]
 
 [node name="FitmentScene" type="Control" node_paths=PackedStringArray("fitment_container")]
@@ -56,22 +55,12 @@ layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
-[node name="FitmentContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
+[node name="FitmentContainer" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 20
-
-[node name="FitmentUI" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/FitmentContainer" instance=ExtResource("2_mufgj")]
-layout_mode = 2
-
-[node name="FitmentUI2" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/FitmentContainer" instance=ExtResource("2_mufgj")]
-layout_mode = 2
-
-[node name="FitmentUI3" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/FitmentContainer" instance=ExtResource("2_mufgj")]
-layout_mode = 2
-
-[node name="FitmentUI4" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/FitmentContainer" instance=ExtResource("2_mufgj")]
-layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 96
+theme_override_constants/v_separation = 20
 
 [node name="CloseButton" type="TextureButton" parent="."]
 layout_mode = 1

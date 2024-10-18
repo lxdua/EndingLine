@@ -73,6 +73,7 @@ train_in_map = NodePath("Map/TrainInMap")
 
 [node name="Map" type="CanvasLayer" parent="."]
 layer = 3
+visible = false
 follow_viewport_enabled = true
 
 [node name="BackGround" type="TextureRect" parent="Map"]

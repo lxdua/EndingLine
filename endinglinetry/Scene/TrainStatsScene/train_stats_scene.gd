@@ -3,6 +3,8 @@ class_name TrainStatsScene
 
 const BUFF_UI = preload("res://Scene/Other/BuffUI/buff_ui.tscn")
 
+
+@export var base_scene: BaseScene
 @export var train_stats_manager: TrainStatsManager
 
 @export var money_label: Label
@@ -22,6 +24,7 @@ func _process(delta: float) -> void:
 
 func _on_close_button_pressed() -> void:
 	visible = false
+	base_scene.hide_all_secondary_scene()
 
 func update_train_stats():
 	money_label.text = "货币：" + str(train_stats_manager.current_money)

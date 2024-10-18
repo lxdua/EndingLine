@@ -49,6 +49,7 @@ TradeManage=""
 TradeUI=""
 TrainStatsManager=""
 BaseScene=""
+CameraSpringArm=""
 
 [gui]
 
