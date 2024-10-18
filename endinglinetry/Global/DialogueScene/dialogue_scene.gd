@@ -150,7 +150,6 @@ func unscramble_spell(spell: String):
 			var aim_role_texr: TextureRect = null
 			for word in spell_arr:
 				word = word.strip_edges()
-				print(word)
 				match word:
 					"Aki":
 						tex = TEXTURE_DICT["Aki"]
