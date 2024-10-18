@@ -13,7 +13,6 @@ var goods_datas:Array[Dictionary]
 func _ready() -> void:
 	load_csv("res://goods_data_table.csv")
 	print(goods_datas)
-	open_back_pack_ui()
 
 
 var trade_partner:TradeGoods

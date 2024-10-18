@@ -35,17 +35,23 @@ var goods:Array[TradeGoodsStruct]
 
 
 func add_goods(id:int,number:int):
-	var g:=TradeGoodsStruct.new()
-	g.set_goods(id,number)
-	var gg=goods.filter(func(g0):return g0.id==g.id)
+	var gg=goods.filter(func(g):return g.id==id)
 	if gg:
-		gg[0].number+=g.number
+		gg[0].number+=number
 	else:
+		var g:=TradeGoodsStruct.new()
+		g.set_goods(id,number)
 		goods.append(g)
 	goods.any(func(g0):
 		g0.trade_goods=self
 		g0.print_goods()
 		)
+
+func add_goods_by_struct(g_strcut:TradeGoodsStruct,number:int):
+	if number>g_strcut.number:
+		number=g_strcut.number
+	g_strcut.number-=number
+	add_goods(g_strcut.id,number)
 
 
 func set_goods_price_multiplier(id:int,multiplier:float):
