@@ -1,4 +1,4 @@
-extends PanelContainer
+extends TextureRect
 class_name PackItemDetails
 
 @onready var name_label: Label = %NameLabel
@@ -9,6 +9,7 @@ class_name PackItemDetails
 @onready var unit_heavy_label: Label = %UnitHeavyLabel
 @onready var total_heavy_label: Label = %TotalHeavyLabel
 @onready var discard_button: Button = %DiscardButton
+@onready var icon: TextureRect = %Icon
 
 @onready var back_pack_ui: BackPackUI = get_tree().get_first_node_in_group("PackUI")
 @onready var trade_manage:TradeManage = get_tree().get_first_node_in_group("TradeManage")
@@ -18,6 +19,7 @@ var trade_goods_struct:TradeGoodsStruct
 func update():
 	trade_goods_struct=back_pack_ui.selected_item
 	if trade_goods_struct:
+		icon.texture=trade_manage.get_goods_icon(trade_goods_struct.id)
 		name_label.text = trade_manage.get_goods_name(trade_goods_struct.id)
 		description_label.text = trade_manage.get_goods_description(trade_goods_struct.id)
 		number_label.text = "数量:"+str(trade_goods_struct.number)

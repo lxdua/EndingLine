@@ -33,8 +33,9 @@ position = Vector2(1144, 489)
 [node name="TradeManage" parent="." instance=ExtResource("3_tihkj")]
 
 [node name="PlayerTradeGoods" parent="TradeManage" index="0"]
-add_id = 1
-add_number = 20
+add_id = 2
+add_number = 40
+max_load = 4000
 
 [node name="TradeUI" parent="TradeManage" index="1"]
 offset = Vector2(288, 162)

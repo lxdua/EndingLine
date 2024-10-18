@@ -2,10 +2,10 @@ extends CenterContainer
 class_name GoodsTradeDetails
 
 @onready var trade_manage: TradeManage = $"../.."
-@onready var goods_name: Label = $PanelContainer/VBoxContainer/CenterContainer/GoodsName
-@onready var goods_number: Label = $PanelContainer/VBoxContainer/VBox/CenterContainer/GoodsNumber
-@onready var number_scroll_bar: HScrollBar = $PanelContainer/VBoxContainer/VBox/HBoxContainer/CenterContainer/NumberScrollBar
-@onready var number_price: Label = $PanelContainer/VBoxContainer/VBox/CenterContainer2/NumberPrice
+@onready var goods_name: Label = %GoodsName
+@onready var goods_number: Label = %GoodsNumber
+@onready var number_scroll_bar: HScrollBar = %NumberScrollBar
+@onready var number_price: Label = %NumberPrice
 
 @onready var popup: PanelContainer = $Popup
 @onready var timer: Timer = $Popup/Timer
