@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://037sbg0aiov6"]
+
+[ext_resource type="Script" path="res://Scene/Other/CameraSpringArm/camera_spring_arm.gd" id="1_fufu7"]
+
+[node name="CameraSpringArm" type="SpringArm3D" groups=["CameraSpringArm"]]
+spring_length = 10.0
+script = ExtResource("1_fufu7")
+
+[node name="Camera" type="Camera3D" parent="."]
+projection = 1
+current = true
+size = 10.0

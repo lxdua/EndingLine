@@ -1,10 +1,11 @@
 extends Control
 class_name FitmentScene
 
-const FITMENT_UI = preload("res://Scene/FitmentScene/fitment_ui.tscn")
+const FITMENT_UI = preload("res://Scene/StationScene/Building/Factory/factory_fitment_ui.tscn")
 
-@export var fitment_container: VBoxContainer
+@export var fitment_container: Container
 
+@export var base_scene: BaseScene
 @onready var train_stats_manager: TrainStatsManager = get_tree().get_first_node_in_group("TrainStatsManager")
 @onready var fitment_handler: FitmentHandler = train_stats_manager.fitment_handler
 
@@ -12,6 +13,7 @@ var fitment_list: Array[Fitment] = []
 
 func _on_close_button_pressed() -> void:
 	hide()
+	base_scene.hide_all_secondary_scene()
 
 func show_scene() -> void:
 	get_fitment_list()

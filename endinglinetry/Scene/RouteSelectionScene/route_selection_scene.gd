@@ -10,6 +10,7 @@ const MAX_TRACK_LENGTH: = INF
 @export var seed_str: String
 @export var station_num: int = 20
 
+@export var base_scene: BaseScene
 @export var train_stats_manager: TrainStatsManager
 
 @export var track_root: Node2D
@@ -255,6 +256,7 @@ var all_visible: bool:
 			map.hide()
 			ui.hide()
 
+
 ## 确认出发
 func _on_set_sail_button_pressed() -> void:
 	hide_station_content()
@@ -271,7 +273,7 @@ func _on_donot_set_sail_button_pressed() -> void:
 func _on_close_button_pressed() -> void:
 	hide_station_content()
 	all_visible = false
-	print("关闭")
+	base_scene.hide_all_secondary_scene()
 
 func _on_close_button_mouse_entered() -> void:
 	close_button_animated_sprite.play("normal")
@@ -282,9 +284,9 @@ func _on_close_button_mouse_exited() -> void:
 #endregion
 
 func _on_destination_id_update(id: int) -> void:
-	show_station_content() # TODO 等城市节点
+	show_station_content()
 
-func show_station_content(): # TODO 等城市节点
+func show_station_content():
 	station_content_container.update_content(
 		station_dict[destination_id].station_scene,
 		matrix[current_station_id][destination_id]
@@ -346,6 +348,8 @@ func _on_follow_button_pressed() -> void:
 	camera.position_smoothing_enabled = true
 
 func camera_zoom(event: InputEvent):
+	if not all_visible:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			if camera.zoom * 1.1 > Vector2(2.0,2.0):

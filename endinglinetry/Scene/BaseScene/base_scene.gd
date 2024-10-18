@@ -14,6 +14,8 @@ const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
 
 @export var first_scene_root: Node3D
 @export var parallax_bg: ParallaxBG
+@export var camera_spring_arm: SpringArm3D
+
 
 func get_current_station() -> Station:
 	return route_selection_scene.station_dict[route_selection_scene.current_station_id]
@@ -65,33 +67,36 @@ func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 @export var train_stats_scene: TrainStatsScene
 @export var fitment_scene: FitmentScene
 
-
 func hide_all_secondary_scene():
+	camera_spring_arm.is_on = true
 	route_selection_scene.all_visible = false
 	train_stats_scene.hide()
+	fitment_scene.hide()
 
 ## 列车属性
 func _on_under_button_ui_health_button_pressed() -> void:
 	train_stats_scene.update_train_stats()
 	train_stats_scene.show()
+	camera_spring_arm.is_on = false
 
 ## 价格走势
 func _on_under_button_ui_price_button_pressed() -> void:
-	pass # Replace with function body.
+	camera_spring_arm.is_on = false
 
 ## 路线选择
 func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
+	camera_spring_arm.is_on = false
 
 ## 货物背包
 func _on_under_button_ui_cargo_button_pressed() -> void:
+	camera_spring_arm.is_on = false
 	pass # TODO 显示货物背包
 
 ## 遗物栏
 func _on_under_button_ui_fitment_button_pressed() -> void:
 	fitment_scene.show_scene()
-
-
+	camera_spring_arm.is_on = false
 
 #endregion
 
