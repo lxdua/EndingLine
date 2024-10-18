@@ -1,70 +1,205 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3vjvtkcp7c0x"]
+[gd_scene load_steps=22 format=3 uid="uid://c3vjvtkcp7c0x"]
 
+[ext_resource type="Texture2D" uid="uid://8v8mx2qnum80" path="res://Art/2D/FitmentUI/UI_Build_Bk.png" id="1_37rsn"]
 [ext_resource type="Script" path="res://Scene/StationScene/Building/Factory/factory_fitment_ui.gd" id="1_ig5ki"]
-[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_kbp2b"]
+[ext_resource type="Texture2D" uid="uid://rwdwc2fimggs" path="res://Art/2D/FitmentUI/UI_Build_Ag.png" id="3_ce24d"]
+[ext_resource type="Texture2D" uid="uid://dbipexupi4ic8" path="res://Art/2D/FitmentUI/UI_Build_A3.png" id="4_o1gs3"]
+[ext_resource type="Texture2D" uid="uid://bv3h5pxja2kru" path="res://Art/2D/FitmentUI/UI_Build_card1.png" id="4_qktpa"]
+[ext_resource type="Shader" path="res://Shader/Outline.gdshader" id="5_5fq01"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i5i1e"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_n8tfv"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rdfpg"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b1hpi"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4x0ki"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gxopn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_okqys"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7wile"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cvinl"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wus01"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58sxt"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1gea0"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_efyv0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0yg85"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_37ovm"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a4ln3"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cj56x"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l0806"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_whbir"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2ieon"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_52r7a"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i0g86"]
 
-[node name="FactoryFitmentUI" type="PanelContainer"]
-custom_minimum_size = Vector2(250, 0)
-offset_right = 250.0
-offset_bottom = 400.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jubu"]
+resource_local_to_scene = true
+shader = ExtResource("5_5fq01")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 0.0
+
+[sub_resource type="Animation" id="Animation_3kgw3"]
+resource_name = "card flip"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/CardFront:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4, 4), Vector2(1e-05, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/CardBack:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 4), Vector2(4, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/ContentLabel:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_024tw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Root/CardFront:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Root/CardBack:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Root/ContentLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1yt0a"]
+_data = {
+"RESET": SubResource("Animation_024tw"),
+"card flip": SubResource("Animation_3kgw3")
+}
+
+[node name="FactoryFitmentUI" type="Button" node_paths=PackedStringArray("card_front", "content_label", "name_label", "border")]
+custom_minimum_size = Vector2(368, 588)
+offset_right = 368.0
+offset_bottom = 588.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_n8tfv")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_b1hpi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_gxopn")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_7wile")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_wus01")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_1gea0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_0yg85")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_a4ln3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_l0806")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_2ieon")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_i0g86")
 script = ExtResource("1_ig5ki")
+card_front = NodePath("Root/CardFront")
+content_label = NodePath("Root/ContentLabel")
+name_label = NodePath("Root/NameLabel")
+border = NodePath("Root/Border")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+[node name="Root" type="Node2D" parent="."]
+position = Vector2(184, 294)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
+[node name="BottomSurface" type="Sprite2D" parent="Root"]
+position = Vector2(0, 42)
+scale = Vector2(4, 4)
+texture = ExtResource("3_ce24d")
 
-[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("1_kbp2b")
-expand_mode = 5
-stretch_mode = 4
+[node name="CardFront" type="Sprite2D" parent="Root"]
+position = Vector2(0, 60)
+scale = Vector2(4, 4)
+texture = ExtResource("4_qktpa")
 
-[node name="ContentLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 30
-text = "6666"
+[node name="CardBack" type="Sprite2D" parent="Root"]
+position = Vector2(0, 60)
+scale = Vector2(1e-05, 4)
+texture = ExtResource("4_o1gs3")
 
-[node name="FactoryFitmentButton" type="Button" parent="."]
-layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_i5i1e")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_rdfpg")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_4x0ki")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_okqys")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_cvinl")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_58sxt")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_efyv0")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_37ovm")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_cj56x")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_whbir")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_52r7a")
+[node name="Border" type="Sprite2D" parent="Root"]
+material = SubResource("ShaderMaterial_0jubu")
+scale = Vector2(4, 4)
+texture = ExtResource("1_37rsn")
 
-[connection signal="pressed" from="FactoryFitmentButton" to="." method="_on_factory_fitment_button_pressed"]
+[node name="ContentLabel" type="Label" parent="Root"]
+custom_minimum_size = Vector2(212, 228)
+anchors_preset = -1
+anchor_left = -0.288
+anchor_top = -0.092
+anchor_right = 0.288
+anchor_bottom = 0.296
+offset_left = -108.0
+offset_top = -56.0
+offset_right = 104.0
+offset_bottom = 172.0
+scale = Vector2(1e-05, 1)
+pivot_offset = Vector2(106, 0)
+theme_override_font_sizes/font_size = 32
+text = "速度提升50%"
+
+[node name="NameLabel" type="Label" parent="Root"]
+anchors_preset = -1
+anchor_left = -0.337
+anchor_top = -0.415
+anchor_right = 0.337
+anchor_bottom = -0.313
+offset_left = -124.0
+offset_top = -240.0
+offset_right = 124.0
+offset_bottom = -187.0
+theme_override_font_sizes/font_size = 36
+text = "导电轴承"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1yt0a")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -11,7 +11,7 @@ func _ready() -> void:
 	if fitment != null:
 		icon.texture = fitment.icon
 		name_label.text = fitment.fitment_name
-		content_label.text = fitment.content
+		content_label.text = fitment.fitment_content
 		if fitment.holder == Fitment.Holder.TRAIN:
 			holder_label.text = "Train"
 		elif fitment.holder == Fitment.Holder.AKI:

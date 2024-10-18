@@ -3,13 +3,13 @@ class_name Factory
 
 const FACTORY_FITMENT_UI = preload("res://Scene/StationScene/Building/Factory/factory_fitment_ui.tscn")
 
-@onready var factory_ui: CanvasLayer = $FactoryUI
-@onready var buy_button: Button = $FactoryUI/PanelContainer/MarginContainer/VBoxContainer/BuyButton
-@onready var fitment_container: HBoxContainer = $FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FitmentContainer
-@onready var price_label: Label = $FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PriceLabel
-@onready var covering_layer: ColorRect = $FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/CoveringLayer
-
 @onready var train_stats_manager: TrainStatsManager = get_tree().get_first_node_in_group("TrainStatsManager")
+
+@export var factory_ui: CanvasLayer
+@export var buy_button: Button
+@export var fitment_container: HBoxContainer
+@export var price_label: Label
+@export var covering_layer: ColorRect
 
 @export var cost: int
 

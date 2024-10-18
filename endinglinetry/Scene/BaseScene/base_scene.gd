@@ -89,7 +89,7 @@ func _on_under_button_ui_cargo_button_pressed() -> void:
 
 ## 遗物栏
 func _on_under_button_ui_fitment_button_pressed() -> void:
-	fitment_scene.show()
+	fitment_scene.show_scene()
 
 
 

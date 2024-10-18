@@ -1,0 +1,39 @@
+{
+	"data": [
+		{
+			"id": "A1001",
+			"next_id": "A1002",
+			"role": "Aki",
+			"content": "聊点什么呢",
+			"effect": "ROLE $ Aki $ L $ IN"
+		},
+		{
+			"id": "A1002",
+			"next_id": "A1003",
+			"role": "Ruu",
+			"content": "你知道TRPG吗",
+			"effect": "ROLE $ Aki $ L $ DARK  |  ROLE $ Ruu $ R $ IN"
+		},
+		{
+			"id": "A1003",
+			"next_id": "#M2001",
+			"role": "Aki",
+			"content": "知道\n就是跑团嘛",
+			"effect": "ROLE $ Aki $ L  |  ROLE $ Ruu $ R $ DARK"
+		},
+		{
+			"id": "A1004",
+			"next_id": "A1005",
+			"role": "Aki",
+			"content": "我114514",
+			"effect": "ROLE $ Aki $ L  |  ROLE $ Ruu $ R $ DARK"
+		},
+		{
+			"id": "A1005",
+			"next_id": "END",
+			"role": "Ruu",
+			"content": "最后一句话",
+			"effect": "ROLE $ Aki $ L $ DARK  |  ROLE $ Ruu $ R"
+		}
+	]
+}
