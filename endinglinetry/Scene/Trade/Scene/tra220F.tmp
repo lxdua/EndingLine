@@ -35,11 +35,10 @@ add_number = 40
 add_g = false
 max_load = 4000
 
-[node name="ExitButton" parent="TradeManage/TradeUI/TextureRect" index="1"]
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 111.0
-offset_bottom = 70.0
+[node name="TradeUI" parent="TradeManage" index="1"]
+offset = Vector2(288, 162)
+scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 288, 162)
 
 [node name="CollectionUI" parent="TradeManage" instance=ExtResource("6_ib8fl")]
 

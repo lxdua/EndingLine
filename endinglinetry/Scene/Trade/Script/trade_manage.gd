@@ -17,6 +17,7 @@ func _ready() -> void:
 
 var trade_partner:TradeGoods
 func open_trade_ui(t_goods:TradeGoods):
+	trade_ui.goods_trade_details.visible=false
 	trade_partner=t_goods
 	update_list_goods()
 	trade_ui.visible=true

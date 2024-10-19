@@ -33,12 +33,15 @@ anchor_bottom = 1.0
 offset_right = 6.81812
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+pivot_offset = Vector2(963, 540)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = SubResource("AtlasTexture_uf38f")
 expand_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,7 +50,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBox" type="PanelContainer" parent="VBoxContainer"]
+[node name="VBox" type="PanelContainer" parent="TextureRect/VBoxContainer"]
 clip_contents = true
 custom_minimum_size = Vector2(0, 190)
 layout_mode = 2
@@ -55,36 +58,36 @@ size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_lrv12")
 
-[node name="Label" type="Label" parent="VBoxContainer/VBox"]
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 50
 text = "交易"
 
-[node name="HBox" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HBox" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 800)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBox"]
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect/VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 25
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 5
 
-[node name="PlayerGoodsList" parent="VBoxContainer/HBox/MarginContainer" instance=ExtResource("2_4lnob")]
+[node name="PlayerGoodsList" parent="TextureRect/VBoxContainer/HBox/MarginContainer" instance=ExtResource("2_4lnob")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_wp4g1")
 
-[node name="Control" type="Control" parent="VBoxContainer/HBox"]
+[node name="Control" type="Control" parent="TextureRect/VBoxContainer/HBox"]
 clip_contents = true
 custom_minimum_size = Vector2(395, 0)
 layout_mode = 2
 
-[node name="GoButton" type="Button" parent="VBoxContainer/HBox/Control"]
+[node name="GoButton" type="Button" parent="TextureRect/VBoxContainer/HBox/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -101,23 +104,29 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_pv7eh")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_pv7eh")
 theme_override_styles/normal = SubResource("StyleBoxTexture_pv7eh")
 
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBox"]
+[node name="MarginContainer2" type="MarginContainer" parent="TextureRect/VBoxContainer/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 25
 
-[node name="GoodsList" parent="VBoxContainer/HBox/MarginContainer2" instance=ExtResource("2_4lnob")]
+[node name="GoodsList" parent="TextureRect/VBoxContainer/HBox/MarginContainer2" instance=ExtResource("2_4lnob")]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_tisms")
 
-[node name="ExitButton" type="Button" parent="."]
-offset_left = 1759.0
-offset_top = 41.0
-offset_right = 1870.0
-offset_bottom = 111.0
+[node name="ExitButton" type="Button" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.971
+anchor_top = 0.07
+anchor_right = 0.971
+anchor_bottom = 0.07
+offset_left = -111.941
+offset_top = -34.6
+offset_right = -0.940552
+offset_bottom = 35.4
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 50
@@ -127,9 +136,10 @@ theme_override_styles/normal = SubResource("StyleBoxTexture_pglei")
 icon_alignment = 1
 expand_icon = true
 
-[node name="GoodsTradeDetails" parent="." instance=ExtResource("4_njo8r")]
+[node name="GoodsTradeDetails" parent="TextureRect" instance=ExtResource("4_njo8r")]
 unique_name_in_owner = true
 visible = false
+layout_mode = 1
 
-[connection signal="pressed" from="VBoxContainer/HBox/Control/GoButton" to="." method="_on_go_button_pressed"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="TextureRect/VBoxContainer/HBox/Control/GoButton" to="." method="_on_go_button_pressed"]
+[connection signal="pressed" from="TextureRect/ExitButton" to="." method="_on_exit_button_pressed"]

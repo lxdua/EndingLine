@@ -1,7 +1,7 @@
 extends CenterContainer
 class_name GoodsTradeDetails
 
-@onready var trade_manage: TradeManage = $"../.."
+@onready var trade_manage: TradeManage = get_tree().get_first_node_in_group("TradeManage")
 @onready var goods_name: Label = %GoodsName
 @onready var goods_number: Label = %GoodsNumber
 @onready var number_scroll_bar: HScrollBar = %NumberScrollBar
@@ -19,6 +19,7 @@ func update_details():
 		number_scroll_bar.max_value=goods_struct.number
 		number_scroll_bar.value=1
 		number_scroll_bar.value=number_scroll_bar.max_value
+		goods_number.text=str(int(number_scroll_bar.value))+"/"+str(number_scroll_bar.max_value)
 
 
 

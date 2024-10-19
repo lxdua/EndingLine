@@ -27,6 +27,15 @@ func update():
 		total_price_label.text = "总价:" + str(trade_manage.get_goods_price(trade_goods_struct.id)*trade_goods_struct.number)
 		unit_heavy_label.text = "单重:" + str(trade_manage.get_goods_heavy(trade_goods_struct.id))
 		total_heavy_label.text = "总重:" + str(trade_manage.get_goods_heavy(trade_goods_struct.id)*trade_goods_struct.number)
+	else:
+		icon.texture = null
+		name_label.text = ""
+		description_label.text = ""
+		number_label.text = "数量:"
+		unit_price_label.text = "单价:"
+		total_price_label.text = "总价:"
+		unit_heavy_label.text = "单重:"
+		total_heavy_label.text = "总重:"
 
 
 func _on_discard_button_pressed() -> void:
