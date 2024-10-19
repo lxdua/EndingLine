@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhalocxt0f8fk"]
 
 [ext_resource type="PackedScene" uid="uid://c60upan5q248f" path="res://Scene/Train3D/train_3d.tscn" id="1_jjegp"]
-[ext_resource type="MeshLibrary" uid="uid://xp3s7qtm0lf6" path="res://Art/MeshLib/ground.tres" id="2_8s5dg"]
+[ext_resource type="MeshLibrary" uid="uid://xp3s7qtm0lf6" path="res://Art/MeshLib/Ground.tres" id="2_8s5dg"]
 
 [node name="TrainScene" type="Node3D"]
 

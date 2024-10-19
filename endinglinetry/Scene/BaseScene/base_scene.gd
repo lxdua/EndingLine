@@ -8,6 +8,10 @@ func _ready() -> void:
 	change_scene_to_station(get_current_station().station_scene)
 	current_time = start_time
 
+func _physics_process(delta: float) -> void:
+	update_current_time(delta)
+	update_sun(delta)
+
 #region 场景相关
 
 const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
@@ -122,14 +126,16 @@ func _on_speed_up_button_button_up() -> void:
 @onready var date_label: Label = $UI/DateContainer/VBoxContainer/DateLabel
 @onready var clock_label: Label = $UI/DateContainer/VBoxContainer/ClockLabel
 
+@onready var sun_light: DirectionalLight3D = $SunLight
+
 var start_time: int = 5*60+30
 
 ## 总分钟
-var current_time: int:
+var current_time: float:
 	set(v):
 		current_time = v
 		date = current_time / 1440
-		clock = current_time % 1440
+		clock = int(current_time) % 1440
 		hour = clock / 60
 		minute = clock % 60
 		update_clock_ui()
@@ -138,6 +144,10 @@ var date: int
 var clock: int
 var hour: int
 var minute: int
+
+func update_sun(delta: float):
+	var sun_rot: = remap(clock/60.0-6, 0.0, 24.0, -180.0, 180.0)
+	sun_light.rotation_degrees.x = lerp(sun_light.rotation_degrees.x, sun_rot, delta * GlobalVar.time_scale)
 
 func update_clock_ui():
 	date_label.text = "第" + str(date) + "天"
@@ -150,8 +160,8 @@ func update_clock_ui():
 		clock_label.text += "0"
 	clock_label.text += str(minute)
 
-func _on_clock_timer_timeout() -> void:
-	current_time += 6 * GlobalVar.time_scale
+func update_current_time(delta: float) -> void:
+	current_time += 6 * delta * GlobalVar.time_scale
 
 func is_daytime():
 	return 6 <= hour and hour <= 18
