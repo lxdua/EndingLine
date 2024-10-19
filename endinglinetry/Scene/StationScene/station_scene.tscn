@@ -1,12 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6b3vhnlytild"]
+[gd_scene load_steps=4 format=3 uid="uid://c6b3vhnlytild"]
 
 [ext_resource type="Script" path="res://Scene/StationScene/station_scene.gd" id="1_10sov"]
 [ext_resource type="PackedScene" uid="uid://c60upan5q248f" path="res://Scene/Train3D/train_3d.tscn" id="2_cgbms"]
+[ext_resource type="MeshLibrary" uid="uid://xp3s7qtm0lf6" path="res://Art/MeshLib/ground.tres" id="3_lgcvc"]
 
 [node name="StationScene" type="Node3D"]
 script = ExtResource("1_10sov")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.77936, 0.626577, 0, -0.626577, 0.77936, 0, 5, 0)
-
 [node name="Train3D" parent="." instance=ExtResource("2_cgbms")]
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.453115, 0)
+mesh_library = ExtResource("3_lgcvc")
+cell_size = Vector3(10, 1, 10)
+data = {
+"cells": PackedInt32Array(0, 0, 0, 65535, 65535, 0, 0, 65535, 1, 65535, 0, 1, 65534, 0, 1, 65534, 65535, 1, 65533, 65535, 1, 65532, 65535, 1, 65532, 0, 1, 65533, 0, 1, 65532, 1, 0, 65533, 1, 1, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65533, 2, 1, 65532, 2, 0, 65532, 3, 0, 65533, 3, 0, 65534, 3, 1, 65535, 3, 0, 0, 3, 0, 1, 2, 0, 1, 1, 0, 1, 0, 0, 1, 65535, 0, 1, 3, 0)
+}

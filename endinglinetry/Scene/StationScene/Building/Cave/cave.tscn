@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Scene/StationScene/Building/Cave/cave.gd" id="2_opg6r"]
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="3_cma3m"]
 
-[node name="Cave" node_paths=PackedStringArray("treasure_pool") instance=ExtResource("1_n368v")]
+[node name="Cave" instance=ExtResource("1_n368v")]
 script = ExtResource("2_opg6r")
-treasure_pool = []
+treasure_pool = Array[int]([])
 item_num = 1
 
 [node name="TradeGoods" type="Node" parent="." index="2"]

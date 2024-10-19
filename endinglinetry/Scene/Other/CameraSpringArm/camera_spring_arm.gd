@@ -4,12 +4,12 @@ extends SpringArm3D
 
 var is_on: bool = true
 
-signal spring_len_update(len: float)
-var dist: float:
+var dist: float = 11:
 	set(v):
-		dist = clamp(v, 5, 20)
-		spring_length = dist
-		spring_len_update.emit(dist)
+		dist = clamp(v, 6.5, 40)
+
+func _process(delta: float) -> void:
+	spring_length = lerp(spring_length, dist, delta * 10.0)
 
 var mouse_pos_x: float
 func _unhandled_input(event: InputEvent) -> void:

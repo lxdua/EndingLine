@@ -16,7 +16,6 @@ const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
 @export var parallax_bg: ParallaxBG
 @export var camera_spring_arm: SpringArm3D
 
-
 func get_current_station() -> Station:
 	return route_selection_scene.station_dict[route_selection_scene.current_station_id]
 
