@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgtf54esu4da7"]
+[gd_scene load_steps=6 format=3 uid="uid://bgtf54esu4da7"]
 
 [ext_resource type="Script" path="res://Scene/TrainStatsScene/train_stats_scene.gd" id="1_f33pd"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_k240c"]
+[ext_resource type="Texture2D" uid="uid://bahndw4hec6yi" path="res://Art/2D/TrainStatsUI/UI_Close.png" id="3_f1t5y"]
+[ext_resource type="Texture2D" uid="uid://bicak37jcneta" path="res://Art/2D/TrainStatsUI/UI_Bmainxxx5.png" id="3_u8u2s"]
+[ext_resource type="Texture2D" uid="uid://docvphalds1ch" path="res://Art/2D/TrainStatsUI/UI_Train1.png" id="4_k1in1"]
 
 [node name="TrainStatsScene" type="Control" node_paths=PackedStringArray("money_label", "load_label", "gather_ability_label", "speed_label", "power_label", "solar_panel_efficiency_label", "cost_efficiency_label", "buff_flow_container")]
 layout_mode = 3
@@ -11,14 +14,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f33pd")
-money_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer/MoneyLabel")
-load_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer/LoadLabel")
-gather_ability_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer/GatherAbilityLabel")
-speed_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer/SpeedLabel")
-power_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer/PowerLabel")
-solar_panel_efficiency_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer/SolarPanelEfficiencyLabel")
-cost_efficiency_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer/CostEfficiencyLabel")
-buff_flow_container = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer/BuffFlowContainer")
+money_label = NodePath("VBoxContainer1/MoneyLabel")
+load_label = NodePath("VBoxContainer1/LoadLabel")
+gather_ability_label = NodePath("VBoxContainer1/GatherAbilityLabel")
+speed_label = NodePath("VBoxContainer2/SpeedLabel")
+power_label = NodePath("VBoxContainer2/PowerLabel")
+solar_panel_efficiency_label = NodePath("VBoxContainer2/SolarPanelEfficiencyLabel")
+cost_efficiency_label = NodePath("VBoxContainer2/CostEfficiencyLabel")
+buff_flow_container = NodePath("ScrollContainer/BuffFlowContainer")
 
 [node name="BG" type="ColorRect" parent="."]
 layout_mode = 1
@@ -29,163 +32,159 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.294118)
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="TrainStatsScenePanel" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1132, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -614.0
-offset_top = -404.0
-offset_right = 614.0
-offset_bottom = 404.0
+offset_left = -612.0
+offset_top = -228.0
+offset_right = 612.0
+offset_bottom = 292.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u8u2s")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(540, 168)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = 124.0
+offset_right = 528.0
+offset_bottom = 292.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 25
-
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 31
-text = "列车属性"
-horizontal_alignment = 1
-
-[node name="StatsContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 20
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="LeftContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer"]
+[node name="BuffFlowContainer" type="HFlowContainer" parent="ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 50
 
-[node name="Title" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer"]
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/BuffFlowContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
-text = "列车"
-horizontal_alignment = 1
-vertical_alignment = 1
+texture = ExtResource("1_k240c")
 
-[node name="MoneyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer"]
+[node name="TextureRect2" type="TextureRect" parent="ScrollContainer/BuffFlowContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+texture = ExtResource("1_k240c")
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.217
+anchor_top = 0.289
+anchor_right = 0.45
+anchor_bottom = 0.559
+offset_left = -0.640015
+offset_top = -0.119995
+offset_right = -6.10352e-05
+offset_bottom = 0.279968
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="VBoxContainer1"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "当前货币量"
 vertical_alignment = 1
 
-[node name="LoadLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer"]
+[node name="LoadLabel" type="Label" parent="VBoxContainer1"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "负重"
 vertical_alignment = 1
 
-[node name="GatherAbilityLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/LeftContainer"]
+[node name="GatherAbilityLabel" type="Label" parent="VBoxContainer1"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "采集力"
 vertical_alignment = 1
 
-[node name="RightContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 50
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.289
+anchor_right = 0.783
+anchor_bottom = 0.559
+offset_top = -0.119995
+offset_right = 0.639893
+offset_bottom = 0.279968
+theme_override_constants/separation = 30
+alignment = 1
 
-[node name="SpeedLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer"]
+[node name="SpeedLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "速度"
 vertical_alignment = 1
 
-[node name="PowerLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer"]
+[node name="PowerLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "能源"
 
-[node name="SolarPanelEfficiencyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer"]
+[node name="SolarPanelEfficiencyLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "产能速度"
 
-[node name="CostEfficiencyLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/StatsContainer/MarginContainer/HBoxContainer/RightContainer"]
+[node name="CostEfficiencyLabel" type="Label" parent="VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 40
 text = "耗能速度"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
+[node name="TrainStatsSceneBorder" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1320, 704)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -352.0
+offset_right = 660.0
+offset_bottom = 352.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_k1in1")
 
-[node name="RoleContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 200)
+[node name="Title" type="Label" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BuffContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="BuffFlowContainer" type="HFlowContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer/BuffFlowContainer"]
-layout_mode = 2
-texture = ExtResource("1_k240c")
-
-[node name="TextureRect2" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer/BuffFlowContainer"]
-layout_mode = 2
-texture = ExtResource("1_k240c")
-
-[node name="TextureRect3" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer/BuffFlowContainer"]
-layout_mode = 2
-texture = ExtResource("1_k240c")
-
-[node name="TextureRect4" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer/BuffFlowContainer"]
-layout_mode = 2
-texture = ExtResource("1_k240c")
-
-[node name="TextureRect5" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuffContainer/MarginContainer/ScrollContainer/BuffFlowContainer"]
-layout_mode = 2
-texture = ExtResource("1_k240c")
+anchor_left = 0.41
+anchor_top = 0.178
+anchor_right = 0.59
+anchor_bottom = 0.259
+offset_left = 0.799927
+offset_top = -0.240005
+offset_right = -0.800049
+offset_bottom = 0.279999
+theme_override_font_sizes/font_size = 50
+text = "列车属性"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CloseButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 1495.0
-offset_top = 96.0
-offset_right = 1623.0
-offset_bottom = 224.0
-texture_normal = ExtResource("1_k240c")
+custom_minimum_size = Vector2(128, 80)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.812
+anchor_top = 0.19
+anchor_right = 0.812
+anchor_bottom = 0.19
+offset_left = -151.04
+offset_top = -1.20001
+offset_right = -23.04
+offset_bottom = 78.8
+texture_normal = ExtResource("3_f1t5y")
+stretch_mode = 0
 
 [connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
