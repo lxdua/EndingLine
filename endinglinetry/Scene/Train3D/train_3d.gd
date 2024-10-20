@@ -13,11 +13,8 @@ var opacity: float:
 		opacity = v
 		opacity_update.emit()
 
-func _ready() -> void:
-	camera_spring_arm.spring_len_update.connect(_on_spring_len_update)
-
-func _on_spring_len_update(len: float):
-	opacity = clamp(remap(len, 10.0, 15.0, 0.0, 1.0), 0.0, 1.0)
+func _process(delta: float) -> void:
+	opacity = clamp(remap(camera_spring_arm.spring_length, 10.0, 15.0, 0.0, 1.0), 0.0, 1.0)
 
 func _on_opacity_update() -> void:
 	for i in _4d.mesh.get_surface_count():

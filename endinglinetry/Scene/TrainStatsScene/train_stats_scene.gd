@@ -27,13 +27,13 @@ func _on_close_button_pressed() -> void:
 	base_scene.hide_all_secondary_scene()
 
 func update_train_stats():
-	money_label.text = "货币：" + str(train_stats_manager.current_money)
-	load_label.text = "负重：" + str(train_stats_manager.current_train_load) + " / " + str(train_stats_manager.max_train_load)
-	gather_ability_label.text = "采集力：" + str(train_stats_manager.gather_ability)
-	speed_label.text = "速度：" + str(train_stats_manager.current_speed)
-	power_label.text = "能源量：" + str(int(train_stats_manager.current_power)) + " / " + str(train_stats_manager.max_power)
-	solar_panel_efficiency_label.text = "产能速度：" + str(train_stats_manager.solar_panel_efficiency)
-	cost_efficiency_label.text = "耗能速度：" + str(train_stats_manager.cost_efficiency)
+	money_label.text = "货币： " + str(train_stats_manager.current_money)
+	load_label.text = "负重： " + str(train_stats_manager.current_train_load) + " / " + str(train_stats_manager.max_train_load)
+	gather_ability_label.text = "采集力： " + str(train_stats_manager.gather_ability)
+	speed_label.text = "速度： " + str(train_stats_manager.current_speed)
+	power_label.text = "能源量： " + str(int(train_stats_manager.current_power)) + " / " + str(train_stats_manager.max_power)
+	solar_panel_efficiency_label.text = "产能速度： " + str(train_stats_manager.solar_panel_efficiency)
+	cost_efficiency_label.text = "耗能速度： " + str(train_stats_manager.cost_efficiency)
 
 func update_buff_ui():
 	for buff_ui in buff_flow_container.get_children():
