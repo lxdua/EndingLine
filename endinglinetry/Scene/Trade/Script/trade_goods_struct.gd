@@ -1,6 +1,5 @@
-extends Node
-class_name TradeGoodsStruct
 
+class_name TradeGoodsStruct
 var id:int=0
 var number:int=0
 var price_multiplier:float=1

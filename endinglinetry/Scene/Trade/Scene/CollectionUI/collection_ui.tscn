@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkfv2wu2ud721"]
+
+[ext_resource type="Texture2D" uid="uid://b34fiwncjeaox" path="res://Art/2D/BaseSceneUI/BaseUI/UI_gather.png" id="1_dfe03"]
+[ext_resource type="Script" path="res://Scene/Trade/Script/CollectionUI/collection_ui.gd" id="1_dlb1v"]
+[ext_resource type="PackedScene" uid="uid://b0f6khkqepsmf" path="res://Scene/Trade/Scene/BackPackUI/back_pack_item.tscn" id="3_2ed3x"]
+[ext_resource type="Texture2D" uid="uid://cg1an8a2b5v87" path="res://Art/2D/BaseSceneUI/BaseUI/UI_ButtonC.png" id="4_wtatq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_j53f1"]
+texture = ExtResource("4_wtatq")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8y1i0"]
+texture = ExtResource("4_wtatq")
+
+[node name="CollectionUI" type="CanvasLayer"]
+script = ExtResource("1_dlb1v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 500)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.023
+offset_top = -250.0
+offset_right = 446.023
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.44, 1.44)
+pivot_offset = Vector2(446.023, 250)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_dfe03")
+expand_mode = 3
+
+[node name="PlayerGoodsList" type="ScrollContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(446, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 11.0
+offset_top = -157.0
+offset_right = 457.0
+offset_bottom = 321.0
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+horizontal_scroll_mode = 0
+
+[node name="PlayerGoodsList" type="VBoxContainer" parent="TextureRect/PlayerGoodsList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackPackItem" parent="TextureRect/PlayerGoodsList/PlayerGoodsList" instance=ExtResource("3_2ed3x")]
+layout_mode = 2
+
+[node name="GoodsList" type="ScrollContainer" parent="TextureRect"]
+custom_minimum_size = Vector2(446, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -352.573
+offset_top = -157.0
+offset_right = 93.4268
+offset_bottom = 321.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+horizontal_scroll_mode = 0
+
+[node name="GoodsList" type="VBoxContainer" parent="TextureRect/GoodsList"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="BackPackItem" parent="TextureRect/GoodsList/GoodsList" instance=ExtResource("3_2ed3x")]
+layout_mode = 2
+
+[node name="GetButton" type="Button" parent="TextureRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.023
+offset_top = 37.7222
+offset_right = 150.977
+offset_bottom = 147.722
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.32, 0.32)
+pivot_offset = Vector2(149.023, 55.7394)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_j53f1")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_j53f1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_j53f1")
+text = "全部获取"
+
+[node name="CloseButton" type="Button" parent="TextureRect"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.023
+offset_top = 104.389
+offset_right = 150.977
+offset_bottom = 214.389
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.32, 0.32)
+pivot_offset = Vector2(149.023, 55.7394)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxTexture_8y1i0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_8y1i0")
+theme_override_styles/normal = SubResource("StyleBoxTexture_8y1i0")
+text = "关闭"
+
+[connection signal="pressed" from="TextureRect/GetButton" to="." method="_on_get_button_pressed"]
+[connection signal="pressed" from="TextureRect/CloseButton" to="." method="_on_close_button_pressed"]

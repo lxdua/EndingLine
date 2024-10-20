@@ -5,6 +5,7 @@ class_name SortMenuButton
 var sort_id:int=0
 
 func _ready() -> void:
+	get_popup()
 	get_popup().id_pressed.connect(_popup_pressed)
 	text=get_popup().get_item_text(0)
 
