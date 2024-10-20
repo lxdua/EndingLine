@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/route_selection_scene.gd" id="1_uwgh6"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_wsivo"]
-[ext_resource type="Texture2D" uid="uid://bgh13l5vk2y8d" path="res://Art/2D/RouteSelectionUI/rssbg.png" id="2_3ga85"]
+[ext_resource type="Texture2D" uid="uid://bgh13l5vk2y8d" path="res://Art/2D/RouteSelectionSceneUI/rssbg.png" id="2_3ga85"]
 [ext_resource type="Texture2D" uid="uid://dp6jmpg77eytu" path="res://Art/2D/BaseSceneUI/UnderButtonUI/MainUiTrain.png" id="3_aa8ap"]
 [ext_resource type="PackedScene" uid="uid://bjn0jxrrcrn7u" path="res://Scene/RouteSelectionScene/TrainInMap/train_in_map.tscn" id="3_d0dn0"]
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/StationContentContainer/station_content_container.gd" id="5_m5r5u"]
@@ -73,24 +73,11 @@ train_in_map = NodePath("Map/TrainInMap")
 
 [node name="Map" type="CanvasLayer" parent="."]
 layer = 3
-visible = false
 follow_viewport_enabled = true
 
-[node name="BackGround" type="TextureRect" parent="Map"]
+[node name="BackGround" type="Sprite2D" parent="Map"]
 modulate = Color(0.641934, 0.641934, 0.641934, 1)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3960.0
-offset_top = -3540.0
-offset_right = 2040.0
-offset_bottom = 2460.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(32, 32)
-mouse_filter = 0
+scale = Vector2(10, 10)
 texture = ExtResource("2_3ga85")
 
 [node name="TrackRoot" type="Node2D" parent="Map"]
@@ -104,10 +91,10 @@ default_color = Color(0, 0.975509, 0.984029, 1)
 
 [node name="Camera" type="Camera2D" parent="Map"]
 position = Vector2(285, 347)
-limit_left = -3000
-limit_top = -3000
-limit_right = 3000
-limit_bottom = 3000
+limit_left = -2500
+limit_top = -2500
+limit_right = 2500
+limit_bottom = 2500
 limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -250,7 +237,6 @@ texture_normal = ExtResource("1_wsivo")
 position = Vector2(960, 540)
 
 [connection signal="destination_id_update" from="." to="." method="_on_destination_id_update"]
-[connection signal="gui_input" from="Map/BackGround" to="." method="_on_back_ground_gui_input"]
 [connection signal="mouse_entered" from="UI/CloseButton" to="." method="_on_close_button_mouse_entered"]
 [connection signal="mouse_exited" from="UI/CloseButton" to="." method="_on_close_button_mouse_exited"]
 [connection signal="pressed" from="UI/CloseButton" to="." method="_on_close_button_pressed"]

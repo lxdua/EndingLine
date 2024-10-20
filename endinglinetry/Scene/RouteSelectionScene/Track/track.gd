@@ -10,7 +10,6 @@ var track_length: int
 @onready var track_line: Line2D = $TrackLine
 @onready var track_area: Area2D = $TrackArea
 @onready var track_collision_shape: CollisionShape2D = $TrackArea/TrackCollisionShape
-@onready var track_arrow: Polygon2D = $TrackArrow
 
 func _ready() -> void:
 	init_track()
@@ -28,8 +27,6 @@ func init_track():
 	dist *= 1.0 - 32.0 / dist.length()
 	track_line.add_point(Vector2.ZERO)
 	track_line.add_point(dist)
-	track_arrow.position = dist
-	track_arrow.rotation = dist.angle()
 	var new_shape = RectangleShape2D.new()
 	new_shape.size.y = track_line.width
 	new_shape.size.x = dist.length()

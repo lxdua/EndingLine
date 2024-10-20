@@ -15,11 +15,15 @@ func make_random_map(sta_sum: int, seed_str: String):
 	else:
 		seed_str = Time.get_time_string_from_system()
 		seed(seed_str.hash())
-		print(seed_str)
-	make_station()
+		prints("种子：", seed_str)
+	make_station(station_sum-2)
 	sort_by_dist()
-	make_track()
-	make_buildable_track()
+	make_track(1, station_sum-2)
+	make_track(1, (station_sum-2)/2.0)
+	make_buildable_track((station_sum-2)/2.0, station_sum-2)
+
+	make_st_ed()
+
 	return return_map_res()
 
 func return_map_res():
@@ -66,8 +70,8 @@ var sta_list: Array[_Station]
 var tra_list: Array[_Track]
 var bu_tra_list: Array[_Buildable_Track]
 
-func make_station():
-	for id in range(station_sum):
+func make_station(n: int):
+	for id in range(n):
 		var new_sta_arr = []
 		for i in range(add_num):
 			var new_sta_pos: Vector2i
@@ -87,19 +91,50 @@ func make_station():
 		var new_sta = _Station.new(id, new_sta_arr[0]["pos"])
 		sta_list.append(new_sta)
 
-func make_track():
-	for i in range(station_sum):
+func make_track(u: int, v: int):
+	for i in range(u, v):
 		var id1: int = sta_list[i].id
 		var id2: int = get_nearest_sta(i)
 		add_track(id1, id2)
 		sta_con.append([id1, id2])
 
-func make_buildable_track():
-	for i in range(station_sum):
+func make_buildable_track(u: int, v: int):
+	for i in range(u, v):
 		var id1: int = sta_list[i].id
 		var id2: int = get_nearest_sta(i)
 		add_buildable_track(id1, id2)
 		sta_con.append([id1, id2])
+
+func make_st_ed():
+	make_station(2)
+
+	var st: _Station = sta_list[station_sum-2]
+	var st_arr: Array[_Station] = []
+	for sta in sta_list:
+		if sta == st:
+			continue
+		st_arr.append(sta)
+	st_arr.sort_custom(func(x: _Station, y: _Station):
+		var dx: = (st.pos - x.pos).length()
+		var dy: = (st.pos - y.pos).length()
+		return dx < dy
+	)
+	add_track(station_sum-2, st_arr[0].id, false)
+	sta_con.append([station_sum-2, st_arr[0].id])
+
+	var ed: _Station = sta_list[station_sum-1]
+	var ed_arr: Array[_Station] = []
+	for sta in sta_list:
+		if sta == ed or sta == st:
+			continue
+		ed_arr.append(sta)
+	ed_arr.sort_custom(func(x: _Station, y: _Station):
+		var dx: = (ed.pos - x.pos).length()
+		var dy: = (ed.pos - y.pos).length()
+		return dx < dy
+	)
+	bu_tra_list.append(_Buildable_Track.new(station_sum-1, ed_arr[0].id))
+	sta_con.append([station_sum-1, ed_arr[0].id])
 
 var sta_sort_by_dist: Array[Array]
 var sta_con: Array[Array]
@@ -124,8 +159,8 @@ func get_nearest_sta(id: int):
 			return s2.id
 	return null
 
-func add_track(id1: int, id2: int):
-	if not check_track(id1, id2):
+func add_track(id1: int, id2: int, should_check: bool = true):
+	if not check_track(id1, id2) and should_check:
 		return
 	tra_list.append(_Track.new(id1, id2))
 	tra_list.append(_Track.new(id2, id1))
@@ -155,10 +190,40 @@ func check_track(id1: int, id2: int):
 			if C==A or C==B or D==A or D==B:
 				continue
 			return false
+	for tra in bu_tra_list:
+		var C: Vector2 = sta_list[tra.st].pos
+		var D: Vector2 = sta_list[tra.ed].pos
+		if max(C.x,D.x)<min(A.x,B.x) or max(C.y,D.y)<min(A.y,B.y) or max(A.x,B.x)<min(C.x,D.x) or max(A.y,B.y)<min(C.y,D.y):
+			continue
+		var cd: Vector2 = D - C
+		var ca: Vector2 = A - C
+		var cb: Vector2 = B - C
+		var v1 = cd.cross(ca)
+		var v2 = cd.cross(cb)
+		if v1*v2 <= 0:
+			if C==A or C==B or D==A or D==B:
+				continue
+			return false
 #endregion
 
 #region 检查角度
 	for tra in tra_list:
+		var pst: Vector2 = sta_list[tra.st].pos
+		var ped: Vector2 = sta_list[tra.ed].pos
+		var angle_bet
+		if tra.st==id1:
+			angle_bet = ab.angle_to(ped - pst)
+		elif tra.ed==id1:
+			angle_bet = ab.angle_to(pst - ped)
+		elif tra.st==id2:
+			angle_bet = ba.angle_to(pst - ped)
+		elif tra.ed==id2:
+			angle_bet = ba.angle_to(ped - pst)
+		else:
+			continue
+		if abs(angle_bet) < PI/12.0:
+			return false
+	for tra in bu_tra_list:
 		var pst: Vector2 = sta_list[tra.st].pos
 		var ped: Vector2 = sta_list[tra.ed].pos
 		var angle_bet

@@ -1,8 +1,7 @@
 extends Node
 class_name StationDeployer
 
-
-static var station_list: Dictionary = {
+const STATION_LIST: Dictionary = {
 	StationScene.StationType.RUINS: [
 		preload("res://Resource/StationScene/Ruins/原爆点.tscn"),
 		preload("res://Resource/StationScene/Ruins/多米诺废墟.tscn"),
@@ -26,7 +25,7 @@ static var station_list: Dictionary = {
 	],
 }
 
-static func deploy_station(degree: int) -> StationScene:
+func deploy_station(degree: int) -> StationScene:
 	var station_type: StationScene.StationType
 	if degree == 1:
 		var rand_num = randi_range(1, 30+20+50)
@@ -56,6 +55,6 @@ static func deploy_station(degree: int) -> StationScene:
 			station_type = StationScene.StationType.BEACON
 		elif rand_num <= 50+5+25+20:
 			station_type = StationScene.StationType.RUINS
-	var station_array = station_list[station_type]
+	var station_array = STATION_LIST[station_type]
 	var station_packed_scene: PackedScene = station_array[randi_range(0, station_array.size()-1)]
 	return station_packed_scene.instantiate()

@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	camera_zoom(event)
+	drag_scene(event)
 
 #region 地图相关
 
@@ -186,7 +187,8 @@ var drive_tween: Tween
 var route_list: Array[int]
 
 func init_train():
-	current_station_id = idx - 1
+	# TODO 起点
+	current_station_id = idx - 2
 	next_station_id = current_station_id
 	train_in_map.global_position = station_dict[current_station_id].station_position
 
@@ -333,7 +335,7 @@ func camera_follow_train(delta: float):
 	if is_following:
 		camera.global_position = lerp(camera.global_position, train_in_map.global_position, delta)
 
-func _on_back_ground_gui_input(event: InputEvent) -> void:
+func drag_scene(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		mouse_pos = get_viewport().get_mouse_position()
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -356,7 +358,7 @@ func camera_zoom(event: InputEvent):
 				return
 			camera.zoom *= 1.1
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if camera.zoom / 1.1 < Vector2(0.8,0.8):
+			if camera.zoom / 1.1 < Vector2(0.7,0.7):
 				return
 			camera.zoom /= 1.1
 

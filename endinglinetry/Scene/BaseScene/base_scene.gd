@@ -26,8 +26,7 @@ func get_current_station() -> Station:
 func change_scene_to_station(station_scene: StationScene):
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
-	if get_current_station().station_id == 0:
-		station_scene.add_child(preload("res://Scene/StationScene/Building/Portals/portals.tscn").instantiate())
+	check_portals(station_scene)
 	first_scene_root.add_child(station_scene)
 	parallax_bg.stop_scroll()
 
@@ -54,6 +53,10 @@ func set_out():
 	await get_tree().create_timer(1.0).timeout
 	CurtainLayer.fade_out()
 
+func check_portals(station_scene: StationScene):
+	if get_current_station().station_id == route_selection_scene.idx - 1:
+		station_scene.add_child(preload("res://Scene/StationScene/Building/Portals/portals.tscn").instantiate())
+
 func _on_route_selection_scene_set_out(station: Station) -> void:
 	set_out()
 
@@ -71,6 +74,7 @@ func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 @export var fitment_scene: FitmentScene
 
 func hide_all_secondary_scene():
+	show()
 	camera_spring_arm.is_on = true
 	route_selection_scene.all_visible = false
 	train_stats_scene.hide()
@@ -90,6 +94,7 @@ func _on_under_button_ui_price_button_pressed() -> void:
 func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
 	camera_spring_arm.is_on = false
+	hide()
 
 ## 货物背包
 func _on_under_button_ui_cargo_button_pressed() -> void:
