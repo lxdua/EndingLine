@@ -5,6 +5,7 @@ class_name CollectionUI
 
 @onready var player_goods_list: VBoxContainer = %PlayerGoodsList
 @onready var goods_list: VBoxContainer = %GoodsList
+@onready var get_button: Button = %GetButton
 
 
 const BACK_PACK_ITEM = preload("res://Scene/Trade/Scene/BackPackUI/back_pack_item.tscn")
@@ -19,28 +20,40 @@ func update():
 		c.queue_free()
 	for c:PackItem in goods_list.get_children():
 		goods_list.remove_child(c)
-		c.trade_goods_struct.free()
 		c.queue_free()
 
 	for g in trade_manage.player_trade_goods.goods:
 		var item:PackItem = BACK_PACK_ITEM.instantiate()
+		player_goods_list.add_child(item)
 		item.trade_goods_struct=g
 		item.update()
-		player_goods_list.add_child(item)
 	for r in resources:
 		var item:PackItem = BACK_PACK_ITEM.instantiate()
 		var g_s=TradeGoodsStruct.new()
+		goods_list.add_child(item)
 		g_s.id=r.id
 		g_s.number=r.number
 		item.trade_goods_struct=g_s
 		item.update()
-		goods_list.add_child(item)
+		item.pressed.connect(_goods_list_item_pressed)
 
+	get_button.disabled=goods_list.get_child_count()<=0
+
+func _goods_list_item_pressed(item:PackItem):
+	trade_manage.player_trade_goods.add_goods_by_struct(item.trade_goods_struct,9999)
+	resources.all(func(r):
+		if r.id==item.trade_goods_struct.id:
+			resources.erase(r)
+	)
+	update()
 
 
 func _on_get_button_pressed() -> void:
-	pass # Replace with function body.0
+	for r in resources:
+		trade_manage.player_trade_goods.add_goods(r.id,r.number)
+	resources.clear()
+	update()
 
 
 func _on_close_button_pressed() -> void:
-	pass # Replace with function body.
+	visible=false

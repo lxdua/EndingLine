@@ -1,6 +1,6 @@
 extends CanvasLayer
 class_name TradeUI
-@onready var trade_manage: TradeManage = $".."
+@onready var trade_manage: TradeManage = get_tree().get_first_node_in_group("TradeManage")
 @onready var player_goods_list: GoodsList = %PlayerGoodsList
 @onready var goods_list: GoodsList = %GoodsList
 @onready var goods_trade_details: GoodsTradeDetails = %GoodsTradeDetails

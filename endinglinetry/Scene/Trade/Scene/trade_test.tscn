@@ -1,12 +1,38 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds22m5lc08ove"]
+[gd_scene load_steps=15 format=3 uid="uid://ds22m5lc08ove"]
 
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="1_3bwyt"]
 [ext_resource type="Script" path="res://Scene/Trade/Scene/trade_test.gd" id="1_hi412"]
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="2_1c4b1"]
+[ext_resource type="Script" path="res://Scene/Trade/Script/CollectionUI/collection_resource.gd" id="2_66mp7"]
 [ext_resource type="PackedScene" uid="uid://dox7bvx5bfsib" path="res://Scene/Trade/Scene/trade_manage.tscn" id="3_tihkj"]
 [ext_resource type="PackedScene" uid="uid://bqlovuqd4c8np" path="res://Scene/Fog/Fog.tscn" id="4_1elm1"]
 [ext_resource type="Texture2D" uid="uid://ddvvquvlpibdq" path="res://Art/2D/BaseSceneUI/BaseUI/UI_ButtonB.png" id="6_ames3"]
 [ext_resource type="PackedScene" uid="uid://bkfv2wu2ud721" path="res://Scene/Trade/Scene/CollectionUI/collection_ui.tscn" id="6_ib8fl"]
+
+[sub_resource type="Resource" id="Resource_vikjh"]
+script = ExtResource("2_66mp7")
+id = 1
+number = 5
+
+[sub_resource type="Resource" id="Resource_rgypn"]
+script = ExtResource("2_66mp7")
+id = 0
+number = 10
+
+[sub_resource type="Resource" id="Resource_12ab4"]
+script = ExtResource("2_66mp7")
+id = 2
+number = 5
+
+[sub_resource type="Resource" id="Resource_tbq5q"]
+script = ExtResource("2_66mp7")
+id = 3
+number = 5
+
+[sub_resource type="Resource" id="Resource_wis51"]
+script = ExtResource("2_66mp7")
+id = 4
+number = 5
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_10r0n"]
 texture = ExtResource("6_ames3")
@@ -14,6 +40,7 @@ region_rect = Rect2(0, 0, 17, 17)
 
 [node name="TradeTest" type="Node2D"]
 script = ExtResource("1_hi412")
+collection_resource = Array[ExtResource("2_66mp7")]([SubResource("Resource_vikjh"), SubResource("Resource_rgypn"), SubResource("Resource_12ab4"), SubResource("Resource_tbq5q"), SubResource("Resource_wis51")])
 metadata/_edit_horizontal_guides_ = [-673.0]
 
 [node name="Sprite2D" type="Button" parent="."]
@@ -42,6 +69,8 @@ offset_right = 111.0
 offset_bottom = 70.0
 
 [node name="CollectionUI" parent="TradeManage" instance=ExtResource("6_ib8fl")]
+unique_name_in_owner = true
+visible = false
 
 [node name="TradeGoods" type="Node" parent="."]
 script = ExtResource("2_1c4b1")

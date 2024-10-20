@@ -22,10 +22,11 @@ func update():
 		price_label.text = str(get_tree().get_first_node_in_group("TradeManage").get_goods_price(trade_goods_struct.id)*trade_goods_struct.number)
 		heavy_label.text = str(get_tree().get_first_node_in_group("TradeManage").get_goods_heavy(trade_goods_struct.id)*trade_goods_struct.number)
 
-
+signal pressed(item)
 func _on_reference_rect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				emit_signal("pressed",self)
 				back_pack_ui.selected_item = trade_goods_struct
 				back_pack_ui.update_select()

@@ -3,6 +3,7 @@ class_name TradeManage
 @onready var player_trade_goods: TradeGoods = $PlayerTradeGoods
 @onready var trade_ui: TradeUI = $TradeUI
 @onready var back_pack_ui: BackPackUI = %BackPackUI
+@onready var collection_ui: CollectionUI = %CollectionUI
 
 
 @export_range(0,1) var sell_multiplier:float=0.7
@@ -75,6 +76,11 @@ func open_back_pack_ui():
 	back_pack_ui.update()
 	back_pack_ui.visible=true
 
+
+func open_collection_ui(resources:Array[CollectionResource]):
+	collection_ui.resources=resources
+	collection_ui.update()
+	collection_ui.visible=true
 
 
 
