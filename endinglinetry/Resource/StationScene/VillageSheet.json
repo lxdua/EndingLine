@@ -1,0 +1,15 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"village_name": "埃利迪",
+			"tax_rate": 5,
+			"demand": "无线电通讯器，煤炭",
+			"demand_num": 30,
+			"supply_and_demand": "冰晶，盐，糖",
+			"supply_and_demand_num": 50,
+			"supply": "布料",
+			"supply_num": 99
+		}
+	]
+}

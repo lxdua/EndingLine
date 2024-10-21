@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_ybstd"]
 
 [node name="Building" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 script = ExtResource("1_7inb2")
 
 [node name="BuildingSprite" type="Sprite3D" parent="."]

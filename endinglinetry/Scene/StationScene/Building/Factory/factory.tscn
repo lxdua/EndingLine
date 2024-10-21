@@ -11,6 +11,7 @@ texture = ExtResource("4_ow0hm")
 texture = ExtResource("4_ow0hm")
 
 [node name="Factory" node_paths=PackedStringArray("factory_ui", "buy_button", "fitment_container", "price_label", "covering_layer") instance=ExtResource("1_faqfp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
 script = ExtResource("2_aqkp5")
 factory_ui = NodePath("FactoryUI")
 buy_button = NodePath("FactoryUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuyButton")

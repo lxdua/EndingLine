@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scene/StationScene/Building/Ruins/ruins.gd" id="2_h57n4"]
 
 [node name="Ruins" instance=ExtResource("1_xyc8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 1, 0)
 script = ExtResource("2_h57n4")
 
 [node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]

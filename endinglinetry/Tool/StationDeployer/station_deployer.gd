@@ -1,28 +1,15 @@
 extends Node
 class_name StationDeployer
 
+const STATION_SCENE = preload("res://Scene/StationScene/station_scene.tscn")
+
 const STATION_LIST: Dictionary = {
-	StationScene.StationType.RUINS: [
-		preload("res://Resource/StationScene/Ruins/原爆点.tscn"),
-		preload("res://Resource/StationScene/Ruins/多米诺废墟.tscn"),
-		preload("res://Resource/StationScene/Ruins/奥斯维辛.tscn"),
-	],
-	StationScene.StationType.CITY: [
-		preload("res://Resource/StationScene/City/挪威格伦.tscn"),
-		preload("res://Resource/StationScene/City/斯德哥尔摩.tscn"),
-	],
-	StationScene.StationType.VILLAGE: [
-		preload("res://Resource/StationScene/Village/埃利迪.tscn"),
-	],
-	StationScene.StationType.GATHER_POINT: [
-		preload("res://Resource/StationScene/GatherPoint/雨崩.tscn"),
-	],
-	StationScene.StationType.BEACON: [
-		preload("res://Resource/StationScene/Beacon/维京人.tscn"),
-	],
-	StationScene.StationType.CAVE: [
-		preload("res://Resource/StationScene/Cave/哀嚎洞窟.tscn"),
-	],
+	StationScene.StationType.RUINS: preload("res://Resource/StationScene/RuinsSheet.json").data["data"],
+	StationScene.StationType.CITY: preload("res://Resource/StationScene/CitySheet.json").data["data"],
+	StationScene.StationType.VILLAGE: preload("res://Resource/StationScene/VillageSheet.json").data["data"],
+	StationScene.StationType.GATHER_POINT: preload("res://Resource/StationScene/GatherPointSheet.json").data["data"],
+	StationScene.StationType.BEACON: preload("res://Resource/StationScene/BeaconSheet.json").data["data"],
+	StationScene.StationType.CAVE: preload("res://Resource/StationScene/CaveSheet.json").data["data"],
 }
 
 func deploy_station(degree: int) -> StationScene:
@@ -55,6 +42,9 @@ func deploy_station(degree: int) -> StationScene:
 			station_type = StationScene.StationType.BEACON
 		elif rand_num <= 50+5+25+20:
 			station_type = StationScene.StationType.RUINS
-	var station_array = STATION_LIST[station_type]
-	var station_packed_scene: PackedScene = station_array[randi_range(0, station_array.size()-1)]
-	return station_packed_scene.instantiate()
+	var station_array: Array = STATION_LIST[station_type]
+	print(station_array)
+	var station_scene: = STATION_SCENE.instantiate()
+	var station_dict: Dictionary = station_array[randi_range(0, station_array.size()-1)]
+	station_scene.update_station_by_dict(station_type, station_dict)
+	return station_scene
