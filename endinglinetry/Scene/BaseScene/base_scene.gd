@@ -2,6 +2,7 @@ extends Node3D
 class_name BaseScene
 
 @export var train_stats_manager: TrainStatsManager
+@export var trade_manager: TradeManage
 
 func _ready() -> void:
 	hide_all_secondary_scene()
@@ -100,7 +101,7 @@ func _on_under_button_ui_route_selection_button_pressed() -> void:
 ## 货物背包
 func _on_under_button_ui_cargo_button_pressed() -> void:
 	camera_spring_arm.is_on = false
-	pass # TODO 显示货物背包
+	trade_manager.open_back_pack_ui()
 
 ## 遗物栏
 func _on_under_button_ui_fitment_button_pressed() -> void:

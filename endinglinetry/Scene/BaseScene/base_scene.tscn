@@ -31,9 +31,10 @@ width = 256
 gradient = SubResource("Gradient_0k5j0")
 width = 256
 
-[node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene") groups=["BaseScene"]]
+[node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "trade_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene") groups=["BaseScene"]]
 script = ExtResource("1_gwi6o")
 train_stats_manager = NodePath("TrainStatsManager")
+trade_manager = NodePath("TradeManage")
 first_scene_root = NodePath("FirstSceneRoot")
 parallax_bg = NodePath("BG/ParallaxBG")
 camera_spring_arm = NodePath("CameraSpringArm")
@@ -74,7 +75,6 @@ visible = false
 base_scene = NodePath("../..")
 
 [node name="RouteSelectionScene" parent="SecondarySceneRoot" node_paths=PackedStringArray("base_scene", "train_stats_manager") instance=ExtResource("2_7vr7o")]
-seed_str = "14:48:46"
 base_scene = NodePath("../..")
 train_stats_manager = NodePath("../../TrainStatsManager")
 
