@@ -1,20 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba3vq6mh4riiq"]
+[gd_scene load_steps=4 format=3 uid="uid://ba3vq6mh4riiq"]
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/Track/track.gd" id="1_2htug"]
+
+[sub_resource type="Gradient" id="Gradient_rae6y"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.166667, 0.333333, 0.666667, 0.833333)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 6
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e52si"]
+gradient = SubResource("Gradient_rae6y")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [node name="Track" type="Node2D"]
 script = ExtResource("1_2htug")
 
 [node name="TrackLine" type="Line2D" parent="."]
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+texture_repeat = 1
+width = 24.0
+texture = SubResource("GradientTexture2D_e52si")
+texture_mode = 2
 
 [node name="TrackArea" type="Area2D" parent="."]
 
 [node name="TrackCollisionShape" type="CollisionShape2D" parent="TrackArea"]
-
-[node name="TrackArrow" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(10, 0, -6, -13, -10, -9, 0, 0, -10, 9, -6, 13)
 
 [connection signal="input_event" from="TrackArea" to="." method="_on_track_area_input_event"]

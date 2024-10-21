@@ -1,0 +1,104 @@
+[gd_scene load_steps=2 format=3 uid="uid://hhslws86utqp"]
+
+[ext_resource type="Texture2D" uid="uid://dsfnwwpc8yueh" path="res://Art/2D/BaseSceneUI/UnderButtonUI/MainUI_Export1.png" id="1_pooym"]
+
+[node name="StatusBarContainer" type="TextureRect"]
+custom_minimum_size = Vector2(1960, 172)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -980.0
+offset_right = 980.0
+offset_bottom = 172.0
+grow_horizontal = 2
+texture = ExtResource("1_pooym")
+
+[node name="LoadTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -800.0
+offset_top = 20.0
+offset_right = -708.0
+offset_bottom = 57.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "载重"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -800.0
+offset_top = 72.0
+offset_right = -708.0
+offset_bottom = 109.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "速度"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PowerTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -324.0
+offset_top = 16.0
+offset_right = -232.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "能源"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PowerLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -192.0
+offset_top = 20.0
+offset_right = -32.0
+offset_bottom = 48.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "能源"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 220.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 36
+text = "金币"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 232.0
+offset_top = 16.0
+offset_right = 428.0
+offset_bottom = 52.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "114514"
+horizontal_alignment = 1
+vertical_alignment = 1

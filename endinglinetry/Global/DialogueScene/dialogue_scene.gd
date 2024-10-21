@@ -32,6 +32,8 @@ var content_tween: Tween
 
 var need_to_select: bool = false
 
+signal dialogue_end
+
 ## 从对应编号对话开始
 func show_dialogue(id: String):
 	update_dialogue(id)
@@ -72,6 +74,7 @@ func update_dialogue(id: String):
 	selection_container.hide()
 	if current_id == "END":
 		hide()
+		dialogue_end.emit()
 	elif current_id.left(1) == "#":
 		need_to_select = true
 		update_selection(selection_dict[current_id.right(-1)]["content"])

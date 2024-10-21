@@ -10,6 +10,7 @@
 gradient = SubResource("Gradient_k5atn")
 
 [node name="ChargingPile" instance=ExtResource("1_imf0a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 0)
 script = ExtResource("2_v7egu")
 cost = 10
 

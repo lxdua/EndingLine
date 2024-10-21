@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ev70jl7joc8"]
-
-[ext_resource type="PackedScene" uid="uid://c6b3vhnlytild" path="res://Scene/StationScene/station_scene.tscn" id="1_bd5xu"]
-
-[node name="多米诺废墟" instance=ExtResource("1_bd5xu")]
-station_name = "多米诺废墟"

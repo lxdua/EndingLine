@@ -21,7 +21,7 @@ func get_final_value(modifier_name: String, base: float) -> float:
 
 #region 资源部分
 
-var current_money: int = 0
+var current_money: int = 2000
 
 func has_money(need: int):
 	return need <= current_money

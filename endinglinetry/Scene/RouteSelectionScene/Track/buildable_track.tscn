@@ -2,30 +2,29 @@
 
 [ext_resource type="Script" path="res://Scene/RouteSelectionScene/Track/buildable_track.gd" id="1_1hcn2"]
 
-[sub_resource type="Gradient" id="Gradient_744hw"]
+[sub_resource type="Gradient" id="Gradient_7qy24"]
 interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.29052)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.166667, 0.333333, 0.666667, 0.833333)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1, 0.277528, 0.277528, 0.277528, 1, 0, 0, 0, 1, 1, 1, 1, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 6
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_v0pox"]
-gradient = SubResource("Gradient_744hw")
-repeat = 1
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkbqg"]
+gradient = SubResource("Gradient_7qy24")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
 
 [node name="BuildableTrack" type="Node2D"]
 script = ExtResource("1_1hcn2")
 
 [node name="BuildableTrackLine" type="Line2D" parent="."]
-texture = SubResource("GradientTexture2D_v0pox")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
+texture_repeat = 1
+width = 20.0
+texture = SubResource("GradientTexture2D_rkbqg")
+texture_mode = 2
 
 [node name="BuildableTrackArea" type="Area2D" parent="."]
 
 [node name="BuildableTrackCollisionShape" type="CollisionShape2D" parent="BuildableTrackArea"]
-
-[node name="BuildableTrackArrow" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(10, 0, -6, -13, -10, -9, 0, 0, -10, 9, -6, 13)
 
 [connection signal="input_event" from="BuildableTrackArea" to="." method="_on_buildable_track_area_input_event"]

@@ -33,6 +33,7 @@ func _physics_process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	camera_zoom(event)
+	drag_scene(event)
 
 #region 地图相关
 
@@ -98,7 +99,6 @@ var mid_station: Array[Array]
 ## 最短路
 var shortest_path: Array[int] = []
 
-
 func floyd():
 	matrix.clear()
 	for i in range(station_num):
@@ -109,10 +109,21 @@ func floyd():
 			mid_station[i].append(-1)
 	for i in range(station_num):
 		matrix[i][i] = 0
+
 	var track_list = map_res.track_list
 	for track in track_list:
 		matrix[track[0]][track[1]] = track[2]
 
+	for k in range(station_num):
+		for x in range(station_num):
+			for y in range(station_num):
+				if matrix[x][y] > matrix[x][k] + matrix[k][y]:
+					matrix[x][y] = matrix[x][k] + matrix[k][y]
+					mid_station[x][y] = k
+
+func update_floyd(u: int, v: int, dist: float):
+	matrix[u][v] = min(matrix[u][v], dist)
+	matrix[v][u] = min(matrix[v][u], dist)
 	for k in range(station_num):
 		for x in range(station_num):
 			for y in range(station_num):
@@ -152,10 +163,13 @@ func try_to_build_track(buildable_track: BuildableTrack):
 func build_track(buildable_track: BuildableTrack):
 	train_stats_manager.current_money -= buildable_track.cost
 	add_track(buildable_track.start_station, buildable_track.end_station, buildable_track.track_length)
-	map_res.track_list.append([buildable_track.start_station, buildable_track.end_station, buildable_track.track_length])
+	map_res.track_list.append([buildable_track.start_station.station_id, buildable_track.end_station.station_id, buildable_track.track_length])
 	add_track(buildable_track.end_station, buildable_track.start_station, buildable_track.track_length)
-	map_res.track_list.append([buildable_track.end_station, buildable_track.start_station, buildable_track.track_length])
+	map_res.track_list.append([buildable_track.end_station.station_id, buildable_track.start_station.station_id, buildable_track.track_length])
 	buildable_track.queue_free()
+	prints("建造了联通", buildable_track.start_station, buildable_track.end_station, "的路！")
+	floyd()
+	#update_floyd(buildable_track.start_station.station_id, buildable_track.end_station.station_id, buildable_track.track_length)
 
 #endregion
 
@@ -186,7 +200,8 @@ var drive_tween: Tween
 var route_list: Array[int]
 
 func init_train():
-	current_station_id = idx - 1
+	# TODO 起点
+	current_station_id = idx - 2
 	next_station_id = current_station_id
 	train_in_map.global_position = station_dict[current_station_id].station_position
 
@@ -287,6 +302,7 @@ func _on_destination_id_update(id: int) -> void:
 	show_station_content()
 
 func show_station_content():
+	prints(destination_id, station_dict[destination_id].station_scene, matrix[current_station_id][destination_id])
 	station_content_container.update_content(
 		station_dict[destination_id].station_scene,
 		matrix[current_station_id][destination_id]
@@ -333,7 +349,7 @@ func camera_follow_train(delta: float):
 	if is_following:
 		camera.global_position = lerp(camera.global_position, train_in_map.global_position, delta)
 
-func _on_back_ground_gui_input(event: InputEvent) -> void:
+func drag_scene(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		mouse_pos = get_viewport().get_mouse_position()
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -356,7 +372,7 @@ func camera_zoom(event: InputEvent):
 				return
 			camera.zoom *= 1.1
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if camera.zoom / 1.1 < Vector2(0.8,0.8):
+			if camera.zoom / 1.1 < Vector2(0.7,0.7):
 				return
 			camera.zoom /= 1.1
 

@@ -46,7 +46,7 @@ fitment_scene = NodePath("SecondarySceneRoot/FitmentScene")
 environment = ExtResource("2_ybyye")
 
 [node name="SunLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999997, -0.00260054, 0, 0.00260054, 0.999997, 0, 15, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999682, 0.0252348, 0, -0.0252348, 0.999682, 0, 15, 0)
 shadow_enabled = true
 
 [node name="BG" type="CanvasLayer" parent="."]
@@ -74,6 +74,7 @@ visible = false
 base_scene = NodePath("../..")
 
 [node name="RouteSelectionScene" parent="SecondarySceneRoot" node_paths=PackedStringArray("base_scene", "train_stats_manager") instance=ExtResource("2_7vr7o")]
+seed_str = "14:48:46"
 base_scene = NodePath("../..")
 train_stats_manager = NodePath("../../TrainStatsManager")
 

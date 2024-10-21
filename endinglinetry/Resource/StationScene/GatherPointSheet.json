@@ -1,0 +1,10 @@
+{
+	"data": [
+		{
+			"id": 1,
+			"gather_point_name": "花果山",
+			"item": "猴子",
+			"item_num": 5
+		}
+	]
+}

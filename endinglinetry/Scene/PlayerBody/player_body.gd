@@ -21,6 +21,13 @@ var direction: Vector3:
 
 var target: Array[Interaction]
 
+var can_move: bool = true:
+	set(v):
+		can_move = v
+		velocity.x = 0
+		velocity.z = 0
+		player_body_sprite.play("idle")
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		print(target)
@@ -30,6 +37,11 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta * 5
+	if can_move:
+		player_move(delta)
+	move_and_slide()
+
+func player_move(delta: float):
 	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
@@ -38,8 +50,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, ACCELERATION * delta)
 		velocity.z = move_toward(velocity.z, 0, ACCELERATION * delta)
-	move_and_slide()
-
 
 func _on_player_body_area_area_entered(area: Area3D) -> void:
 	print(area)

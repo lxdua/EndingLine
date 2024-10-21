@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="3_cma3m"]
 
 [node name="Cave" instance=ExtResource("1_n368v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
 script = ExtResource("2_opg6r")
 treasure_pool = Array[int]([])
 item_num = 1

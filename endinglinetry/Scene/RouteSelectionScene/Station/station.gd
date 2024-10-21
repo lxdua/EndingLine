@@ -16,7 +16,8 @@ func _ready() -> void:
 
 func deploy_station():
 	var degree: = station_connected_track.size()
-	station_scene = StationDeployer.deploy_station(degree)
+	var station_deployer: StationDeployer = StationDeployer.new()
+	station_scene = station_deployer.deploy_station(degree)
 
 #endregion
 

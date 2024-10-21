@@ -3,7 +3,6 @@ class_name TrainStatsScene
 
 const BUFF_UI = preload("res://Scene/Other/BuffUI/buff_ui.tscn")
 
-
 @export var base_scene: BaseScene
 @export var train_stats_manager: TrainStatsManager
 
