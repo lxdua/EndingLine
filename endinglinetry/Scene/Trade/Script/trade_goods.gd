@@ -32,6 +32,13 @@ class_name TradeGoods
 
 var goods:Array[TradeGoodsStruct]
 
+# 需
+var demand_arr: PackedStringArray
+var demand_num: int
+# 供
+var supply_arr: PackedStringArray
+var supply_num: int
+
 
 
 func add_goods(id:int,number:int):

@@ -17,9 +17,19 @@ func update_list_layout():
 	goods_list.fixed_icon_size=Vector2(1,1)*((get_viewport().size.x/2)/6)
 	goods_list.fixed_column_width=goods_list.fixed_icon_size.x*1.1
 
-
+# 需
+var demand_arr: PackedStringArray
+var demand_num: int
+# 供
+var supply_arr: PackedStringArray
+var supply_num: int
 func update_list_goods(player_goods:TradeGoods,goods:TradeGoods):
 	var icon:=preload("res://icon.svg")
+	demand_arr=goods.demand_arr
+	demand_num=goods.demand_num
+	supply_arr=goods.supply_arr
+	supply_num=goods.supply_num
+
 	player_goods_list.trade_goods=player_goods
 	player_goods_list.updata_list()
 	goods_list.trade_goods=goods

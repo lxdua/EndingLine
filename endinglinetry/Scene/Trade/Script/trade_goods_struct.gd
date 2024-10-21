@@ -15,3 +15,4 @@ func print_goods():
 	print("价格倍率:",price_multiplier)
 
 var trade_goods:TradeGoods
+var demand_num:int

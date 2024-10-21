@@ -6,6 +6,9 @@ const GOODS_LIST_ITEM = preload("uid://colrqteefvben")
 @onready var list: VBoxContainer = %List
 @onready var cash_label: Label = %CashLabel
 
+@onready var trade_ui:TradeUI = get_tree().get_first_node_in_group("TradeUI")
+@onready var trade_manage:TradeManage = get_tree().get_first_node_in_group("TradeManage")
+
 
 var trade_goods:TradeGoods:
 	set(new_g):
@@ -52,5 +55,11 @@ func updata_list():
 	clear_list()
 	for g in trade_goods.goods:
 		if g.number>0:
-			add_list_item().goods_struct=g
+			if self == trade_ui.player_goods_list:
+				if trade_ui.demand_arr.has(trade_manage.get_goods_name(g.id)):
+					if g.number<=trade_ui.demand_num-trade_manage.trade_partner.find_goods(g.id).number:
+						g.demand_num=trade_ui.demand_num
+						add_list_item().goods_struct=g
+			else:
+				add_list_item().goods_struct=g
 	cash=trade_goods.cash
