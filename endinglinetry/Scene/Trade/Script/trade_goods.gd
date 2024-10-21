@@ -127,3 +127,7 @@ func goods_sort(type:int):
 	last_sort_type=sort_type
 	sort_type=type
 	goods.sort_custom(sort_goods)
+
+func update_cash(new_cash: int):
+	cash = new_cash
+	#dua

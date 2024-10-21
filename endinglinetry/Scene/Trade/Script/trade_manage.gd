@@ -3,7 +3,6 @@ class_name TradeManage
 @onready var player_trade_goods: TradeGoods = $PlayerTradeGoods
 @onready var trade_ui: TradeUI = $TradeUI
 @onready var back_pack_ui: BackPackUI = %BackPackUI
-@onready var collection_ui: CollectionUI = %CollectionUI
 
 
 @export_range(0,1) var sell_multiplier:float=0.7
@@ -72,15 +71,14 @@ func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
 
 func open_back_pack_ui():
 	back_pack_ui.trade_goods=player_trade_goods
+	#dua
+	var train_stats_manager: = get_tree().get_first_node_in_group("TrainStatsManager")
+	player_trade_goods.update_cash(train_stats_manager.current_money)
+
 	back_pack_ui.selected_item = null
 	back_pack_ui.update()
 	back_pack_ui.visible=true
 
-
-func open_collection_ui(resources:Array[CollectionResource]):
-	collection_ui.resources=resources
-	collection_ui.update()
-	collection_ui.visible=true
 
 
 

@@ -55,3 +55,6 @@ func open_discard():
 
 func _on_exit_button_pressed() -> void:
 	visible=false
+	#dua
+	get_tree().get_first_node_in_group("TrainStatsManager").current_money = trade_goods.cash
+	get_tree().get_first_node_in_group("BaseScene").hide_all_secondary_scene()

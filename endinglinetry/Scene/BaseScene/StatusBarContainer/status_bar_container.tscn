@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://hhslws86utqp"]
+[gd_scene load_steps=6 format=3 uid="uid://hhslws86utqp"]
 
 [ext_resource type="Texture2D" uid="uid://dsfnwwpc8yueh" path="res://Art/2D/BaseSceneUI/UnderButtonUI/MainUI_Export1.png" id="1_pooym"]
+[ext_resource type="Script" path="res://Scene/BaseScene/StatusBarContainer/status_bar_container.gd" id="2_6y15x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcdah"]
+bg_color = Color(0.0588235, 0.054902, 0.0627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_23xup"]
+bg_color = Color(0.0826721, 0.290629, 0.492188, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c4531"]
+bg_color = Color(0.124161, 0.308594, 0.144333, 1)
 
 [node name="StatusBarContainer" type="TextureRect"]
 custom_minimum_size = Vector2(1960, 172)
@@ -12,6 +22,7 @@ offset_right = 980.0
 offset_bottom = 172.0
 grow_horizontal = 2
 texture = ExtResource("1_pooym")
+script = ExtResource("2_6y15x")
 
 [node name="LoadTitleLabel" type="Label" parent="."]
 layout_mode = 1
@@ -28,7 +39,23 @@ text = "载重"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpeedTitleLabel" type="Label" parent="."]
+[node name="LoadProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -660.0
+offset_top = 32.0
+offset_right = -528.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fcdah")
+theme_override_styles/fill = SubResource("StyleBoxFlat_23xup")
+max_value = 1.0
+step = 0.0
+value = 0.69
+
+[node name="PowerTitleLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -39,11 +66,27 @@ offset_right = -708.0
 offset_bottom = 109.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 36
-text = "速度"
+text = "能源"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowerTitleLabel" type="Label" parent="."]
+[node name="PowerProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -660.0
+offset_top = 76.0
+offset_right = -504.0
+offset_bottom = 104.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fcdah")
+theme_override_styles/fill = SubResource("StyleBoxFlat_c4531")
+max_value = 1.0
+step = 0.0
+value = 0.855
+
+[node name="SpeedTitleLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -54,22 +97,22 @@ offset_right = -232.0
 offset_bottom = 52.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 36
-text = "能源"
+text = "速度"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PowerLabel" type="Label" parent="."]
+[node name="SpeedLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -192.0
-offset_top = 20.0
+offset_top = 16.0
 offset_right = -32.0
-offset_bottom = 48.0
+offset_bottom = 52.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
-text = "能源"
+text = "速度"
 horizontal_alignment = 1
 vertical_alignment = 1
 
