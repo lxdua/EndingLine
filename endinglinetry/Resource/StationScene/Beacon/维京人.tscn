@@ -7,5 +7,5 @@
 station_name = "维京人"
 station_type = 4
 
-[node name="Beacon" parent="." index="5" instance=ExtResource("2_kp7df")]
+[node name="Beacon" parent="." index="2" instance=ExtResource("2_kp7df")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, -5)

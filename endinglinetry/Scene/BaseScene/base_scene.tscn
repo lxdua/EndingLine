@@ -74,6 +74,7 @@ visible = false
 base_scene = NodePath("../..")
 
 [node name="RouteSelectionScene" parent="SecondarySceneRoot" node_paths=PackedStringArray("base_scene", "train_stats_manager") instance=ExtResource("2_7vr7o")]
+seed_str = "14:48:46"
 base_scene = NodePath("../..")
 train_stats_manager = NodePath("../../TrainStatsManager")
 

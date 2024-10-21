@@ -26,6 +26,7 @@ func get_current_station() -> Station:
 func change_scene_to_station(station_scene: StationScene):
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
+	station_scene = station_scene.duplicate()
 	check_portals(station_scene)
 	first_scene_root.add_child(station_scene)
 	parallax_bg.stop_scroll()

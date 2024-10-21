@@ -7,5 +7,5 @@
 station_name = "哀嚎洞窟"
 station_type = 5
 
-[node name="Cave" parent="." index="5" instance=ExtResource("2_16ady")]
+[node name="Cave" parent="." index="2" instance=ExtResource("2_16ady")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3643, 1.1857, -3.62589)
