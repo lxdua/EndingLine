@@ -17,6 +17,10 @@ func _ready() -> void:
 
 var trade_partner:TradeGoods
 func open_trade_ui(t_goods:TradeGoods):
+	#dua
+	var train_stats_manager: = get_tree().get_first_node_in_group("TrainStatsManager")
+	player_trade_goods.update_cash(train_stats_manager.current_money)
+
 	trade_ui.goods_trade_details.visible=false
 	trade_partner=t_goods
 	update_list_goods()

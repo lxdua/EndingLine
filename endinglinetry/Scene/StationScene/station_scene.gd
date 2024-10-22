@@ -13,14 +13,13 @@ enum StationType { RUINS, CITY, VILLAGE, GATHER_POINT, BEACON, CAVE }
 
 var station_name: String
 var station_type: StationType
-var station_description: String
 
 var station_dict: Dictionary
 
-func update_station_by_dict(type: StationScene.StationType, dict: Dictionary):
-	station_type = type
-	station_dict = dict.duplicate()
-	print("sta:", station_dict)
+func _ready() -> void:
+	update_station()
+
+func update_station():
 	match station_type:
 		StationType.RUINS:
 			station_name = station_dict["ruins_name"]
@@ -34,7 +33,6 @@ func update_station_by_dict(type: StationScene.StationType, dict: Dictionary):
 			shop.demand_num = station_dict["demand_num"]
 			shop.supply_arr = station_dict["supply"].split(",")
 			shop.supply_num = station_dict["supply_num"]
-			prints("sta:", shop.tax_rate, shop.demand_arr, shop.supply_arr)
 			add_child(shop)
 		StationType.VILLAGE:
 			station_name = station_dict["village_name"]
@@ -46,8 +44,13 @@ func update_station_by_dict(type: StationScene.StationType, dict: Dictionary):
 			shop.supply_num = station_dict["supply_num"]
 			add_child(shop)
 		StationType.GATHER_POINT:
-			pass
+			station_name = station_dict["gather_point_name"]
 		StationType.BEACON:
-			pass
+			station_name = station_dict["beacon_name"]
 		StationType.CAVE:
-			pass
+			station_name = station_dict["cave_name"]
+
+func update_station_dict(type: StationScene.StationType, dict: Dictionary):
+	station_type = type
+	station_dict = dict
+	update_station()

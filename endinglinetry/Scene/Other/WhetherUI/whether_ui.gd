@@ -2,8 +2,8 @@ extends Control
 
 
 @onready var content_label: Label = $PanelContainer/VBoxContainer/ContentLabel
-@onready var yes_button: TextureButton = $PanelContainer/VBoxContainer/HBoxContainer/YesButton
-@onready var no_button: TextureButton = $PanelContainer/VBoxContainer/HBoxContainer/NoButton
+@onready var yes_button: Button = $PanelContainer/VBoxContainer/HBoxContainer/YesButton
+@onready var no_button: Button = $PanelContainer/VBoxContainer/HBoxContainer/NoButton
 
 
 ## 文字内容

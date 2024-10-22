@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 	spring_length = lerp(spring_length, dist, delta * 10.0)
 
 var mouse_pos_x: float
-func _unhandled_input(event: InputEvent) -> void:
+
+func _on_vignette_color_rect_gui_input(event: InputEvent) -> void:
 	if not is_on:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:

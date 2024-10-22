@@ -12,7 +12,7 @@ func _ready() -> void:
 	current_speed = 6.0
 	max_train_load = 1000.0
 	current_train_load = 10.0
-	current_money = 2000
+	current_money = 50000
 
 func _physics_process(delta: float) -> void:
 	get_solar_power(delta)

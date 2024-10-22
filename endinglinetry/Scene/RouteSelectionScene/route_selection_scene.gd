@@ -223,6 +223,8 @@ func drive():
 
 	if is_driving:
 		print("更换目的地！")
+	elif destination_id == current_station_id:
+		print("已经到达！")
 	else:
 		print("出发！", route_list)
 		is_driving = true

@@ -46,5 +46,5 @@ func deploy_station(degree: int) -> StationScene:
 	print(station_array)
 	var station_scene: = STATION_SCENE.instantiate()
 	var station_dict: Dictionary = station_array[randi_range(0, station_array.size()-1)]
-	station_scene.update_station_by_dict(station_type, station_dict)
+	station_scene.update_station_dict(station_type, station_dict)
 	return station_scene

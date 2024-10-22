@@ -28,7 +28,7 @@ func init_track():
 	track_line.add_point(Vector2.ZERO)
 	track_line.add_point(dist)
 	var new_shape = RectangleShape2D.new()
-	new_shape.size.y = track_line.width
+	new_shape.size.y = track_line.width + 2
 	new_shape.size.x = dist.length()
 	track_collision_shape.shape = new_shape
 	track_collision_shape.position.x += dist.length() / 2

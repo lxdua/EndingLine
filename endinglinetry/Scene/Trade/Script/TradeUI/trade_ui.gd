@@ -10,9 +10,6 @@ func _ready() -> void:
 	pass
 
 
-
-
-
 func update_list_layout():
 	goods_list.fixed_icon_size=Vector2(1,1)*((get_viewport().size.x/2)/6)
 	goods_list.fixed_column_width=goods_list.fixed_icon_size.x*1.1

@@ -12,7 +12,6 @@ script = ExtResource("2_sat0g")
 script = ExtResource("4_4183p")
 add_id = 1
 add_number = 10
-cash = 114
 
 [node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
 polygon = PackedVector2Array(-0.569432, 0.624417, 0.575436, 0.594539, 0.568482, -0.532065, -0.582348, -0.528691)

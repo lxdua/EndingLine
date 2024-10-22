@@ -25,13 +25,30 @@ func get_current_station() -> Station:
 	return route_selection_scene.station_dict[route_selection_scene.current_station_id]
 
 func change_scene_to_station(station_scene: StationScene):
+	time_scale_container.hide()
+	GlobalVar.time_scale = 0.0
+	hide_all_secondary_scene()
+	time_scale_container.hide()
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
-	check_portals(station_scene)
-	first_scene_root.add_child(station_scene)
+
+	prints("arrive1:", station_scene.station_dict)
+	var type: = station_scene.station_type
+	var dict: = station_scene.station_dict.duplicate()
+	var new_station_scene: = station_scene.duplicate()
+	new_station_scene.station_type = type
+	new_station_scene.station_dict = dict
+	prints("arrive2:", new_station_scene.station_dict)
+
+	check_portals(new_station_scene)
+	first_scene_root.add_child(new_station_scene)
 	parallax_bg.stop_scroll()
 
 func change_scene_to_train():
+	time_scale_container.show()
+	GlobalVar.time_scale = 1.0
+	hide_all_secondary_scene()
+	time_scale_container.show()
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
 	var train_scene: = TRAIN_SCENE.instantiate()
@@ -41,10 +58,6 @@ func change_scene_to_train():
 func arrive(station_scene: StationScene):
 	GlobalVar.time_scale = 1.0
 	await CurtainLayer.fade_in()
-	time_scale_container.hide()
-	GlobalVar.time_scale = 0.0
-	hide_all_secondary_scene()
-	time_scale_container.hide()
 	change_scene_to_station(station_scene)
 	await CurtainLayer.fade_out()
 	# TODO 入站动画
@@ -52,10 +65,6 @@ func arrive(station_scene: StationScene):
 func set_out():
 	# TODO 出发动画
 	await CurtainLayer.fade_in()
-	time_scale_container.show()
-	GlobalVar.time_scale = 1.0
-	hide_all_secondary_scene()
-	time_scale_container.show()
 	change_scene_to_train()
 	await CurtainLayer.fade_out()
 
@@ -88,29 +97,25 @@ func hide_all_secondary_scene():
 
 ## 列车属性
 func _on_under_button_ui_health_button_pressed() -> void:
-	camera_spring_arm.is_on = false
 	train_stats_scene.update_train_stats()
 	train_stats_scene.show()
 
 ## 价格走势
 func _on_under_button_ui_price_button_pressed() -> void:
-	camera_spring_arm.is_on = false
+	pass
 
 ## 路线选择
 func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
 	camera_spring_arm.is_on = false
-	hide()
 
 ## 货物背包
 func _on_under_button_ui_cargo_button_pressed() -> void:
-	camera_spring_arm.is_on = false
 	trade_manager.open_back_pack_ui()
 
 ## 遗物栏
 func _on_under_button_ui_fitment_button_pressed() -> void:
 	fitment_scene.show_scene()
-	camera_spring_arm.is_on = false
 
 #endregion
 

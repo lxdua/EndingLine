@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bvorf6qptqxej"]
+[gd_scene load_steps=22 format=3 uid="uid://bvorf6qptqxej"]
 
 [ext_resource type="Script" path="res://Scene/BaseScene/base_scene.gd" id="1_gwi6o"]
 [ext_resource type="PackedScene" uid="uid://c5vtntw4vu6n" path="res://Scene/RouteSelectionScene/route_selection_scene.tscn" id="2_7vr7o"]
@@ -16,17 +16,11 @@
 [ext_resource type="Script" path="res://Class/Buff/buff_handler.gd" id="8_5t8qy"]
 [ext_resource type="PackedScene" uid="uid://hhslws86utqp" path="res://Scene/BaseScene/StatusBarContainer/status_bar_container.tscn" id="9_1ynag"]
 [ext_resource type="PackedScene" uid="uid://dox7bvx5bfsib" path="res://Scene/Trade/Scene/trade_manage.tscn" id="9_ib51h"]
-[ext_resource type="Shader" path="res://Shader/Vignette.gdshader" id="9_pcidk"]
 [ext_resource type="Script" path="res://Class/Fitment/fitment_handler.gd" id="11_fd2l0"]
 [ext_resource type="Texture2D" uid="uid://cr4vyxhi8whbs" path="res://Art/2D/BaseSceneUI/TimeScaleContainer/MainUi_Speed2.png" id="13_0ort8"]
 [ext_resource type="Texture2D" uid="uid://bdbmttp0cj06k" path="res://Art/2D/BaseSceneUI/TimeScaleContainer/MainUi_Speed1.png" id="13_jpyhe"]
 [ext_resource type="Texture2D" uid="uid://dx5lfe0g1pvar" path="res://Art/2D/BaseSceneUI/TimeScaleContainer/MainUi_Speed3.png" id="14_axril"]
 [ext_resource type="Texture2D" uid="uid://d31ul1p5y5l3" path="res://Art/2D/BaseSceneUI/TimeScaleContainer/MainUi_Speed4.png" id="15_q7cka"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vfqrr"]
-shader = ExtResource("9_pcidk")
-shader_parameter/outerRadius = 0.8
-shader_parameter/MainAlpha = 0.2
 
 [node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "trade_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene", "time_scale_container") groups=["BaseScene"]]
 script = ExtResource("1_gwi6o")
@@ -78,15 +72,6 @@ train_stats_manager = NodePath("../../TrainStatsManager")
 
 [node name="UI" type="CanvasLayer" parent="."]
 process_mode = 3
-
-[node name="VignetteColorRect" type="ColorRect" parent="UI"]
-material = SubResource("ShaderMaterial_vfqrr")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [node name="TimeScaleContainer" type="Control" parent="UI"]
 layout_mode = 3

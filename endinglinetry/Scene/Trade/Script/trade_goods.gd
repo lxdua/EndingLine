@@ -25,7 +25,7 @@ class_name TradeGoods
 			trade_manage.back_pack_ui.update()
 
 @export_category("设置现金")
-@export_range(0,99999) var cash:int
+@export_range(0,99999) var cash:int = 99999
 
 @export_category("设置载重量")
 @export_range(0,999999) var max_load:int=100

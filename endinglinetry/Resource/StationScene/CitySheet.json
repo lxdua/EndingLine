@@ -7,7 +7,8 @@
 			"demand": "冰晶,布料,盐,香烟,营养液,煤炭",
 			"demand_num": 99,
 			"supply": "无线电通讯器,电池,盐,香烟,营养液,煤炭",
-			"supply_num": 99
+			"supply_num": 99,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 2,
@@ -16,7 +17,8 @@
 			"demand": "营养液,泥煤威士忌,药品,工具包,布料",
 			"demand_num": 40,
 			"supply": "香烟,盐,药品,工具包,布料",
-			"supply_num": 60
+			"supply_num": 60,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 3,
@@ -25,7 +27,8 @@
 			"demand": "电池,工具包,无线电通讯器,电池,泥煤威士忌",
 			"demand_num": 50,
 			"supply": "煤炭,药品,无线电通讯器,电池,泥煤威士忌",
-			"supply_num": 60
+			"supply_num": 60,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 4,
@@ -34,7 +37,8 @@
 			"demand": "香烟,煤炭,营养液,盐,糖",
 			"demand_num": 60,
 			"supply": "泥煤威士忌,营养液,盐,糖",
-			"supply_num": 50
+			"supply_num": 50,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 5,
@@ -43,7 +47,8 @@
 			"demand": "糖,盐,布料,泥煤威士忌,工具包",
 			"demand_num": 60,
 			"supply": "冰晶,香烟,布料,泥煤威士忌,工具包",
-			"supply_num": 60
+			"supply_num": 60,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 6,
@@ -52,7 +57,8 @@
 			"demand": "营养液,盐,冰晶,糖,工具包",
 			"demand_num": 60,
 			"supply": "无线电通讯器,泥煤威士忌,冰晶,糖,工具包",
-			"supply_num": 40
+			"supply_num": 40,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 7,
@@ -61,7 +67,8 @@
 			"demand": "糖,营养液,无线电通讯器,电池",
 			"demand_num": 50,
 			"supply": "冰晶,药品,营养液,无线电通讯器,电池",
-			"supply_num": 50
+			"supply_num": 50,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 8,
@@ -70,7 +77,8 @@
 			"demand": "无线电通讯器,香烟,电池,药品,糖",
 			"demand_num": 40,
 			"supply": "营养液,煤炭,电池,药品,糖",
-			"supply_num": 60
+			"supply_num": 60,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 9,
@@ -79,7 +87,8 @@
 			"demand": "泥煤威士忌,冰晶,电池,煤炭,布料",
 			"demand_num": 50,
 			"supply": "糖,煤炭,电池,煤炭,布料",
-			"supply_num": 60
+			"supply_num": 60,
+			"tip": "暂无描述"
 		},
 		{
 			"id": 10,
@@ -88,7 +97,8 @@
 			"demand": "冰晶,电池,营养液,布料,盐",
 			"demand_num": 50,
 			"supply": "盐,煤炭,营养液,布料,盐",
-			"supply_num": 50
+			"supply_num": 50,
+			"tip": "暂无描述"
 		}
 	]
 }

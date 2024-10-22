@@ -60,6 +60,7 @@ position = Vector2(1144, 489)
 add_id = 2
 add_number = 40
 add_g = false
+cash = 99999
 max_load = 4000
 
 [node name="ExitButton" parent="TradeManage/TradeUI/TextureRect" index="1"]
@@ -79,7 +80,6 @@ add_number = 10
 add_g = true
 set_id = 1
 set_multiplier = 1.5
-cash = 1000
 
 [node name="Button" type="Button" parent="."]
 offset_left = 1763.0
