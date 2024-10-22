@@ -2,7 +2,7 @@
 	"data": [
 		{
 			"id": 1,
-			"beacon_name": "维京人",
+			"name": "维京人",
 			"radius": 5,
 			"tip": "暂无描述"
 		}

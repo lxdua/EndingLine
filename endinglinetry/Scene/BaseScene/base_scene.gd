@@ -32,13 +32,13 @@ func change_scene_to_station(station_scene: StationScene):
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
 
-	prints("arrive1:", station_scene.station_dict)
-	var type: = station_scene.station_type
-	var dict: = station_scene.station_dict.duplicate()
+	#prints("arrive1:", station_scene.station_dict)
+	#var type: = station_scene.station_type
+	#var dict: = station_scene.station_dict.duplicate()
 	var new_station_scene: = station_scene.duplicate()
-	new_station_scene.station_type = type
-	new_station_scene.station_dict = dict
-	prints("arrive2:", new_station_scene.station_dict)
+	#prints("arrive2:", new_station_scene.station_dict)
+	#new_station_scene.station_type = type
+	#new_station_scene.station_dict = dict
 
 	check_portals(new_station_scene)
 	first_scene_root.add_child(new_station_scene)
