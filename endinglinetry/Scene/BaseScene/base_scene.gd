@@ -32,13 +32,13 @@ func change_scene_to_station(station_scene: StationScene):
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
 
-	prints("arrive1:", station_scene.station_dict)
-	var type: = station_scene.station_type
-	var dict: = station_scene.station_dict.duplicate()
+	#prints("arrive1:", station_scene.station_dict)
+	#var type: = station_scene.station_type
+	#var dict: = station_scene.station_dict.duplicate()
 	var new_station_scene: = station_scene.duplicate()
-	new_station_scene.station_type = type
-	new_station_scene.station_dict = dict
-	prints("arrive2:", new_station_scene.station_dict)
+	#prints("arrive2:", new_station_scene.station_dict)
+	#new_station_scene.station_type = type
+	#new_station_scene.station_dict = dict
 
 	check_portals(new_station_scene)
 	first_scene_root.add_child(new_station_scene)
@@ -83,13 +83,22 @@ func _on_route_selection_scene_arrive(station_scene: StationScene) -> void:
 
 #region 二级界面相关
 
+@export var ui: CanvasLayer
 @export var secondary_scene_root: CanvasLayer
 @export var route_selection_scene: RouteSelectionScene
 @export var train_stats_scene: TrainStatsScene
 @export var fitment_scene: FitmentScene
 
-func hide_all_secondary_scene():
+func hide_base_scene():
+	hide()
+	ui.hide()
+
+func show_base_scene():
 	show()
+	ui.show()
+
+func hide_all_secondary_scene():
+	show_base_scene()
 	camera_spring_arm.is_on = true
 	route_selection_scene.all_visible = false
 	train_stats_scene.hide()
@@ -108,6 +117,7 @@ func _on_under_button_ui_price_button_pressed() -> void:
 func _on_under_button_ui_route_selection_button_pressed() -> void:
 	route_selection_scene.all_visible = true
 	camera_spring_arm.is_on = false
+	hide_base_scene()
 
 ## 货物背包
 func _on_under_button_ui_cargo_button_pressed() -> void:

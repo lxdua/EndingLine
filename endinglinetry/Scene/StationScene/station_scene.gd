@@ -11,10 +11,11 @@ const SHOP = preload("res://Scene/StationScene/Building/Shop/shop.tscn")
 
 enum StationType { RUINS, CITY, VILLAGE, GATHER_POINT, BEACON, CAVE }
 
-var station_name: String
-var station_type: StationType
+@export var station_name: String
 
-var station_dict: Dictionary
+@export var station_type: StationType
+
+@export var station_dict: Dictionary
 
 func _ready() -> void:
 	update_station()
@@ -22,9 +23,8 @@ func _ready() -> void:
 func update_station():
 	match station_type:
 		StationType.RUINS:
-			station_name = station_dict["ruins_name"]
+			pass
 		StationType.CITY:
-			station_name = station_dict["city_name"]
 			var factory: Factory = FACTORY.instantiate()
 			add_child(factory)
 			var shop: Shop = SHOP.instantiate()
@@ -35,7 +35,6 @@ func update_station():
 			shop.supply_num = station_dict["supply_num"]
 			add_child(shop)
 		StationType.VILLAGE:
-			station_name = station_dict["village_name"]
 			var shop: Shop = SHOP.instantiate()
 			shop.tax_rate = station_dict["tax_rate"]
 			shop.demand_arr = station_dict["demand"].split(",")
@@ -44,13 +43,13 @@ func update_station():
 			shop.supply_num = station_dict["supply_num"]
 			add_child(shop)
 		StationType.GATHER_POINT:
-			station_name = station_dict["gather_point_name"]
+			pass
 		StationType.BEACON:
-			station_name = station_dict["beacon_name"]
+			pass
 		StationType.CAVE:
-			station_name = station_dict["cave_name"]
+			pass
 
 func update_station_dict(type: StationScene.StationType, dict: Dictionary):
 	station_type = type
 	station_dict = dict
-	update_station()
+	station_name = station_dict["name"]
