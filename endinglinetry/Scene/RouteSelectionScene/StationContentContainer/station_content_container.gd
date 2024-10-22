@@ -27,4 +27,4 @@ func update_content(station_scene: StationScene, distance: float):
 		cost_label.text = "距离" + str(int(distance)) + "km"
 
 	var tween: = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position", Vector2(0,600), 0.6).from(Vector2(-400,600))
+	tween.tween_property(self, "position", Vector2(0,400), 0.6).from(Vector2(-400,400))

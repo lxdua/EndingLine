@@ -2,9 +2,87 @@
 	"data": [
 		{
 			"id": 1,
-			"gather_point_name": "花果山",
-			"item": "猴子",
-			"item_num": 5
+			"gather_point_name": "雨崩",
+			"item": "泥煤威士忌，无线电通讯器",
+			"item_num": "1，4"
+		},
+		{
+			"id": 2,
+			"gather_point_name": "雨崩",
+			"item": "糖，盐，药品",
+			"item_num": "2，5，2"
+		},
+		{
+			"id": 3,
+			"gather_point_name": "雨崩",
+			"item": "煤炭，工具包",
+			"item_num": "5，2"
+		},
+		{
+			"id": 4,
+			"gather_point_name": "雨崩",
+			"item": "煤炭，冰晶",
+			"item_num": "4，2"
+		},
+		{
+			"id": 5,
+			"gather_point_name": "雨崩",
+			"item": "冰晶，糖",
+			"item_num": "2，4"
+		},
+		{
+			"id": 6,
+			"gather_point_name": "雨崩",
+			"item": "电池，无线电通讯器，煤炭",
+			"item_num": "1，1，3"
+		},
+		{
+			"id": 7,
+			"gather_point_name": "雨崩",
+			"item": "营养液，糖",
+			"item_num": "2，4"
+		},
+		{
+			"id": 8,
+			"gather_point_name": "雨崩",
+			"item": "香烟，电池",
+			"item_num": "3，2"
+		},
+		{
+			"id": 9,
+			"gather_point_name": "雨崩",
+			"item": "煤炭，盐",
+			"item_num": " 5，5"
+		},
+		{
+			"id": 10,
+			"gather_point_name": "雨崩",
+			"item": "煤炭，电池",
+			"item_num": "4，2"
+		},
+		{
+			"id": 11,
+			"gather_point_name": "雨崩",
+			"item": "药品，泥煤威士忌",
+			"item_num": "3，3"
+		},
+		{
+			"id": 12,
+			"gather_point_name": "雨崩",
+			"item": "营养液，布料",
+			"item_num": "2，5"
+		},
+		{
+			"id": 13,
+			"gather_point_name": "雨崩",
+			"item": "工具包，冰晶",
+			"item_num": "2，2"
+		},
+		{
+			"id": 14,
+			"gather_point_name": "雨崩",
+			"item": "香烟，布料",
+			"item_num": "3，5"
 		}
 	]
 }

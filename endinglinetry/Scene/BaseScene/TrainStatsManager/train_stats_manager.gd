@@ -9,8 +9,10 @@ class_name TrainStatsManager
 var is_driving: bool = false
 
 func _ready() -> void:
-	current_speed = 3.0
+	current_speed = 6.0
+	max_train_load = 1000.0
 	current_train_load = 10.0
+	current_money = 2000
 
 func _physics_process(delta: float) -> void:
 	get_solar_power(delta)
@@ -23,7 +25,7 @@ func get_final_value(modifier_name: String, base: float) -> float:
 
 signal money_update
 
-var current_money: int = 2000:
+var current_money: int:
 	set(v):
 		current_money = v
 		money_update.emit()
@@ -40,7 +42,7 @@ func cost_money(need: int):
 
 signal load_update
 
-var max_train_load: float = 1000.0:
+var max_train_load: float:
 	set(v):
 		max_train_load = clamp(v, 0, INF)
 		load_update.emit()
@@ -77,7 +79,7 @@ func _on_max_load_modifier_value_changed() -> void:
 
 signal speed_update
 
-var current_speed: float = 1.0:
+var current_speed: float:
 	set(v):
 		current_speed = clamp(v, 0, INF)
 		speed_update.emit()

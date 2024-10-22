@@ -42,20 +42,22 @@ func change_scene_to_train():
 func arrive(station_scene: StationScene):
 	GlobalVar.time_scale = 1.0
 	await CurtainLayer.fade_in()
+	time_scale_container.hide()
+	GlobalVar.time_scale = 0.0
 	hide_all_secondary_scene()
 	time_scale_container.hide()
 	change_scene_to_station(station_scene)
-	await get_tree().create_timer(1.0).timeout
 	await CurtainLayer.fade_out()
 	# TODO 入站动画
 
 func set_out():
 	# TODO 出发动画
 	await CurtainLayer.fade_in()
+	time_scale_container.show()
+	GlobalVar.time_scale = 1.0
 	hide_all_secondary_scene()
 	time_scale_container.show()
 	change_scene_to_train()
-	await get_tree().create_timer(1.0).timeout
 	await CurtainLayer.fade_out()
 
 func check_portals(station_scene: StationScene):
@@ -87,9 +89,9 @@ func hide_all_secondary_scene():
 
 ## 列车属性
 func _on_under_button_ui_health_button_pressed() -> void:
+	camera_spring_arm.is_on = false
 	train_stats_scene.update_train_stats()
 	train_stats_scene.show()
-	camera_spring_arm.is_on = false
 
 ## 价格走势
 func _on_under_button_ui_price_button_pressed() -> void:
@@ -119,10 +121,10 @@ func _on_under_button_ui_fitment_button_pressed() -> void:
 @export var time_scale_container: Control
 
 func _on_pause_button_pressed() -> void:
-	get_tree().set_pause(true)
+	GlobalVar.time_scale = 0.0
 
 func _on_continue_button_pressed() -> void:
-	get_tree().set_pause(false)
+	GlobalVar.time_scale = 1.0
 
 func _on_speed_up_button_button_down() -> void:
 	GlobalVar.time_scale = 100.0

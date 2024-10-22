@@ -2,14 +2,93 @@
 	"data": [
 		{
 			"id": 1,
-			"village_name": "埃利迪",
+			"village_name": "艾尔文村",
 			"tax_rate": 5,
-			"demand": "无线电通讯器，煤炭",
+			"demand": "无线电通讯器,煤炭,冰晶,盐,糖",
 			"demand_num": 30,
-			"supply_and_demand": "冰晶，盐，糖",
-			"supply_and_demand_num": 50,
-			"supply": "布料",
+			"supply": "布料,冰晶,盐,糖",
 			"supply_num": 99
+		},
+		{
+			"id": 2,
+			"village_name": "贝克斯菲尔德",
+			"tax_rate": 5,
+			"demand": "布料,煤炭,盐,香烟",
+			"demand_num": 30,
+			"supply": "冰晶,糖,煤炭,盐,香烟",
+			"supply_num": 25
+		},
+		{
+			"id": 3,
+			"village_name": "卡斯特罗农场",
+			"tax_rate": 4,
+			"demand": "香烟,盐,布料,无线电通讯器,营养液",
+			"demand_num": 25,
+			"supply": "药品,布料,无线电通讯器,营养液",
+			"supply_num": 40
+		},
+		{
+			"id": 4,
+			"village_name": "德文郡村",
+			"tax_rate": 6,
+			"demand": "电池,泥煤威士忌,药品,香烟,工具包",
+			"demand_num": 20,
+			"supply": "盐,糖,药品,香烟,工具包",
+			"supply_num": 30
+		},
+		{
+			"id": 5,
+			"village_name": "艾格尼丝谷",
+			"tax_rate": 5,
+			"demand": "工具包,糖,泥煤威士忌,冰晶,药品",
+			"demand_num": 25,
+			"supply": "煤炭,泥煤威士忌,冰晶,药品",
+			"supply_num": 40
+		},
+		{
+			"id": 6,
+			"village_name": "弗洛伦萨村",
+			"tax_rate": 6,
+			"demand": "营养液,药品,泥煤威士忌,盐,工具包",
+			"demand_num": 20,
+			"supply": "冰晶,泥煤威士忌,盐,工具包",
+			"supply_num": 20
+		},
+		{
+			"id": 7,
+			"village_name": "格林伍德",
+			"tax_rate": 6,
+			"demand": "盐,糖,冰晶,工具包,营养液",
+			"demand_num": 30,
+			"supply": "煤炭,冰晶,工具包,营养液",
+			"supply_num": 30
+		},
+		{
+			"id": 8,
+			"village_name": "哈姆雷特村",
+			"tax_rate": 7,
+			"demand": "冰晶,无线电通讯器,煤炭,糖",
+			"demand_num": 30,
+			"supply": "药品,盐,无线电通讯器,煤炭,糖",
+			"supply_num": 25
+		},
+		{
+			"id": 9,
+			"village_name": "伊斯特本村",
+			"tax_rate": 5,
+			"demand": "无线电通讯器,香烟,工具包,香烟,煤炭",
+			"demand_num": 25,
+			"supply": "布料,盐,工具包,香烟,煤炭",
+			"supply_num": 30
+		},
+		{
+			"id": 10,
+			"village_name": "约克夏村",
+			"tax_rate": 4,
+			"demand": "工具包,营养液,布料,盐,泥煤威士忌",
+			"demand_num": 30,
+			"supply": "煤炭,冰晶,布料,盐,泥煤威士忌",
+			"supply_num": 25
 		}
 	]
 }
