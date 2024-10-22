@@ -28,7 +28,7 @@ shader = ExtResource("9_pcidk")
 shader_parameter/outerRadius = 0.8
 shader_parameter/MainAlpha = 0.2
 
-[node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "trade_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene") groups=["BaseScene"]]
+[node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "trade_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene", "time_scale_container") groups=["BaseScene"]]
 script = ExtResource("1_gwi6o")
 train_stats_manager = NodePath("TrainStatsManager")
 trade_manager = NodePath("TradeManage")
@@ -39,6 +39,7 @@ secondary_scene_root = NodePath("SecondarySceneRoot")
 route_selection_scene = NodePath("SecondarySceneRoot/RouteSelectionScene")
 train_stats_scene = NodePath("SecondarySceneRoot/TrainStatsScene")
 fitment_scene = NodePath("SecondarySceneRoot/FitmentScene")
+time_scale_container = NodePath("UI/TimeScaleContainer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_ybyye")

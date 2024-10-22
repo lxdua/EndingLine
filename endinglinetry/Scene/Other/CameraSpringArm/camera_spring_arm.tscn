@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scene/Other/CameraSpringArm/camera_spring_arm.gd" id="1_fufu7"]
 
 [node name="CameraSpringArm" type="SpringArm3D" groups=["CameraSpringArm"]]
-transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0.7, 0)
+transform = Transform3D(1, 0, 0, 0, 0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0.6, 0)
 spring_length = 10.0
 script = ExtResource("1_fufu7")
 

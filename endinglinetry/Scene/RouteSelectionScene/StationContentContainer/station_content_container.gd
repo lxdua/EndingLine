@@ -1,10 +1,10 @@
 extends PanelContainer
 
-@onready var name_label: Label = $VBoxContainer/NameLabel
-@onready var type_label: Label = $VBoxContainer/TypeLabel
-@onready var tip_label: Label = $VBoxContainer/TipLabel
+@export var name_label: Label
+@export var type_label: Label
+@export var tip_label: Label
 
-@onready var cost_label: Label = $VBoxContainer/CostLabel
+@export var cost_label: Label
 
 func update_content(station_scene: StationScene, distance: float):
 	name_label.text = station_scene.station_name

@@ -227,7 +227,7 @@ func drive():
 		print("出发！", route_list)
 		is_driving = true
 		set_out.emit(station_dict[current_station_id])
-		await get_tree().create_timer(1.0).timeout # 等黑屏
+		await CurtainLayer.curtain_animation_player.animation_finished # 等黑屏
 
 		while not route_list.is_empty():
 			next_station_id = route_list.pop_front()
@@ -241,8 +241,8 @@ func drive():
 				matrix[current_station_id][next_station_id] / train_stats_manager.current_speed,
 				)
 			await drive_tween.finished
-
 			current_station_id = next_station_id
+
 		is_driving = false
 		arrive.emit(station_dict[current_station_id].station_scene)
 

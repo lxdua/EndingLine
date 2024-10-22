@@ -40,20 +40,23 @@ func change_scene_to_train():
 	parallax_bg.start_scroll()
 
 func arrive(station_scene: StationScene):
+	GlobalVar.time_scale = 1.0
 	await CurtainLayer.fade_in()
 	hide_all_secondary_scene()
+	time_scale_container.hide()
 	change_scene_to_station(station_scene)
 	await get_tree().create_timer(1.0).timeout
-	CurtainLayer.fade_out()
+	await CurtainLayer.fade_out()
 	# TODO 入站动画
 
 func set_out():
 	# TODO 出发动画
 	await CurtainLayer.fade_in()
 	hide_all_secondary_scene()
+	time_scale_container.show()
 	change_scene_to_train()
 	await get_tree().create_timer(1.0).timeout
-	CurtainLayer.fade_out()
+	await CurtainLayer.fade_out()
 
 func check_portals(station_scene: StationScene):
 	if get_current_station().station_id == route_selection_scene.idx - 1:
@@ -112,6 +115,8 @@ func _on_under_button_ui_fitment_button_pressed() -> void:
 
 
 #region 倍速相关
+
+@export var time_scale_container: Control
 
 func _on_pause_button_pressed() -> void:
 	get_tree().set_pause(true)
