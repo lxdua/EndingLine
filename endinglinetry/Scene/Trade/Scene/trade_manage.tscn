@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dox7bvx5bfsib"]
+[gd_scene load_steps=6 format=3 uid="uid://dox7bvx5bfsib"]
 
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_manage.gd" id="1_f7xi3"]
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="2_sqbnq"]
 [ext_resource type="PackedScene" uid="uid://dovfytcll6bqb" path="res://Scene/Trade/Scene/TradeUI/trade_ui.tscn" id="3_phq2h"]
 [ext_resource type="PackedScene" uid="uid://b21dow7f1jk64" path="res://Scene/Trade/Scene/BackPackUI/back_pack_ui.tscn" id="4_86vm7"]
+[ext_resource type="PackedScene" uid="uid://bkfv2wu2ud721" path="res://Scene/Trade/Scene/CollectionUI/collection_ui.tscn" id="5_oqj7u"]
 
 [node name="TradeManage" type="Node2D" groups=["TradeManage"]]
 script = ExtResource("1_f7xi3")
@@ -21,6 +22,10 @@ anchor_right = 0.971
 offset_right = -0.940552
 
 [node name="BackPackUI" parent="." instance=ExtResource("4_86vm7")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CollectionUI" parent="." instance=ExtResource("5_oqj7u")]
 unique_name_in_owner = true
 visible = false
 

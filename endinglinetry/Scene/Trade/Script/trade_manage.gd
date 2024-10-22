@@ -3,6 +3,7 @@ class_name TradeManage
 @onready var player_trade_goods: TradeGoods = $PlayerTradeGoods
 @onready var trade_ui: TradeUI = $TradeUI
 @onready var back_pack_ui: BackPackUI = %BackPackUI
+@onready var collection_ui: CollectionUI = %CollectionUI
 
 
 @export_range(0,1) var sell_multiplier:float=0.7
@@ -30,6 +31,10 @@ func update_list_goods():
 	if trade_partner:
 		trade_ui.update_list_goods(player_trade_goods,trade_partner)
 
+func open_collection_ui(resources:Array[CollectionResource]):
+	collection_ui.resources=resources
+	collection_ui.update()
+	collection_ui.visible=true
 
 
 func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
