@@ -29,8 +29,8 @@ func update_station_by_dict(type: StationType, dict: Dictionary):
 			"666".split()
 			shop.demand_arr = dict["demand"].split("，")
 			shop.demand_num = dict["demand_num"]
-			shop.supply_and_demand_arr = dict["supply_and_demand"].split("，")
-			shop.supply_and_demand_num = dict["supply_and_demand_num"]
+			#shop.supply_and_demand_arr = dict["supply_and_demand"].split("，")
+			#shop.supply_and_demand_num = dict["supply_and_demand_num"]
 			shop.supply_arr = dict["supply"].split("，")
 			shop.supply_num = dict["supply_num"]
 			add_child(shop)
@@ -40,8 +40,8 @@ func update_station_by_dict(type: StationType, dict: Dictionary):
 			shop.tax_rate = dict["tax_rate"]
 			shop.demand_arr = dict["demand"].split("，")
 			shop.demand_num = dict["demand_num"]
-			shop.supply_and_demand_arr = dict["supply_and_demand"].split("，")
-			shop.supply_and_demand_num = dict["supply_and_demand_num"]
+			#shop.supply_and_demand_arr = dict["supply_and_demand"].split("，")
+			#shop.supply_and_demand_num = dict["supply_and_demand_num"]
 			shop.supply_arr = dict["supply"].split("，")
 			shop.supply_num = dict["supply_num"]
 			add_child(shop)
