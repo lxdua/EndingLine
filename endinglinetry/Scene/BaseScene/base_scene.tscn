@@ -22,13 +22,14 @@
 [ext_resource type="Texture2D" uid="uid://dx5lfe0g1pvar" path="res://Art/2D/BaseSceneUI/TimeScaleContainer/MainUi_Speed3.png" id="14_axril"]
 [ext_resource type="Texture2D" uid="uid://d31ul1p5y5l3" path="res://Art/2D/BaseSceneUI/TimeScaleContainer/MainUi_Speed4.png" id="15_q7cka"]
 
-[node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "trade_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene", "time_scale_container") groups=["BaseScene"]]
+[node name="BaseScene" type="Node3D" node_paths=PackedStringArray("train_stats_manager", "trade_manager", "first_scene_root", "parallax_bg", "camera_spring_arm", "ui", "secondary_scene_root", "route_selection_scene", "train_stats_scene", "fitment_scene", "time_scale_container") groups=["BaseScene"]]
 script = ExtResource("1_gwi6o")
 train_stats_manager = NodePath("TrainStatsManager")
 trade_manager = NodePath("TradeManage")
 first_scene_root = NodePath("FirstSceneRoot")
 parallax_bg = NodePath("BG/ParallaxBG")
 camera_spring_arm = NodePath("CameraSpringArm")
+ui = NodePath("UI")
 secondary_scene_root = NodePath("SecondarySceneRoot")
 route_selection_scene = NodePath("SecondarySceneRoot/RouteSelectionScene")
 train_stats_scene = NodePath("SecondarySceneRoot/TrainStatsScene")
