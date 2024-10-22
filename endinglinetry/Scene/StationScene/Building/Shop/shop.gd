@@ -17,11 +17,12 @@ func press_building():
 	trade_manage.open_trade_ui(trade_goods)
 
 func _ready() -> void:
-	print("shop:", get_parent().station_dict)
 	trade_goods.demand_arr=demand_arr
 	trade_goods.demand_num=demand_num
 	trade_goods.supply_arr=demand_arr
 	trade_goods.supply_num=supply_num
-	prints("shop:", tax_rate, demand_arr, supply_arr)
 	for s in supply_arr:
-		trade_goods.add_goods(trade_manage.get_goods_id_by_name(s),supply_num)
+		var id: int = trade_manage.get_goods_id_by_name(s)
+		if id == -1:
+			continue
+		trade_goods.add_goods(id,supply_num)

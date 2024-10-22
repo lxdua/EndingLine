@@ -121,4 +121,10 @@ func get_goods_icon(id:int)->Texture2D:
 	return icon
 
 func get_goods_id_by_name(name:String)->int:
-	return goods_datas.filter(func(gd):return gd["name"]==name)[0].id
+	var ans = goods_datas.filter(func(gd):return gd["name"]==name)
+	if ans.is_empty():
+		print("cuozi", name)
+		return -1
+	# TODO 检测是否找到
+	return ans[0].id
+	#return goods_datas.filter(func(gd):return gd["name"]==name)[0].id
