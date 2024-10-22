@@ -29,11 +29,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	camera_follow_train(delta)
 	calc_journey(delta)
+
+func _process(delta: float) -> void:
 	update_hight_light_line()
+	drag_carema()
 
 func _unhandled_input(event: InputEvent) -> void:
 	camera_zoom(event)
-	drag_scene(event)
+	drag_camera(event)
 
 #region 地图相关
 
@@ -267,9 +270,11 @@ var all_visible: bool:
 		if all_visible:
 			map.show()
 			ui.show()
+			can_drag = true
 		else:
 			map.hide()
 			ui.hide()
+			can_drag = false
 
 
 ## 确认出发
@@ -339,7 +344,9 @@ func _on_speed_up_button_button_up() -> void:
 @onready var camera: Camera2D = $Map/Camera
 @onready var marker: Marker2D = $UI/Marker
 
+var can_drag: bool = false
 var is_following: bool = true
+var is_draging: bool = false
 
 var mouse_pos: Vector2
 
@@ -349,13 +356,21 @@ func camera_follow_train(delta: float):
 	if is_following:
 		camera.global_position = lerp(camera.global_position, train_in_map.global_position, delta)
 
-func drag_scene(event: InputEvent):
+func drag_camera(event: InputEvent):
+	if not can_drag:
+		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		is_following = false
 		mouse_pos = get_viewport().get_mouse_position()
-	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if event.is_pressed():
+			is_draging = true
+		else:
+			is_draging = false
+
+func drag_carema():
+	if is_draging and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		camera.position -= get_viewport().get_mouse_position() - mouse_pos
 		mouse_pos = get_viewport().get_mouse_position()
-		is_following = false
 		camera.position_smoothing_enabled = false
 
 func _on_follow_button_pressed() -> void:

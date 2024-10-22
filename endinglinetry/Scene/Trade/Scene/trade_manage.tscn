@@ -16,7 +16,10 @@ cash = 500
 
 [node name="TradeUI" parent="." groups=["TradeUI"] instance=ExtResource("3_phq2h")]
 layer = 2
-visible = false
+
+[node name="ExitButton" parent="TradeUI/TextureRect" index="1"]
+anchor_right = 0.971
+offset_right = -0.940552
 
 [node name="BackPackUI" parent="." instance=ExtResource("4_86vm7")]
 unique_name_in_owner = true

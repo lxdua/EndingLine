@@ -43,6 +43,8 @@ func show_goods_details(goods_item:TradeGoodsStruct):
 
 func _on_exit_button_pressed() -> void:
 	visible=false
+	#dua
+	get_tree().get_first_node_in_group("TrainStatsManager").current_money = get_tree().get_first_node_in_group("TradeManage").player_trade_goods.cash
 
 
 func _on_go_button_pressed() -> void:
