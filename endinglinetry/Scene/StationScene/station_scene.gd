@@ -51,11 +51,16 @@ func update_station():
 			add_child(gather_point)
 		StationType.BEACON:
 			var beacon: Beacon = BEACON.instantiate()
-
-			add_child(beacon)
+			#add_child(beacon)
 		StationType.CAVE:
 			var cave: Cave = CAVE.instantiate()
-
+			cave.item_num = station_dict["item_num"]
+			var pool: Array = station_dict["item_pool"].split(",")
+			for it in pool:
+				var item_name: String = it.split("*")[0]
+				var num: int = int(it.split("*")[1])
+				for i in range(num):
+					cave.item_pool.append(item_name)
 			add_child(cave)
 
 func update_station_dict(type: StationScene.StationType, dict: Dictionary):

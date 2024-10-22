@@ -7,8 +7,9 @@
 [node name="Cave" instance=ExtResource("1_n368v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1, 0)
 script = ExtResource("2_opg6r")
-treasure_pool = Array[int]([])
-item_num = 1
+
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-0.627289, 0.634415, 0.628965, 0.638934, 0.624446, -0.653472, -0.640846, -0.626358)
 
 [node name="TradeGoods" type="Node" parent="." index="2"]
 script = ExtResource("3_cma3m")

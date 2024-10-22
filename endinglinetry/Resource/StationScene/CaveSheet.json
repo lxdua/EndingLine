@@ -3,98 +3,113 @@
 		{
 			"id": 1,
 			"name": "哀嚎洞窟",
-			"item_pool": "无线电通讯器*2 + 煤炭*6",
+			"item_pool": "无线电通讯器*2,煤炭*6",
 			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 2,
 			"name": "艾尔文洞穴",
-			"item_pool": "药品*3 + 煤炭* 5 + 工具包*2",
+			"item_pool": "药品*3,煤炭*5,工具包*2",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 3,
 			"name": "贝克斯洞穴",
 			"item_pool": "煤炭*12",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 4,
 			"name": "卡斯特罗洞穴",
-			"item_pool": "营养液*3 + 糖*6",
+			"item_pool": "营养液*3,糖*6",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 5,
 			"name": "德文郡洞穴",
-			"item_pool": "无线电通讯器*1 + 泥煤威士忌*6",
+			"item_pool": "无线电通讯器*1,泥煤威士忌*6",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 6,
 			"name": "艾格尼丝深渊",
-			"item_pool": "无线电通讯器*2 + 布料*7",
+			"item_pool": "无线电通讯器*2,布料*7",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 7,
 			"name": "弗洛伦萨洞穴",
-			"item_pool": "盐*10 + 工具包*1 + 糖*3",
+			"item_pool": "盐*10,工具包*,糖*3",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 8,
 			"name": "格林洞穴",
 			"item_pool": "冰晶*5",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 9,
 			"name": "哈姆雷特洞穴",
-			"item_pool": "香烟*5 + 电池*3",
+			"item_pool": "香烟*5,电池*3",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 10,
 			"name": "伊斯特本洞穴",
-			"item_pool": "冰晶*3 + 煤炭*5",
+			"item_pool": "冰晶*3,煤炭*5",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 11,
 			"name": "约克夏洞穴",
-			"item_pool": "工具包*3 + 煤炭*7",
+			"item_pool": "工具包*3,煤炭*7",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 12,
 			"name": "莱茵河畔洞穴",
 			"item_pool": "盐*16",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 13,
 			"name": "梅斯洞穴",
-			"item_pool": "电池*3 + 药品*4",
+			"item_pool": "电池*3,药品*4",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 14,
 			"name": "诺曼底洞穴",
 			"item_pool": "布料*15",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 15,
 			"name": "帕尔马洞穴",
 			"item_pool": "香烟*9",
+			"item_num": 4,
 			"tip": "暂无描述"
 		},
 		{
 			"id": 16,
 			"name": "昆士兰洞穴",
 			"item_pool": "无线电通讯器*4",
+			"item_num": 4,
 			"tip": "暂无描述"
 		}
 	]
