@@ -75,7 +75,7 @@ func update():
 		goods_name=trade_manage.get_goods_name(goods_struct.id)
 		goods_price=trade_manage.get_goods_price(goods_struct.id)
 		price_multiplier=goods_struct.price_multiplier
-		goods_number=goods_struct.number
+		goods_number=goods_struct.number<goods_struct.demand_num if goods_struct.number else goods_struct.demand_num
 		var i := trade_manage.get_goods_icon(goods_struct.id)
 		if i:
 			icon = i

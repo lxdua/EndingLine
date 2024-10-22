@@ -6,9 +6,6 @@ var tax_rate: float
 # 需
 var demand_arr: PackedStringArray
 var demand_num: int
-# 又供又需
-var supply_and_demand_arr: PackedStringArray
-var supply_and_demand_num: int
 # 供
 var supply_arr: PackedStringArray
 var supply_num: int
@@ -20,4 +17,9 @@ func press_building():
 	trade_manage.open_trade_ui(trade_goods)
 
 func _ready() -> void:
-	pass
+	trade_goods.demand_arr=demand_arr
+	trade_goods.demand_num=demand_num
+	trade_goods.supply_arr=supply_arr
+	trade_goods.supply_num=supply_num
+	for s in supply_arr:
+		trade_goods.add_goods(trade_manage.get_goods_id_by_name(s),supply_num)
