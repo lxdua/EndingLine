@@ -15,30 +15,35 @@ var station_name: String
 var station_type: StationType
 var station_description: String
 
-func update_station_by_dict(type: StationType, dict: Dictionary):
+var station_dict: Dictionary
+
+func update_station_by_dict(type: StationScene.StationType, dict: Dictionary):
 	station_type = type
-	match type:
+	station_dict = dict.duplicate()
+	print("sta:", station_dict)
+	match station_type:
 		StationType.RUINS:
-			station_name = dict["ruins_name"]
+			station_name = station_dict["ruins_name"]
 		StationType.CITY:
-			station_name = dict["city_name"]
+			station_name = station_dict["city_name"]
 			var factory: Factory = FACTORY.instantiate()
 			add_child(factory)
 			var shop: Shop = SHOP.instantiate()
-			shop.tax_rate = dict["tax_rate"]
-			shop.demand_arr = dict["demand"].split(",")
-			shop.demand_num = dict["demand_num"]
-			shop.supply_arr = dict["supply"].split(",")
-			shop.supply_num = dict["supply_num"]
+			shop.tax_rate = station_dict["tax_rate"]
+			shop.demand_arr = station_dict["demand"].split(",")
+			shop.demand_num = station_dict["demand_num"]
+			shop.supply_arr = station_dict["supply"].split(",")
+			shop.supply_num = station_dict["supply_num"]
+			prints("sta:", shop.tax_rate, shop.demand_arr, shop.supply_arr)
 			add_child(shop)
 		StationType.VILLAGE:
-			station_name = dict["village_name"]
+			station_name = station_dict["village_name"]
 			var shop: Shop = SHOP.instantiate()
-			shop.tax_rate = dict["tax_rate"]
-			shop.demand_arr = dict["demand"].split(",")
-			shop.demand_num = dict["demand_num"]
-			shop.supply_arr = dict["supply"].split(",")
-			shop.supply_num = dict["supply_num"]
+			shop.tax_rate = station_dict["tax_rate"]
+			shop.demand_arr = station_dict["demand"].split(",")
+			shop.demand_num = station_dict["demand_num"]
+			shop.supply_arr = station_dict["supply"].split(",")
+			shop.supply_num = station_dict["supply_num"]
 			add_child(shop)
 		StationType.GATHER_POINT:
 			pass

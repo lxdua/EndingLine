@@ -121,4 +121,4 @@ func get_goods_icon(id:int)->Texture2D:
 	return icon
 
 func get_goods_id_by_name(name:String)->int:
-	return goods_datas.filter(func(gd):return gd["name"]==name)[0]
+	return goods_datas.filter(func(gd):return gd["name"]==name)[0].id
