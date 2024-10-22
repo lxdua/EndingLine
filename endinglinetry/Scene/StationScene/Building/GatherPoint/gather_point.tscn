@@ -7,6 +7,9 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, 0)
 script = ExtResource("2_1abd1")
 
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-0.619403, 0.611524, 0.630001, 0.636388, 0.636217, -0.6068, -0.582108, -0.63788)
+
 [node name="Label3D" type="Label3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
 text = "采集点"

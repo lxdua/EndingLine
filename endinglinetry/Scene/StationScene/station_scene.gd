@@ -13,6 +13,8 @@ enum StationType { RUINS, CITY, VILLAGE, GATHER_POINT, BEACON, CAVE }
 
 @export var station_name: String
 
+@export var station_tip: String
+
 @export var station_type: StationType
 
 @export var station_dict: Dictionary
@@ -37,19 +39,27 @@ func update_station():
 		StationType.VILLAGE:
 			var shop: Shop = SHOP.instantiate()
 			shop.tax_rate = station_dict["tax_rate"]
-			shop.demand_arr = station_dict["demand"].split(",")
+			shop.demand_arr = Array(station_dict["demand"].split(","))
 			shop.demand_num = station_dict["demand_num"]
-			shop.supply_arr = station_dict["supply"].split(",")
+			shop.supply_arr = Array(station_dict["supply"].split(","))
 			shop.supply_num = station_dict["supply_num"]
 			add_child(shop)
 		StationType.GATHER_POINT:
-			pass
+			var gather_point: GatherPoint = GATHER_POINT.instantiate()
+			gather_point.item_arr = Array(station_dict["item"].split(","))
+			gather_point.item_num_arr = Array(station_dict["item_num"].split(",")).filter(func(str_num): return str_num.to_int())
+			add_child(gather_point)
 		StationType.BEACON:
-			pass
+			var beacon: Beacon = BEACON.instantiate()
+
+			add_child(beacon)
 		StationType.CAVE:
-			pass
+			var cave: Cave = CAVE.instantiate()
+
+			add_child(cave)
 
 func update_station_dict(type: StationScene.StationType, dict: Dictionary):
 	station_type = type
 	station_dict = dict
 	station_name = station_dict["name"]
+	station_tip = station_dict["tip"]

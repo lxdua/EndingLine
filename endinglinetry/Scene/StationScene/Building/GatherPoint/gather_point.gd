@@ -1,8 +1,14 @@
 extends Building
 class_name GatherPoint
 
-func press_building():
-	print("GatherPoint!")
+# 物品名和对应数量的下标相同
+var item_arr: Array[String]
+var item_num_arr: Array[int]
 
-## 采集点奖励
-# TODO 获得奖励具体的信息
+func press_building():
+	# TODO 打开采集点界面
+	pass
+
+func _ready() -> void:
+	# TODO 用上面的信息更新
+	pass
