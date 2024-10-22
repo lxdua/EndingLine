@@ -16,7 +16,10 @@ var goods_struct:TradeGoodsStruct
 func update_details():
 	if goods_struct:
 		goods_name.text=trade_manage.get_goods_name(goods_struct.id)
-		number_scroll_bar.max_value=goods_struct.number<goods_struct.demand_num if goods_struct.number else goods_struct.demand_num
+		if goods_struct.trade_goods==trade_manage.player_trade_goods:
+			number_scroll_bar.max_value=goods_struct.number<goods_struct.demand_num if goods_struct.number else goods_struct.demand_num
+		else:
+			number_scroll_bar.max_value=goods_struct.number
 		number_scroll_bar.value=1
 		number_scroll_bar.value=number_scroll_bar.max_value
 		goods_number.text=str(int(number_scroll_bar.value))+"/"+str(number_scroll_bar.max_value)

@@ -13,7 +13,7 @@ class_name GoodsListItem
 
 
 
-
+const ICON = preload("res://icon.svg")
 @export var icon:Texture2D=preload("res://icon.svg"):
 	set(new_icon):
 		icon=new_icon
@@ -82,6 +82,8 @@ func update():
 		var i := trade_manage.get_goods_icon(goods_struct.id)
 		if i:
 			icon = i
+		else:
+			icon = ICON
 
 
 
