@@ -8,3 +8,4 @@ script = ExtResource("1_0u5sc")
 fitment_name = "扩容 II"
 icon = ExtResource("2_yorio")
 fitment_content = "列车载重上限提高15%"
+pre_fitment_name_list = Array[String](["扩容 I"])

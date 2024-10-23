@@ -4,6 +4,7 @@ class_name Factory
 const FACTORY_FITMENT_UI = preload("res://Scene/StationScene/Building/Factory/factory_fitment_ui.tscn")
 
 @onready var train_stats_manager: TrainStatsManager = get_tree().get_first_node_in_group("TrainStatsManager")
+@onready var fitment_handler: FitmentHandler = get_tree().get_first_node_in_group("FitmentHandler")
 
 @export var factory_ui: CanvasLayer
 @export var buy_button: Button
@@ -32,12 +33,18 @@ func _on_buy_button_pressed() -> void:
 	update_fitment_container()
 
 func _on_factory_fitment_button_pressed(fitment_name: String):
-	train_stats_manager.fitment_handler.add_fitment_by_name(fitment_name)
+	fitment_handler.add_fitment_by_name(fitment_name)
 	covering_layer.show()
 
-func update_fitment_container():
-	var fitment_handler: FitmentHandler = get_tree().get_first_node_in_group("TrainStatsManager").fitment_handler
+func can_add(fitment: Fitment) -> bool:
+	if fitment_handler.has_fitment_by_name(fitment.fitment_name):
+		return false
+	for pre_fitment_name: String in fitment.pre_fitment_name_list:
+		if not fitment_handler.has_fitment_by_name(pre_fitment_name):
+			return false
+	return true
 
+func update_fitment_container():
 	for factory_fitment_ui in fitment_container.get_children():
 		factory_fitment_ui.free()
 	var train_fitment: Array
@@ -46,14 +53,15 @@ func update_fitment_container():
 
 	for fitment_name in fitment_handler.fitment_dict:
 		var fitment: Fitment = fitment_handler.fitment_dict[fitment_name].instantiate()
-		if fitment_handler.has_fitment_by_name(fitment.fitment_name):
-			continue;
-		elif fitment.holder == Fitment.Holder.AKI:
-			aki_fitment.append(fitment)
-		elif fitment.holder == Fitment.Holder.RUU:
-			ruu_fitment.append(fitment)
-		else:
-			train_fitment.append(fitment)
+		if not can_add(fitment):
+			continue
+		match fitment.holder:
+			Fitment.Holder.AKI:
+				aki_fitment.append(fitment)
+			Fitment.Holder.RUU:
+				ruu_fitment.append(fitment)
+			Fitment.Holder.TRAIN:
+				train_fitment.append(fitment)
 	if not aki_fitment.is_empty():
 		add_new_fitment_ui(aki_fitment.pick_random())
 	if not ruu_fitment.is_empty():

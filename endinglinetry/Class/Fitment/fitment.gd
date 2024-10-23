@@ -7,7 +7,7 @@ enum Holder { TRAIN, AKI, RUU }
 @export var icon: Texture
 @export var holder: Holder
 @export_multiline var fitment_content: String
-
+@export var pre_fitment_name_list: Array[String]
 
 ## 获得这个fitment时
 func activate():
