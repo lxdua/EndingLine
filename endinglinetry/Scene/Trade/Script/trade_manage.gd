@@ -111,6 +111,7 @@ func load_csv(csv_path:String):
 		csv_file.close()
 
 func get_goods_data(id:int)->Dictionary:
+
 	return goods_datas.filter(func(gd):return gd["id"]==id)[0]
 
 func get_goods_name(id:int)->String:

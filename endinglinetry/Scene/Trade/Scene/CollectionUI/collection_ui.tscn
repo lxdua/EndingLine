@@ -12,7 +12,15 @@ texture = ExtResource("4_wtatq")
 texture = ExtResource("4_wtatq")
 
 [node name="CollectionUI" type="CanvasLayer"]
+layer = 3
 script = ExtResource("1_dlb1v")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(0, 500)
