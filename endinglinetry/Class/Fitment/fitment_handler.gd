@@ -2,7 +2,7 @@ extends Node
 class_name FitmentHandler
 
 static var FITMENT_DICT: Dictionary = {
-	"能源改进": preload("res://Resource/Fitment/能源改进/能源改进.tscn"),
+	"发动机改进": preload("res://Resource/Fitment/发动机改进/发动机改进.tscn"),
 	"JK": preload("res://Resource/Fitment/JK/jk.tscn"),
 }
 
@@ -25,8 +25,7 @@ func add_fitment_by_name(fitment_name: String):
 		return
 	if get_fitment_by_name(fitment_name) ==	null:
 		var new_fitment: Fitment = FITMENT_DICT[fitment_name].instantiate()
-		add_child(new_fitment)
-	fitment_update.emit()
+		add_fitment(new_fitment)
 
 func remove_fitment_by_name(fitment_name: String):
 	for fitment: Fitment in get_children():
@@ -34,11 +33,17 @@ func remove_fitment_by_name(fitment_name: String):
 			fitment.queue_free()
 	fitment_update.emit()
 
-func add_fitment(new_fitment: Fitment):
-	add_child(new_fitment)
-	fitment_update.emit()
-
 func clear_fitment():
 	for fitment: Fitment in get_children():
-		fitment.queue_free()
+		remove_fitment(fitment)
+	fitment_update.emit()
+
+func add_fitment(new_fitment: Fitment):
+	add_child(new_fitment)
+	new_fitment.activate()
+	fitment_update.emit()
+
+func remove_fitment(fitment: Fitment):
+	fitment.deactivate()
+	fitment.queue_free()
 	fitment_update.emit()

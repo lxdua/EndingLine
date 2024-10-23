@@ -50,6 +50,9 @@ TradeUI=""
 TrainStatsManager=""
 BaseScene=""
 CameraSpringArm=""
+FitmentHandler=""
+BuffHandler=""
+ModifierHandler=""
 
 [gui]
 

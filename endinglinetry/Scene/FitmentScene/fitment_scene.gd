@@ -5,8 +5,7 @@ const FITMENT_UI = preload("res://Scene/FitmentScene/fitment_ui.tscn")
 
 @export var fitment_container: Container
 @export var base_scene: BaseScene
-@onready var train_stats_manager: TrainStatsManager = get_tree().get_first_node_in_group("TrainStatsManager")
-@onready var fitment_handler: FitmentHandler = train_stats_manager.fitment_handler
+@onready var fitment_handler: FitmentHandler = get_tree().get_first_node_in_group("FitmentHandler")
 
 var fitment_list: Array[Fitment] = []
 

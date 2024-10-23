@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bvorf6qptqxej"]
+[gd_scene load_steps=20 format=3 uid="uid://bvorf6qptqxej"]
 
 [ext_resource type="Script" path="res://Scene/BaseScene/base_scene.gd" id="1_gwi6o"]
 [ext_resource type="PackedScene" uid="uid://c5vtntw4vu6n" path="res://Scene/RouteSelectionScene/route_selection_scene.tscn" id="2_7vr7o"]
@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://02qpkmcxafti" path="res://Scene/FitmentScene/fitment_scene.tscn" id="4_tcjjo"]
 [ext_resource type="PackedScene" uid="uid://bgtf54esu4da7" path="res://Scene/TrainStatsScene/train_stats_scene.tscn" id="4_x7c81"]
 [ext_resource type="Script" path="res://Class/Modifier/modifier_handler.gd" id="5_vswfe"]
-[ext_resource type="Script" path="res://Class/Modifier/modifier.gd" id="6_jd4rj"]
-[ext_resource type="Script" path="res://Class/Modifier/modifier_value.gd" id="7_djxcc"]
 [ext_resource type="Script" path="res://Class/Buff/buff_handler.gd" id="8_5t8qy"]
 [ext_resource type="PackedScene" uid="uid://hhslws86utqp" path="res://Scene/BaseScene/StatusBarContainer/status_bar_container.tscn" id="9_1ynag"]
 [ext_resource type="PackedScene" uid="uid://dox7bvx5bfsib" path="res://Scene/Trade/Scene/trade_manage.tscn" id="9_ib51h"]
@@ -151,51 +149,19 @@ vertical_alignment = 1
 
 [node name="TrainStatsManager" type="Node" parent="." node_paths=PackedStringArray("modifier_handler", "fitment_handler", "buff_handler", "base_scene") groups=["TrainStatsManager"]]
 script = ExtResource("4_d1rko")
-modifier_handler = NodePath("ModifierHandler")
-fitment_handler = NodePath("FitmentHandler")
-buff_handler = NodePath("BuffHandler")
+modifier_handler = NodePath("../ModifierHandler")
+fitment_handler = NodePath("../FitmentHandler")
+buff_handler = NodePath("../BuffHandler")
 base_scene = NodePath("..")
 
-[node name="BuffHandler" type="Node" parent="TrainStatsManager"]
-script = ExtResource("8_5t8qy")
-
-[node name="FitmentHandler" type="Node" parent="TrainStatsManager"]
+[node name="FitmentHandler" type="Node" parent="." groups=["FitmentHandler"]]
 script = ExtResource("11_fd2l0")
 
-[node name="ModifierHandler" type="Node" parent="TrainStatsManager"]
+[node name="BuffHandler" type="Node" parent="." groups=["BuffHandler"]]
+script = ExtResource("8_5t8qy")
+
+[node name="ModifierHandler" type="Node" parent="." groups=["ModifierHandler"]]
 script = ExtResource("5_vswfe")
-
-[node name="CurrentPowerModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "CurrentPowerModifier"
-
-[node name="MaxPowerModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "MaxPowerModifier"
-
-[node name="CurrentLoadModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "CurrentLoadModifier"
-
-[node name="MaxLoadModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "MaxLoadModifier"
-
-[node name="CurrentSpeedModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "CurrentSpeedModifier"
-
-[node name="OverloadModifierValue" type="Node" parent="TrainStatsManager/ModifierHandler/CurrentSpeedModifier"]
-script = ExtResource("7_djxcc")
-source = "OverloadModifierValue"
-
-[node name="SolarPanelEfficiencyModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "SolarPanelEfficiencyModifier"
-
-[node name="CostEfficiencyModifier" type="Node" parent="TrainStatsManager/ModifierHandler"]
-script = ExtResource("6_jd4rj")
-modifier_name = "CostEfficiencyModifier"
 
 [node name="TradeManage" parent="." instance=ExtResource("9_ib51h")]
 
@@ -214,10 +180,5 @@ modifier_name = "CostEfficiencyModifier"
 [connection signal="money_update" from="TrainStatsManager" to="UI/StatusBarContainer" method="_on_train_stats_manager_money_update"]
 [connection signal="power_update" from="TrainStatsManager" to="UI/StatusBarContainer" method="_on_train_stats_manager_power_update"]
 [connection signal="speed_update" from="TrainStatsManager" to="UI/StatusBarContainer" method="_on_train_stats_manager_speed_update"]
-[connection signal="value_changed" from="TrainStatsManager/ModifierHandler/CurrentPowerModifier" to="TrainStatsManager" method="_on_current_power_modifier_value_changed"]
-[connection signal="value_changed" from="TrainStatsManager/ModifierHandler/MaxPowerModifier" to="TrainStatsManager" method="_on_max_power_modifier_value_changed"]
-[connection signal="value_changed" from="TrainStatsManager/ModifierHandler/CurrentLoadModifier" to="TrainStatsManager" method="_on_current_load_modifier_value_changed"]
-[connection signal="value_changed" from="TrainStatsManager/ModifierHandler/MaxLoadModifier" to="TrainStatsManager" method="_on_max_load_modifier_value_changed"]
-[connection signal="value_changed" from="TrainStatsManager/ModifierHandler/CurrentSpeedModifier" to="TrainStatsManager" method="_on_current_speed_modifier_value_changed"]
 
 [editable path="CameraSpringArm"]

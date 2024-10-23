@@ -3,10 +3,16 @@ class_name Modifier
 
 @export var modifier_name: String
 
-signal value_changed
+var update_signal: Signal = Signal()
 
 func _on_value_changed():
-	value_changed.emit()
+	if update_signal == Signal():
+		return
+	update_signal.emit()
+
+func _init(modifier_name: String) -> void:
+	self.modifier_name = modifier_name
+	self.name = modifier_name
 
 func get_value(source: String) -> ModifierValue:
 	for value: ModifierValue in get_children():
@@ -19,8 +25,7 @@ func add_new_value(value: ModifierValue):
 	if not modifier_value:
 		add_child(value)
 	else:
-		modifier_value.multiply_value = value.multiply_value
-		modifier_value.add_value = value.add_value
+		modifier_value.value = value.value
 
 func remove_value(source: String):
 	for value: ModifierValue in get_children():

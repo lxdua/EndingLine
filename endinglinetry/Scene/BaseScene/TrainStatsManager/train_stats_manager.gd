@@ -18,9 +18,6 @@ func _physics_process(delta: float) -> void:
 	get_solar_power(delta)
 	cost_power(delta)
 
-func get_final_value(modifier_name: String, base: float) -> float:
-	return modifier_handler.get_modifier_result(modifier_name, base)
-
 #region 资源部分
 
 signal money_update
@@ -47,7 +44,7 @@ var max_train_load: float:
 		max_train_load = clamp(v, 0, INF)
 		load_update.emit()
 	get:
-		return get_final_value("MaxLoadModifier", max_train_load)
+		return modifier_handler.get_modifier_result_intelligently("max_train_load", max_train_load, load_update)
 
 var current_train_load: float:
 	set(v):
@@ -62,16 +59,10 @@ var current_train_load: float:
 		#else:
 			#modifier_handler.get_modifier("CurrentSpeedModifier").get_value("OverloadModifierValue").value = 0.1
 	get:
-		return get_final_value("CurrentLoadModifier", current_train_load)
+		return modifier_handler.get_modifier_result_intelligently("current_train_load", current_train_load, load_update)
 
 func has_load(need: int):
 	return need <= max_train_load - current_train_load
-
-func _on_current_load_modifier_value_changed() -> void:
-	load_update.emit()
-
-func _on_max_load_modifier_value_changed() -> void:
-	load_update.emit()
 
 #endregion
 
@@ -84,13 +75,9 @@ var current_speed: float:
 		current_speed = clamp(v, 0, INF)
 		speed_update.emit()
 	get:
-		return get_final_value("CurrentSpeedModifier", current_speed)
+		return modifier_handler.get_modifier_result_intelligently("current_speed", current_speed, speed_update)
 
 var total_journey: float = 0.0
-
-func _on_current_speed_modifier_value_changed() -> void:
-	speed_update.emit()
-
 
 #endregion
 
@@ -103,31 +90,25 @@ var max_power: float = 50.0:
 		max_power = clampf(v, 0.0, INF)
 		power_update.emit()
 	get:
-		return get_final_value("MaxPowerModifier", max_power)
+		return modifier_handler.get_modifier_result_intelligently("max_power", max_power, power_update)
 
 var current_power: float = 25.0:
 	set(v):
 		current_power = clampf(v, 0.0, max_power)
 		power_update.emit()
 	get:
-		return get_final_value("CurrentPowerModifier", current_power)
+		return modifier_handler.get_modifier_result_intelligently("current_power", current_power, power_update)
 
 var cost_efficiency: int = 2:
 	set(v):
 		cost_efficiency = clamp(v, 0.0, INF)
 	get:
-		return get_final_value("CostEfficiencyModifier", cost_efficiency)
+		return modifier_handler.get_modifier_result_intelligently("cost_efficiency", cost_efficiency)
 
 func cost_power(delta: float):
 	if not is_driving:
 		return
 	current_power -= cost_efficiency * delta
-
-func _on_current_power_modifier_value_changed() -> void:
-	power_update.emit()
-
-func _on_max_power_modifier_value_changed() -> void:
-	power_update.emit()
 
 #endregion
 
@@ -136,8 +117,6 @@ func _on_max_power_modifier_value_changed() -> void:
 var solar_panel_efficiency: int = 3:
 	set(v):
 		solar_panel_efficiency = v
-	get:
-		return get_final_value("SolarPanelEfficiencyModifier", solar_panel_efficiency)
 
 func get_solar_power(delta: float):
 	if not base_scene.is_daytime():

@@ -17,9 +17,5 @@ func activate():
 func deactivate():
 	pass
 
-
-func _enter_tree() -> void:
-	activate()
-
-func _exit_tree() -> void:
-	deactivate()
+func _ready() -> void:
+	name = fitment_name
