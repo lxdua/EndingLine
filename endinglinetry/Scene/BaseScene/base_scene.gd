@@ -21,6 +21,8 @@ const TRAIN_SCENE = preload("res://Scene/TrainScene/train_scene.tscn")
 @export var parallax_bg: ParallaxBG
 @export var camera_spring_arm: SpringArm3D
 
+var current_station_scene: StationScene
+
 func get_current_station() -> Station:
 	return route_selection_scene.station_dict[route_selection_scene.current_station_id]
 
@@ -31,17 +33,9 @@ func change_scene_to_station(station_scene: StationScene):
 	time_scale_container.hide()
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
-
-	#prints("arrive1:", station_scene.station_dict)
-	#var type: = station_scene.station_type
-	#var dict: = station_scene.station_dict.duplicate()
-	var new_station_scene: = station_scene.duplicate()
-	#prints("arrive2:", new_station_scene.station_dict)
-	#new_station_scene.station_type = type
-	#new_station_scene.station_dict = dict
-
-	check_portals(new_station_scene)
-	first_scene_root.add_child(new_station_scene)
+	current_station_scene = station_scene.duplicate()
+	check_portals(current_station_scene)
+	first_scene_root.add_child(current_station_scene)
 	parallax_bg.stop_scroll()
 
 func change_scene_to_train():
@@ -49,6 +43,7 @@ func change_scene_to_train():
 	GlobalVar.time_scale = 1.0
 	hide_all_secondary_scene()
 	time_scale_container.show()
+	get_current_station().station_scene = current_station_scene.duplicate()
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
 	var train_scene: = TRAIN_SCENE.instantiate()

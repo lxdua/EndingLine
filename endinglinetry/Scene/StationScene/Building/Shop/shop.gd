@@ -16,7 +16,7 @@ var supply_num: int
 func press_building():
 	trade_manage.open_trade_ui(trade_goods)
 
-func _ready() -> void:
+func update_shop():
 	trade_goods.demand_arr=demand_arr
 	trade_goods.demand_num=demand_num
 	trade_goods.supply_arr=demand_arr
@@ -26,3 +26,10 @@ func _ready() -> void:
 		if id == -1:
 			continue
 		trade_goods.add_goods(id,supply_num)
+
+func _ready() -> void:
+	pass
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_accept"):
+		update_shop()
