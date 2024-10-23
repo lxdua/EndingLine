@@ -26,10 +26,3 @@ func update_shop():
 		if id == -1:
 			continue
 		trade_goods.add_goods(id,supply_num)
-
-func _ready() -> void:
-	pass
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
-		update_shop()

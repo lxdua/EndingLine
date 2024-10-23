@@ -158,15 +158,15 @@ var current_time: float:
 	set(v):
 		current_time = v
 		date = current_time / 1440
-		clock = int(current_time) % 1440
+		clock = current_time - date * 1440
 		hour = clock / 60
 		minute = clock % 60
 		update_clock_ui()
 
-var date: int
-var clock: int
-var hour: int
-var minute: int
+var date: int # 第几天
+var clock: int # 砍掉单位 天 的分钟数
+var hour: int # 当前小时 24小时制
+var minute: int # 当前分钟
 
 func update_sun(delta: float):
 	var sun_rot: = remap(clock/60.0-6, 0.0, 24.0, -180.0, 180.0)
