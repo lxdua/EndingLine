@@ -39,6 +39,7 @@ scale = Vector2(1.44, 1.44)
 pivot_offset = Vector2(446.023, 250)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 0
 texture = ExtResource("1_dfe03")
 expand_mode = 3
 
@@ -54,6 +55,7 @@ offset_right = 457.0
 offset_bottom = 321.0
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
+mouse_filter = 0
 horizontal_scroll_mode = 0
 
 [node name="PlayerGoodsList" type="VBoxContainer" parent="TextureRect/PlayerGoodsList"]
@@ -80,6 +82,7 @@ offset_bottom = 321.0
 grow_horizontal = 0
 grow_vertical = 2
 scale = Vector2(0.75, 0.75)
+mouse_filter = 0
 horizontal_scroll_mode = 0
 
 [node name="GoodsList" type="VBoxContainer" parent="TextureRect/GoodsList"]

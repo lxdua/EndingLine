@@ -24,6 +24,7 @@ texture = ExtResource("4_gpv2q")
 texture = ExtResource("4_xyc6d")
 
 [node name="TradeUI" type="CanvasLayer"]
+layer = 3
 visible = false
 script = ExtResource("1_kgsjj")
 

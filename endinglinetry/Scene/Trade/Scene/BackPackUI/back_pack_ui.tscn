@@ -33,7 +33,7 @@ bg_color = Color(0.12549, 0.117647, 0.133333, 1)
 texture = ExtResource("6_afx4c")
 
 [node name="BackPackUI" type="CanvasLayer" groups=["PackUI"]]
-layer = 10
+layer = 3
 script = ExtResource("1_1xk6r")
 
 [node name="Panel" type="Panel" parent="."]
