@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2tmcgqoxawqv"]
 
-[ext_resource type="Script" path="res://Resource/Fitment/发动机改进/发动机改进.gd" id="1_img6l"]
+[ext_resource type="Script" path="res://Resource/Fitment/FitmentScript/发动机改进.gd" id="1_img6l"]
 [ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_sgpc8"]
 
 [node name="发动机改进" type="Node"]

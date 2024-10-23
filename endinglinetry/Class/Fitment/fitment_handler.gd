@@ -1,10 +1,23 @@
 extends Node
 class_name FitmentHandler
 
-static var FITMENT_DICT: Dictionary = {
-	"发动机改进": preload("res://Resource/Fitment/发动机改进/发动机改进.tscn"),
-	"JK": preload("res://Resource/Fitment/JK/jk.tscn"),
-}
+var fitment_dict: Dictionary
+
+func _ready() -> void:
+	fitment_dict = get_fitment_dict()
+
+func get_fitment_dict():
+	var dict: Dictionary
+	var path: String = "res://Resource/Fitment/FitmentNode/"
+	var dir = DirAccess.open(path)
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			continue
+		dict[file_name.left(-5)] = load(path + file_name)
+		file_name = dir.get_next()
+	return dict
 
 signal fitment_update
 
@@ -21,10 +34,10 @@ func get_fitment_by_name(fitment_name: String):
 	return null
 
 func add_fitment_by_name(fitment_name: String):
-	if not FITMENT_DICT.has(fitment_name):
+	if not fitment_dict.has(fitment_name):
 		return
 	if get_fitment_by_name(fitment_name) ==	null:
-		var new_fitment: Fitment = FITMENT_DICT[fitment_name].instantiate()
+		var new_fitment: Fitment = fitment_dict[fitment_name].instantiate()
 		add_fitment(new_fitment)
 
 func remove_fitment_by_name(fitment_name: String):

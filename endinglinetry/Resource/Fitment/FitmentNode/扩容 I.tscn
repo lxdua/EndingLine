@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://clea7euwodclx"]
+
+[ext_resource type="Script" path="res://Resource/Fitment/FitmentScript/扩容_i.gd" id="1_4uhaf"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_rpwmh"]
+
+[node name="扩容 I" type="Node"]
+script = ExtResource("1_4uhaf")
+fitment_name = "扩容 I"
+icon = ExtResource("2_rpwmh")
+fitment_content = "列车载重上限提高10%"

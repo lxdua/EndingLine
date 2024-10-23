@@ -43,8 +43,9 @@ func update_fitment_container():
 	var train_fitment: Array
 	var aki_fitment: Array
 	var ruu_fitment: Array
-	for fitment_name in FitmentHandler.FITMENT_DICT:
-		var fitment: Fitment = FitmentHandler.FITMENT_DICT[fitment_name].instantiate()
+
+	for fitment_name in fitment_handler.fitment_dict:
+		var fitment: Fitment = fitment_handler.fitment_dict[fitment_name].instantiate()
 		if fitment_handler.has_fitment_by_name(fitment.fitment_name):
 			continue;
 		elif fitment.holder == Fitment.Holder.AKI:
