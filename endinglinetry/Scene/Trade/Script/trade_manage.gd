@@ -127,7 +127,10 @@ func get_goods_heavy(id:int)->int:
 	return goods_datas.filter(func(gd):return gd["id"]==id)[0]["heavy"]
 
 func get_goods_icon(id:int)->Texture2D:
-	var icon:Texture2D = load("res://Art/2D/ItemIcon/"+str(id)+".png")
+	var path: = "res://Art/2D/ItemIcon/"+str(id)+".png"
+	if not FileAccess.file_exists(path):
+		return preload("res://icon.svg")
+	var icon:Texture2D = load(path)
 	return icon
 
 func get_goods_id_by_name(name:String)->int:

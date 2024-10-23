@@ -47,7 +47,7 @@ func update_station():
 		StationType.GATHER_POINT:
 			var gather_point: GatherPoint = GATHER_POINT.instantiate()
 			gather_point.item_arr = Array(station_dict["item"].split(","))
-			gather_point.item_num_arr = Array(station_dict["item_num"].split(",")).filter(func(str_num): return str_num.to_int())
+			gather_point.item_num_arr = Array(station_dict["item_num"].split_floats(","))
 			add_child(gather_point)
 		StationType.BEACON:
 			var beacon: Beacon = BEACON.instantiate()

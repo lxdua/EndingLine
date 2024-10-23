@@ -1,9 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjn0jxrrcrn7u"]
+[gd_scene load_steps=8 format=3 uid="uid://bjn0jxrrcrn7u"]
 
-[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_hcgb0"]
+[ext_resource type="Texture2D" uid="uid://dcdvxgcyydt0m" path="res://Art/2D/Player/ABIcon.png" id="1_ogirr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvemv"]
+atlas = ExtResource("1_ogirr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnx0p"]
+atlas = ExtResource("1_ogirr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vylcj"]
+atlas = ExtResource("1_ogirr")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnsea"]
+atlas = ExtResource("1_ogirr")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmhai"]
+atlas = ExtResource("1_ogirr")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wqm7f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvemv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnx0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vylcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnsea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmhai")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="TrainInMap" type="Node2D"]
 
-[node name="TrainInMapSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_hcgb0")
+[node name="TrainInMapSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_wqm7f")
+autoplay = "default"
+frame_progress = 0.207131

@@ -371,7 +371,7 @@ func drag_camera(event: InputEvent):
 
 func drag_carema():
 	if is_draging and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		camera.position -= get_viewport().get_mouse_position() - mouse_pos
+		camera.position -= (get_viewport().get_mouse_position() - mouse_pos) / camera.zoom.length()
 		mouse_pos = get_viewport().get_mouse_position()
 		camera.position_smoothing_enabled = false
 
@@ -389,10 +389,8 @@ func camera_zoom(event: InputEvent):
 				return
 			camera.zoom *= 1.1
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			if camera.zoom / 1.1 < Vector2(0.7,0.7):
+			if camera.zoom / 1.1 < Vector2(0.5,0.5):
 				return
 			camera.zoom /= 1.1
-
-
 
 #endregion

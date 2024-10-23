@@ -3,8 +3,8 @@ class_name RandomMapMaker
 
 const PLOTTING_SCALE: float = 1.0
 
-@export_range(1, 50) var add_num: int = 10
-@export_range(100, 5000) var max_dist: int = 1000
+var add_num: int = 10
+var max_dist: int = 1500
 
 var station_sum: int
 

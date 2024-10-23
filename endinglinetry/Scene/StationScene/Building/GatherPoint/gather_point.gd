@@ -2,6 +2,7 @@ extends Building
 class_name GatherPoint
 
 @onready var base_scene: BaseScene = get_tree().get_first_node_in_group("BaseScene")
+@onready var train_stats_manager: TrainStatsManager = get_tree().get_first_node_in_group("TrainStatsManager")
 @onready var trade_manage:TradeManage = get_tree().get_first_node_in_group("TradeManage")
 
 # 物品名和对应数量的下标相同
@@ -25,7 +26,7 @@ func update_resouces():
 	for i in range(item_arr.size()):
 		var r:CollectionResource = CollectionResource.new()
 		r.id=trade_manage.get_goods_id_by_name(item_arr[i])
-		r.number=item_num_arr[i]
+		r.number = train_stats_manager.get_gather_output(item_num_arr[i])
 		resouces.append(r)
 
 func _ready() -> void:

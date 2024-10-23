@@ -127,6 +127,13 @@ func get_solar_power(delta: float):
 
 #region 采集力部分
 
-var gather_ability: float
+var gather_ability: int:
+	set(v):
+		gather_ability = v
+	get:
+		return modifier_handler.get_modifier_result_intelligently("gather_ability", gather_ability)
+
+func get_gather_output(base_output: int) -> int:
+	return roundf(base_output * float(100 + gather_ability * 15) / 100.0)
 
 #endregion

@@ -93,12 +93,12 @@ texture = ExtResource("2_3ga85")
 
 [node name="TrackRoot" type="Node2D" parent="Map"]
 
+[node name="HightLightLine" type="Line2D" parent="Map"]
+default_color = Color(0, 0.975509, 0.984029, 1)
+
 [node name="StationRoot" type="Node2D" parent="Map"]
 
 [node name="TrainInMap" parent="Map" instance=ExtResource("3_d0dn0")]
-
-[node name="HightLightLine" type="Line2D" parent="Map"]
-default_color = Color(0, 0.975509, 0.984029, 1)
 
 [node name="Camera" type="Camera2D" parent="Map"]
 position = Vector2(285, 347)
