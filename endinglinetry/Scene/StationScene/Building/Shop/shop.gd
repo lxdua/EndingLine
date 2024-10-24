@@ -37,6 +37,7 @@ func update_shop():
 	trade_goods.demand_num=demand_num
 	trade_goods.supply_arr=demand_arr
 	trade_goods.supply_num=supply_num
+	trade_goods.goods.clear()
 	for s in supply_arr:
 		var id: int = trade_manage.get_goods_id_by_name(s)
 		if id == -1:
