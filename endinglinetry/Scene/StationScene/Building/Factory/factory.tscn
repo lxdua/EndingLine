@@ -1,23 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://0stapmh20nfc"]
+[gd_scene load_steps=10 format=3 uid="uid://0stapmh20nfc"]
 
 [ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_faqfp"]
 [ext_resource type="Script" path="res://Scene/StationScene/Building/Factory/factory.gd" id="2_aqkp5"]
+[ext_resource type="Texture2D" uid="uid://bg0dki0axu0jy" path="res://Art/2D/FactoryUI/UI_Repair3.png" id="4_1t8xo"]
 [ext_resource type="Texture2D" uid="uid://bjrr3hrmte1oi" path="res://Art/2D/FitmentUI/Button_Build.png" id="4_ow0hm"]
+[ext_resource type="PackedScene" uid="uid://c3vjvtkcp7c0x" path="res://Scene/StationScene/Building/Factory/factory_fitment_ui.tscn" id="5_lfyrp"]
+[ext_resource type="Texture2D" uid="uid://b6mi8mtmvqu6f" path="res://Art/2D/FactoryUI/UI_Repair2.png" id="6_rxd80"]
+[ext_resource type="Texture2D" uid="uid://c1lj8jpl5kv1v" path="res://Art/2D/FactoryUI/UI_Repair1.png" id="7_cykfl"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kxssj"]
-texture = ExtResource("4_ow0hm")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h32em"]
+texture = ExtResource("7_cykfl")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ttqc5"]
 texture = ExtResource("4_ow0hm")
 
-[node name="Factory" node_paths=PackedStringArray("factory_ui", "buy_button", "fitment_container", "price_label", "covering_layer") instance=ExtResource("1_faqfp")]
+[node name="Factory" node_paths=PackedStringArray("card_layer", "factory_ui", "buy_button", "price_label") instance=ExtResource("1_faqfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 0)
 script = ExtResource("2_aqkp5")
+card_layer = NodePath("FactoryUI/FacoryUIRoot/CardLayer")
 factory_ui = NodePath("FactoryUI")
-buy_button = NodePath("FactoryUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuyButton")
-fitment_container = NodePath("FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/FitmentContainer")
-price_label = NodePath("FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PriceLabel")
-covering_layer = NodePath("FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/CoveringLayer")
+buy_button = NodePath("FactoryUI/FacoryUIRoot/BuyButton")
+price_label = NodePath("FactoryUI/FacoryUIRoot/BuyButton/PriceLabel")
 cost = 0
 
 [node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
@@ -38,93 +41,124 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.196078)
 
-[node name="PanelContainer" type="PanelContainer" parent="FactoryUI" index="1"]
+[node name="FacoryUIRoot" type="Control" parent="FactoryUI" index="1"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FactoryPanelBottom" type="TextureRect" parent="FactoryUI/FacoryUIRoot" index="0"]
+custom_minimum_size = Vector2(728, 416)
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -673.0
-offset_top = -464.0
-offset_right = 673.0
-offset_bottom = 464.0
+offset_left = -364.0
+offset_top = -144.0
+offset_right = 364.0
+offset_bottom = 272.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_1t8xo")
+
+[node name="CardLayer" type="ColorRect" parent="FactoryUI/FacoryUIRoot" index="1"]
+clip_children = 1
+custom_minimum_size = Vector2(656, 776)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -476.0
+offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="FactoryUI/PanelContainer" index="0"]
+[node name="AkiUI" parent="FactoryUI/FacoryUIRoot/CardLayer" index="0" instance=ExtResource("5_lfyrp")]
 layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 20
+offset_left = 656.0
+offset_top = 80.0
+offset_right = 1024.0
+offset_bottom = 668.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="FactoryUI/PanelContainer/MarginContainer" index="0"]
+[node name="RuuUI" parent="FactoryUI/FacoryUIRoot/CardLayer" index="1" instance=ExtResource("5_lfyrp")]
 layout_mode = 2
-theme_override_constants/separation = 10
+offset_left = 896.0
+offset_top = 80.0
+offset_right = 1264.0
+offset_bottom = 668.0
 
-[node name="Title" type="Label" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="0"]
+[node name="TrainUI" parent="FactoryUI/FacoryUIRoot/CardLayer" index="2" instance=ExtResource("5_lfyrp")]
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "修车厂"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 768.0
+offset_top = 80.0
+offset_right = 1136.0
+offset_bottom = 668.0
 
-[node name="PanelContainer" type="PanelContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="1"]
-layout_mode = 2
-size_flags_vertical = 3
+[node name="FactoryPanelTop" type="TextureRect" parent="FactoryUI/FacoryUIRoot" index="2"]
+custom_minimum_size = Vector2(728, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 196.0
+offset_right = 368.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_rxd80")
 
-[node name="MarginContainer" type="MarginContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer" index="0"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 50
-
-[node name="FitmentContainer" type="HBoxContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" index="0"]
-layout_mode = 2
-theme_override_constants/separation = 70
-alignment = 1
-
-[node name="CoveringLayer" type="ColorRect" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer" index="1"]
-layout_mode = 2
-color = Color(0, 0, 0, 0.196078)
-
-[node name="PriceLabel" type="Label" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="2"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "价格：666"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer" index="3"]
-layout_mode = 2
-theme_override_constants/separation = 200
-alignment = 1
-
-[node name="BuyButton" type="Button" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-custom_minimum_size = Vector2(212, 76)
-layout_mode = 2
+[node name="BuyButton" type="Button" parent="FactoryUI/FacoryUIRoot" index="3"]
+custom_minimum_size = Vector2(276, 84)
+offset_left = 896.0
+offset_top = 784.0
+offset_right = 1172.0
+offset_bottom = 868.0
 size_flags_horizontal = 4
 theme_override_constants/icon_max_width = 40
 theme_override_font_sizes/font_size = 36
-theme_override_styles/focus = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/hover = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_kxssj")
-theme_override_styles/normal = SubResource("StyleBoxTexture_kxssj")
-text = "刷新"
+theme_override_styles/focus = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/hover = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_h32em")
+theme_override_styles/normal = SubResource("StyleBoxTexture_h32em")
+alignment = 0
 icon_alignment = 1
 expand_icon = true
 
-[node name="CloseButton" type="Button" parent="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
+[node name="PriceLabel" type="Label" parent="FactoryUI/FacoryUIRoot/BuyButton" index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_right = -116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 30
+text = "666"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="FactoryUI/FacoryUIRoot" index="4"]
 custom_minimum_size = Vector2(212, 76)
-layout_mode = 2
+offset_left = 1184.0
+offset_top = 832.0
+offset_right = 1396.0
+offset_bottom = 908.0
 theme_override_font_sizes/font_size = 36
 theme_override_styles/focus = SubResource("StyleBoxTexture_ttqc5")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxTexture_ttqc5")
@@ -139,5 +173,23 @@ theme_override_styles/normal_mirrored = SubResource("StyleBoxTexture_ttqc5")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ttqc5")
 text = "确定"
 
-[connection signal="pressed" from="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]
-[connection signal="pressed" from="FactoryUI/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[node name="Title" type="Label" parent="FactoryUI/FacoryUIRoot" index="5"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -272.0
+offset_top = 228.0
+offset_right = -120.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "工厂"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="FactoryUI/FacoryUIRoot/BuyButton" to="." method="_on_buy_button_pressed"]
+[connection signal="pressed" from="FactoryUI/FacoryUIRoot/CloseButton" to="." method="_on_close_button_pressed"]

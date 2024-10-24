@@ -1,4 +1,5 @@
 extends Button
+class_name FactoryFitmentUI
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
@@ -9,16 +10,17 @@ extends Button
 
 var fitment: Fitment = null
 
-func _ready() -> void:
-	if fitment != null:
-		name_label.text = fitment.fitment_name
-		#card_front.texture = fitment.icon
-		content_label.text = fitment.fitment_content
+func update_fitment(new_fitment: Fitment):
+	fitment = new_fitment
+	name_label.text = fitment.fitment_name
+	#card_front.texture = fitment.icon
+	content_label.text = fitment.fitment_content
 
 signal factory_fitment_button_pressed(fitment_name: String)
 
 func _on_pressed() -> void:
 	factory_fitment_button_pressed.emit(fitment.fitment_name)
+	print("fitment!")
 
 func _on_mouse_entered() -> void:
 	animation_player.play("card flip")
