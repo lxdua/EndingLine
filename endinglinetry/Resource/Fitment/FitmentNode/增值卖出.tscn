@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d27dqptnxhjw8"]
+
+[ext_resource type="Script" path="res://Resource/Fitment/FitmentScript/增值卖出.gd" id="1_1gdhm"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_80vw1"]
+
+[node name="增值卖出" type="Node"]
+script = ExtResource("1_1gdhm")
+fitment_name = "增值卖出"
+icon = ExtResource("2_80vw1")
+holder = 1
+fitment_content = "增加8%售卖价格"

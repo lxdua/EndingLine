@@ -54,7 +54,7 @@ func update_station():
 			#add_child(beacon)
 		StationType.CAVE:
 			var cave: Cave = CAVE.instantiate()
-			cave.item_num = station_dict["item_num"]
+			cave.cave_item_num = station_dict["item_num"]
 			var pool: Array = station_dict["item_pool"].split(",")
 			for it in pool:
 				var item_name: String = it.split("*")[0]

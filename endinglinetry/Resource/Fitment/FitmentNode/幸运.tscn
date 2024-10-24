@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://j7g07s208c0y"]
+
+[ext_resource type="Script" path="res://Resource/Fitment/FitmentScript/幸运.gd" id="1_bmgw4"]
+
+[node name="幸运" type="Node"]
+script = ExtResource("1_bmgw4")
+fitment_name = "幸运"
+holder = 2
+fitment_content = "增加20%洞穴宝箱产出"

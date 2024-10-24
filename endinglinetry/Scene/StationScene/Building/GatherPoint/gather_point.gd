@@ -17,12 +17,15 @@ func shold_update():
 	var base_scene: BaseScene = get_tree().get_first_node_in_group("BaseScene")
 	var d_time: = base_scene.current_time - last_visit_time
 	if d_time >= 1440:
+		last_visit_time = base_scene.current_time
 		return true
 	var last_visit_date: = last_visit_time / 1440
 	var last_visit_clock: = last_visit_time - last_visit_date * 1440
 	var current_clock = base_scene.clock
 	if (last_visit_clock <= 6 and 6 <= current_clock) or (current_clock <= 6 and 6 <= last_visit_clock):
+		last_visit_time = base_scene.current_time
 		return true
+	last_visit_time = base_scene.current_time
 	return false
 
 func press_building():

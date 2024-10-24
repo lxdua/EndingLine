@@ -5,6 +5,7 @@ class_name TradeManage
 @onready var back_pack_ui: BackPackUI = %BackPackUI
 @onready var collection_ui: CollectionUI = %CollectionUI
 
+@onready var modifier_handler: ModifierHandler = get_tree().get_first_node_in_group("ModifierHandler")
 
 @export_range(0,1) var sell_multiplier:float=0.7
 
@@ -59,6 +60,12 @@ func Trade(trade_goods_struct:TradeGoodsStruct,number:int)->bool:
 	else:
 		buyer=player_trade_goods
 		amount = max(get_goods_price(trade_goods_struct.id)*trade_goods_struct.price_multiplier,1)*number
+
+	# dua
+	if seller == player_trade_goods:
+		amount = modifier_handler.get_modifier_result_intelligently("selling_price", amount)
+	else:
+		amount = modifier_handler.get_modifier_result_intelligently("buying_price", amount)
 
 	if trade_goods_struct.number>=number and buyer.cash>=amount:
 		buyer.cash-=amount

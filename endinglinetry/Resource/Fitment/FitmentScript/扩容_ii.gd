@@ -4,7 +4,7 @@ extends Fitment
 ## 获得这个fitment时
 func activate():
 	var modifier_handler: ModifierHandler = get_tree().get_first_node_in_group("ModifierHandler")
-	modifier_handler.get_modifier("max_train_load").add_new_value(
+	modifier_handler.get_modifier_intelligently("max_train_load").add_new_value(
 		ModifierValue.create_new_modifier_value(
 			"扩容 II", ModifierValue.Type.MULTIPLY, 0.15
 		)

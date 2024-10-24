@@ -72,6 +72,7 @@ func update_fitment_container():
 				ruu_fitment.append(fitment)
 			Fitment.Holder.TRAIN:
 				train_fitment.append(fitment)
+	prints(aki_fitment, ruu_fitment, train_fitment)
 	if not aki_fitment.is_empty():
 		aki_ui.update_fitment(aki_fitment.pick_random())
 	if not ruu_fitment.is_empty():
@@ -91,7 +92,7 @@ func play_take_away_animation(holder: Fitment.Holder):
 			card = ruu_ui
 		Fitment.Holder.TRAIN:
 			card = train_ui
-	take_away_tween.tween_property(card, "position", Vector2(card.position.x, -672), 0.6)
+	take_away_tween.tween_property(card, "position", Vector2(card.position.x, -672), 0.4)
 	await take_away_tween.finished
 	card.hide()
 

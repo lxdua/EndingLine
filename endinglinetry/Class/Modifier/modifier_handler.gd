@@ -9,6 +9,12 @@ func get_modifier_result_intelligently(modifier_name: String, base: float, updat
 	modifier.update_signal = update_signal
 	return get_modifier_result(modifier_name, base)
 
+func get_modifier_intelligently(modifier_name: String) -> Modifier:
+	var modifier: Modifier = get_modifier(modifier_name)
+	if modifier == null:
+		modifier = create_modifier(modifier_name)
+	return modifier
+
 ## 新建修饰器
 func create_modifier(modifier_name: String):
 	print("创建了修饰器：", modifier_name)

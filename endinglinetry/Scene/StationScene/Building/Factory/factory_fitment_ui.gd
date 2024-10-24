@@ -20,6 +20,7 @@ signal factory_fitment_button_pressed(fitment_name: String)
 
 func _on_pressed() -> void:
 	factory_fitment_button_pressed.emit(fitment.fitment_name)
+	fitment = null
 	print("fitment!")
 
 func _on_mouse_entered() -> void:

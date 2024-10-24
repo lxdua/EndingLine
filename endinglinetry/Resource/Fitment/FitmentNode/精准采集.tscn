@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nb1prerxxfs"]
+
+[ext_resource type="Script" path="res://Resource/Fitment/FitmentScript/精准采集.gd" id="1_gbdvl"]
+[ext_resource type="Texture2D" uid="uid://dgbe8puaplb6m" path="res://icon.svg" id="2_aif2p"]
+
+[node name="精准采集" type="Node"]
+script = ExtResource("1_gbdvl")
+fitment_name = "精准采集"
+icon = ExtResource("2_aif2p")
+holder = 2
+fitment_content = "增加20点采集力"
