@@ -6,15 +6,12 @@ const mat4 dither_mat = mat4(
 	vec4(4.0/17.0, 12.0/17.0, 2.0/17.0, 10.0/17.0),
 	vec4(16.0/17.0, 8.0/17.0, 14.0/17.0, 6.0/17.0)
 );
-
-uniform float opacity : hint_range(0.0, 1.0) = 1.0;
+global uniform float opacity;
 uniform float uv_scale = 1.0;
-uniform sampler2D tex: source_color;
 
 void fragment() {
 	vec2 uv = FRAGCOORD.xy / uv_scale;
 	float dither_value = dither_mat[int(uv.x) % 4][int(uv.y) % 4];
-	ALBEDO = texture(tex, UV).rgb;
 	ALPHA = opacity;
 	ALPHA_SCISSOR_THRESHOLD = dither_value;
 }

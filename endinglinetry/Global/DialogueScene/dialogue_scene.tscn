@@ -23,15 +23,18 @@ fill_to = Vector2(0, 0)
 shader = ExtResource("4_wixod")
 shader_parameter/value = 0.1
 
-[node name="DialogueScene" type="CanvasLayer" node_paths=PackedStringArray("dialogue_ui_root", "role_name_label", "content_label", "selection_container") groups=["DialogueScene"]]
+[node name="DialogueScene" type="CanvasLayer" node_paths=PackedStringArray("dialogue_ui_root", "role_name_label", "content_label", "selection_container", "role_l", "role_m", "role_r") groups=["DialogueScene"]]
 layer = 10
 script = ExtResource("1_xxqqb")
-dialogue_ui_root = NodePath("DialogueUIRoot")
-role_name_label = NodePath("DialogueUIRoot/DialogueContainer/VBoxContainer/RoleNameLabel")
-content_label = NodePath("DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer/ContentLabel")
-selection_container = NodePath("DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer/SelectionContainer")
+dialogue_ui_root = NodePath("DialogueRoot")
+role_name_label = NodePath("DialogueRoot/DialogueContainer/VBoxContainer/RoleNameLabel")
+content_label = NodePath("DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer/ContentLabel")
+selection_container = NodePath("DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer/SelectionContainer")
+role_l = NodePath("DialogueRoot/RoleContainer/RoleL")
+role_m = NodePath("DialogueRoot/RoleContainer/RoleM")
+role_r = NodePath("DialogueRoot/RoleContainer/RoleR")
 
-[node name="DialogueUIRoot" type="Control" parent="."]
+[node name="DialogueRoot" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,7 +42,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Blur" type="ColorRect" parent="DialogueUIRoot"]
+[node name="Blur" type="ColorRect" parent="DialogueRoot"]
 material = SubResource("ShaderMaterial_no1lg")
 layout_mode = 1
 anchors_preset = 15
@@ -48,7 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Black" type="TextureRect" parent="DialogueUIRoot"]
+[node name="Black" type="TextureRect" parent="DialogueRoot"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_4pr3s")
 
-[node name="RoleContainer" type="HBoxContainer" parent="DialogueUIRoot"]
+[node name="RoleContainer" type="HBoxContainer" parent="DialogueRoot"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -67,7 +70,7 @@ grow_horizontal = 2
 theme_override_constants/separation = 80
 alignment = 1
 
-[node name="RoleL" type="TextureRect" parent="DialogueUIRoot/RoleContainer"]
+[node name="RoleL" type="TextureRect" parent="DialogueRoot/RoleContainer"]
 material = SubResource("ShaderMaterial_k71dv")
 custom_minimum_size = Vector2(500, 600)
 layout_mode = 2
@@ -75,7 +78,7 @@ texture = ExtResource("4_4pgvs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RoleM" type="TextureRect" parent="DialogueUIRoot/RoleContainer"]
+[node name="RoleM" type="TextureRect" parent="DialogueRoot/RoleContainer"]
 material = SubResource("ShaderMaterial_k71dv")
 custom_minimum_size = Vector2(500, 600)
 layout_mode = 2
@@ -83,7 +86,7 @@ texture = ExtResource("4_4pgvs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RoleR" type="TextureRect" parent="DialogueUIRoot/RoleContainer"]
+[node name="RoleR" type="TextureRect" parent="DialogueRoot/RoleContainer"]
 material = SubResource("ShaderMaterial_k71dv")
 custom_minimum_size = Vector2(500, 600)
 layout_mode = 2
@@ -91,7 +94,7 @@ texture = ExtResource("4_4pgvs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="DialogueContainer" type="MarginContainer" parent="DialogueUIRoot"]
+[node name="DialogueContainer" type="MarginContainer" parent="DialogueRoot"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -105,22 +108,22 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogueUIRoot/DialogueContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueRoot/DialogueContainer"]
 layout_mode = 2
 
-[node name="RoleNameLabel" type="Label" parent="DialogueUIRoot/DialogueContainer/VBoxContainer"]
+[node name="RoleNameLabel" type="Label" parent="DialogueRoot/DialogueContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.905882, 0.356863, 0.0392157, 1)
 theme_override_font_sizes/font_size = 80
 text = "Aki"
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DialogueUIRoot/DialogueContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueRoot/DialogueContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 50
 
-[node name="ContentLabel" type="Label" parent="DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
+[node name="ContentLabel" type="Label" parent="DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -128,13 +131,13 @@ theme_override_font_sizes/font_size = 50
 text = "你好
 你好你好你好"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 0
 
-[node name="SelectionContainer" type="VBoxContainer" parent="DialogueUIRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
+[node name="SelectionContainer" type="VBoxContainer" parent="DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_constants/separation = 10

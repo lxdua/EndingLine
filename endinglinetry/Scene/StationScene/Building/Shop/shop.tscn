@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qxb6gn3e0g35"]
+[gd_scene load_steps=5 format=3 uid="uid://qxb6gn3e0g35"]
 
 [ext_resource type="PackedScene" uid="uid://djel7qenwu8st" path="res://Scene/StationScene/Building/building.tscn" id="1_1wph2"]
 [ext_resource type="Script" path="res://Scene/StationScene/Building/Shop/shop.gd" id="2_sat0g"]
 [ext_resource type="Script" path="res://Scene/Trade/Script/trade_goods.gd" id="4_4183p"]
+[ext_resource type="Texture2D" uid="uid://cs3sqt7ebafyu" path="res://Art/2D/Building/shop.png" id="4_mgb2a"]
 
 [node name="Shop" instance=ExtResource("1_1wph2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 0)
@@ -13,9 +14,9 @@ script = ExtResource("4_4183p")
 add_id = 1
 add_number = 10
 
-[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
-polygon = PackedVector2Array(-0.569432, 0.624417, 0.575436, 0.594539, 0.568482, -0.532065, -0.582348, -0.528691)
+[node name="BuildingSprite" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429693, 0)
+texture = ExtResource("4_mgb2a")
 
-[node name="Label3D" type="Label3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0.025)
-text = "商店"
+[node name="BuildingCollisionPolygon" parent="BuildingArea" index="0"]
+polygon = PackedVector2Array(-1.18817, 1.47466, 1.12045, 1.47458, 1.12045, -1.03895, -1.18901, -1.0365)

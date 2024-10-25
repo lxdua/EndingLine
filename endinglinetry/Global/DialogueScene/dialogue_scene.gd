@@ -19,9 +19,9 @@ const TEXTURE_DICT = {
 
 @export var selection_container: VBoxContainer
 
-@onready var role_l: TextureRect = $DialogueUIRoot/RoleContainer/RoleL
-@onready var role_m: TextureRect = $DialogueUIRoot/RoleContainer/RoleM
-@onready var role_r: TextureRect = $DialogueUIRoot/RoleContainer/RoleR
+@export var role_l: TextureRect
+@export var role_m: TextureRect
+@export var role_r: TextureRect
 
 var dialogue_dict: Dictionary
 var selection_dict: Dictionary
