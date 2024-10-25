@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://p3u7q5pdrpgc"
+path.s3tc="res://.godot/imported/train.ver3_wine_bottles_01_nor_gl.png-ffd9e50f876a8422e2e1d63ba3a5ac80.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "8bc34ff3458a7f36249bdfb00403fe5f"
+}
+
+[deps]
+
+source_file="res://Art/3D/Train/TrainBody/train.ver3_wine_bottles_01_nor_gl.png"
+dest_files=["res://.godot/imported/train.ver3_wine_bottles_01_nor_gl.png-ffd9e50f876a8422e2e1d63ba3a5ac80.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Art/3D/Train/TrainBody'/train.ver3_wine_bottles_01_nor_gl.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
