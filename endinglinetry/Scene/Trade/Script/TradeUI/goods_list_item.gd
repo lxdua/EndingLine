@@ -39,30 +39,48 @@ const ICON = preload("res://icon.svg")
 func update_item_data_text():
 	name_label.text = goods_name
 	number_label.text = str(goods_number)
+
+	var heavy_num: int
+	var multiplier_num: int
+	var price_num: int
+
 	if goods_struct.trade_goods and goods_struct.trade_goods==trade_manage.player_trade_goods:
 		if !trade_manage.trade_partner.goods:
-			heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
-			multiplier_label.text = str(trade_manage.sell_multiplier*100 as int)+"%"
-			price_label.text = str(goods_price*trade_manage.sell_multiplier as int)
+			heavy_num = trade_manage.get_goods_heavy(goods_struct.id)
+			multiplier_num = trade_manage.sell_multiplier*100
+			price_num = goods_price*trade_manage.sell_multiplier
 		else:
 			var goods_filter := trade_manage.trade_partner.goods.filter(func(g):
 				if g.id==goods_struct.id:
 					return true
-				else	:
+				else:
 					return false
 			)
 			if goods_filter:
-				heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
-				multiplier_label.text = str(goods_filter[0].price_multiplier*trade_manage.sell_multiplier*100 as int)+"%"
-				price_label.text = str(goods_price*goods_filter[0].price_multiplier*trade_manage.sell_multiplier as int)
+				heavy_num = trade_manage.get_goods_heavy(goods_struct.id)
+				multiplier_num = goods_filter[0].price_multiplier*trade_manage.sell_multiplier*100
+				price_num = goods_price*goods_filter[0].price_multiplier*trade_manage.sell_multiplier
 			else:
-				heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
-				multiplier_label.text = str(trade_manage.sell_multiplier*100 as int)+"%"
-				price_label.text = str(goods_price*trade_manage.sell_multiplier as int)
+				heavy_num = trade_manage.get_goods_heavy(goods_struct.id)
+				multiplier_num = trade_manage.sell_multiplier*100
+				price_num = goods_price*trade_manage.sell_multiplier
 	else:
-		heavy_label.text = str(trade_manage.get_goods_heavy(goods_struct.id))
-		multiplier_label.text = str(price_multiplier*100 as int)+"%"
-		price_label.text = str(goods_price*price_multiplier as int)
+		heavy_num = trade_manage.get_goods_heavy(goods_struct.id)
+		multiplier_num = price_multiplier*100
+		price_num = goods_price*price_multiplier
+
+	# dua
+	var modifier_handler: ModifierHandler = get_tree().get_first_node_in_group("ModifierHandler")
+
+	if goods_struct.trade_goods and goods_struct.trade_goods==trade_manage.player_trade_goods:
+		price_num = modifier_handler.get_modifier_result_intelligently("selling_price", price_num)
+	else:
+		price_num = modifier_handler.get_modifier_result_intelligently("buying_price", price_num)
+
+	heavy_label.text = str(heavy_num)
+	multiplier_label.text = str(multiplier_num)+"%"
+	price_label.text = str(price_num)
+
 
 var goods_struct:TradeGoodsStruct:
 	set(new_g):

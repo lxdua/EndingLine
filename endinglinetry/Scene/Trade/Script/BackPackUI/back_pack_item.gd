@@ -19,8 +19,12 @@ func update():
 			icon.texture=trade_manage.get_goods_icon(trade_goods_struct.id)
 		name_label.text = trade_manage.get_goods_name(trade_goods_struct.id)
 		number_label.text = str(trade_goods_struct.number)
-		price_label.text = str(get_tree().get_first_node_in_group("TradeManage").get_goods_price(trade_goods_struct.id)*trade_goods_struct.number)
-		heavy_label.text = str(get_tree().get_first_node_in_group("TradeManage").get_goods_heavy(trade_goods_struct.id)*trade_goods_struct.number)
+
+		var price: int = get_tree().get_first_node_in_group("TradeManage").get_goods_price(trade_goods_struct.id)*trade_goods_struct.number
+		var heavy: int = get_tree().get_first_node_in_group("TradeManage").get_goods_heavy(trade_goods_struct.id)*trade_goods_struct.number
+
+		price_label.text = str(price)
+		heavy_label.text = str(heavy)
 
 signal pressed(item)
 func _on_reference_rect_gui_input(event: InputEvent) -> void:

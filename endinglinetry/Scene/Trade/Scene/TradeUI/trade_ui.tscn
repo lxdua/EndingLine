@@ -25,7 +25,6 @@ texture = ExtResource("4_xyc6d")
 
 [node name="TradeUI" type="CanvasLayer"]
 layer = 3
-visible = false
 script = ExtResource("1_kgsjj")
 
 [node name="BG" type="ColorRect" parent="."]

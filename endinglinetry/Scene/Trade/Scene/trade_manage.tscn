@@ -15,6 +15,7 @@ add_number = 10
 add_g = true
 
 [node name="TradeUI" parent="." groups=["TradeUI"] instance=ExtResource("3_phq2h")]
+visible = false
 
 [node name="ExitButton" parent="TradeUI/TextureRect" index="1"]
 anchor_right = 0.971
