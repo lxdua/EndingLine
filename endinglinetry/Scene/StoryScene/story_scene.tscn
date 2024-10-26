@@ -122,7 +122,7 @@ _data = {
 layer = 20
 script = ExtResource("1_21308")
 article_text = Array[String](["雪是白的，夜是黑的。	
-", "在黑暗里行走的人，看不见白色的雪原。", "#clear", "2044年，黑和白已没有了区别。", "——这是核危机摧毁人类文明后的第四年。
+", "在黑暗里行走的人，看不见白色的雪原。", "2044年，黑和白已没有了区别。", "#clear", "——这是核危机摧毁人类文明后的第四年。
 ", "一切颜色的意义都已消弭于无边无际的虚无之中。"])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -178,15 +178,3 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 alignment = 1
-
-[node name="SkipButton" type="Button" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -110.0
-offset_bottom = 68.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 40
-text = "跳过"
-
-[connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]

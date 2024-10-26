@@ -11,8 +11,6 @@ const SHOP = preload("res://Scene/StationScene/Building/Shop/shop.tscn")
 
 enum StationType { RUINS, CITY, VILLAGE, GATHER_POINT, BEACON, CAVE }
 
-@onready var building_root: Node3D = $BuildingRoot
-
 @export var station_name: String
 
 @export var station_tip: String
@@ -25,21 +23,19 @@ func _ready() -> void:
 	update_station()
 
 func update_station():
-	for building in building_root.get_children():
-		building.queue_free()
 	match station_type:
 		StationType.RUINS:
 			pass
 		StationType.CITY:
 			var factory: Factory = FACTORY.instantiate()
-			building_root.add_child(factory)
+			add_child(factory)
 			var shop: Shop = SHOP.instantiate()
 			shop.tax_rate = station_dict["tax_rate"]
 			shop.demand_arr = station_dict["demand"].split(",")
 			shop.demand_num = station_dict["demand_num"]
 			shop.supply_arr = station_dict["supply"].split(",")
 			shop.supply_num = station_dict["supply_num"]
-			building_root.add_child(shop)
+			add_child(shop)
 		StationType.VILLAGE:
 			var shop: Shop = SHOP.instantiate()
 			shop.tax_rate = station_dict["tax_rate"]
@@ -47,12 +43,12 @@ func update_station():
 			shop.demand_num = station_dict["demand_num"]
 			shop.supply_arr = Array(station_dict["supply"].split(","))
 			shop.supply_num = station_dict["supply_num"]
-			building_root.add_child(shop)
+			add_child(shop)
 		StationType.GATHER_POINT:
 			var gather_point: GatherPoint = GATHER_POINT.instantiate()
 			gather_point.item_arr = Array(station_dict["item"].split(","))
 			gather_point.item_num_arr = Array(station_dict["item_num"].split_floats(","))
-			building_root.add_child(gather_point)
+			add_child(gather_point)
 		StationType.BEACON:
 			var beacon: Beacon = BEACON.instantiate()
 			#add_child(beacon)
@@ -65,7 +61,7 @@ func update_station():
 				var num: int = int(it.split("*")[1])
 				for i in range(num):
 					cave.item_pool.append(item_name)
-			building_root.add_child(cave)
+			add_child(cave)
 
 func update_station_dict(type: StationScene.StationType, dict: Dictionary):
 	station_type = type
