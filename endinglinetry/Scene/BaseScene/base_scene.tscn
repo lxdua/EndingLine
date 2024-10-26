@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://bvorf6qptqxej"]
+[gd_scene load_steps=21 format=3 uid="uid://bvorf6qptqxej"]
 
 [ext_resource type="Script" path="res://Scene/BaseScene/base_scene.gd" id="1_gwi6o"]
 [ext_resource type="PackedScene" uid="uid://c5vtntw4vu6n" path="res://Scene/RouteSelectionScene/route_selection_scene.tscn" id="2_7vr7o"]
+[ext_resource type="AudioStream" uid="uid://cfjbmkvt87ic0" path="res://Audio/列车-01.wav" id="2_f72cj"]
 [ext_resource type="PackedScene" uid="uid://bddsyyp7vnu2e" path="res://Scene/ParallaxBG/parallax_bg.tscn" id="2_ob8wc"]
 [ext_resource type="Environment" uid="uid://ci8iic8khrp1d" path="res://Resource/Sky/env1.tres" id="2_ybyye"]
 [ext_resource type="PackedScene" uid="uid://037sbg0aiov6" path="res://Scene/Other/CameraSpringArm/camera_spring_arm.tscn" id="3_bw6fq"]
@@ -33,6 +34,10 @@ route_selection_scene = NodePath("SecondarySceneRoot/RouteSelectionScene")
 train_stats_scene = NodePath("SecondarySceneRoot/TrainStatsScene")
 fitment_scene = NodePath("SecondarySceneRoot/FitmentScene")
 time_scale_container = NodePath("UI/TimeScaleContainer")
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_f72cj")
+autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_ybyye")

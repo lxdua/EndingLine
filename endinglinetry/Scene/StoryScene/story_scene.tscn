@@ -20,22 +20,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleLabel:modulate")
+tracks/1/path = NodePath("ArticleContainer:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ArticleContainer:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -71,7 +59,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_7naav"]
 resource_name = "start"
-length = 7.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,31 +67,19 @@ tracks/0/path = NodePath("Black:color")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.0784314, 0.0784314, 0.0784314, 0), Color(0.0784314, 0.0784314, 0.0784314, 1)]
+"values": [Color(0.0784314, 0.0784314, 0.0784314, 1)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TitleLabel:modulate")
-tracks/1/interp = 2
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1, 2, 5, 6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(7),
+"times": PackedFloat32Array(2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -122,7 +98,7 @@ _data = {
 layer = 20
 script = ExtResource("1_21308")
 article_text = Array[String](["雪是白的，夜是黑的。	
-", "在黑暗里行走的人，看不见白色的雪原。", "#clear", "2044年，黑和白已没有了区别。", "——这是核危机摧毁人类文明后的第四年。
+", "在黑暗里行走的人，看不见白色的雪原。", "2044年，黑和白已没有了区别。", "#clear", "——这是核危机摧毁人类文明后的第四年。
 ", "一切颜色的意义都已消弭于无边无际的虚无之中。"])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -183,10 +159,11 @@ alignment = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -110.0
-offset_bottom = 68.0
+offset_left = -40.0
+offset_bottom = 24.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 40
+theme_override_fonts/font = ExtResource("2_uwdxy")
+theme_override_font_sizes/font_size = 60
 text = "跳过"
 
 [connection signal="pressed" from="SkipButton" to="." method="_on_skip_button_pressed"]
