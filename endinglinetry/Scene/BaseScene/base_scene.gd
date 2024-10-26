@@ -44,7 +44,6 @@ func change_scene_to_train():
 	hide_all_secondary_scene()
 	time_scale_container.show()
 	get_current_station().station_scene = current_station_scene.duplicate()
-	await get_tree().create_timer(1.0).timeout
 	for scene in first_scene_root.get_children():
 		scene.queue_free()
 	var train_scene: = TRAIN_SCENE.instantiate()
