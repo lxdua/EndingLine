@@ -1,7 +1,7 @@
 extends Node
 class_name RandomMapMaker
 
-const PLOTTING_SCALE: float = 1.0
+const PLOTTING_SCALE: float = 0.5
 
 var add_num: int = 10
 var max_dist: int = 1500
