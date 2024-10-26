@@ -44,3 +44,6 @@ func talk():
 
 func end():
 	CurtainLayer.curtain_change_scene("res://Scene/PrisonScene/prison_scene.tscn")
+
+func _on_skip_button_pressed() -> void:
+	end()
