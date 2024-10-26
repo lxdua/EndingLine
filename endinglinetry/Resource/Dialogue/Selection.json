@@ -1,14 +1,14 @@
 {
 	"data": [
 		{
-			"id": "M2001",
-			"content": "要吃sp师傅炒的 $ A1001  |  要吃wdxs师傅炒的 $ A1002  |  要吃dua师傅炒的 $ A1005",
-			"effect": "ROLE $ Aki $ L  |  ROLE $ Ruu $ R"
+			"id": "M1",
+			"content": "点火 $ B1",
+			"effect": "None"
 		},
 		{
-			"id": "M2003",
+			"id": "M2",
 			"content": "要吃 $ A1002  |  不要吃 $ A1005",
-			"effect": "ROLE $ Aki $ L  |  ROLE $ Ruu $ R"
+			"effect": "None"
 		}
 	]
 }

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8swe1qhv6rhp"]
+[gd_scene load_steps=10 format=3 uid="uid://c8swe1qhv6rhp"]
 
 [ext_resource type="Script" path="res://Global/DialogueScene/dialogue_scene.gd" id="1_xxqqb"]
 [ext_resource type="Shader" path="res://Shader/GaussianBlur.gdshader" id="3_t47rl"]
 [ext_resource type="Texture2D" uid="uid://c1hjfkx0u4fsw" path="res://Art/2D/Player/Dialogue/AkiPic.png" id="4_4pgvs"]
 [ext_resource type="Shader" path="res://Shader/Gradient.gdshader" id="4_wixod"]
+[ext_resource type="FontFile" uid="uid://bfd4fvec8a1je" path="res://Art/Font/MiSans-Normal.ttf" id="5_gut5i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_no1lg"]
 shader = ExtResource("3_t47rl")
@@ -30,9 +31,9 @@ dialogue_ui_root = NodePath("DialogueRoot")
 role_name_label = NodePath("DialogueRoot/DialogueContainer/VBoxContainer/RoleNameLabel")
 content_label = NodePath("DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer/ContentLabel")
 selection_container = NodePath("DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer/ScrollContainer/SelectionContainer")
-role_l = NodePath("DialogueRoot/RoleContainer/RoleL")
-role_m = NodePath("DialogueRoot/RoleContainer/RoleM")
-role_r = NodePath("DialogueRoot/RoleContainer/RoleR")
+role_l = NodePath("DialogueRoot/RoleRoot/RoleL")
+role_m = NodePath("DialogueRoot/RoleRoot/RoleM")
+role_r = NodePath("DialogueRoot/RoleRoot/RoleR")
 
 [node name="DialogueRoot" type="Control" parent="."]
 layout_mode = 3
@@ -60,36 +61,46 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_4pr3s")
 
-[node name="RoleContainer" type="HBoxContainer" parent="DialogueRoot"]
+[node name="RoleRoot" type="Control" parent="DialogueRoot"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_top = 103.0
-offset_bottom = 707.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_constants/separation = 80
-alignment = 1
+grow_vertical = 2
 
-[node name="RoleL" type="TextureRect" parent="DialogueRoot/RoleContainer"]
+[node name="RoleL" type="TextureRect" parent="DialogueRoot/RoleRoot"]
 material = SubResource("ShaderMaterial_k71dv")
 custom_minimum_size = Vector2(500, 600)
 layout_mode = 2
+offset_left = 130.0
+offset_top = 103.0
+offset_right = 630.0
+offset_bottom = 707.0
 texture = ExtResource("4_4pgvs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RoleM" type="TextureRect" parent="DialogueRoot/RoleContainer"]
+[node name="RoleM" type="TextureRect" parent="DialogueRoot/RoleRoot"]
 material = SubResource("ShaderMaterial_k71dv")
 custom_minimum_size = Vector2(500, 600)
 layout_mode = 2
+offset_left = 710.0
+offset_top = 103.0
+offset_right = 1210.0
+offset_bottom = 707.0
 texture = ExtResource("4_4pgvs")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="RoleR" type="TextureRect" parent="DialogueRoot/RoleContainer"]
+[node name="RoleR" type="TextureRect" parent="DialogueRoot/RoleRoot"]
 material = SubResource("ShaderMaterial_k71dv")
 custom_minimum_size = Vector2(500, 600)
 layout_mode = 2
+offset_left = 1290.0
+offset_top = 103.0
+offset_right = 1790.0
+offset_bottom = 707.0
 texture = ExtResource("4_4pgvs")
 expand_mode = 3
 stretch_mode = 5
@@ -124,12 +135,15 @@ size_flags_vertical = 3
 theme_override_constants/separation = 50
 
 [node name="ContentLabel" type="Label" parent="DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("5_gut5i")
 theme_override_font_sizes/font_size = 50
 text = "你好
 你好你好你好"
+autowrap_mode = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="DialogueRoot/DialogueContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(500, 0)

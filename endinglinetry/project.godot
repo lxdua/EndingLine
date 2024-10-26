@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="EndingLineTry"
-run/main_scene="res://Scene/PrisonScene/prison_scene.tscn"
+run/main_scene="res://Scene/StoryScene/story_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -56,7 +56,7 @@ ModifierHandler=""
 
 [gui]
 
-theme/custom_font="res://LanaPixel.ttf"
+theme/custom_font="res://Art/Font/VonwaonBitmap-16px.ttf"
 
 [input]
 

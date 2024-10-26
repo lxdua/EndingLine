@@ -7,7 +7,7 @@ const DIALOGUE_SELECTION_BUTTON = preload("res://Global/DialogueScene/dialogue_s
 
 const TEXTURE_DICT = {
 	"Aki": preload("res://Art/2D/Player/Dialogue/AkiPic.png"),
-	"Ruu": preload("res://Art/2D/Player/Dialogue/AkiPic.png"),
+	"Ruu": preload("res://Art/2D/Player/Dialogue/RuuPic.png"),
 }
 
 ## 打字机速度 多少个字每秒
@@ -130,6 +130,8 @@ func clear_selection():
 
 func update_effect(effect: String):
 	clear_role()
+	if effect == "None":
+		return
 	var effect_arr: = effect.split("|")
 	for spell in effect_arr:
 		unscramble_spell(spell)
@@ -138,9 +140,9 @@ func clear_role():
 	role_l.texture = null
 	role_m.texture = null
 	role_r.texture = null
-	role_l.scale.x = 1
-	role_m.scale.x = 1
-	role_r.scale.x = 1
+	role_l.flip_h = false
+	role_m.flip_h = false
+	role_r.flip_h = false
 	role_l.modulate = Color.WHITE
 	role_m.modulate = Color.WHITE
 	role_r.modulate = Color.WHITE
@@ -171,9 +173,37 @@ func unscramble_spell(spell: String):
 						var tween: = aim_role_texr.create_tween()
 						tween.tween_property(aim_role_texr, "modulate:a", 0.0, 0.3).from(1.0)
 					"FLIP":
-						aim_role_texr.scale.x = -1
+						aim_role_texr.flip_h = true
 					"DARK":
 						aim_role_texr.modulate = Color.DIM_GRAY
+					"DARKIN":
+						var tween: = aim_role_texr.create_tween()
+						tween.tween_property(aim_role_texr, "modulate", Color.DIM_GRAY, 0.3).from(Color.WHITE)
+					"DARKOUT":
+						aim_role_texr.modulate = Color.DIM_GRAY
+						var tween: = aim_role_texr.create_tween()
+						tween.tween_property(aim_role_texr, "modulate", Color.WHITE, 0.3).from(Color.DIM_GRAY)
+					"NOD":
+						var tween: = aim_role_texr.create_tween().set_trans(Tween.TRANS_CUBIC)
+						var c_pos: = aim_role_texr.position
+						tween.tween_property(aim_role_texr, "position", c_pos + Vector2(0,24), 0.2).from(c_pos).set_ease(Tween.EASE_OUT)
+						tween.tween_property(aim_role_texr, "position", c_pos, 0.2).from(c_pos + Vector2(0,24)).set_ease(Tween.EASE_IN)
+					"SHAKE":
+						pass
+					"JUMP":
+						var tween: = aim_role_texr.create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+						var c_pos: = aim_role_texr.position
+						tween.tween_property(aim_role_texr, "position", c_pos, 0.6).from(c_pos + Vector2(0,-24))
+					"EXJUMP":
+						var tween: = aim_role_texr.create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+						var c_pos: = aim_role_texr.position
+						tween.tween_property(aim_role_texr, "position", c_pos, 0.4).from(c_pos + Vector2(0,-48))
+					"JUMPIN":
+						var tween: = aim_role_texr.create_tween().set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+						var c_pos: = aim_role_texr.position
+						tween.tween_property(aim_role_texr, "position", c_pos, 0.6).from(c_pos + Vector2(0,500))
+					"ANXIETY":
+						pass
 			if aim_role_texr and tex:
 				aim_role_texr.texture = tex
 

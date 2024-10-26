@@ -1,39 +1,473 @@
 {
 	"data": [
 		{
-			"id": "A1001",
-			"next_id": "A1002",
-			"role": "Aki",
-			"content": "聊点什么呢",
-			"effect": "ROLE $ Aki $ L $ IN"
+			"id": "A1",
+			"next_id": "A2",
+			"role": "None",
+			"content": "在模糊的黑与白间，金发少女躺在这一片模糊的虚无之中。",
+			"effect": "None"
 		},
 		{
-			"id": "A1002",
-			"next_id": "A1003",
+			"id": "A2",
+			"next_id": "A3",
 			"role": "Ruu",
-			"content": "你知道TRPG吗",
-			"effect": "ROLE $ Aki $ L $ DARK  |  ROLE $ Ruu $ R $ IN"
+			"content": "虚无……",
+			"effect": "ROLE $ Ruu $ M $ DARK $ IN"
 		},
 		{
-			"id": "A1003",
-			"next_id": "#M2001",
+			"id": "A3",
+			"next_id": "A4",
+			"role": "Ruu",
+			"content": "好虚无……",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A4",
+			"next_id": "A5",
+			"role": "Ruu",
+			"content": "不是说人在临死时会看见人生的跑马灯吗？",
+			"effect": "ROLE $ Ruu $ M $ DARK $ NOD"
+		},
+		{
+			"id": "A5",
+			"next_id": "A6",
+			"role": "Ruu",
+			"content": "怎么我只能回想起桥洞下的那张破沙发呢……",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A6",
+			"next_id": "A7",
+			"role": "Ruu",
+			"content": "再往回一点啊……",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A7",
+			"next_id": "A8",
+			"role": "Ruu",
+			"content": "一点就好……",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A8",
+			"next_id": "A9",
+			"role": "Ruu",
+			"content": "看到扔掉我的那对夫妻的脸就好……",
+			"effect": "ROLE $ Ruu $ M $ DARK $ NOD"
+		},
+		{
+			"id": "A9",
+			"next_id": "A10",
+			"role": "Ruu",
+			"content": "噗………哈哈哈哈哈！",
+			"effect": "ROLE $ Ruu $ M $ DARK $ JUMP"
+		},
+		{
+			"id": "A10",
+			"next_id": "A11",
+			"role": "Ruu",
+			"content": "Ruu你的台词又老土又狗血！",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A11",
+			"next_id": "A12",
+			"role": "Ruu",
+			"content": "…………",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A12",
+			"next_id": "A13",
+			"role": "Ruu",
+			"content": "早知道以前少跟那群小屁孩儿玩些过家家，多看点新鲜的电视剧了。",
+			"effect": "ROLE $ Ruu $ M $ DARK $ NOD"
+		},
+		{
+			"id": "A13",
+			"next_id": "A14",
+			"role": "Ruu",
+			"content": "三年了，从冷冻舱里爬出来开始算，怎么也得有三年多了。",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A14",
+			"next_id": "A15",
+			"role": "Ruu",
+			"content": "居然连一台电视机都找不到……",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A15",
+			"next_id": "A16",
+			"role": "Ruu",
+			"content": "……",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A16",
+			"next_id": "A17",
+			"role": "Ruu",
+			"content": "好热。",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A17",
+			"next_id": "A18",
+			"role": "Ruu",
+			"content": "像夏天的桥洞底。",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A18",
+			"next_id": "A19",
+			"role": "Ruu",
+			"content": "就这样吧。",
+			"effect": "ROLE $ Ruu $ M $ DARK $ NOD"
+		},
+		{
+			"id": "A19",
+			"next_id": "A20",
+			"role": "Ruu",
+			"content": "就在这里睡吧。",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A20",
+			"next_id": "A21",
+			"role": "Ruu",
+			"content": "至少没有蚊子了。",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A21",
+			"next_id": "A22",
+			"role": "Ruu",
+			"content": "就算活到明天，也碰不上任何新鲜好玩的事情了。",
+			"effect": "ROLE $ Ruu $ M $ DARK"
+		},
+		{
+			"id": "A22",
+			"next_id": "A23",
+			"role": "Ruu",
+			"content": "……",
+			"effect": "ROLE $ Ruu $ M $ DARK $ OUT"
+		},
+		{
+			"id": "A23",
+			"next_id": "A24",
+			"role": "Ruu",
+			"content": "真黑啊——",
+			"effect": "None"
+		},
+		{
+			"id": "A24",
+			"next_id": "#M1",
+			"role": "Ruu",
+			"content": "连一颗星星都没有……",
+			"effect": "None"
+		},
+		{
+			"id": "B1",
+			"next_id": "B2",
+			"role": "None",
+			"content": "噼啪——噼啪——",
+			"effect": "None"
+		},
+		{
+			"id": "B2",
+			"next_id": "B3",
+			"role": "None",
+			"content": "就像史前最神秘的那一个瞬间，火星子迸溅在广阔的天与地中。",
+			"effect": "None"
+		},
+		{
+			"id": "B3",
+			"next_id": "B4",
+			"role": "Ruu",
+			"content": "……",
+			"effect": "None"
+		},
+		{
+			"id": "B4",
+			"next_id": "B5",
+			"role": "Ruu",
+			"content": "谁啊！连打火石都不会用吗！",
+			"effect": "ROLE $ Ruu $ L $ DARK $ JUMPIN"
+		},
+		{
+			"id": "B5",
+			"next_id": "B6",
+			"role": "None",
+			"content": "火星与柴木。",
+			"effect": "ROLE $ Ruu $ L $ DARK"
+		},
+		{
+			"id": "B6",
+			"next_id": "B7",
+			"role": "None",
+			"content": "世界便出现了橙红色。",
+			"effect": "ROLE $ Ruu $ L $ DARKOUT"
+		},
+		{
+			"id": "B7",
+			"next_id": "B8",
+			"role": "None",
+			"content": "——人造的晨昏线，又一次在历史中宣告了存在。",
+			"effect": "ROLE $ Ruu $ L "
+		},
+		{
+			"id": "B8",
+			"next_id": "B9",
+			"role": "None",
+			"content": "黑发少女平静地坐在火光边。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ IN $ FLIP"
+		},
+		{
+			"id": "B9",
+			"next_id": "B10",
 			"role": "Aki",
-			"content": "知道\n就是跑团嘛",
-			"effect": "ROLE $ Aki $ L  |  ROLE $ Ruu $ R $ DARK"
+			"content": "点着了。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
 		},
 		{
-			"id": "A1004",
-			"next_id": "A1005",
+			"id": "B10",
+			"next_id": "B11",
 			"role": "Aki",
-			"content": "我114514",
-			"effect": "ROLE $ Aki $ L  |  ROLE $ Ruu $ R $ DARK"
+			"content": "木头受潮，不容易点上火。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
 		},
 		{
-			"id": "A1005",
+			"id": "B11",
+			"next_id": "B12",
+			"role": "Ruu",
+			"content": "…………",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B12",
+			"next_id": "B13",
+			"role": "Ruu",
+			"content": "跑马灯居然真的起效了……你就是扔掉我的女人啊……",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B13",
+			"next_id": "B14",
+			"role": "Ruu",
+			"content": "长得斯斯文文的……怎么就那么狠得下心呢……",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B14",
+			"next_id": "B15",
+			"role": "Aki",
+			"content": "已经分不清现实和幻觉了吗？",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B15",
+			"next_id": "B16",
+			"role": "Aki",
+			"content": "看来篝火也救不了她了。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B16",
+			"next_id": "B17",
+			"role": "Ruu",
+			"content": "…………",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B17",
+			"next_id": "B18",
+			"role": "Ruu",
+			"content": "你是活着的？你是真正的……活着的人类？",
+			"effect": "ROLE $ Ruu $ L $ JUMP | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B18",
+			"next_id": "B19",
+			"role": "Aki",
+			"content": "是的。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B19",
+			"next_id": "B20",
+			"role": "Aki",
+			"content": "你是我这三年唯一遇见到的人类，刚刚看见你的时候，我也很难以置信。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B20",
+			"next_id": "B21",
+			"role": "Aki",
+			"content": "我去捡了些尽可能干燥些的木头，准备回来生火的时候，却看见你已经开始说些胡话了。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B21",
+			"next_id": "B22",
+			"role": "Aki",
+			"content": "我很担心。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B22",
+			"next_id": "B23",
+			"role": "Aki",
+			"content": "虽然你似乎在寻死。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B23",
+			"next_id": "B24",
+			"role": "Aki",
+			"content": "但请你先活着。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B24",
+			"next_id": "B25",
+			"role": "Ruu",
+			"content": "为什么？",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B25",
+			"next_id": "B26",
+			"role": "Aki",
+			"content": "因为我想活着。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP $ JUMP"
+		},
+		{
+			"id": "B26",
+			"next_id": "B27",
+			"role": "Aki",
+			"content": "我想利用你作为我的同伴，来增加我继续活下去的概率。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B27",
+			"next_id": "B28",
+			"role": "Aki",
+			"content": "人类无法在这样的极寒天气中长距离移动，而周边的物资几乎已经被我，又或许还有你，搜刮干净了。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B28",
+			"next_id": "B29",
+			"role": "Aki",
+			"content": "所以，我花了很长的时间修复了一辆轨道列车，根据轨道路线，它会经过数个站点，而每个站点都有由机器管理的自动贩卖商店。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B29",
+			"next_id": "B30",
+			"role": "Aki",
+			"content": "我想活着。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B30",
+			"next_id": "B31",
+			"role": "Aki",
+			"content": "因此我要求你也活下去。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B31",
+			"next_id": "B32",
+			"role": "Aki",
+			"content": "活下去，和我一起。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B32",
+			"next_id": "B33",
+			"role": "Ruu",
+			"content": "你好自私。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B33",
+			"next_id": "B34",
+			"role": "Ruu",
+			"content": "你因为自己想活下去，所以也要求我必须活下去吗？",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B34",
+			"next_id": "B35",
+			"role": "Aki",
+			"content": "但我还是尊重个人意愿，如果你真的不愿意。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B35",
+			"next_id": "B36",
+			"role": "Aki",
+			"content": "那请问我可以拿走你的衣服吗？我有些缺抗冻的厚衣服。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B36",
+			"next_id": "B37",
+			"role": "Ruu",
+			"content": "天呐……有趣的事情又降临在我的世界了……",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B37",
+			"next_id": "B38",
+			"role": "Ruu",
+			"content": "在灾变之前，有人夸过你，你自私的样子很有趣，很迷人吗？",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B38",
+			"next_id": "B39",
+			"role": "Aki",
+			"content": "没有。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B39",
+			"next_id": "B40",
+			"role": "Ruu",
+			"content": "我答应你。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B40",
+			"next_id": "B41",
+			"role": "Ruu",
+			"content": "但我现在好冷，你可以抱抱我吗？",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B41",
+			"next_id": "B42",
+			"role": "Aki",
+			"content": "当然。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B42",
+			"next_id": "B43",
+			"role": "Ruu",
+			"content": "我叫Ruu。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
+		},
+		{
+			"id": "B43",
 			"next_id": "END",
-			"role": "Ruu",
-			"content": "最后一句话",
-			"effect": "ROLE $ Aki $ L $ DARK  |  ROLE $ Ruu $ R"
+			"role": "Aki",
+			"content": "我叫Aki。",
+			"effect": "ROLE $ Ruu $ L | ROLE $ Aki $ R $ FLIP"
 		}
 	]
 }
