@@ -198,7 +198,7 @@ offset_bottom = 372.0
 texture_normal = ExtResource("9_pf2mp")
 stretch_mode = 0
 
-[node name="StationContentContainer" type="PanelContainer" parent="UI" node_paths=PackedStringArray("name_label", "type_label", "tip_label", "cost_label")]
+[node name="StationContentContainer" type="PanelContainer" parent="UI" node_paths=PackedStringArray("name_label", "type_label", "tip_label", "cost_label", "item_label")]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -212,6 +212,7 @@ name_label = NodePath("MarginContainer/VBoxContainer/NameLabel")
 type_label = NodePath("MarginContainer/VBoxContainer/TypeLabel")
 tip_label = NodePath("MarginContainer/VBoxContainer/TipLabel")
 cost_label = NodePath("MarginContainer/VBoxContainer/CostLabel")
+item_label = NodePath("MarginContainer/VBoxContainer/ItemLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="UI/StationContentContainer"]
 layout_mode = 2
@@ -243,21 +244,9 @@ theme_override_font_sizes/font_size = 26
 text = "文本介绍"
 horizontal_alignment = 1
 
-[node name="SupplyContainer" type="HBoxContainer" parent="UI/StationContentContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="SupplyLabel" type="Label" parent="UI/StationContentContainer/MarginContainer/VBoxContainer/SupplyContainer"]
+[node name="ItemLabel" type="Label" parent="UI/StationContentContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "供应"
-
-[node name="DemandContainer" type="HBoxContainer" parent="UI/StationContentContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="DemandLabel" type="Label" parent="UI/StationContentContainer/MarginContainer/VBoxContainer/DemandContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "需求"
 
 [node name="CostLabel" type="Label" parent="UI/StationContentContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

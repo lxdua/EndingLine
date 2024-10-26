@@ -54,14 +54,14 @@ func change_scene_to_train():
 func arrive(station_scene: StationScene):
 	GlobalVar.time_scale = 1.0
 	await CurtainLayer.fade_in()
-	change_scene_to_station(station_scene)
+	await change_scene_to_station(station_scene)
 	await CurtainLayer.fade_out()
 	# TODO 入站动画
 
 func set_out():
 	# TODO 出发动画
 	await CurtainLayer.fade_in()
-	change_scene_to_train()
+	await change_scene_to_train()
 	await CurtainLayer.fade_out()
 
 func check_portals(station_scene: StationScene):

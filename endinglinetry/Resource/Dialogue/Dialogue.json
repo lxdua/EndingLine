@@ -40,7 +40,7 @@
 			"next_id": "A7",
 			"role": "Ruu",
 			"content": "再往回一点啊……",
-			"effect": "ROLE $ Ruu $ M $ DARK"
+			"effect": "ROLE $ Ruu $ M $ DARK $ ANXIETY"
 		},
 		{
 			"id": "A7",
